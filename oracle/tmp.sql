@@ -112,10 +112,10 @@ BEGIN
 		IF curSETTEI%FOUND THEN
 			-- 設定値NULLの場合は初期値を設定
 			IF  fetSETTEI.設定作成日 IS NULL THEN
-				fetSETTEI.設定作成日 := '2015/04/01';
+				fetSETTEI.設定作成日 := '2016/05/01';
 			END IF;
 			IF  fetSETTEI.設定更新日 IS NULL THEN
-				fetSETTEI.設定更新日 := '2015/04/01';
+				fetSETTEI.設定更新日 := '2016/05/01';
 			END IF;
 			-- 作成日を取得
 			var設定作成日 := TO_CHAR(fetSETTEI.設定作成日,'yyyy/mm/dd HH24:MI:SS');
@@ -130,8 +130,8 @@ BEGIN
 			END CASE;
 		ELSE
 			--作成日が存在しない（デフォルト値とする）
-			var設定作成日 := '2015/04/01';
-			var設定更新日 := '2015/04/01';
+			var設定作成日 := '2016/05/01';
+			var設定更新日 := '2016/05/01';
 			varテーブルクリア有無 := '1';
 		END IF;
 	CLOSE curSETTEI;
