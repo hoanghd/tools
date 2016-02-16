@@ -1,0 +1,2 @@
+$vi /etc/sysconfig/iptables
+$service iptables restart
