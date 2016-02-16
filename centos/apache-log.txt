@@ -1,0 +1,2 @@
+cd /var/log/httpd
+tail -f error_log
