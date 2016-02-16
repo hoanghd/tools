@@ -1,0 +1,687 @@
+proxy
+http://www.makeuseof.com/tag/set-proxy-server-ubuntu-linux/
+
+GIT
+	Delete branch
+	$git branch -d the_local_branch
+	$git push origin :the_remote_branch
+	
+	Create Branch
+	$git checkout -b [name_of_your_new_branch]
+	$git push origin [name_of_your_new_branch]
+
+
+http://www.tecmint.com/install-google-chrome-on-redhat-centos-fedora-linux/
+http://www.redmine.org/projects/redmine/wiki/install_Redmine_25x_on_Centos_65_complete
+http://archive.kernel.org/centos-vault/6.5/isos/i386/
+
+http://server-setting.info/centos/php5-2_install.html
+http://wiki.iphoster.ru/wiki/ISPManager_-_install_php_5.2.17_-_old_version
+https://webpatron.net/en/blog/sysadmin-notes/item/29-installation-of-two-versions-of-php-5-2-and-5-3-on-a-server-with-centos-and-panel-ispmanager
+
+TOP:
+	$ wget http://packages.sw.be/rpmforge-release/rpmforge-release-0.3.6-1.el5.rf.i386.rpm
+	
+0.NETWORK
+	[root@home ~]#vi /etc/hosts
+	[root@home ~]#vi /etc/selinux/config
+	[root@home ~]#vi /etc/sysconfig/network
+	[root@home ~]#/etc/init.d/network restart
+I.APACHE
+	1.CHECK INSTALL
+		[root@home ~]# rpm -qa | grep -i httpd
+	2.SEARCH
+		[root@home ~]# yum search httpd
+	2.INSTALL 
+		[root@home ~]# yum install httpd mod_ssl
+		[root@home ~]# /sbin/service httpd start|restart|reload
+		[root@home ~]# /sbin/chkconfig httpd on
+		[root@home ~]# /sbin/chkconfig --list httpd
+	3.CONFIG
+		chkconfig httpd on
+		/etc/httpd/conf/httpd.conf
+		/etc/httpd/conf.d/httpd.conf
+		/var/www/html
+	4.REMOVE
+		[root@home ~]# /sbin/service httpd stop
+		[root@home ~]# yum remove httpd
+	6.OPEN PORT
+		[root@home ~]# iptables -L -n
+		[root@home ~]# system-config-securitylevel-tui
+		[root@home ~]# vi /etc/sysconfig/iptables
+				-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+		[root@home ~]# /sbin/service iptables restart
+	7.CHANGE DOCUMENT ROOT
+		[root@home ~]# mkdir -p /opt/www
+		[root@home ~]# chmod -R 755 /opt/www
+		[root@home ~]# /etc/init.d/httpd restart
+	8.SELinux
+		### Check SELinux ON/OFF ###
+		[root@home ~]# getonfore
+
+		### Set SELinux OFF ###
+		[root@home ~]# setenforce 0
+
+		### Config file of SELinux and set enforcing/permissive/disabled ##
+		[root@home ~]# vi /etc/selinux/config
+		SELINUX=enforcing
+	9.IPTABLES: Firewall on Linux
+		### Check status ###
+		[root@home ~]# service iptables status
+		[root@home ~]# service ip6tables status
+
+		### Set ON/OFF #
+		[root@home ~]# service iptables stop
+		[root@home ~]# service ip6tables stop
+		
+https://tn123.org/mod_xsendfile/
+https://www.drupal.org/node/2008728
+http://codeutopia.net/blog/2009/03/06/sending-files-better-apache-mod_xsendfile-and-php/
+		
+
+II.PHP
+	1.CHECK INSTALL
+		[root@home ~]# rpm -q php
+	2.SEARCH
+		[root@home ~]# yum search php
+	3.INSTALL
+		[root@home ~]# yum install php php-devel php-gd php-imap php-ldap php-mysql php-pgsql postgresql php-odbc php-pear php-xml php-xmlrpc curl curl-devel perl-libwww-perl ImageMagick php5-imagick libxml2 libxml2-devel php-mbstring
+		yum remove ImageMagick php5-imagick libxml2 libxml2-devel php-mbstring
+	4.MODULE
+		http://www.rpmfind.net/linux/rpm2html/search.php?query=php-imagick
+	5.CONFIG
+	6.UPDATE
+		wget http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+		wget http://rpms.famillecollet.com/enterprise/remi-release-5.rpm
+		rpm -Uvh remi-release-5*.rpm epel-release-5*.rpm
+
+		yum --enablerepo=remi update php php-*
+		/etc/init.d/httpd restart
+		php -v
+	    6.1. Update PHP 5.3: View detail http://www.webtatic.com/packages/php53/
+		rpm -Uvh http://repo.webtatic.com/yum/centos/5/latest.rpm
+		install: yum --enablerepo=webtatic install php
+		udpate: yum --enablerepo=webtatic update php
+	7. Remove
+		yum remove php
+		yum list installed // check other support library with PHP
+		yum remove php... // ... means version or file name
+	8. Check error
+		/var/log/httpd/error*
+		Cause: permissions and ownership were wrong. Set chmod 777 phpinfo.php
+
+	Extension path: magickwand, qr, ...
+		- server 89: /etc/php.d
+
+	9. Extensions:
+		a. apc.so
+			Web: http://www.electrictoolbox.com/install-apc-php-linux/
+			$ wget http://pecl.php.net/get/APC
+			$ tar -zxf {file name}.tgz	// Example: APC-3.0.16.tgz
+			$ cd {folder name}	// Example: APC-3.0.16
+			$ phpize
+			$ whereis php-config
+				=> php-config: /usr/bin/php-config /usr/share/man/man1/php-config.1.gz
+			$ ./configure --enable-apc --enable-apc-mmap --with-apxs --with-php-config=/usr/bin/php-config
+			$ make
+				=> Build complete
+			$ make install
+			$ /etc/init.d/httpd restart
+
+		b. http.so
+			Web: http://pkgs.org/centos-5-rhel-5/repoforge-x86_64/php-pecl-http-1.6.5-2.el5.rf.x86_64.rpm.html
+			Web: http://stackoverflow.com/questions/12261245/do-you-know-what-php-warning-startup-unable-to-load-dynamic-library-http-so-is-r
+			$ yum install php-pecl-http
+
+		c. zlib.so
+			Web: http://www.cyberciti.biz/faq/centos-install-zlib-devel/
+			$ yum install zlib-devel
+			$ find / -name zlib.so
+			copy zlib.so into /usr/lib/php/modules, and restart httpd
+
+III.MYSQL
+	1.CHECK INSTALL
+		[root@home ~]# rpm -qa | grep -i mysql
+	2.SEARCH
+		[root@home ~]# yum search mysql
+	3.INSTALL
+		[root@home ~]# yum install mysql mysql-server mysql-devel
+	4.CONFIG
+	    SERVICE
+		[root@home ~]# /sbin/service mysqld stop
+		
+		[root@home ~]# chkconfig --list|grep mysqld	#to view list process in running
+		[root@home ~]# chkconfig mysqld on		#to set autorun with OS starting
+
+	    RESET PASSWORD MYSQL TRONG CENTOS: http://hack2learn.blogspot.com/2008/02/reset-mysql-password-on-centos.html
+		[root@home ~]# /etc/init.d/mysqld stop
+		[root@home ~]# /usr/bin/mysqld_safe --skip-grant-tables &
+		[root@home ~]# /usr/bin/mysql -u root
+			mysql> USE mysql
+			mysql> UPDATE user SET PASSWORD = Password('root') WHERE User='root';
+			mysql> SET PASSWORD FOR 'root'@'localhost' = password('newpassword');
+			mysql> FLUSH PRIVILEGES;
+			mysql> exit;
+			SET PASSWORD FOR 'root'@'14.161.5.67' = password('magpie@123');
+			
+			
+			CREATE DATABASE `blog_magpie` CHARACTER SET utf8 COLLATE utf8_general_ci;
+			GRANT ALL ON `blog_magpie`.* TO `root`@localhost IDENTIFIED BY 'magpie@123';
+			
+		[root@home ~]# /usr/bin/killall mysqld
+		[root@home ~]# /etc/init.d/mysqld restart
+		[root@home ~]# /usr/bin/mysql -u root -p
+		[root@home ~]# mysqladmin -uroot -padmin@shinway flush-hosts
+		[root@home ~]# SET GLOBAL max_connect_errors = 999999999;
+		[root@home ~]# FLUSH PRIVILEGES;
+		[root@home ~]# SHOW VARIABLES LIKE '%error%';
+
+	    SET IP TO ACCESS MYSQL: http://freebsd.vnweblogs.com/post/106/93770
+		[root@home ~]# vi /etc/my.cnf
+			port = 3306	
+			bind-address=MYSQL-SERVER-IP
+			# skip-networking
+		[root@home ~]# /etc/init.d/mysqld restart
+		[root@home ~]# mysql -u root -p	
+			mysql> GRANT ALL ON <db_name>.* TO 'user_client_access'@'ip_of_client' IDENTIFIED BY 'password_client_access';
+			mysql> GRANT ALL ON *.* TO 'user_client_access'@'ip_of_client' IDENTIFIED BY 'password_client_access';
+	5.OPEN PORT
+		[root@home ~]# iptables -L -n
+		[root@home ~]# vi /etc/sysconfig/iptables
+				-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+		[root@home ~]# /sbin/service iptables restart
+	6. DUMP/Restore DB
+		######### Dump #########
+		[root@dev ~]# mysqldump -u root -p {db_name} > {file_name}.sql
+		######### Restore #########
+		[root@dev ~]# mysql -u root -p rara_jp_7188 < /opt/www/spice-rara/db/db_130103
+		
+		mysqldump -u root -p blog_magpie > blog_magpie.sql
+
+III.2.POSTGRE		
+	SET IP TO ACCESS POSTGRE:
+	
+	[root@home ~]# yum install postgresql postgresql-server
+	
+	######### Set autorun service postgre #########
+	[root@home ~]# chkconfig postgresql on
+		OR
+	[root@home ~]# vi /etc/rc.local
+		Input "/etc/init.d/postgresql restart", press ESC twice, and input :wq (to save and exit vi)
+
+	######### Start / Restart #########
+	[root@home ~]# /etc/init.d/postgresql restart
+	[root@home ~]# /etc/init.d/postgresql-9.1 restart
+
+	[root@home ~]# vi /var/lib/pgsql/data/pg_hba.conf
+	[root@home ~]# vi /var/lib/pgsql/data/postgresql.conf
+	
+	- File: pg_hba.conf
+	  local  	all  	all                        	trust
+      host		all		all		192.168.100.0/24	trust
+      host    	all  	all  	192.168.1.18/24     trust
+      host    	all  	all     ::1/128        		trust
+		
+	- postgresql.conf
+		listen_addresses = '*'	
+		port = 5432			
+	[root@home ~]# 	su postgres or su - postgres
+					>psql
+					>CREATE ROLE dbadmin LOGIN
+					>PASSWORD 'admin@kis'
+					>SUPERUSER INHERIT CREATEDB CREATEROLE;
+					>exit;
+	[root@home ~]# /etc/selinux/config
+			enforce => disabled
+	[root@home ~]# pg_dump -C -h 192.168.100.89 -U dbadmin publio | psql -h localhost -U postgres postgres
+
+	########### dump from *.db file to server ###########
+	[root@home ~]# su - postgres	#Login postgre
+	-bash-3.2$ /usr/pgsql-9.0/bin/psql db_name < path_file
+		Example: /usr/pgsql-9.0/bin/psql tacs_5444 < /opt/www/tacs/db/tacs_5444.db
+
+	Info postgresql-9.0 on server 189
+	- service postgresql-9.0 start
+	- service postgresql-9.0 restart
+	- type "/usr/pgsql-9.0/bin/" in front of commands of postgresql 9.0
+		Example: /usr/pgsql-9.0/bin/pg_dump -C -h 192.168.100.89 -U dbadmin awabank | psql -h 192.168.100.189 -U postgres postgres
+			above command means dump DB awabank on 89 into 189.
+
+IV.FTP 
+	1.CHECK INSTALL
+		[root@home ~]# rpm -qa | grep -i vsftpd
+	2.SEARCH
+		[root@home ~]# yum search vsftpd
+	3.INSTALL
+		[root@home ~]# yum -y install vsftpd
+	4.CONFIG
+		[root@home ~]# /etc/init.d/vsftpd restart
+		[root@home ~]# chkconfig vsftpd on
+		[root@home ~]# vi /etc/vsftpd/vsftpd.conf
+			local_enable=YES 	# Cho phep user trong mang local
+			write_enable=YES 	# Cho phep users upload file len
+			chroot_local_user=YES 	# Gioi han users trong thu muc rieng cua chùÏh user do
+		[root@home ~]# setsebool ftpd_disable_trans 1
+		[root@home ~]# /sbin/service vsftpd restart
+	5.CREATE USER && SET DIR
+		[root@home ~]# adduser -d /var/www/html/ -g ftp -s/sbin/nologin hoanghd
+		[root@home ~]# passwd hoanghd
+	6.OPEN PORT
+		[root@home ~]# iptables -L -n
+		[root@home ~]# system-config-securitylevel-tui
+		[root@home ~]# vi /etc/sysconfig/iptables
+				-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 21 -j ACCEPT
+		[root@home ~]# /sbin/service iptables restart
+V.VI
+    POSTITIONING THE CURSOR
+	x 	Delete the character at the cursor position.
+	dd 	Delete the current line.
+	yy	Copy the current line.
+	p 	Paste data that was cut with x or dd commands.
+	u 	Undo.
+
+    ENTERING INPUT MODE
+	a 	Add text after the cursor.
+	i 	Insert text before the cursor.
+	R 	Replace text starting at the cursor.
+	o 	Insert a new line after the current one.
+
+    EXITING OR SAVING YOUR FILE
+	:w 	Write file to disk, without exiting editor.
+	ZZ 	Save the file and exit.
+	:q! 	Quit without saving.
+
+    ENTERING COMMAND MODE
+	esc 	Switch from Input mode to Command mode.
+
+VI.SSH
+	ls	:
+	cd	:
+			~ : go to your home directory
+			- : go to the last directory you were in
+			.. : go up a directory cat : print file contents to the screen	cat
+	chmod	: Changes file access permissions
+	chown	: Changes file ownership permissions
+	tail 	: Like cat, but only reads the end of the file
+	more 	: Like cat, but opens the file one screen at a time rather than all at once
+	pico 	: Friendly, easy to use file editor
+	grep 	: Looks for patterns in files
+	ln 	: Create's "links" between files and directories
+	last 	: Shows who logged in and when
+	w 	: Shows who is currently logged in and where they are logged in from.
+	who 	: This also shows who is on the server in an shell.
+	netstat : Shows all current network connections.
+	top 	: Shows live system processes in a nice table, memory information, uptime and other useful info. This is excellent for managing your system processes, resources and ensure everything is working fine and your server isn't bogged down.
+	ps	: ps is short for process status, which is similar to the top command. It's used to show currently running processes and their PID.
+	touch 	: Create an empty file
+	file 	: Attempts to guess what type of file a file is by looking at it's content.
+	du 	: Shows disk usage.
+	wc 	: Word count
+	cp 	: Copy a file
+	scp	: Copy a file crow network
+			-p: Preserves the modification and access times, as well as the permissions of the source-file in the destination-file
+			-q: Do not display the progress bar
+			-r: Recursive, so it copies the contents of the source-file (directory in this case) recursively
+			-v: Displays debugging messages 
+			scp -r miguel@10.1.2.2:/home/miguel/ miguel@10.1.2.3:/home/miguel/
+	mv 	: Move a file command
+	rm 	: Delete a file
+			=> rm -r -f YourDirectory
+	tar	: Creating and Extracting .tar.gz and .tar files
+			tar -zxvf file.tar.gz : Extracts the file
+			tar -xvf file.tar : Extracts the file
+			tar -cf archive.tar contents/ : Takes everything from contents/ and puts it into archive.tar
+	gzip  	: Decompress the file, extract it
+			gzip -d filename.gz
+	unzip	: Extracting .zip files shell command
+			unzip file.zip
+	iptables: Firewall
+			iptables -I INPUT -s IPADDRESSHERE -j DROP : This command stops any connections from the IP address
+			iptables -L : List all rules in iptables
+			iptables -F : Flushes all iptables rules (clears the firewall)
+			iptables --save : Saves the currenty ruleset in memory to disk
+			service iptables restart : Restarts iptables
+	kill	: Terminate a system process
+	wget	: Download file http://users.ugent.be/~bpuype/wget/
+			wget --passive-ftp ftp://ftp.proftpd.org/distrib/source/proftpd-1.3.1.tar.gz
+	ln	: Create soft link
+			ln -s /var/www/html/file/uploads/ /var/www/html/web/admin/uploads
+
+VII. MAIL
+	http://www.howtoforge.com/centos-5.1-server-lamp-email-dns-ftp-ispconfig-p3
+	http://uitnetwork.com/net/system/77-xay-dng-mail-server-vi-postfix-phn-3
+	
+	1.INSTALL 
+		[root@home ~]# yum install postfix
+		[root@home ~]# yum --enablerepo=centosplus install postfix mysql-server
+		[root@home ~]# vi /etc/postfix/main.cf 
+						inet_interfaces = all
+						mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain 
+						home_mailbox = Maildir/
+		
+		[root@home ~]# su - 
+		[root@home ~]# mkdir /etc/skel/Maildir 
+		[root@home ~]# mkdir /etc/skel/Maildir/cur 
+		[root@home ~]# mkdir /etc/skel/Maildir/new 
+		[root@home ~]# mkdir /etc/skel/Maildir/tmp 
+		[root@home ~]# chmod -R 700 /etc/skel/Maildir		
+		
+		[root@home ~]# telnet localhost 25
+					   helo host
+					   quit		   
+
+		[root@home ~]# yum install dovecot	
+
+		### If run "yum install dovecot" and have any errors, run below command ###
+		[root@home ~]# yum -y --enablerepo=remi install mysqlclient15 
+
+		[root@home ~]# vi /etc/dovecot.conf		
+					   protocols = pop3 pop3s imap imaps
+					   mail_location = maildir:~/Maildir/
+					   pop3_uidl_format = %08Xu%08Xv
+					   imap_client_workarounds = delay-newmail outlook-idle netscape-eoh
+					   pop3_client_workarounds = outlook-no-nuls oe-ns-eoh
+					   
+		[root@home ~]# service dovecot restart		
+		[root@home ~]# telnet localhost 110
+					   quit
+		
+		[root@home ~]# yum install squirrelmail
+		[root@home ~]# /usr/share/squirrelmail/config/conf.pl
+			SquirrelMail Configuration : Read: config.php (1.4.0)
+			---------------------------------------------------------
+			Main Menu --
+			1.  Organization Preferences
+			2.  Server Settings
+			3.  Folder Defaults
+			4.  General Options
+			5.  Themes
+			6.  Address Books
+			7.  Message of the Day (MOTD)
+			8.  Plugins
+			9.  Database
+			10. Languages
+
+			D.  Set pre-defined settings for specific IMAP servers
+
+			C   Turn color off
+			S   Save data
+			Q   Quit
+			
+			Command >> 2		
+
+	2.CHECK
+		
+
+VIII. SVN(Subversion)
+	1.CHECK INSTALL
+		[root@home ~]# rpm -qa | grep -i subversion
+	2.SEARCH
+		[root@home ~]# yum search subversion
+	2.INSTALL 
+		[root@home ~]# yum install subversion				
+		[root@home ~]# svn --help
+		[root@home ~]# svnadmin --help
+	3.CREATE REPOSITORY
+		[root@home ~]# mkdir -p /opt/svn
+		[root@home ~]# svnadmin create --fs-type fsfs /opt/svn	
+		/conf/svnserve.conf bo di # truoc cac ("anon-access", "auth-access", "password-db") chu y khoang trang phia truoc
+		/conf/authz.conf, /conf/passwd.conf de cau hinh user,pass,group	
+	4.CONFIG HOOKS 	
+		1.Donwload file svn-auto-checkout
+			[root@home ~]# wget -P/opt/svn/hooks/bin/ http://ydirson.free.fr/soft/svn/svn-auto-checkout
+		2./hooks/post-commit
+			/opt/svn/hooks/bin/svn-auto-checkout "$REPOS" "$REV" "trunk/code/" "/opt/www"
+		3.chmod
+			[root@home ~]# chmod +x bin/svn-auto-checkout		
+			[root@home ~]# chmod +x post-commit
+		4.svn checkout
+			[root@home ~]# svn co -r HEAD "svn://192.168.100.107/opt/svn/trunk/code" "/opt/www/"	
+	5.RESTART SVN
+		[root@home ~]# killall svnserve
+		[root@home ~]# svnserve -dr /
+		[root@home ~]# svnserve -d -r /svn
+	6.SVN TOOLS
+		[root@home ~]# find . -name ".svn" -exec rm -rf {} \			//Remove all .svn folders in a directory tree
+		[root@home ~]# find . -name ".svn" -type d -exec rm -rf {} \	//Which only deletes directories named ".svn"	
+	7.Backup
+		[root@home ~]# svnadmin dump /opt/svn > svn_name.dump
+		[root@home ~]# svnadmin load /opt/svn < svn_name.dump
+	8.Export & Import
+		[root@home ~]# svn export svn://192.168.100.89/opt/svnrepo /opt/svn89
+		[root@home ~]# svn import /opt/svn89 svn://192.168.100.189/opt/svn
+	9.Unlock
+		[root@home ~]# find ./ -name '*.php' | xargs svn unlock --force
+	http://www.jimlei.com/muqing/notes/centos.html
+	http://queens.db.toronto.edu/~nilesh/linux/subversion-howto/
+
+IX. SHARING OTHERS OS
+	[root@home ~]# mount 192.168.100.10:/www/htdocs/aircalin /webin10											(LINUX-LINUX)
+	[root@home ~]# mount -t nfs -o username=web, password=We9 //KIS-08SR:/www /webon99							(LINUX-LINUX)
+	[root@home ~]# mount -t smbfs -o username=web, password=We9 //KIS-08SR:/www /webon99						(LINUX-LINUX)
+	[root@home ~]# mount -t cifs -o username=administrator,password=admin //192.168.100.3/centos /opt/mounting	(LINUX-WINDOW)
+		
+	[root@home ~]# mount /dev/cdrom /mnt
+	[root@home ~]# umount /webon99
+	[root@home ~]# cp -al dir1 dir2 ### create a link from dir1 to dir2
+			Ex: cp -a1 /opt/www/mirai/outside/admin/indd_tempo /opt/www/mirai/inside/admin
+			=> Above command will create a indd_tempo directory link on inside/admin to link outsite/admin/indd_tempo
+
+X. CRON JOB
+	[root@home ~]# yum install lynx crontabs
+	[root@home ~]# crontab -e
+		#minute hour day month dayofweek command
+		#:wq to save and exit
+		0,30 * * * * lynx -dump http://192.168.100.89:8808/cron/cron_used.php
+		0,30 * * * * lynx -dump http://192.168.100.89:8808/cron/cron_reserve.php
+		0,30 * * * * lynx -dump http://192.168.100.89:8808/cron/cron_maint.php			
+	[root@home ~]# vi /ect/crontab
+		0,30 * * * * lynx -dump http://192.168.100.89:8808/cron/cron_used.php
+		0,30 * * * * lynx -dump http://192.168.100.89:8808/cron/cron_reserve.php
+		0,30 * * * * lynx -dump http://192.168.100.89:8808/cron/cron_maint.php		
+	[root@home ~]# /sbin/service crond restart
+	[root@home ~]# tail -f /var/log/cron
+
+XI. Network
+	[root@home ~]# system-config-network
+	[root@home ~]# vi /etc/sysconfig/network	
+	[root@home ~]# vi /etc/resolv.conf 
+	[root@home ~]# /etc/init.d/network restart
+
+XII. Disk
+	[root@home ~]# fdisk -l		//Shows u your partitions' names
+	[root@home ~]# df -h		//Check free disk space partitions
+	[root@home ~]# free -t -m	//Linux check memory usage
+
+wget http://download.pear.php.net/package/Archive_Zip-0.1.1.tgz
+untar the files, and then
+cp Zip.php /usr/share/pear/
+
+HttpRequest
+pecl install pecl_http
+extension=http.so
+
+XIII. WINDOW 2008
+1. mklink /d D:\\www\ Z:\\sat
+
+XIV. Oracle
+1. Start/Stop:
+	lsnrctl start
+	lsnrctl stop
+
+XV. Java (JDK and JRE)
+1. Link: http://www.if-not-true-then-false.com/2010/install-sun-oracle-java-jdk-jre-6-on-fedora-centos-red-hat-rhel/
+	Select package with Windows or Linux
+	Example:
+		JDK: http://www.oracle.com/technetwork/java/javase/downloads/jdk-7u4-downloads-1591156.html
+		JRE: http://www.oracle.com/technetwork/java/javase/downloads/jre-7u4-download-1591157.html
+2. Setup:
+	# rpm –ivh jdk-7u4-linux-i586.rpm				--- setup JDK
+	# rpm –ivh jre-7u4-linux-i586.rpm				--- setup JRE
+
+3. Setup instruction (RPM): http://www.quantrimang.com.vn/hedieuhanh/linux/35766_Cai-dat-cac-file-RPM-nhu-the-nao.aspx
+
+XVI. OpenOffice
+1. Link: http://www.openoffice.org/ja/download/
+	Select package with Windows or Linux
+	Example: http://download.services.openoffice.org/files/localized/ja/3.3.0/OOo_3.3.0_Linux_x86_install-rpm-wJRE_ja.tar.gz
+
+2. Setup:
+	# tar xzvf OOo_3.0.0_LinuxIntel_install_ja.tar.gz		--- extract package
+	# cd OOO300_m9_native_packed-1_ja.9358/RPMS/			--- go to folder RPMS
+	# rm -f ooobasis3.0-gnome-integration-3.0.0-9358.i586.rpm	--- remove grome, no need this package
+	# rpm –ivh *.rpm						--- setup all *.rpm
+
+3. Start/Stop:
+	Start: soffice -headless -accept="socket,port=8100;urp;" -nofirststartwizard																													
+	Stop: killall soffice.bin
+
+If errors happen in start:
+	- Install Openoffice headless as a service: http://user.services.openoffice.org/en/forum/viewtopic.php?f=7&t=53875
+		yum install openoffice.org-headless 
+	- View XVI (Setup Xvfb): http://wiki.alfresco.com/wiki/Running_OpenOffice_From_Terminal
+
+XVII. Xvfb (X11 Server)
+1. Link: http://corpocrat.com/2008/08/19/how-to-install-xvfb-x11-server-in-linux-server/
+	Not need download
+
+2. Setup:
+	#yum install Xvfb
+
+	To intialize the display
+		#Xvfb :1 -screen 0 800x600x24&
+	To export the display to X11
+		#yum install xorg-x11-fonts*
+
+XVIII. JODConverter (Convert office file to PDF)
+1. Link: http://sourceforge.net/projects/jodconverter/files/JODConverter/2.1.1/
+	http://www.artofsolving.com/opensource/jodconverter
+	http://code.google.com/p/jodconverter/wiki/GettingStarted
+	Select package and download
+	Example: http://sourceforge.net/projects/jodconverter/files/JODConverter/2.1.1/jodconverter-2.1.1.zip/download
+
+2. Setup: no setup, extract package into a folder.
+
+3. Start/Stop:
+	java -jar {path}/jodconverter-2.1.1/lib/jodconverter-2.1.1.jar {Path file excel} {Path file PDF}
+	
+XIX. VMWare
+1. Search and Download "VMWare Workstation" package
+	https://my.vmware.com/web/vmware/downloads
+2. Install:
+	# yum install gcc gcc-c++ kernel-headers kernel-devel
+	# sh package-name
+		Example: sh VMware-Workstation-Full-7.1.3-324285.x86_64.bundle
+3. Uninstall:
+	# su vmware-installer -u package-name
+		Example: sudo vmware-installer -u vmware-workstation
+			or sudo vmware-installer -u vmware
+
+XX. YUM & CentOS
+1. yum install yum-utils
+2. GUI: yum groupinstall "X Window System" Desktop
+
+3. Set Date&Time: http://www.cyberciti.biz/faq/howto-set-date-time-from-linux-command-prompt/
+	date --set="STRING"
+	Example:
+		Set new data to 2 Oct 2006 18:00:00, type the following command as root user:
+		# date -s "2 OCT 2006 18:00:00"
+		OR		
+		# date --set="2 OCT 2006 18:00:00"
+		
+		You can also simplify format using following syntax:
+		# date +%Y%m%d -s "20081128"
+		
+		To set time use the following syntax:
+		# date +%T -s "10:13:13"
+		
+		Use %p locale’s equivalent of either AM or PM, enter:
+		# date +%T%p -s "6:10:30AM"
+		# date +%T%p -s "12:10:30PM"
+
+XXI. Install font Japanese
+	# yum install fonts-japanese
+	
+XXXII. Solr
+http://aladeck.wordpress.com/2010/03/29/gioi-thieu-solr-va-chay-thu-solr/
+http://andres.jaimes.net/878/setup-lucene-solr-centos-tomcat/	
+
+SHELL
+ps -eLf | grep php
+ps -au | grep php
+bash -x start.sh 10
+kill -9 PID
+
+tar xzvf 
+/opt/phpfarm/inst/php-5.2.17/bin/phpize
+./configure --with-php-config=/opt/phpfarm/inst/php-5.2.17/bin/php-config
+
+LDAP
+
+http://www.howtoforge.com/install-openldap-from-source-and-configure-multi-master-replication
+http://easylinuxtutorials.blogspot.com/2013/11/installing-configuring-openldap-server.html
+
+UPGRADE
+http://supportex.net/2011/02/backup-restore-ldap-database/
+http://blog.suretecsystems.com/archives/156-OpenLDAP-Quick-Tips-Regularly-upgrade-OpenLDAP!.html
+
+http://www.openldap.org/lists/openldap-technical/201010/msg00234.html
+
+/sbin/runuser -m -s /usr/local/openldap/sbin/slaptest -- ldap -u 
+{SSHA}N3EC0umJgRJq9mERh/Bt7OpsHkOHW4Vk
+{SSHA}CW27u1ooVFRg4O36DFHFTK8FSc4i9l5q
+
+ps -ef | grep ldap
+/etc/init.d/slapd restart
+/usr/local/openldap/sbin/slaptest -f /usr/local/openldap/etc/openldap/slapd.conf -F /usr/local/openldap/etc/openldap/slapd.d/ -u
+chmod 777 /usr/local/openldap/var/openldap-data 
+
+/usr/local/openldap-2.3.43/sbin/slaptest -f /usr/local/openldap-2.3.43/etc/openldap/slapd.conf -F /usr/local/openldap-2.3.43/etc/openldap/slapd.d/ -u
+chmod 777 /usr/local/openldap-2.3.43/var/openldap-data
+
+
+yum update --enablerepo=updates-testing openldap-2.4.23-9.fc14
+
+tar zxvf openldap-2.4.39.tgz
+./configure --prefix=/usr/local/openldap --enable-aci 
+make depend
+make
+make install
+
+chmod +x /etc/init.d/slapd
+/usr/local/openldap-2.3.43/libexec/slapd start
+
+http://www.mikecathey.com/OpenLDAP-SSL-HOWTO/
+Tai lieu install
+
+XXII.How to backup and restore your LDAP database
+	#slapcat -v -l /home/backup-ldap/ldap.diff
+	#slapcat -v -b "o=t-hosp,c=jp" -l /home/backup-ldap/ldap.diff
+	#/usr/local/openldap/sbin/slapadd -l /home/backup-ldap/ldap.diff
+	
+	/etc/init.d/squid stop
+	/etc/init.d/squid start
+	
+	#service slapd stop
+	#/usr/local/openldap/var/openldap-data
+	#rm -rf *
+	#/usr/local/openldap/sbin/slapadd -l /home/backup-ldap/ldap.diff -f /usr/local/openldap/etc/openldap/slapd.conf
+	
+
+	slapcat -n 0 > /home/backup-ldap/config.ldif
+	slapcat -n 1 > /home/backup-ldap/users.ldif
+	
+	/etc/init.d/slapd-2.3.43 start		
+	/sbin/service ldap start
+		
+	$yum erase ImageMagick 	//Remove ImageMagick	
+	$convert -verstion	
+	http://www.imagemagick.org/script/install-source.php
+
+sudo iptables -I INPUT 1 -p tcp --dport 80 -s 14.161.5.67/24 -j ACCEPT
+sudo iptables -I INPUT 1 -p tcp --dport 443 -s 14.161.5.67/24 -j ACCEPT
+sudo ufw reload	
+
+VNC Server
+https://rbgeek.wordpress.com/2012/06/26/how-to-install-vnc-server-on-centos-6/
+https://www.digitalocean.com/community/tutorials/how-to-set-up-password-authentication-with-apache-on-ubuntu-14-04
