@@ -1,8 +1,9 @@
-$ sudo pecl download imagick
-$ tar xvfz imagick-3.3.0.tgz
-$ cd imagick-3.3.0
-$ sudo phpize
-$ sudo ./configure
-$ sudo make
+$sudo pecl download imagick
+$tar xvfz imagick-3.3.0.tgz
+$cd imagick-3.3.0
+$phpize
+$./configure
+$make
+$make install
 
 ERROR REM // ZEND_MOD_END

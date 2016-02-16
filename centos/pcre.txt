@@ -1,0 +1,8 @@
+http://www.linuxfromscratch.org/blfs/view/svn/general/pcre.html
+
+$wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.38.tar.bz2
+$yum install readline-devel
+$yum install  bzip2 bzip2-devel pzip2-libs
+$tar xvf pcre-8.38.tar.bz2
+$./configure --prefix=/usr --docdir=/usr/share/doc/pcre-8.38 --enable-unicode-properties --enable-pcre16 --enable-pcre32 --enable-pcregrep-libz --enable-pcregrep-libbz2 --enable-pcretest-libreadline --disable-static
+$make install && mv -v /usr/lib/libpcre.so.* /lib && ln -sfv ../../lib/$(readlink /usr/lib/libpcre.so) /usr/lib/libpcre.so
