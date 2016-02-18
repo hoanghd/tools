@@ -1,1 +1,6 @@
+https://codersontrang.com/2014/09/11/thao-tac-voi-maven-project-bang-eclipse/
+
 mvn eclipse:eclipse
+mvn eclipse:eclipse -Dwtpversion=2.0
+mvn archetype:generate -DgroupId=com.medinet.hl7.search -DartifactId=HL7Search -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+

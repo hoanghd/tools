@@ -1,0 +1,1 @@
+tar xzvf OOo_3.0.0_LinuxIntel_install_ja.tar.gz
