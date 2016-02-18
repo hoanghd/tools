@@ -1,1 +1,2 @@
 http://wiki.matbao.net/htaccess-can-ban.ashx
+http://wiki.matbao.net/Cau-hinh-website-tu-dong-chuyen-tu-HTTP-sang-HTTPS-phan-1.ashx
