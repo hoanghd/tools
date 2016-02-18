@@ -1,16 +1,6 @@
 proxy
 http://www.makeuseof.com/tag/set-proxy-server-ubuntu-linux/
 
-GIT
-	Delete branch
-	$git branch -d the_local_branch
-	$git push origin :the_remote_branch
-	
-	Create Branch
-	$git checkout -b [name_of_your_new_branch]
-	$git push origin [name_of_your_new_branch]
-
-
 http://www.tecmint.com/install-google-chrome-on-redhat-centos-fedora-linux/
 http://www.redmine.org/projects/redmine/wiki/install_Redmine_25x_on_Centos_65_complete
 http://archive.kernel.org/centos-vault/6.5/isos/i386/
