@@ -1,0 +1,12 @@
+﻿du -a /var | sort -n -r | head -n 10
+du -hsx * | sort -rh | head -10
+
+Tham số -h (du -h): Hiện kết quả với định dạng quen thuộc với người dùng (ví dụ: 1K, 234M, 2G).
+Tham số -s (du -s): Chỉ hiện thống kê chung kết quả kiểm tra của lệnh du.
+Tham số -x (du -x): Bỏ qua thư mục khác định dạng file hệ thống của hệ điều hành.
+Tham số -r (sort -r): Đảo ngược kết quả so sánh.
+Tham số -h (sort -h): So sánh bằng tham số điều chỉnh đơn vị đo lường quen thuộc (K, M, G). Chỉ áp dụng cho lệnh sort cài thêm theo giấy phép phần mềm GNU.
+Tham số -10 hoặc -n 10 (head -10 hoặc head -n 10): Hiển thị 10 dòng đầu tiên của kết quả tìm kiếm.
+
+Tham khảo: 
+http://wiki.matbao.net/Cac-cau-lenh-command-thong-dung-de-xem-dung-luong-tren-o-dia-linux.ashx
