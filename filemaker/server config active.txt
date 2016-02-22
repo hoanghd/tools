@@ -1,0 +1,2 @@
+File > Manager > Security ... > Extended Privileges
+- fmxml, fmphp
