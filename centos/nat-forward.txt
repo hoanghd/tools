@@ -1,1 +1,3 @@
 ngrok
+./ngrok http 8835 > /dev/null &
+./ngrok -log=stdout 8835 > /dev/null &
