@@ -1,0 +1,15 @@
+http://www.typescriptlang.org/#Download
+npm install -g typescript
+tsc helloworld.ts
+
+
+https://angular.io
+https://angular.io/docs/ts/latest/quickstart.html
+https://angular.io/docs/ts/latest/guide/cheatsheet.html
+
+tsconfig.json
+typings.json
+package.json
+
+npm install
+npm start
