@@ -13,3 +13,16 @@ package.json
 
 npm install
 npm start
+
+https://github.com/atom/apm
+npm install
+grunt
+
+sfc /scannow
+
+https://atom.io/packages/atom-typescript
+https://github.com/TypeStrong/atom-typescript.git
+apm install atom-typescript
+
+
+
