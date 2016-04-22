@@ -51,40 +51,38 @@
                 [[--IfStart,is:word_cat=VWXYZ--]][[--ThenStart--]][[--DefineStart,name:catVWXYZ--]]T[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
                 [[--IfStart,is:word_cat=数字で始まるもの--]][[--ThenStart--]][[--DefineStart,name:catNUM--]]T[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
             [[--ActionEnd--]]
-            [[--IfStart,is:([%catFS%]=T) || ([%catKA%]=T) || ([%catSA%]=T) || ([%catTA%]=T) || ([%catNA%]=T) || ([%catHA%]=T) || ([%catMA%]=T) || ([%catYA%]=T) || ([%catRA%]=T) || ([%catWA%]=T) || ([%catABC%]=T) || ([%catDEF%]=T) || ([%catGHI%]=T) || ([%catJKL%]=T) || ([%catMNO%]=T) || ([%catPQR%]=T) || ([%catSTU%]=T) || ([%catVWXYZ%]=T) || ([%catNUM%]=T)--]][[--ThenStart--]]
             <div class="box box--simple wt">
                 <ul class="list--link list--internal mt10">
-                    [[--IfStart,is:[%catFS%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="index.html">あ行</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catKA%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="ka.html">か行</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catSA%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="sa.html">さ行</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catTA%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="ta.html">た行</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catNA%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="na.html">な行</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catHA%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="ha.html">は行</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catMA%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="ma.html">ま行</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catYA%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="ya.html">や行</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catRA%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="ra.html">ら行</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catWA%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="wa.html">わ行</a></li>[[--ThenEnd--]][[--IfEnd--]]
+                    <li>[[--IfStart,is:[%catFS%]=T--]][[--ThenStart--]]<a class="link--type01" href="index.html">あ行</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">あ行</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catKA%]=T--]][[--ThenStart--]]<a class="link--type01" href="ka.html">か行</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">か行</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catSA%]=T--]][[--ThenStart--]]<a class="link--type01" href="sa.html">さ行</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">さ行</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catTA%]=T--]][[--ThenStart--]]<a class="link--type01" href="ta.html">た行</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">た行</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catNA%]=T--]][[--ThenStart--]]<a class="link--type01" href="na.html">な行</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">な行</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catHA%]=T--]][[--ThenStart--]]<a class="link--type01" href="ha.html">は行</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">は行</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catMA%]=T--]][[--ThenStart--]]<a class="link--type01" href="ma.html">ま行</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">ま行</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catYA%]=T--]][[--ThenStart--]]<a class="link--type01" href="ya.html">や行</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">や行</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catRA%]=T--]][[--ThenStart--]]<a class="link--type01" href="ra.html">ら行</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">ら行</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catWA%]=T--]][[--ThenStart--]]<a class="link--type01" href="wa.html">わ行</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">わ行</span>[[--ElseEnd--]][[--IfEnd--]]</li>
                 </ul>
                 <ul class="list--link list--internal mt10">
-                    [[--IfStart,is:[%catABC%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="abc.html">A B C</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catDEF%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="def.html">D E F</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catGHI%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="ghi.html">G H I</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catJKL%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="jkl.html">J K L</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catMNO%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="mno.html">M N O</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catPQR%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="pqr.html">P Q R</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catSTU%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="stu.html">S T U</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catVWXYZ%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="vwxwz.html">V W X Y Z</a></li>[[--ThenEnd--]][[--IfEnd--]]
-                    [[--IfStart,is:[%catNUM%]=T--]][[--ThenStart--]]<li><a class="link--type01" href="number.html">数字で始まるもの</a></li>[[--ThenEnd--]][[--IfEnd--]]
+                    <li>[[--IfStart,is:[%catABC%]=T--]][[--ThenStart--]]<a class="link--type01" href="abc.html">A B C</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">A B C</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catDEF%]=T--]][[--ThenStart--]]<a class="link--type01" href="def.html">D E F</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">D E F</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catGHI%]=T--]][[--ThenStart--]]<a class="link--type01" href="ghi.html">G H I</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">G H I</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catJKL%]=T--]][[--ThenStart--]]<a class="link--type01" href="jkl.html">J K L</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">J K L</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catMNO%]=T--]][[--ThenStart--]]<a class="link--type01" href="mno.html">M N O</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">M N O</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catPQR%]=T--]][[--ThenStart--]]<a class="link--type01" href="pqr.html">P Q R</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">P Q R</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catSTU%]=T--]][[--ThenStart--]]<a class="link--type01" href="stu.html">S T U</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">S T U</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catVWXYZ%]=T--]][[--ThenStart--]]<a class="link--type01" href="vwxwz.html">V W X Y Z</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">V W X Y Z</span>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%catNUM%]=T--]][[--ThenStart--]]<a class="link--type01" href="number.html">数字で始まるもの</a>[[--ThenEnd--]][[--ElseStart--]]<span class="link--type01">数字で始まるもの</span>[[--ElseEnd--]][[--IfEnd--]]</li>
                 </ul>
             </div>
-            [[--ThenEnd--]][[--IfEnd--]]
         </div>
     </div>
     [[--IfStart,is:([%catFS%]=T) || ([%catKA%]=T) || ([%catSA%]=T) || ([%catTA%]=T) || ([%catNA%]=T) || ([%catHA%]=T) || ([%catMA%]=T) || ([%catYA%]=T) || ([%catRA%]=T) || ([%catWA%]=T) || ([%catABC%]=T) || ([%catDEF%]=T) || ([%catGHI%]=T) || ([%catJKL%]=T) || ([%catMNO%]=T) || ([%catPQR%]=T) || ([%catSTU%]=T) || ([%catVWXYZ%]=T) || ([%catNUM%]=T)--]][[--ThenStart--]]
-        [[--DefineStart,name:wordCat--]]F[[--DefineEnd--]] 
-        [[--ActionStart,sort:word_cat=asc,row:*--]]
+        [[--RecordStart,name:wordCat--]]F[[--RecordEnd--]]
+        [[--ActionStart,sort:word_cat=desc,row:*--]]
             [[--IfStart,is:!([%wordCat%]=F) && !([%wordCat%]=word_cat)--]][[--ThenStart--]]</div>[[--ThenEnd--]][[--IfEnd--]]
-            
+
             [[--IfStart,is:([%wordCat%]=F) || !([%wordCat%]=word_cat)--]]
                 [[--ThenStart--]]
                     <h2 class="hdg-lv3"><span class="icon icon--hotelista">[[--ArtFieldValue,field:word_cat--]]</span></h2>
@@ -92,9 +90,9 @@
                 [[--ThenEnd--]]
             [[--IfEnd--]]
             
-            [[--DefineStart,name:wordCat--]][[--ArtFieldValue,field:word_cat--]][[--DefineEnd--]]
+            [[--RecordStart,name:wordCat--]][[--ArtFieldValue,field:word_cat--]][[--RecordEnd--]]
             <div class="col__3">
-                <a class="dictionary-block" href="[[--ArtAddress--]]">
+                <a class="dictionary-block" href="">
                     <div class="dictionary-block-text">
                         <p>[[--ArtFieldValue,field:word_j--]]</p>
                         <span class="link--type01">[[--ArtFieldValue,field:word_e--]]</span>
