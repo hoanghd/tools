@@ -8,195 +8,64 @@
                 <span><img width="60" height="60" src="[[--RootDir--]]concierge/touristoffice/images/icon_1.png"></span>
                 <span>各国観光局、大使館のホームページを国別（五十音順）に表記しています。</span>
             </p>
-            [[--DefineStart,name:areaAS--]]F[[--DefineEnd--]]
+			[[--DefineStart,name:areaAS--]]F[[--DefineEnd--]]
             [[--DefineStart,name:areaOC--]]F[[--DefineEnd--]]
             [[--DefineStart,name:areaMI--]]F[[--DefineEnd--]]
             [[--DefineStart,name:areaCA--]]F[[--DefineEnd--]]
             [[--DefineStart,name:areaUS--]]F[[--DefineEnd--]]
             [[--DefineStart,name:areaHA--]]F[[--DefineEnd--]]
-            [[--DefineStart,name:areaCA--]]F[[--DefineEnd--]]
+            [[--DefineStart,name:areaCR--]]F[[--DefineEnd--]]
             [[--DefineStart,name:areaEU--]]F[[--DefineEnd--]]
             [[--DefineStart,name:areaME--]]F[[--DefineEnd--]]
+			
+			[[--ActionStart,sort:word_cat=asc,row:*--]]
+                [[--IfStart,is:(area_j=アジア) && !(area_j=[%areaName%])--]][[--ThenStart--]][[--DefineStart,name:areaAS--]]T[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+                [[--IfStart,is:(area_j=オセアニア) && !(area_j=[%areaName%])--]][[--ThenStart--]][[--DefineStart,name:areaOC--]]T[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+                [[--IfStart,is:(area_j=グアム・サイパン・太平洋諸国) && !(area_j=[%areaName%])--]][[--ThenStart--]][[--DefineStart,name:areaMI--]]T[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+				[[--IfStart,is:(area_j=カナダ) && !(area_j=[%areaName%])--]][[--ThenStart--]][[--DefineStart,name:areaCA--]]T[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+                [[--IfStart,is:(area_j=アメリカ合衆国) && !(area_j=[%areaName%])--]][[--ThenStart--]][[--DefineStart,name:areaUS--]]T[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+				[[--IfStart,is:(area_j=ハワイ) && !(area_j=[%areaName%])--]][[--ThenStart--]][[--DefineStart,name:areaHA--]]T[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+                [[--IfStart,is:(area_j=カリブ海・中南米) && !(area_j=[%areaName%])--]][[--ThenStart--]][[--DefineStart,name:areaCR--]]T[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+                [[--IfStart,is:(area_j=ヨーロッパ) && !(area_j=[%areaName%])--]][[--ThenStart--]][[--DefineStart,name:areaEU--]]T[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+                [[--IfStart,is:(area_j=中近東・アフリカ) && !(area_j=[%areaName%])--]][[--ThenStart--]][[--DefineStart,name:areaME--]]T[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+            [[--ActionEnd--]]
             <div class="box box--simple wt">
                 <ul class="list--link list--internal mt10">
-                    <li><a class="link--type01" href="#"><span class="icon icon--arrow1-right">アジア</span></a></li>
-                    <li><a class="link--type01" href="#"><span class="icon icon--arrow1-right">オセアニア</span></a></li>
-                    <li><a class="link--type01" href="#"><span class="icon icon--arrow1-right">グアム・サイパン・太平洋諸島</span></a></li>
-                    <li><a class="link--type01" href="#"><span class="icon icon--arrow1-right">カナダ</span></a></li>
-                    <li><a class="link--type01" href="#"><span class="icon icon--arrow1-right">アメリカ合衆国</span></a></li>
-                    <li><a class="link--type01" href="#"><span class="icon icon--arrow1-right">ハワイ</span></a></li>
-                    <li class="txt--note">カリブ海・中南米</li>
-                    <li><a class="link--type01" href="#"><span class="icon icon--arrow1-right">ヨーロッパ</span></a></li>
-                    <li><a class="link--type01" href="#"><span class="icon icon--arrow1-right">中近東・アフリカ</span></a></li>
+					<li>[[--IfStart,is:[%areaAS%]=T--]][[--ThenStart--]]<a class="link--type01" href="index.html"><span class="icon icon--arrow1-right">アジア</span></a>[[--ThenEnd--]][[--ElseStart--]]<li class="txt--note">アジア</li>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%areaOC%]=T--]][[--ThenStart--]]<a class="link--type01" href="oceania.html"><span class="icon icon--arrow1-right">オセアニア</span></a>[[--ThenEnd--]][[--ElseStart--]]<li class="txt--note">オセアニア</li>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%areaMI%]=T--]][[--ThenStart--]]<a class="link--type01" href="micropacific.html"><span class="icon icon--arrow1-right">グアム・サイパン・太平洋諸島</span></a>[[--ThenEnd--]][[--ElseStart--]]<li class="txt--note">グアム・サイパン・太平洋諸島</li>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%areaCA%]=T--]][[--ThenStart--]]<a class="link--type01" href="canada.html"><span class="icon icon--arrow1-right">カナダ</span></a>[[--ThenEnd--]][[--ElseStart--]]<li class="txt--note">カナダ</li>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%areaUS%]=T--]][[--ThenStart--]]<a class="link--type01" href="usa.html"><span class="icon icon--arrow1-right">アメリカ合衆国</span></a>[[--ThenEnd--]][[--ElseStart--]]<li class="txt--note">アメリカ合衆国</li>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%areaHA%]=T--]][[--ThenStart--]]<a class="link--type01" href="hawaii.html"><span class="icon icon--arrow1-right">ハワイ</span></a>[[--ThenEnd--]][[--ElseStart--]]<li class="txt--note">ハワイ</li>[[--ElseEnd--]][[--IfEnd--]]</li>
+					<li>[[--IfStart,is:[%areaCR%]=T--]][[--ThenStart--]]<a class="link--type01" href="carib.html"><span class="icon icon--arrow1-right">カリブ海・中南米</span></a>[[--ThenEnd--]][[--ElseStart--]]<li class="txt--note">カリブ海・中南米</li>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%areaEU%]=T--]][[--ThenStart--]]<a class="link--type01" href="europe.html"><span class="icon icon--arrow1-right">ヨーロッパ</span></a>[[--ThenEnd--]][[--ElseStart--]]<li class="txt--note">ヨーロッパ</li>[[--ElseEnd--]][[--IfEnd--]]</li>
+                    <li>[[--IfStart,is:[%areaME%]=T--]][[--ThenStart--]]<a class="link--type01" href="meafrica.html"><span class="icon icon--arrow1-right">中近東・アフリカ</span></a>[[--ThenEnd--]][[--ElseStart--]]<li class="txt--note">中近東・アフリカ</li>[[--ElseEnd--]][[--IfEnd--]]</li>
                 </ul>
             </div>
         </div>
-    </div> 
+    </div>
+	
     <h2 class="hdg-lv2">
-        <span class="hdg-lv2__icon icon icon--hotelista-circle">アジア</span>
+        <span class="hdg-lv2__icon icon icon--hotelista-circle">[[--Write,name:areaName--]]</span>
     </h2>
     
     <table class="tbl-stripe country mb60">
-        <tbody><tr>
-            <td class="tourist-office__list-title-cell">インド</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">インド大使館（日）</span></a></li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">インドネシア</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">インドネシア観光局（日）</span></a></li> 
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">在大阪インドネシア総領事館（日）</span></a></li>
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">韓国</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">韓国観光公社（日）</span></a></li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">カンボジア</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">カンボジア政府観光局（日）</span></a></li> 
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">在日カンボジア大使館（日）</span></a></li> 
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">在カンボジア日本国大使館</span></a></li> 
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">カンボジア政府観光省（英）</span></a></li>
-                </ul> 
-            </td>
-        </tr>
-         <tr>
-            <td class="tourist-office__list-title-cell">シンガポール</td>
-            <td class="tourist-office__list-body-cell"> 
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">シンガポール政府観光局（日）</span></a></li>
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">スリランカ</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">スリランカ大使館（日）</span></a></li> 
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">スリランカ観光局（英）</span></a></li>  
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">タイ</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">タイ政府観光局（日）</span></a></li> 
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">在タイ日本国大使館（日）</span></a></li>  
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">台湾</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">台湾交通部観光局（日）</span></a></li>  
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">中国</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">中国国家観光局（日）</span></a></li> 
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">北京市観光局（日）</span></a></li> 
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">ネパール</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">ネパール大使館（日）</span></a></li>  
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">フィリピン</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">フィリピン観光局（日）</span></a></li>  
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">ブルネイ</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">ブルネイ観光局（英）</span></a></li>  
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">ブータン</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">ブータン政府観光局（日）</span></a></li>  
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">ベトナム</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">ベトナム観光総局（日）</span></a></li> 
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">在ベトナム日本国大使館（日）</span></a></li> 
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">香港</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">香港政府観光局（日）</span></a></li>  
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">マカオ</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">マカオ政府観光局（日）</span></a></li>  
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">マレーシア</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">マレーシア観光局（日）</span></a></li>  
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">ミャンマー</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">ミャンマー観光情報（日）</span></a></li>  
-                </ul> 
-            </td>
-        </tr>
-        <tr>
-            <td class="tourist-office__list-title-cell">ラオス</td>
-            <td class="tourist-office__list-body-cell">
-                <ul class="tourist-office__list">
-                    <li class="tourist-office__list-item"><a class="link--type01" href="#"><span class="icon icon--rel">ラオス政府観光局（日）</span></a></li>  
-                </ul> 
-            </td>
-        </tr>
-        
-    </tbody></table>
+        <tbody>
+			[[--RecordStart,name:country--]]F[[--RecordEnd--]]
+			[[--ActionStart,search:area_j=[%areaName%],sort:country_j=asc,row:*--]]
+				[[--IfStart,is:!([%country%]=F) && !([%country%]=country_j)--]][[--ThenStart--]]</ul></td></tr>[[--ThenEnd--]][[--IfEnd--]]
+				
+				[[--IfStart,is:([%country%]=F) || !([%country%]=country_j)--]]
+					[[--ThenStart--]]
+						<tr>
+							<td class="tourist-office__list-title-cell">[[--ArtFieldValue,field:country_j--]]</td>
+							<td class="tourist-office__list-body-cell">
+								<ul class="tourist-office__list">
+					[[--ThenEnd--]]
+				[[--IfEnd--]]
+				[[--RecordStart,name:country--]][[--ArtFieldValue,field:country_j--]][[--RecordEnd--]]
+				<li class="tourist-office__list-item"><a class="link--type01" href="[[--ArtFieldValue,field:tu_link_url1--]]"><span class="icon icon--rel">[[--ArtFieldValue,field:link_lbl1--]]</span></a></li>
+			[[--ActionEnd--]]
+    </tbody>
+	</table>
 </div>
