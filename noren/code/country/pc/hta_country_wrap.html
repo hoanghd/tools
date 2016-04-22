@@ -1,0 +1,383 @@
+﻿[[--RecordStart,name:countryName--]][[--ArtFieldValue,field:country_j--]][[--RecordEnd--]]
+[[--DefineStart,name:s1Flag--]]F[[--DefineEnd--]]
+[[--IfStart,is:(#exists=time_j) || (#exists=currency_j) || (#exists=language_j) || (#exists=voltage_j) || (#exists=socket_txt) || (socket_j1=T) || (socket_j2=T) || (socket_j3=T) || (socket_j4=T) || (socket_j5=T) || (socket_j6=T) || (socket_j7=T)--]]
+	[[--ThenStart--]][[--DefineStart,name:s1Flag--]]T[[--DefineEnd--]][[--ThenEnd--]]
+[[--IfEnd--]]
+<div class="category-title">
+	<div class="wrapper"><span class="icon icon--hotelista"><span class="txt--em01"><a href=""index.html">国別基本情報</a></span> / [[--ArtFieldValue,field:area_j--]]</span></div>
+</div>
+<div class="has-sub wrapper" id="content">
+	<div id="main">
+		<h1 class="country-information__title hdg-lv1 mb40">
+			<span class="icon--meno">[[--ArtFieldImage,Field:flag_img--]][[--ArtFieldValue,field:country_j--]]</span>
+		</h1>
+		<div class="box box--grey">
+			<div class="box__inner">
+				<ul class="country-information__index-list list--link list--internal">
+					[[--IfStart,is:s1Flag=T--]]
+						[[--ThenStart--]]
+						<li class="country-information__index-item"><a class="link--type01" href="#s1"><span class="icon icon--arrow1-down">基本情報</span></a></li>
+						[[--ThenEnd--]]
+					[[--IfEnd--]]
+					<li class="country-information__index-item"><a class="link--type01" href="#s2"><span class="icon icon--arrow1-down">日本からの所要時間</span></a></li>
+					<li class="country-information__index-item"><a class="link--type01" href="#s3"><span class="icon icon--arrow1-down">気候</span></a></li>
+					<li class="country-information__index-item"><a class="link--type01" href="#s4"><span class="icon icon--arrow1-down">物価の目安</span></a></li>
+					<li class="country-information__index-item"><a class="link--type01" href="#s5"><span class="icon icon--arrow1-down">レンタカー料金の目安</span></a></li>
+					<li class="country-information__index-item"><a class="link--type01" href="#s6"><span class="icon icon--arrow1-down">ビザなし渡航（NOビザ渡航）</span></a></li>
+					<li class="country-information__index-item"><a class="link--type01" href="#s7"><span class="icon icon--arrow1-down">長期滞在ビザについて</span></a></li>
+					<li class="country-information__index-item"><a class="link--type01" href="#s8"><span class="icon icon--arrow1-down">パスポート残存期間</span></a></li>
+				</ul>
+			</div>
+		</div>
+		<p>※下記情報は予告なく変更となる場合があります。情報はあくまでも目安としてご利用いただき、必ず各自の責任において確認されることをおすすめします。</p>
+		<h2 id="s1" class="hdg-lv2"><span class="hdg-lv2__icon icon icon--hotelista-circle">基本情報</span></h2>
+		<table class="tbl-data">
+			<tbody>
+			[[--IfStart,is:(#exists=time_j)--]]
+				[[--ThenStart--]]
+				<tr>
+					<th>時差</th>
+					<td>[[--ArtFieldValue,field:time_j--]]</td>
+				</tr>	
+				[[--ThenEnd--]]
+            [[--IfEnd--]]
+			
+			[[--IfStart,is:(#exists=currency_j)--]]
+				[[--ThenStart--]]
+				<tr>
+					<th>通貨</th>
+					<td>[[--ArtFieldValue,field:currency_j--]]</td>
+				</tr>
+				[[--ThenEnd--]]
+            [[--IfEnd--]]
+			
+			[[--IfStart,is:(#exists=language_j)--]]
+				[[--ThenStart--]]
+					<tr>
+						<th>公用語</th>
+						<td>[[--ArtFieldValue,field:language_j--]]</td>
+					</tr>
+				[[--ThenEnd--]]
+            [[--IfEnd--]]
+			
+			[[--IfStart,is:(#exists=voltage_j)--]]
+				[[--ThenStart--]]
+				<tr>
+					<th>電圧</th>
+					<td>[[--ArtFieldValue,field:voltage_j--]]</td>
+				</tr>
+				[[--ThenEnd--]]
+            [[--IfEnd--]]
+			[[--IfStart,is:(#exists=socket_txt) || (socket_j1=T) || (socket_j2=T) || (socket_j3=T) || (socket_j4=T) || (socket_j5=T) || (socket_j6=T) || (socket_j7=T)--]]
+				[[--ThenStart--]]
+				<tr>
+					<th>プラグ</th>
+					<td>
+						<ul class="country-information__plug-list">
+							[[--IfStart,is:socket_j1=T--]]
+								[[--ThenStart--]]<li class="country-information__plug-item"><p>Aタイプ</p><img src="[[--RootDir--]]concierge/country-information/images/icon_A.png"></li>[[--ThenEnd--]]
+							[[--IfEnd--]]
+							[[--IfStart,is:socket_j2=T--]]
+								[[--ThenStart--]]<li class="country-information__plug-item"><p>Bタイプ</p><img src="[[--RootDir--]]concierge/country-information/images/icon_B.png"></li>[[--ThenEnd--]]
+							[[--IfEnd--]]
+							[[--IfStart,is:socket_j3=T--]]
+								[[--ThenStart--]]<li class="country-information__plug-item"><p>B3タイプ</p><img src="[[--RootDir--]]concierge/country-information/images/icon_B3.png"></li>[[--ThenEnd--]]
+							[[--IfEnd--]]	
+							[[--IfStart,is:socket_j4=T--]]
+								[[--ThenStart--]]<li class="country-information__plug-item"><p>BFタイプ</p><img src="[[--RootDir--]]concierge/country-information/images/icon_BF.png"></li>[[--ThenEnd--]]
+							[[--IfEnd--]]	
+							[[--IfStart,is:socket_j5=T--]]
+								[[--ThenStart--]]<li class="country-information__plug-item"><p>Cタイプ</p><img src="[[--RootDir--]]concierge/country-information/images/icon_C.png"></li>[[--ThenEnd--]]
+							[[--IfEnd--]]	
+							[[--IfStart,is:socket_j6=T--]]
+								[[--ThenStart--]]<li class="country-information__plug-item"><p>Oタイプ</p><img src="[[--RootDir--]]concierge/country-information/images/icon_O.png"></li>[[--ThenEnd--]]
+							[[--IfEnd--]]	
+							[[--IfStart,is:socket_j7=T--]]
+								[[--ThenStart--]]<li class="country-information__plug-item"><p>SEタイプ</p><img src="[[--RootDir--]]concierge/country-information/images/icon_SE.png"></li>[[--ThenEnd--]]
+							[[--IfEnd--]]
+						</ul>
+						<p>[[--ArtFieldValue,field:socket_txt--]]</p>
+					</td>
+				</tr>
+				[[--ThenEnd--]]
+            [[--IfEnd--]]
+		</tbody></table>
+		
+		<h2 id="s2" class="hdg-lv2"><span class="hdg-lv2__icon icon icon--hotelista-circle">日本（成田）からの所要時間（フライト情報）</span></h2>
+		
+		<div class="country-information__paragraph-item">
+			<p>[[--ArtFieldValue,field:flight_txt--]]</p>
+		</div>
+
+		<div class="country-information__paragraph-item">
+			<p>
+				[[--IfStart,is:(#exists=airline_lnk1) && (#exists=airline_url1)--]]
+					[[--ThenStart--]]<span class="txt--pink txt--note__icon">※</span><a class="link--type01" rel="nofollow" target="_blank" href="[[--ArtFieldValue,field:airline_url1--]]"><span class="icon icon--blank">[[--ArtFieldValue,field:airline_lnk1--]]</span></a><br>[[--ThenEnd--]]
+                [[--IfEnd--]]
+				[[--IfStart,is:(#exists=airline_lnk2) && (#exists=airline_url2)--]]
+					[[--ThenStart--]]<span class="txt--pink txt--note__icon">※</span><a class="link--type01" rel="nofollow" target="_blank" href="[[--ArtFieldValue,field:airline_url2--]]"><span class="icon icon--blank">[[--ArtFieldValue,field:airline_lnk2--]]</span></a><br>[[--ThenEnd--]]
+                [[--IfEnd--]]				
+				[[--IfStart,is:(#exists=airport_url1 && #exists=airport_lbl1) || (#exists=airport_url2 && #exists=airport_lbl2) || (#exists=airport_url3 && #exists=airport_lbl3) || (#exists=airport_url4 && #exists=airport_lbl4) || (#exists=airport_url5 && #exists=airport_lbl5)--]]
+					[[--ThenStart--]]
+						[[--DefineStart,name:splash--]][[--DefineEnd--]]
+						<span class="txt--pink txt--note__icon">※</span>空港から市内へのアクセスはこちら（ 
+						[[--IfStart,is:(#exists=airport_url1) && (#exists=airport_lbl1)--]]
+							[[--ThenStart--]]
+								<a href="[[--ArtFieldValue,field:airport_url1--]]">[[--ArtFieldValue,field:airport_lbl1--]]</a> 
+								[[--DefineStart,name:splash--]]／[[--DefineEnd--]]
+							[[--ThenEnd--]]
+						[[--IfEnd--]]				
+						[[--IfStart,is:(#exists=airport_url2) && (#exists=airport_lbl2)--]]
+							[[--ThenStart--]]
+								[[--Write,name:splash--]]<a href="[[--ArtFieldValue,field:airport_url2--]]">[[--ArtFieldValue,field:airport_lbl2--]]</a> 
+								[[--DefineStart,name:splash--]]／[[--DefineEnd--]]
+							[[--ThenEnd--]]
+						[[--IfEnd--]]
+						[[--IfStart,is:(#exists=airport_url3) && (#exists=airport_lbl3)--]]
+							[[--ThenStart--]]
+								[[--Write,name:splash--]]<a href="[[--ArtFieldValue,field:airport_url3--]]">[[--ArtFieldValue,field:airport_lbl3--]]</a> 
+								[[--DefineStart,name:splash--]]／[[--DefineEnd--]]
+							[[--ThenEnd--]]
+						[[--IfEnd--]]
+						[[--IfStart,is:(#exists=airport_url4) && (#exists=airport_lbl4)--]]
+							[[--ThenStart--]]
+								[[--Write,name:splash--]]<a href="[[--ArtFieldValue,field:airport_url4--]]">[[--ArtFieldValue,field:airport_lbl4--]]</a>
+								[[--DefineStart,name:splash--]]／[[--DefineEnd--]]
+							[[--ThenEnd--]]
+						[[--IfEnd--]]
+						[[--IfStart,is:(#exists=airport_url4) && (#exists=airport_lbl4)--]]
+							[[--ThenStart--]]
+								[[--Write,name:splash--]]<a href="[[--ArtFieldValue,field:airport_url5--]]">[[--ArtFieldValue,field:airport_lbl5--]]</a>
+							[[--ThenEnd--]]
+						[[--IfEnd--]]）
+					[[--ThenEnd--]]
+				[[--IfEnd--]]
+			</p>
+		</div>
+		
+		<hr class="separate-line">
+		
+		<h2 id="s3" class="hdg-lv2"><span class="hdg-lv2__icon icon icon--hotelista-circle">気候</span></h2>
+		
+		<div class="country-information__paragraph-item">
+			<p>[[--ArtFieldValue,field:weather_txt--]]</p>
+			[[--IfStart,is:(#exists=weather_url)--]]
+				[[--ThenStart--]]<p><a class="link--type01" rel="nofollow" target="_blank" href="[[--ArtFieldValue,field:weather_url--]]"><span class="icon icon--blank">中国の天気はこちら</span></a></p>[[--ThenEnd--]]
+			[[--IfEnd--]]
+		</div><hr class="separate-line">
+		
+		<h2 id="s4" class="hdg-lv2">
+			<span class="hdg-lv2__icon icon icon--hotelista-circle">物価の目安</span>
+			[[--IfStart,is:(#exists=weather_url)--]]
+				[[--ThenStart--]]<span class="country-information__hdg-sub"><span class="txt--pink txt--note__icon"> ※</span>[[--ArtFieldValue,field:price_txt--]]</span>[[--ThenEnd--]]
+			[[--IfEnd--]]
+		</h2>
+		
+		<table class="country-information__head-table tbl--col3">
+			<tbody><tr>
+				<td>食料品</td>
+				<td>現地価格（円換算）</td>
+				<td>東京比</td>
+			</tr>
+		</tbody></table>
+		
+		<table class="country-information__table tbl-stripe tbl--col3">
+			<tbody><tr>
+				<td>牛乳（１リットル）</td>
+				<td>￥[[--IfStart,is:(#exists=price_item1)--]][[--ThenStart--]][[--ArtFieldValue,field:price_item1--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]</td>				
+				<td>[[--IfStart,is:(#exists=price_per1)--]][[--ThenStart--]][[--ArtFieldValue,field:price_per1--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]%</td>
+			</tr>
+			<tr>
+				<td>トマト（１ｋｇ）</td>
+				<td>￥[[--IfStart,is:(#exists=price_item2)--]][[--ThenStart--]][[--ArtFieldValue,field:price_item2--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]</td>
+				<td>[[--IfStart,is:(#exists=price_per2)--]][[--ThenStart--]][[--ArtFieldValue,field:price_per2--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]%</td>
+			</tr>
+			<tr>
+				<td>米（１ｋｇ）</td>
+				<td>￥[[--IfStart,is:(#exists=price_item3)--]][[--ThenStart--]][[--ArtFieldValue,field:price_item3--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]</td>
+				<td>[[--IfStart,is:(#exists=price_per3)--]][[--ThenStart--]][[--ArtFieldValue,field:price_per3--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]%</td>
+			</tr>
+			<tr>
+				<td>ビッグマック（１コ）</td>
+				<td>￥[[--IfStart,is:(#exists=price_item4)--]][[--ThenStart--]][[--ArtFieldValue,field:price_item4--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]</td>
+				<td>[[--IfStart,is:(#exists=price_per4)--]][[--ThenStart--]][[--ArtFieldValue,field:price_per4--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]%</td>
+			</tr>
+		</tbody></table>
+		
+		<table class="country-information__head-table tbl--col3">
+			<tbody><tr>
+				<td>生活インフラ/サービス</td>
+				<td>現地価格（円換算）</td>
+				<td>東京比</td>
+			</tr>
+		</tbody></table>
+		
+		<table class="country-information__table tbl-stripe tbl--col3">
+			<tbody><tr>
+				<td>バス（初乗り）</td>
+				<td>￥[[--IfStart,is:(#exists=price_item5)--]][[--ThenStart--]][[--ArtFieldValue,field:price_item5--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]</td>
+				<td>[[--IfStart,is:(#exists=price_per5)--]][[--ThenStart--]][[--ArtFieldValue,field:price_per5--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]%</td>
+			</tr>
+			<tr>
+				<td>タクシー（初乗り）</td>
+				<td>￥[[--IfStart,is:(#exists=price_item6)--]][[--ThenStart--]][[--ArtFieldValue,field:price_item6--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]</td>
+				<td>[[--IfStart,is:(#exists=price_per6)--]][[--ThenStart--]][[--ArtFieldValue,field:price_per6--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]%</td>
+			</tr>
+			<tr>
+				<td>ガソリン（レギュラー）</td>
+				<td>￥[[--IfStart,is:(#exists=price_item7)--]][[--ThenStart--]][[--ArtFieldValue,field:price_item7--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]</td>
+				<td>[[--IfStart,is:(#exists=price_per7)--]][[--ThenStart--]][[--ArtFieldValue,field:price_per7--]][[--ThenEnd--]][[--ElseStart--]]-[[--ElseEnd--]][[--IfEnd--]]%</td>
+			</tr>
+		</tbody></table>
+		
+		<p>※情報提供：財団法人国際金融情報センター（調査日：[[--IfStart,is:(#exists=price_upd)--]][[--ThenStart--]][[--ArtFieldValue,field:price_upd--]][[--ThenEnd--]][[--ElseStart--]]・・・・[[--ElseEnd--]][[--IfEnd--]]）</p>
+		<p>※「東京比」とは、東京の価格を100として調査対象国・地域の価格を指数で表したものである。</p>
+		<p>※（注）表示価格は複数店舗の平均値ではないのであくまでも参考数値である。</p>
+		
+		<hr class="separate-line">
+		
+		<h2 id="s5" class="hdg-lv2"><span class="hdg-lv2__icon icon icon--hotelista-circle">レンタカー料金の目安</span></h2>
+		[[--IfStart,is:(#exists=car_price)--]]
+			[[--ThenStart--]]<p>[[--ArtFieldValue,field:car_price--]]</p>[[--ThenEnd--]]
+		[[--IfEnd--]]
+		<!--↓内部リンク用-->
+		[[--IfStart,is:car_lnk=T--]]
+			[[--ThenStart--]]
+			<p><a href="/related-services/rentacar.html" class="link--type01"><span class="icon icon--arrow1-right">レンタカー会社のホームページは、こちらからご覧いただけます。</span></a></p>
+			[[--ThenEnd--]]
+		[[--IfEnd--]]	
+		<!--外部リンク用-->
+		[[--IfStart,is:(#exists=car_lnk_lbl) && (#exists=car_lnk_url)--]]
+			[[--ThenStart--]]<p><a class="link--type01" rel="nofollow" [[--IfStart,is:car_lnk_typ=別ウィンド--]][[--ThenStart--]]target="_blank"[[--ThenEnd--]][[--IfEnd--]] href="[[--ArtFieldValue,field:car_lnk_url--]]"><span class="icon icon--blank">[[--ArtFieldValue,field:car_lnk_lbl--]]</span></a></p>[[--ThenEnd--]]
+		[[--IfEnd--]]
+		
+		<hr class="separate-line">
+		
+		<h2 id="s6" class="hdg-lv2"><span class="hdg-lv2__icon icon icon--hotelista-circle">ビザなし渡航（NOビザ渡航）について</span></h2>
+		[[--IfStart,is:(#exists=vs_txt)--]]
+			[[--ThenStart--]]<p>[[--ArtFieldValue,field:vs_txt--]]</p>[[--ThenEnd--]]
+		[[--IfEnd--]]		
+		<p><span class="txt--pink txt--note__icon">※</span>申請条件は日本居住で日本国籍者を対象。</p>
+		<p><span class="txt--pink txt--note__icon">※</span>ビザ情報は予告なく変更されることがありますので必ず関係機関で最新情報を確認してください。</p>
+		[[--IfStart,is:(#exists=vs_lnk_lbl) && (#exists=vs_lnk_url)--]]
+			[[--ThenStart--]]<p><a href="[[--ArtFieldValue,field:vs_lnk_url--]]" [[--IfStart,is:vs_lnk_typ=別ウィンド--]][[--ThenStart--]]target="_blank"[[--ThenEnd--]][[--IfEnd--]] class="link--type01"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:vs_lnk_lbl--]]</span></a></p>[[--ThenEnd--]]
+		[[--IfEnd--]]		
+		
+		<hr class="separate-line">
+		
+		<h2 id="s8" class="hdg-lv2"><span class="hdg-lv2__icon icon icon--hotelista-circle">パスポートの残存期間</span></h2>
+		[[--IfStart,is:(#exists=passport_lim)--]]
+			[[--ThenStart--]]<p>[[--ArtFieldValue,field:passport_lim--]]</p>[[--ThenEnd--]]
+		[[--IfEnd--]]		
+		<p><span class="txt--pink txt--note__icon">※ 上記は予告なく変更されることがありますので、必ず関係機関で最新情報を確認してください。</span></p>
+		<p><a href="[[--RootDir--]]concierge/touristoffice/index.html" class="link--type01"><span class="icon icon--arrow1-right">各国観光局、大使館の情報をご覧いただけます。</span></a></p>
+		
+		<hr class="separate-line">
+		
+		<div class="box box--blue box--ribon">
+			<h2 class="box__title">[[--ArtFieldValue,field:country_j--]]</h2>
+			<div class="box__inner">
+				<ul class="col list--link clear-odd">
+					[[--IfStart,is:(#exists=lnk_lbl1) && (#exists=lnk_url1)--]]
+						[[--ThenStart--]]
+							<li class="col__4"><a class="link--type01" rel="nofollow" [[--IfStart,is:lnk_typ1=別ウィンド--]][[--ThenStart--]]target="_blank"[[--ThenEnd--]][[--IfEnd--]] href="[[--ArtFieldValue,field:lnk_url1--]]"><span class="icon icon--rel">[[--ArtFieldValue,field:lnk_lbl1--]]</span></a></li>
+						[[--ThenEnd--]]
+					[[--IfEnd--]]
+					[[--IfStart,is:(#exists=lnk_lbl2) && (#exists=lnk_url2)--]]
+						[[--ThenStart--]]
+							<li class="col__4"><a class="link--type01" rel="nofollow" [[--IfStart,is:lnk_typ2=別ウィンド--]][[--ThenStart--]]target="_blank"[[--ThenEnd--]][[--IfEnd--]] href="[[--ArtFieldValue,field:lnk_url2--]]"><span class="icon icon--rel">[[--ArtFieldValue,field:lnk_lbl2--]]</span></a></li>
+						[[--ThenEnd--]]
+					[[--IfEnd--]]
+					[[--IfStart,is:(#exists=lnk_lbl3) && (#exists=lnk_url3)--]]
+						[[--ThenStart--]]
+							<li class="col__4"><a class="link--type01" rel="nofollow" [[--IfStart,is:lnk_typ3=別ウィンド--]][[--ThenStart--]]target="_blank"[[--ThenEnd--]][[--IfEnd--]] href="[[--ArtFieldValue,field:lnk_url3--]]"><span class="icon icon--rel">[[--ArtFieldValue,field:lnk_lbl3--]]</span></a></li>
+						[[--ThenEnd--]]
+					[[--IfEnd--]]
+					[[--IfStart,is:(#exists=lnk_lbl4) && (#exists=lnk_url4)--]]
+						[[--ThenStart--]]
+							<li class="col__4"><a class="link--type01" rel="nofollow" [[--IfStart,is:lnk_typ4=別ウィンド--]][[--ThenStart--]]target="_blank"[[--ThenEnd--]][[--IfEnd--]] href="[[--ArtFieldValue,field:lnk_url4--]]"><span class="icon icon--rel">[[--ArtFieldValue,field:lnk_lbl4--]]</span></a></li>
+						[[--ThenEnd--]]
+					[[--IfEnd--]]
+					[[--IfStart,is:(#exists=lnk_lbl5) && (#exists=lnk_url5)--]]
+						[[--ThenStart--]]
+							<li class="col__4"><a class="link--type01" rel="nofollow" [[--IfStart,is:lnk_typ5=別ウィンド--]][[--ThenStart--]]target="_blank"[[--ThenEnd--]][[--IfEnd--]] href="[[--ArtFieldValue,field:lnk_url5--]]"><span class="icon icon--rel">[[--ArtFieldValue,field:lnk_lbl5--]]</span></a></li>
+						[[--ThenEnd--]]
+					[[--IfEnd--]]
+				</ul>
+			</div>
+		</div>
+
+	</div>	
+
+	<div id="sub" style="position: static; left: auto; top: auto; bottom: auto; margin-bottom: 100px;">
+		<h3 class="sub-hdg">
+			<a class="link--type02" href="#"><span class="icon icon--arrow2-right">国別基本情報</span></a>
+		</h3>
+		
+		<ul class="list--txt sub__widget">
+			<li><span class="icon icon--cd txt--em01">アジア</span>
+				<ul class="list--nest">
+					[[--ActionStart,category:zhta_country,search:area_j=アジア,sort:country_j=asc,row:*--]]
+						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
+					[[--ActionEnd--]]
+				</ul>
+			</li>
+			<li><span class="icon icon--cd txt--em01">オセアニア</span>
+				<ul class="list--nest">
+					[[--ActionStart,category:zhta_country,search:area_j=オセアニア,sort:country_j=asc,row:*--]]
+						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
+					[[--ActionEnd--]]
+				</ul>
+			</li>			
+			<li><span class="icon icon--cd txt--em01">グアム・サイパン・太平洋諸国</span>
+				<ul class="list--nest">
+					[[--ActionStart,category:zhta_country,search:area_j=グアム・サイパン・太平洋諸国,sort:country_j=asc,row:*--]]
+						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
+					[[--ActionEnd--]]
+				</ul>
+			</li>
+			<li><span class="icon icon--cd txt--em01">カナダ</span>
+				<ul class="list--nest">
+					[[--ActionStart,category:zhta_country,search:area_j=カナダ,sort:country_j=asc,row:*--]]
+						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
+					[[--ActionEnd--]]
+				</ul>
+			</li>
+			<li><span class="icon icon--cd txt--em01">アメリカ合衆国</span>
+				<ul class="list--nest">
+					[[--ActionStart,category:zhta_country,search:area_j=アメリカ合衆国,sort:country_j=asc,row:*--]]
+						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
+					[[--ActionEnd--]]
+				</ul>
+			</li>
+			<li><span class="icon icon--cd txt--em01">ハワイ</span>
+				<ul class="list--nest">
+					[[--ActionStart,category:zhta_country,search:area_j=ハワイ,sort:country_j=asc,row:*--]]
+						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
+					[[--ActionEnd--]]
+				</ul>
+			</li>
+			<li><span class="icon icon--cd txt--em01">カリブ海・中南米</span>
+				<ul class="list--nest">
+					[[--ActionStart,category:zhta_country,search:area_j=カリブ海・中南米,sort:country_j=asc,row:*--]]
+						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
+					[[--ActionEnd--]]
+				</ul>
+			</li>
+			<li><span class="icon icon--cd txt--em01">ヨーロッパ</span>
+				<ul class="list--nest">
+					[[--ActionStart,category:zhta_country,search:area_j=ヨーロッパ,sort:country_j=asc,row:*--]]
+						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
+					[[--ActionEnd--]]
+				</ul>
+			</li>
+			<li><span class="icon icon--cd txt--em01">中近東・アフリカ</span>
+				<ul class="list--nest">
+					[[--ActionStart,category:zhta_country,search:area_j=中近東・アフリカ,sort:country_j=asc,row:*--]]
+						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
+					[[--ActionEnd--]]
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
