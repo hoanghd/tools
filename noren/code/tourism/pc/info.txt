@@ -1,0 +1,9 @@
+﻿hta_tourism_indx	index.html			アジア
+hta_tourism_ocea	oceania.html		オセアニア
+hta_tourism_micr	micropacific.html	グアム・サイパン・太平洋諸国
+hta_tourism_cana	canada.html			カナダ
+hta_tourism_usa		usa.html			アメリカ合衆国
+hta_tourism_hawa	hawaii.html			ハワイ
+hta_tourism_cari	carib.html			カリブ海・中南米
+hta_tourism_euro	europe.html			ヨーロッパ
+hta_tourism_meaf	meafrica.html		中近東・アフリカ
