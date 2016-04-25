@@ -1,0 +1,78 @@
+		[[--IfStart,is:trfc1_typ=タクシー--]]
+			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_1.png">タクシー</h3>[[--ThenEnd--]]
+		[[--IfEnd--]]
+		[[--IfStart,is:trfc1_typ=バス--]]
+			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_1.png">バス</h3>[[--ThenEnd--]]
+		[[--IfEnd--]]
+		[[--IfStart,is:trfc1_typ=シャトルバス--]]
+			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_2.png">シャトルバス</h3>[[--ThenEnd--]]
+		[[--IfEnd--]]
+		[[--IfStart,is:trfc1_typ=電車--]]
+			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_train_1.png">電車</h3>[[--ThenEnd--]]
+		[[--IfEnd--]]
+		[[--IfStart,is:trfc1_typ=船--]]
+			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_boat_1.png">船</h3>[[--ThenEnd--]]
+		[[--IfEnd--]]
+		[[--IfStart,is:trfc1_typ=レンタカー--]]
+			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_2.png">レンタカー</h3>[[--ThenEnd--]]
+		[[--IfEnd--]]
+		
+		[[--IfStart,exist:trfc1_name--]]
+			[[--ThenStart--]]<h4 class="airport-access__way-sub-hdg">[[--ArtFieldValue,field:trfc1_name--]]</h4>[[--ThenEnd--]]
+		[[--IfEnd--]]
+		
+		[[--IfStart,exist:trfc1_txt--]]
+			[[--ThenStart--]]<p>[[--ArtFieldValue,field:trfc1_txt--]]</p>[[--ThenEnd--]]
+		[[--IfEnd--]]
+		
+		<table class="tbl-data">
+			<tbody>
+				[[--IfStart,exist:trfc1_itm1 && trfc1_nte1--]]
+					[[--ThenStart--]]
+					<tr>
+						<th>[[--ArtFieldValue,field:trfc1_itm1--]]</th>
+						<td>[[--ArtFieldValue,field:trfc1_nte1--]]</td>
+					</tr>	
+					[[--ThenEnd--]]
+				[[--IfEnd--]]	
+				[[--IfStart,exist:trfc1_itm2 && trfc1_nte2--]]
+					[[--ThenStart--]]
+					<tr>
+						<th>[[--ArtFieldValue,field:trfc1_itm2--]]</th>
+						<td>[[--ArtFieldValue,field:trfc1_nte2--]]</td>
+					</tr>	
+					[[--ThenEnd--]]
+				[[--IfEnd--]]	
+				[[--IfStart,exist:trfc1_itm3 && trfc1_nte3--]]
+					[[--ThenStart--]]
+					<tr>
+						<th>[[--ArtFieldValue,field:trfc1_itm3--]]</th>
+						<td>[[--ArtFieldValue,field:trfc1_nte3--]]</td>
+					</tr>	
+					[[--ThenEnd--]]
+				[[--IfEnd--]]	
+				[[--IfStart,exist:trfc1_itm4 && trfc1_nte4--]]
+					[[--ThenStart--]]
+					<tr>
+						<th>[[--ArtFieldValue,field:trfc1_itm4--]]</th>
+						<td>[[--ArtFieldValue,field:trfc1_nte4--]]</td>
+					</tr>	
+					[[--ThenEnd--]]
+				[[--IfEnd--]]	
+				[[--IfStart,exist:trfc1_itm5 && trfc1_nte5--]]
+					[[--ThenStart--]]
+					<tr>
+						<th>[[--ArtFieldValue,field:trfc1_itm5--]]</th>
+						<td>[[--ArtFieldValue,field:trfc1_nte5--]]</td>
+					</tr>	
+					[[--ThenEnd--]]
+				[[--IfEnd--]]					
+			</tbody>
+		</table>
+		[[--IfStart,exist:trfc1_lnk--]]
+			[[--ThenStart--]]
+			<ul class="list--link mb30">
+				<li class="pull-right"><a class="link--type01" target="_blank" href="[[--ArtFieldValue,field:trfc1_lnk--]]"><span class="icon icon--blank">Delhi Transport Corporatoin（DTC）の公式サイト（ルート、時刻表、料金が確認できます）</span></a></li>
+			</ul>	
+			[[--ThenEnd--]]
+		[[--IfEnd--]]

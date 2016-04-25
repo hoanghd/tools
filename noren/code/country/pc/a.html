@@ -1,0 +1,86 @@
+[[--RecordStart,name:artID--]][[--ArtID--]][[--RecordEnd--]]
+[[--ActionStart,search:id=[%artID%]--]]
+    [[--IfStart,is:word_cat=あ行--]][[--ThenStart--]][[--DefineStart,name:catLink--]]index.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=か行--]][[--ThenStart--]][[--DefineStart,name:catLink--]]ka.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=さ行--]][[--ThenStart--]][[--DefineStart,name:catLink--]]sa.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=た行--]][[--ThenStart--]][[--DefineStart,name:catLink--]]ta.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=な行--]][[--ThenStart--]][[--DefineStart,name:catLink--]]na.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=は行--]][[--ThenStart--]][[--DefineStart,name:catLink--]]ha.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=ま行--]][[--ThenStart--]][[--DefineStart,name:catLink--]]ma.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=や行--]][[--ThenStart--]][[--DefineStart,name:catLink--]]ya.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=ら行--]][[--ThenStart--]][[--DefineStart,name:catLink--]]ra.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=わ行--]][[--ThenStart--]][[--DefineStart,name:catLink--]]wa.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=ABC--]][[--ThenStart--]][[--DefineStart,name:catLink--]]abc.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=DEF--]][[--ThenStart--]][[--DefineStart,name:catLink--]]def.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=GHI--]][[--ThenStart--]][[--DefineStart,name:catLink--]]ghi.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=JKL--]][[--ThenStart--]][[--DefineStart,name:catLink--]]jkl.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=MNO--]][[--ThenStart--]][[--DefineStart,name:catLink--]]mno.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=PQR--]][[--ThenStart--]][[--DefineStart,name:catLink--]]pqr.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=STU--]][[--ThenStart--]][[--DefineStart,name:catLink--]]stu.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=VWXYZ--]][[--ThenStart--]][[--DefineStart,name:catLink--]]vwxyz.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+    [[--IfStart,is:word_cat=数字で始まるもの--]][[--ThenStart--]][[--DefineStart,name:catLink--]]number.html[[--DefineEnd--]][[--ThenEnd--]][[--IfEnd--]]
+
+    [[--RecordStart,name:artCat--]][[--ArtFieldValue,field:word_cat--]][[--RecordEnd--]]
+    <div class="category-title">
+        <div class="wrapper"><span class="icon icon--hotelista"><span class="txt--em01"><a href="index.html">ホテル用語集</a></span>　/ [[--ArtFieldValue,field:word_cat--]]</span></div>
+    </div>
+    <div id="content" class="has-sub wrapper">
+        <div id="main">
+            <h1 class="hdg-lv1">
+                [[--ArtFieldValue,field:word_j--]]
+                <span>[[--ArtFieldValue,field:word_e--]]</span>
+            </h1>
+            <p>[[--ArtFieldValue,field:word_txt--]]</p>
+            [[--IfStart,exist:word_id1--]]
+                          [[--ThenStart--]]
+                            [[--RecordStart,name:wordID1--]][[--ArtFieldValue,field:word_id1--]][[--RecordEnd--]]
+                            [[--RecordStart,name:wordLBL1--]][[--ArtFieldValue,field:word_lbl1--]][[--RecordEnd--]]
+                            [[--ActionStart,search:id=[%wordID1%]--]]
+                    <a href="[[--ArtAddress--]]" class="link--type01"><span class="icon icon--arrow1-right">[[--Write,name:wordLBL1--]]</span></a>
+                            [[--ActionEnd--]]
+                          [[--ThenEnd--]]
+            [[--IfEnd--]]
+            [[--IfStart,exist:word_id2--]]
+                          [[--ThenStart--]]
+                            [[--RecordStart,name:wordID2--]][[--ArtFieldValue,field:word_id2--]][[--RecordEnd--]]
+                            [[--RecordStart,name:wordLBL2--]][[--ArtFieldValue,field:word_lbl2--]][[--RecordEnd--]]
+                            [[--ActionStart,search:id=[%wordID2%]--]]
+                    <a href="[[--ArtAddress--]]" class="link--type01"><span class="icon icon--arrow1-right">[[--Write,name:wordLBL2--]]</span></a>
+                            [[--ActionEnd--]]
+                          [[--ThenEnd--]]
+            [[--IfEnd--]]
+            [[--IfStart,exist:word_id3--]]
+                          [[--ThenStart--]]
+                            [[--RecordStart,name:wordID3--]][[--ArtFieldValue,field:word_id3--]][[--RecordEnd--]]
+                            [[--RecordStart,name:wordLBL3--]][[--ArtFieldValue,field:word_lbl3--]][[--RecordEnd--]]
+                            [[--ActionStart,search:id=[%wordID3%]--]]
+                    <a href="[[--ArtAddress--]]" class="link--type01"><span class="icon icon--arrow1-right">[[--Write,name:wordLBL3--]]</span></a>
+                            [[--ActionEnd--]]
+                          [[--ThenEnd--]]
+            [[--IfEnd--]]
+            [[--IfStart,exist:word_id4--]]
+                          [[--ThenStart--]]
+                            [[--RecordStart,name:wordID4--]][[--ArtFieldValue,field:word_id4--]][[--RecordEnd--]]
+                            [[--RecordStart,name:wordLBL4--]][[--ArtFieldValue,field:word_lbl4--]][[--RecordEnd--]]
+                            [[--ActionStart,search:id=[%wordID4%]--]]
+                    <a href="[[--ArtAddress--]]" class="link--type01"><span class="icon icon--arrow1-right">[[--Write,name:wordLBL4--]]</span></a>
+                            [[--ActionEnd--]]
+                          [[--ThenEnd--]]
+            [[--IfEnd--]]
+            [[--IfStart,exist:word_id5--]]
+                          [[--ThenStart--]]
+                            [[--RecordStart,name:wordID5--]][[--ArtFieldValue,field:word_id5--]][[--RecordEnd--]]
+                            [[--RecordStart,name:wordLBL5--]][[--ArtFieldValue,field:word_lbl5--]][[--RecordEnd--]]
+                            [[--ActionStart,search:id=[%wordID5%]--]]
+                    <a href="[[--ArtAddress--]]" class="link--type01"><span class="icon icon--arrow1-right">[[--Write,name:wordLBL5--]]</span></a>
+                            [[--ActionEnd--]]
+                          [[--ThenEnd--]]
+            [[--IfEnd--]]
+            <hr class="separate-line">
+<!--
+            <a href="[[--Write,name:catLink--]]" class="btn btn--large btn--blue-oil"><span class="icon icon--left-dir"></span>戻る</a>
+-->
+        </div>
+        [[--hta_diction_navi,parameter:arg1=[%artID%];arg2=[%artCat%]--]]
+    </div><!-- /#content -->
+[[--ActionEnd--]]

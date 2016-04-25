@@ -1,0 +1,15 @@
+﻿<li class="js_sub_nav_accordion is_accordion">
+	<a class="link--type01" href="javascript:void(0);"><span class="icon icon--arrow2-down">[[--Write,name:areaName--]]</span></a>
+	<ul class="list--nest" [[--IfStart,is:!([%curArea%]=[%areaName%])--]][[--ThenStart--]]style="display: none;"[[--ThenEnd--]][[--IfEnd--]]>
+	[[--RecordStart,name:countryName--]]F[[--RecordEnd--]]
+	[[--ActionStart,category:zhta_airport,search:area_j=[%areaName%],sort:country_j=asc,row:*--]]
+		[[--IfStart,is:([%countryName%]=F) || !([%countryName%]=country_j)--]]
+			[[--ThenStart--]]
+				<li class="group-name"><span class="icon icon--cd">[[--ArtFieldValue,field:country_j--]]</span></li>
+			[[--ThenEnd--]]
+		[[--IfEnd--]]
+		[[--RecordStart,name:countryName--]][[--ArtFieldValue,field:country_j--]][[--RecordEnd--]]
+		<li [[--IfStart,is:([%curAirport%]=airport_j)--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]]><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:airport_j--]]</span></a></li>
+	[[--ActionEnd--]]
+	</ul>
+</li>
