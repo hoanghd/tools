@@ -1,0 +1,27 @@
+﻿[[--DefineStart,name:flag--]]F[[--DefineEnd--]]
+[[--DefineStart,name:active--]]F[[--DefineEnd--]]
+
+[[--IfStart,is:([%areaName%]=[%curArea%])--]]
+	[[--ThenStart--]]
+		[[--DefineStart,name:active--]]T[[--DefineEnd--]]
+	[[--ThenEnd--]]
+[[--IfEnd--]]
+
+[[--ActionStart,category:zhta_country,search:area_j=[%areaName%],sort:country_j=asc,row:*--]]
+	[[--IfStart,is:flag=F--]]
+		[[--ThenStart--]]
+			<li class="js_sub_nav_accordion is_accordion">
+				<a class="link--type01" href="javascript:void(0);"><span class="icon txt--em01">[[--Write,name:areaName--]]</span></a>
+				<ul class="list--nest [[--IfStart,is:([%active%]=T)--]][[--ThenStart--]]is-open[[--ThenEnd--]][[--IfEnd--]]" [[--IfStart,is:([%active%]=F)--]][[--ThenStart--]]style="display:none;"[[--ThenEnd--]][[--IfEnd--]]>	
+		[[--ThenEnd--]]
+	[[--IfEnd--]]
+	[[--DefineStart,name:flag--]]T[[--DefineEnd--]]
+	<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
+[[--ActionEnd--]]
+
+[[--IfStart,is:flag=T--]]
+	[[--ThenStart--]]
+		</ul>
+	</li>									
+	[[--ThenEnd--]]
+[[--IfEnd--]]			

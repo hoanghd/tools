@@ -1,5 +1,5 @@
 ﻿[[--RecordStart,name:countryName--]][[--ArtFieldValue,field:country_j--]][[--RecordEnd--]]
-[[--RecordStart,name:areaName--]][[--ArtFieldValue,field:area_j--]][[--RecordEnd--]]
+[[--RecordStart,name:curArea--]][[--ArtFieldValue,field:area_j--]][[--RecordEnd--]]
 [[--DefineStart,name:s1Flag--]]F[[--DefineEnd--]]
 [[--DefineStart,name:s2Flag--]]F[[--DefineEnd--]]
 [[--DefineStart,name:s3Flag--]]F[[--DefineEnd--]]
@@ -411,78 +411,15 @@
 		</h3>
 		
 		<ul class="list--txt sub__widget">
-			<li class="js_sub_nav_accordion is_accordion">
-				<a class="link--type01" href="javascript:void(0);"><span class="icon icon--cd txt--em01">アジア</span></a>
-				<ul class="list--nest" [[--IfStart,is:!([%areaName%]=アジア)--]][[--ThenStart--]]style="display:none;"[[--ThenEnd--]][[--IfEnd--]]>
-					[[--ActionStart,category:zhta_country,search:area_j=アジア,sort:country_j=asc,row:*--]]
-						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
-					[[--ActionEnd--]]
-				</ul>
-			</li>
-			<li class="js_sub_nav_accordion is_accordion">
-				<a class="link--type01" href="javascript:void(0);"><span class="icon icon--cd txt--em01">オセアニア</span></a>
-				<ul class="list--nest" [[--IfStart,is:!([%areaName%]=オセアニア)--]][[--ThenStart--]]style="display:none;"[[--ThenEnd--]][[--IfEnd--]]>
-					[[--ActionStart,category:zhta_country,search:area_j=オセアニア,sort:country_j=asc,row:*--]]
-						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
-					[[--ActionEnd--]]
-				</ul>
-			</li>			
-			<li class="js_sub_nav_accordion is_accordion">
-				<a class="link--type01" href="javascript:void(0);"><span class="icon icon--cd txt--em01">グアム・サイパン・太平洋諸国</span></a>
-				<ul class="list--nest" [[--IfStart,is:!([%areaName%]=グアム・サイパン・太平洋諸国)--]][[--ThenStart--]]style="display:none;"[[--ThenEnd--]][[--IfEnd--]]>
-					[[--ActionStart,category:zhta_country,search:area_j=グアム・サイパン・太平洋諸国,sort:country_j=asc,row:*--]]
-						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
-					[[--ActionEnd--]]
-				</ul>
-			</li>
-			<li class="js_sub_nav_accordion is_accordion">
-				<a class="link--type01" href="javascript:void(0);"><span class="icon icon--cd txt--em01">カナダ</span></a>
-				<ul class="list--nest" [[--IfStart,is:!([%areaName%]=カナダ)--]][[--ThenStart--]]style="display:none;"[[--ThenEnd--]][[--IfEnd--]]>
-					[[--ActionStart,category:zhta_country,search:area_j=カナダ,sort:country_j=asc,row:*--]]
-						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
-					[[--ActionEnd--]]
-				</ul>
-			</li>
-			<li class="js_sub_nav_accordion is_accordion">
-				<a class="link--type01" href="javascript:void(0);"><span class="icon icon--cd txt--em01">アメリカ合衆国</span></a>
-				<ul class="list--nest" [[--IfStart,is:!([%areaName%]=アメリカ合衆国)--]][[--ThenStart--]]style="display:none;"[[--ThenEnd--]][[--IfEnd--]]>
-					[[--ActionStart,category:zhta_country,search:area_j=アメリカ合衆国,sort:country_j=asc,row:*--]]
-						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
-					[[--ActionEnd--]]
-				</ul>
-			</li>
-			<li class="js_sub_nav_accordion is_accordion">
-				<a class="link--type01" href="javascript:void(0);"><span class="icon icon--cd txt--em01">ハワイ</span></a>
-				<ul class="list--nest" [[--IfStart,is:!([%areaName%]=ハワイ)--]][[--ThenStart--]]style="display:none;"[[--ThenEnd--]][[--IfEnd--]]>
-					[[--ActionStart,category:zhta_country,search:area_j=ハワイ,sort:country_j=asc,row:*--]]
-						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
-					[[--ActionEnd--]]
-				</ul>
-			</li>
-			<li class="js_sub_nav_accordion is_accordion">
-				<a class="link--type01" href="javascript:void(0);"><span class="icon icon--cd txt--em01">カリブ海・中南米</span></a>
-				<ul class="list--nest" [[--IfStart,is:!([%areaName%]=カリブ海・中南米)--]][[--ThenStart--]]style="display:none;"[[--ThenEnd--]][[--IfEnd--]]>
-					[[--ActionStart,category:zhta_country,search:area_j=カリブ海・中南米,sort:country_j=asc,row:*--]]
-						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
-					[[--ActionEnd--]]
-				</ul>
-			</li>
-			<li class="js_sub_nav_accordion is_accordion">			
-				<a class="link--type01" href="javascript:void(0);"><span class="icon icon--cd txt--em01">ヨーロッパ</span></a>
-				<ul class="list--nest" [[--IfStart,is:!([%areaName%]=ヨーロッパ)--]][[--ThenStart--]]style="display:none;"[[--ThenEnd--]][[--IfEnd--]]>
-					[[--ActionStart,category:zhta_country,search:area_j=ヨーロッパ,sort:country_j=asc,row:*--]]
-						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
-					[[--ActionEnd--]]
-				</ul>
-			</li>
-			<li class="js_sub_nav_accordion is_accordion">
-				<a class="link--type01" href="javascript:void(0);"><span class="icon icon--cd txt--em01">中近東・アフリカ</span></a>
-				<ul class="list--nest" [[--IfStart,is:!([%areaName%]=中近東・アフリカ)--]][[--ThenStart--]]style="display:none;"[[--ThenEnd--]][[--IfEnd--]]>
-					[[--ActionStart,category:zhta_country,search:area_j=中近東・アフリカ,sort:country_j=asc,row:*--]]
-						<li [[--IfStart,is:[%countryName%]=country_j--]][[--ThenStart--]]class="current"[[--ThenEnd--]][[--IfEnd--]] ><a class="link--type01" href="[[--ArtAddress--]]"><span class="icon icon--arrow1-right">[[--ArtFieldValue,field:country_j--]]</span></a></li>
-					[[--ActionEnd--]]
-				</ul>
-			</li>
+			[[--hta_country_nav,parameter:areaName=アジア;curArea=[%curArea%];countryName=[%countryName%]--]]
+			[[--hta_country_nav,parameter:areaName=オセアニア;curArea=[%curArea%];countryName=[%countryName%]--]]
+			[[--hta_country_nav,parameter:areaName=グアム・サイパン・太平洋諸国;curArea=[%curArea%];countryName=[%countryName%]--]]
+			[[--hta_country_nav,parameter:areaName=カナダ;curArea=[%curArea%];countryName=[%countryName%]--]]
+			[[--hta_country_nav,parameter:areaName=アメリカ合衆国;curArea=[%curArea%];countryName=[%countryName%]--]]
+			[[--hta_country_nav,parameter:areaName=ハワイ;curArea=[%curArea%];countryName=[%countryName%]--]]
+			[[--hta_country_nav,parameter:areaName=カリブ海・中南米;curArea=[%curArea%];countryName=[%countryName%]--]]
+			[[--hta_country_nav,parameter:areaName=ヨーロッパ;curArea=[%curArea%];countryName=[%countryName%]--]]
+			[[--hta_country_nav,parameter:areaName=中近東・アフリカ;curArea=[%curArea%];countryName=[%countryName%]--]]			
 		</ul>
 	</div>
 </div>

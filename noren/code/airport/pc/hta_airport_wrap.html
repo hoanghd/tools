@@ -1,4 +1,5 @@
 ﻿[[--RecordStart,name:curID--]][[--ArtID--]][[--RecordEnd--]]
+[[--RecordStart,name:curCity--]][[--ArtFieldValue,field:city_j--]][[--RecordEnd--]]
 [[--RecordStart,name:curArea--]][[--ArtFieldValue,field:area_j--]][[--RecordEnd--]]
 [[--RecordStart,name:curCountry--]][[--ArtFieldValue,field:country_j--]][[--RecordEnd--]]
 [[--RecordStart,name:curAirport--]][[--ArtFieldValue,field:airport_j--]][[--RecordEnd--]]
@@ -7,14 +8,15 @@
 </div>
 <div class="has-sub wrapper" id="content">
 	<div id="main">
-		
-		<div class="airport-access_head">
-			[[--ActionStart,category:zhta_airport,search:(area_j=[%curArea%]) && (country_j=[%curCountry%]) && !(id=[%curID%]),sort:country_j=asc,row:*--]]
-				<a class="link--type01" href="[[--ArtAddress--]]">
-					<span class="icon icon--flight">[[--ArtFieldValue,field:airport_j--]]</span>
-				</a>
-			[[--ActionEnd--]]
-		</div>		
+		[[--RecordStart,name:flag--]]F[[--RecordEnd--]]
+		[[--ActionStart,category:zhta_airport,search:(area_j=[%curArea%]) && (country_j=[%curCountry%]) && (city_j=[%curCity%]) && !(id=[%curID%]),sort:country_j=asc,row:*--]]
+			[[--IfStart,is:flag=F--]][[--ThenStart--]]<div class="airport-access_head">[[--ThenEnd--]][[--IfEnd--]]
+			[[--RecordStart,name:flag--]]T[[--RecordEnd--]]
+			<a class="link--type01" href="[[--ArtAddress--]]">
+				<span class="icon icon--flight">[[--ArtFieldValue,field:airport_j--]]</span>
+			</a>
+		[[--ActionEnd--]]
+		[[--IfStart,is:flag=T--]][[--ThenStart--]]</div>[[--ThenEnd--]][[--IfEnd--]]
 		
 		<h1 class="hdg-lv1 mb20">
 			<img src="[[--RootDir--]]concierge/airport-access/images/flight.png" class="hdg-lv2__icon">
@@ -24,7 +26,7 @@
 		
 		[[--IfStart,exist:currency--]]
 			[[--ThenStart--]]
-				<p class="pull-right">【[[--ArtFieldValue,field:currency--]]】 イギリスポンド（￡）</p>				
+				<p class="pull-right">【現地通貨】 [[--ArtFieldValue,field:currency--]]</p>				
 			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		<p>[[--ArtFieldValue,field:read_txt--]]</p>	
@@ -66,13 +68,13 @@
 		[[--DefineStart,name:ter2Flag--]]F[[--DefineEnd--]]
 		[[--DefineStart,name:ter3Flag--]]F[[--DefineEnd--]]
 		
-		[[--IfStart,exist:(terminal1 && (information1 || traffic1 || exchange1 || baggage1 || other1))--]]
+		[[--IfStart,exist:(terminal1 || information1 || traffic1 || exchange1 || baggage1 || other1)--]]
 			[[--ThenStart--]][[--DefineStart,name:ter1Flag--]]T[[--DefineEnd--]][[--ThenEnd--]]
 		[[--IfEnd--]]
-		[[--IfStart,exist:(terminal2 && (information2 || traffic2 || exchange2 || baggage2 || other2))--]]
+		[[--IfStart,exist:(terminal2 || information2 || traffic2 || exchange2 || baggage2 || other2)--]]
 			[[--ThenStart--]][[--DefineStart,name:ter2Flag--]]T[[--DefineEnd--]][[--ThenEnd--]]
 		[[--IfEnd--]]
-		[[--IfStart,exist:(terminal3 && (information3 || traffic3 || exchange3 || baggage3 || other3))--]]
+		[[--IfStart,exist:(terminal3 || information3 || traffic3 || exchange3 || baggage3 || other3)--]]
 			[[--ThenStart--]][[--DefineStart,name:ter3Flag--]]T[[--DefineEnd--]][[--ThenEnd--]]
 		[[--IfEnd--]]
 		
@@ -84,7 +86,12 @@
 		
 		[[--IfStart,is:ter1Flag=T--]]
 			[[--ThenStart--]]
-			<h3 class="txt--em01">＜[[--ArtFieldValue,field:terminal1--]]＞</h3>
+			[[--IfStart,exist:terminal1--]]
+				[[--ThenStart--]]
+					<h3 class="txt--em01">＜[[--ArtFieldValue,field:terminal1--]]＞</h3>
+				[[--ThenEnd--]]
+			[[--IfEnd--]]
+			
 			<table class="tbl-data">
 				<tbody>
 				[[--IfStart,exist:information1--]]
@@ -134,7 +141,12 @@
 		
 		[[--IfStart,is:ter2Flag=T--]]
 			[[--ThenStart--]]
-			<h3 class="txt--em01">＜[[--ArtFieldValue,field:terminal2--]]＞</h3>
+			[[--IfStart,exist:terminal2--]]
+				[[--ThenStart--]]
+					<h3 class="txt--em01">＜[[--ArtFieldValue,field:terminal2--]]＞</h3>
+				[[--ThenEnd--]]
+			[[--IfEnd--]]
+			
 			<table class="tbl-data">
 				<tbody>
 				[[--IfStart,exist:information2--]]
@@ -184,7 +196,12 @@
 		
 		[[--IfStart,is:ter3Flag=T--]]
 			[[--ThenStart--]]
-			<h3 class="txt--em01">＜[[--ArtFieldValue,field:terminal3--]]＞</h3>
+			[[--IfStart,exist:terminal3--]]
+				[[--ThenStart--]]
+					<h3 class="txt--em01">＜[[--ArtFieldValue,field:terminal3--]]＞</h3>
+				[[--ThenEnd--]]
+			[[--IfEnd--]]
+			
 			<table class="tbl-data">
 				<tbody>
 				[[--IfStart,exist:information3--]]
@@ -236,23 +253,12 @@
 			[[--ThenStart--]]<h2 class="hdg-lv2"><span class="hdg-lv2__icon icon icon--hotelista-circle">市内へのアクセス</span></h2>[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
-		[[--IfStart,is:trfc1_typ=タクシー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_1.png">タクシー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc1_typ=バス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_1.png">バス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc1_typ=シャトルバス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_2.png">シャトルバス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc1_typ=電車--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_train_1.png">電車</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc1_typ=船--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_boat_1.png">船</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc1_typ=レンタカー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_2.png">レンタカー</h3>[[--ThenEnd--]]
+		[[--IfStart,exist:trfc1_typ--]]
+			[[--ThenStart--]]
+				[[--RecordStart,name:trfcTyp1--]][[--ArtFieldValue,field:trfc1_typ--]][[--RecordEnd--]]
+				[[--hta_airport_service,parameter:trfcTyp=[%trfcTyp1%];preTrcTyp=F--]]	
+				
+			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
 		[[--IfStart,exist:trfc1_name--]]
@@ -320,23 +326,11 @@
 			[[--ThenEnd--]]
 		[[--IfEnd--]]		
 		
-		[[--IfStart,is:trfc2_typ=タクシー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_1.png">タクシー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc2_typ=バス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_1.png">バス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc2_typ=シャトルバス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_2.png">シャトルバス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc2_typ=電車--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_train_1.png">電車</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc2_typ=船--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_boat_1.png">船</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc2_typ=レンタカー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_2.png">レンタカー</h3>[[--ThenEnd--]]
+		[[--IfStart,exist:trfc2_typ--]]
+			[[--ThenStart--]]
+				[[--RecordStart,name:trfcTyp2--]][[--ArtFieldValue,field:trfc2_typ--]][[--RecordEnd--]]
+				[[--hta_airport_service,parameter:trfcTyp=[%trfcTyp2%];preTrcTyp=[%trfcTyp1%]--]]
+			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
 		[[--IfStart,exist:trfc2_name--]]
@@ -404,25 +398,13 @@
 			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
-		[[--IfStart,is:trfc3_typ=タクシー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_1.png">タクシー</h3>[[--ThenEnd--]]
+		[[--IfStart,exist:trfc3_typ--]]
+			[[--ThenStart--]]
+				[[--RecordStart,name:trfcTyp3--]][[--ArtFieldValue,field:trfc3_typ--]][[--RecordEnd--]]
+				[[--hta_airport_service,parameter:trfcTyp=[%trfcTyp3%];preTrcTyp=[%trfcTyp2%]--]]
+			[[--ThenEnd--]]
 		[[--IfEnd--]]
-		[[--IfStart,is:trfc3_typ=バス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_1.png">バス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc3_typ=シャトルバス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_2.png">シャトルバス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc3_typ=電車--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_train_1.png">電車</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc3_typ=船--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_boat_1.png">船</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc3_typ=レンタカー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_2.png">レンタカー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		
+				
 		[[--IfStart,exist:trfc3_name--]]
 			[[--ThenStart--]]<h4 class="airport-access__way-sub-hdg">[[--ArtFieldValue,field:trfc3_name--]]</h4>[[--ThenEnd--]]
 		[[--IfEnd--]]
@@ -488,24 +470,12 @@
 			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
-		[[--IfStart,is:trfc4_typ=タクシー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_1.png">タクシー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc4_typ=バス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_1.png">バス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc4_typ=シャトルバス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_2.png">シャトルバス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc4_typ=電車--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_train_1.png">電車</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc4_typ=船--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_boat_1.png">船</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc4_typ=レンタカー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_2.png">レンタカー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
+		[[--IfStart,exist:trfc4_typ--]]
+			[[--ThenStart--]]
+				[[--RecordStart,name:trfcTyp4--]][[--ArtFieldValue,field:trfc4_typ--]][[--RecordEnd--]]
+				[[--hta_airport_service,parameter:trfcTyp=[%trfcTyp4%];preTrcTyp=[%trfcTyp3%]--]]
+			[[--ThenEnd--]]
+		[[--IfEnd--]]		
 		
 		[[--IfStart,exist:trfc4_name--]]
 			[[--ThenStart--]]<h4 class="airport-access__way-sub-hdg">[[--ArtFieldValue,field:trfc4_name--]]</h4>[[--ThenEnd--]]
@@ -572,23 +542,11 @@
 			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
-		[[--IfStart,is:trfc5_typ=タクシー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_1.png">タクシー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc5_typ=バス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_1.png">バス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc5_typ=シャトルバス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_2.png">シャトルバス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc5_typ=電車--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_train_1.png">電車</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc5_typ=船--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_boat_1.png">船</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc5_typ=レンタカー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_2.png">レンタカー</h3>[[--ThenEnd--]]
+		[[--IfStart,exist:trfc5_typ--]]
+			[[--ThenStart--]]
+				[[--RecordStart,name:trfcTyp5--]][[--ArtFieldValue,field:trfc5_typ--]][[--RecordEnd--]]
+				[[--hta_airport_service,parameter:trfcTyp=[%trfcTyp5%];preTrcTyp=[%trfcTyp4%]--]]	
+			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
 		[[--IfStart,exist:trfc5_name--]]
@@ -656,24 +614,12 @@
 			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
-		[[--IfStart,is:trfc6_typ=タクシー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_1.png">タクシー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc6_typ=バス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_1.png">バス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc6_typ=シャトルバス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_2.png">シャトルバス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc6_typ=電車--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_train_1.png">電車</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc6_typ=船--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_boat_1.png">船</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc6_typ=レンタカー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_2.png">レンタカー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
+		[[--IfStart,exist:trfc6_typ--]]
+			[[--ThenStart--]]
+				[[--RecordStart,name:trfcTyp6--]][[--ArtFieldValue,field:trfc6_typ--]][[--RecordEnd--]]
+				[[--hta_airport_service,parameter:trfcTyp=[%trfcTyp6%];preTrcTyp=[%trfcTyp5%]--]]
+			[[--ThenEnd--]]
+		[[--IfEnd--]]		
 		
 		[[--IfStart,exist:trfc6_name--]]
 			[[--ThenStart--]]<h4 class="airport-access__way-sub-hdg">[[--ArtFieldValue,field:trfc6_name--]]</h4>[[--ThenEnd--]]
@@ -735,29 +681,17 @@
 		[[--IfStart,exist:trfc6_lnk--]]
 			[[--ThenStart--]]
 			<ul class="list--link mb30">
-				<li class="pull-right"><a class="link--type01" target="_blank" href="[[--ArtFieldValue,field:trfc6_lnk--]]"><span class="icon icon--blank">Delhi Transport Corporatoin（DTC）の公式サイト（ルート、時刻表、料金が確認できます）</span></a></li>
+				[[--ArtFieldValue,field:trfc6_lnk--]]
 			</ul>	
 			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
-		[[--IfStart,is:trfc7_typ=タクシー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_1.png">タクシー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc7_typ=バス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_1.png">バス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc7_typ=シャトルバス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_2.png">シャトルバス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc7_typ=電車--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_train_1.png">電車</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc7_typ=船--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_boat_1.png">船</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc7_typ=レンタカー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_2.png">レンタカー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
+		[[--IfStart,exist:trfc7_typ--]]
+			[[--ThenStart--]]
+				[[--RecordStart,name:trfcTyp7--]][[--ArtFieldValue,field:trfc7_typ--]][[--RecordEnd--]]
+				[[--hta_airport_service,parameter:trfcTyp=[%trfcTyp7%];preTrcTyp=[%trfcTyp6%]--]]
+			[[--ThenEnd--]]
+		[[--IfEnd--]]		
 		
 		[[--IfStart,exist:trfc7_name--]]
 			[[--ThenStart--]]<h4 class="airport-access__way-sub-hdg">[[--ArtFieldValue,field:trfc7_name--]]</h4>[[--ThenEnd--]]
@@ -824,23 +758,11 @@
 			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
-		[[--IfStart,is:trfc8_typ=タクシー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_1.png">タクシー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc8_typ=バス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_1.png">バス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc8_typ=シャトルバス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_2.png">シャトルバス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc8_typ=電車--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_train_1.png">電車</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc8_typ=船--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_boat_1.png">船</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc8_typ=レンタカー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_2.png">レンタカー</h3>[[--ThenEnd--]]
+		[[--IfStart,exist:trfc8_typ--]]
+			[[--ThenStart--]]
+				[[--RecordStart,name:trfcTyp8--]][[--ArtFieldValue,field:trfc8_typ--]][[--RecordEnd--]]
+				[[--hta_airport_service,parameter:trfcTyp=[%trfcTyp8%];preTrcTyp=[%trfcTyp7%]--]]	
+			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
 		[[--IfStart,exist:trfc8_name--]]
@@ -908,23 +830,11 @@
 			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
-		[[--IfStart,is:trfc9_typ=タクシー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_1.png">タクシー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc9_typ=バス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_1.png">バス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc9_typ=シャトルバス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_2.png">シャトルバス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc9_typ=電車--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_train_1.png">電車</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc9_typ=船--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_boat_1.png">船</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc9_typ=レンタカー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_2.png">レンタカー</h3>[[--ThenEnd--]]
+		[[--IfStart,exist:trfc9_typ--]]
+			[[--ThenStart--]]
+				[[--RecordStart,name:trfcTyp9--]][[--ArtFieldValue,field:trfc9_typ--]][[--RecordEnd--]]
+				[[--hta_airport_service,parameter:trfcTyp=[%trfcTyp9%];preTrcTyp=[%trfcTyp8%]--]]
+			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
 		[[--IfStart,exist:trfc9_name--]]
@@ -992,25 +902,13 @@
 			[[--ThenEnd--]]
 		[[--IfEnd--]]
 		
-		[[--IfStart,is:trfc10_typ=タクシー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_1.png">タクシー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc10_typ=バス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_1.png">バス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc10_typ=シャトルバス--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_bus_2.png">シャトルバス</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc10_typ=電車--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_train_1.png">電車</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc10_typ=船--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_boat_1.png">船</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		[[--IfStart,is:trfc10_typ=レンタカー--]]
-			[[--ThenStart--]]<h3 class="airport-access__way-hdg"><img alt="" src="[[--RootDir--]]concierge/airport-access/images/servicepict_taxi_2.png">レンタカー</h3>[[--ThenEnd--]]
-		[[--IfEnd--]]
-		
+		[[--IfStart,exist:trfc10_typ--]]
+			[[--ThenStart--]]
+				[[--RecordStart,name:trfcTyp10--]][[--ArtFieldValue,field:trfc10_typ--]][[--RecordEnd--]]
+				[[--hta_airport_service,parameter:trfcTyp=[%trfcTyp10%];preTrcTyp=[%trfcTyp9%]--]]
+			[[--ThenEnd--]]
+		[[--IfEnd--]]		
+				
 		[[--IfStart,exist:trfc10_name--]]
 			[[--ThenStart--]]<h4 class="airport-access__way-sub-hdg">[[--ArtFieldValue,field:trfc10_name--]]</h4>[[--ThenEnd--]]
 		[[--IfEnd--]]
@@ -1084,7 +982,7 @@
 		<div class="inline-search-map" data-lat="[[--ArtFieldValue,field:airport_lat--]]" data-lng="[[--ArtFieldValue,field:airport_lng--]]" data-zoom="12"></div>
 		<div class="col airport-access_map-btn">
 			<a href="/city/[[--ArtFieldValue,field:city_cd--]]/" class="btn btn--small btn--brown">[[--ArtFieldValue,field:city_j--]]のホテル一覧</a>
-			<a href="/map/listmap.html?name=[[--ArtFieldValue,field:city_j--]]" class="btn btn--small btn--brown">[[--ArtFieldValue,field:city_j--]]のホテルを地図から探す</a>
+			<a href="/map/fullmap.html?name=[[--ArtFieldValue,field:airport_j--]]&lat=[[--ArtFieldValue,field:airport_lat--]]&lng=[[--ArtFieldValue,field:airport_lng--]]" class="btn btn--small btn--brown">空港周辺の地図を拡大する</a>
 		</div>
 			
 		<div class="box box--blue box--ribon">
@@ -1123,15 +1021,15 @@
 	<div style="position: static; left: auto; top: auto; bottom: auto; margin-bottom: 60px;" id="sub">
 		<h3 class="sub-hdg"><a class="link--rotate" href="javascript:void(0);"><span class="icon icon--arrow2-right">空港アクセス</span></a></h3>
 		<ul class="list--txt sub__widget">
-			[[--hta_airport_nav,parameter:areaName=アジア;curArea=[%curArea%];curAirport=[%curAirport%]--]]
-			[[--hta_airport_nav,parameter:areaName=オセアニア;curArea=[%curArea%];curAirport=[%curAirport%]--]]
-			[[--hta_airport_nav,parameter:areaName=グアム・サイパン・太平洋諸国;curArea=[%curArea%];curAirport=[%curAirport%]--]]
-			[[--hta_airport_nav,parameter:areaName=カナダ;curArea=[%curArea%];curAirport=[%curAirport%]--]]
-			[[--hta_airport_nav,parameter:areaName=アメリカ合衆国;curArea=[%curArea%];curAirport=[%curAirport%]--]]
-			[[--hta_airport_nav,parameter:areaName=ハワイ;curArea=[%curArea%];curAirport=[%curAirport%]--]]
-			[[--hta_airport_nav,parameter:areaName=カリブ海・中南米;curArea=[%curArea%];curAirport=[%curAirport%]--]]
-			[[--hta_airport_nav,parameter:areaName=ヨーロッパ;curArea=[%curArea%];curAirport=[%curAirport%]--]]
-			[[--hta_airport_nav,parameter:areaName=中近東・アフリカ;curArea=[%curArea%];curAirport=[%curAirport%]--]]			
+			[[--hta_airport_nav,parameter:areaName=アジア;curArea=[%curArea%];curID=[%curID%]--]]
+			[[--hta_airport_nav,parameter:areaName=オセアニア;curArea=[%curArea%];curID=[%curID%]--]]
+			[[--hta_airport_nav,parameter:areaName=グアム・サイパン・太平洋諸国;curArea=[%curArea%];curID=[%curID%]--]]
+			[[--hta_airport_nav,parameter:areaName=カナダ;curArea=[%curArea%];curID=[%curID%]--]]
+			[[--hta_airport_nav,parameter:areaName=アメリカ合衆国;curArea=[%curArea%];curID=[%curID%]--]]
+			[[--hta_airport_nav,parameter:areaName=ハワイ;curArea=[%curArea%];curID=[%curID%]--]]
+			[[--hta_airport_nav,parameter:areaName=カリブ海・中南米;curArea=[%curArea%];curID=[%curID%]--]]
+			[[--hta_airport_nav,parameter:areaName=ヨーロッパ;curArea=[%curArea%];curID=[%curID%]--]]
+			[[--hta_airport_nav,parameter:areaName=中近東・アフリカ;curArea=[%curArea%];curID=[%curID%]--]]			
 		</ul>
 	</div>
 </div>
