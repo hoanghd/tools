@@ -1,0 +1,6 @@
+Regiser
+Login
+Lost Pass
+Change Pass
+
+http://www.tonghopgame.net/members/admin/
