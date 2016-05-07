@@ -4,7 +4,7 @@ CREATE TABLE `users` (
   `username` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
   `password` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
   `email` varchar(100) COLLATE utf8_bin NOT NULL DEFAULT '',
-  `birthday` varchar(10) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `birthday` date COLLATE utf8_bin NOT NULL DEFAULT '',
   `avatar` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
   `gender` varchar(10) COLLATE utf8_bin NOT NULL DEFAULT '',
   `is_active` smallint(6) NOT NULL DEFAULT '1',
