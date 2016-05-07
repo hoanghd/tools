@@ -1,5 +1,6 @@
 CREATE TABLE `users` (
   `user_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
   `username` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
   `password` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
   `email` varchar(100) COLLATE utf8_bin NOT NULL DEFAULT '',

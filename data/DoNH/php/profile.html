@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.4.2" type="text/css" media="all" />
+<link rel="stylesheet" href="asset/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="asset/css/style.css" />
+<script src="asset/js/jquery-1.12.3.min.js"></script>
+<script src="asset/js/notify.min.js"></script>
+<script src="asset/js/main.js"></script>
+<title>Profile</title>
+</head>
+<body>
+    <div class="container vs1k5716">
+        <div id="wrapper" style="margin:20px;">        
+            <div class="user-profile">
+                <a class="media-left">
+                    <img src="http://marino-1.batchthemes.com/assets/faces/m9.png" class="img-circle">
+                </a>
+                <div class="media-body">
+                    <h5 class="media-heading"> Nguyễn Văn A </h5> 
+                    <p class="media-job">Admin</p>
+                    <div class="profile-buttons">
+                        <button class="btn btn-circle btn-facebook" type="button"><i class="fa fa-facebook"></i></button>
+                        <button class="btn btn-circle btn-twitter" type="button"><i class="fa fa-twitter"></i></button>
+                        <button class="btn btn-circle btn-google" type="button"><i class="fa fa-google-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        	<div class="row profile-detail">
+            	<ul class="nav">
+                    <li> <a class="active" ref="#tab-account"><span>Tài khoản</span></a></li>
+                    <li> <a ref="#tab-password"><span>Mật khẩu</span></a></li>
+                </ul>
+                <div class="tab-content">                            
+                    <div id="tab-account" class="tab-pane">
+                        <form id="profileForm" class="form">
+                            <p>
+                                <label>Họ tên</label>
+                                <input type="text" placeholder="Nguyễn Văn A">
+                                <i class="fa fa-user icon" aria-hidden="true"></i>
+                            </p>
+                    		<p> 
+                                <label>Avatar</label>
+                                <input type="file" placeholder="Avatar">
+                               <i class="fa fa-picture-o icon" aria-hidden="true"></i>
+                               <i class="note">*.gif, *.jpg, *.jpeg.</i>
+                            </p>
+                            <p>
+                                <label>Ngày sinh</label>
+                                <input type="text" placeholder="eg. 1984-12-12">
+                                <i class="fa fa-calendar icon" aria-hidden="true"></i>
+                            </p>
+                            <p> 
+                                <label>Email <font color="#FF0000">*</font></label>
+                                <input name="email" type="email" placeholder="eg. nguyenvana92@mail.com" valid="req|email"/>
+                                <i class="fa fa-envelope icon" aria-hidden="true"></i> 
+                            </p>
+                    		<p> 
+                                <label>Tài khoản <font color="#FF0000">*</font></label>
+                                <input name="username" type="text" placeholder="eg. nguyenvana" valid="req|username|length{'min':6, 'max':30}"/>
+                                <i class="fa fa-users icon" aria-hidden="true"></i>
+                                <i class="note">Bạn có thể sử dụng chữ cái, số và dấu chấm. Từ 6 đến 30 ký tự.</i>
+                            </p>
+                    		<p>
+                                <label>Mật khẩu <font color="#FF0000">*</font></label>
+                                <input type="text" placeholder="eg. X8df!90EO">
+                                <i class="fa fa-lock icon" aria-hidden="true"></i>
+                            </p>
+                    		<p>
+                                <p class="login button"> 
+                                    <input type="button" value="Cập nhật" onClick="VS1K5716.profile();" style="width:100px;"/> 
+                                </p>
+                            </p>
+                        </form>
+                    </div>
+                	<div id="tab-password" class="tab-pane hide">
+                        <form id="passwordForm" class="form">
+                    		<p> 
+                                <label>Mật khẩu hiện tại <font color="#FF0000">*</font></label>
+                                <input name="password_current" type="password" placeholder="eg. X8df!90EO" valid="req"/>
+                                <i class="fa fa-lock icon" aria-hidden="true"></i>
+                            </p>
+                            <p> 
+                                <label>Mật khẩu mới <font color="#FF0000">*</font></label>
+                                <input name="password" type="password" placeholder="eg. X8df!90EO" valid="req|length{'min':8}"/>
+                                <i class="fa fa-lock icon" aria-hidden="true"></i>
+                                <i class="note">Mật khẩu có ít nhất 8 ký tự.</i>
+                            </p>
+                            <p> 
+                                <label>Xác nhận mật khẩu mới <font color="#FF0000">*</font></label>
+                                <input name="password_confirm" type="password" placeholder="eg. X8df!90EO" valid="req|equal[name='password']"/>
+                                <i class="fa fa-lock icon" aria-hidden="true"></i>
+                            </p>
+                    		<p>
+                                <p class="login button"> 
+                                    <input type="button" value="Đổi mật khẩu" onClick="VS1K5716.changePassword();" style="width:116px;"/>
+                                </p>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
