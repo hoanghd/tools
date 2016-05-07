@@ -6,6 +6,7 @@ CREATE TABLE `users` (
   `email` varchar(100) COLLATE utf8_bin NOT NULL DEFAULT '',
   `birthday` varchar(10) COLLATE utf8_bin NOT NULL DEFAULT '',
   `avatar` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `gender` varchar(10) COLLATE utf8_bin NOT NULL DEFAULT '',
   `is_active` smallint(6) NOT NULL DEFAULT '1',
   `ip` varchar(40) COLLATE utf8_bin NOT NULL DEFAULT '',
   `lastvisit` int(11) unsigned NOT NULL DEFAULT '0',

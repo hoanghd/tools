@@ -39,68 +39,72 @@
                 <div class="tab-content">                            
                     <div id="tab-account" class="tab-pane">
                         <form id="signUpForm" class="form">
-                            <p>
-                                <label>Họ tên</label>
-                                <input type="text" placeholder="Nguyễn Văn A">
-                                <i class="fa fa-user icon" aria-hidden="true"></i>
-                            </p>
-                    		<p> 
-                                <label>Avatar</label>
-                                <input type="file" placeholder="Avatar">
-                               <i class="fa fa-picture-o icon" aria-hidden="true"></i>
-                               <i class="note">*.gif, *.jpg, *.jpeg.</i>
-                            </p>
-                            <p>
-                                <label>Ngày sinh</label>
-                                <input type="text" placeholder="eg. 1984-12-12">
-                                <i class="fa fa-calendar icon" aria-hidden="true"></i>
-                            </p>
-                            <p> 
+                        	<div class="p-b-15"> 
                                 <label>Email <font color="#FF0000">*</font></label>
                                 <input name="email" type="email" placeholder="eg. nguyenvana92@mail.com" valid="req|email"/>
                                 <i class="fa fa-envelope icon" aria-hidden="true"></i> 
-                            </p>
-                    		<p> 
+                            </div>
+                    		<div class="p-b-15"> 
                                 <label>Tài khoản <font color="#FF0000">*</font></label>
                                 <input name="username" type="text" placeholder="eg. nguyenvana" valid="req|username|length{'min':6, 'max':30}"/>
                                 <i class="fa fa-users icon" aria-hidden="true"></i>
                                 <i class="note">Bạn có thể sử dụng chữ cái, số và dấu chấm. Từ 6 đến 30 ký tự.</i>
-                            </p>
-                    		<p>
-                                <label>Mật khẩu <font color="#FF0000">*</font></label>
-                                <input type="text" placeholder="eg. X8df!90EO">
-                                <i class="fa fa-lock icon" aria-hidden="true"></i>
-                            </p>
-                    		<p>
+                            </div>
+                            <div class="p-b-15">
+                                <label>Họ tên</label>
+                                <input type="text" placeholder="Nguyễn Văn A">
+                                <i class="fa fa-user icon" aria-hidden="true"></i>
+                            </div>
+                    		<div class="p-b-15"> 
+                                <label>Avatar</label>
+                                <input type="file" placeholder="Avatar">
+                               <i class="fa fa-picture-o icon" aria-hidden="true"></i>
+                               <i class="note">*.gif, *.jpg, *.jpeg.</i>
+                            </div>
+                            <div class="p-b-15">
+                                <label>Ngày sinh</label>
+                                <input type="text" placeholder="eg. 1984-12-12" readonly>
+                                <i class="fa fa-calendar icon" aria-hidden="true"></i>
+                            </div>
+                            <div class="p-b-15">
+                                <label>Giới tính</label>
+                                <p style="width:100%;margin-top:5px;">
+                                    <input type="radio" name="gender" value="male" id="gender-male" checked>
+                                    <label for="gender-male">Nam</label>
+                                    <input type="radio" name="gender" value="female" id="gender-femal">
+                                    <label for="gender-femal">Nữ</label>
+                                </p>
+                            </div>
+                    		<div class="p-b-15">
                                 <p class="login button"> 
                                     <input type="button" value="Cập nhật" onClick="VS1K5716.signUp();" style="width:100px;"/> 
                                 </p>
-                            </p>
+                            </div>
                         </form>
                     </div>
                 	<div id="tab-password" class="tab-pane hide">
                         <form id="changepwForm" class="form">
-                    		<p> 
+                    		<div class="p-b-15"> 
                                 <label>Mật khẩu hiện tại <font color="#FF0000">*</font></label>
                                 <input name="password_current" type="password" placeholder="eg. X8df!90EO" valid="req"/>
                                 <i class="fa fa-lock icon" aria-hidden="true"></i>
-                            </p>
-                            <p> 
+                            </div>
+                            <div class="p-b-15"> 
                                 <label>Mật khẩu mới <font color="#FF0000">*</font></label>
                                 <input name="password" type="password" placeholder="eg. X8df!90EO" valid="req|length{'min':8}"/>
                                 <i class="fa fa-lock icon" aria-hidden="true"></i>
                                 <i class="note">Mật khẩu có ít nhất 8 ký tự.</i>
-                            </p>
-                            <p> 
+                            </div>
+                            <div class="p-b-15"> 
                                 <label>Xác nhận mật khẩu mới <font color="#FF0000">*</font></label>
                                 <input name="password_confirm" type="password" placeholder="eg. X8df!90EO" valid="req|equal[name='password']"/>
                                 <i class="fa fa-lock icon" aria-hidden="true"></i>
-                            </p>
-                    		<p>
+                            </div>
+                    		<div class="p-b-15">
                                 <p class="login button"> 
                                     <input type="button" value="Đổi mật khẩu" onClick="VS1K5716.changePassword();" style="width:116px;"/>
                                 </p>
-                            </p>
+                            </div>
                         </form>
                     </div>
                 </div>
