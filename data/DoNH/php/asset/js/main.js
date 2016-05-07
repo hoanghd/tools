@@ -138,4 +138,8 @@ $(document).ready(function(){
 		$('.vs1k5716 .tab-content > .tab-pane').addClass('hide');
 		$($(this).attr('ref')).removeClass('hide');
    });
+   
+   if($("input.datepicker").length>0){
+		$("input.datepicker").datepick({dateFormat: 'yyyy-mm-dd'});   
+   }
 });
