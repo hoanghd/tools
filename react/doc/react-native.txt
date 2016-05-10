@@ -31,3 +31,4 @@ react-native init PropertyFinder
 To run your app:   
    $react-native run-ios
    $react-native run-android
+   $react-native start
