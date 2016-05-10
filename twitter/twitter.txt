@@ -1,0 +1,7 @@
+https://apps.twitter.com/app/12338668/show
+https://apps.twitter.com/app/12338668/keys
+
+https://www.npmjs.com/package/oauth-request
+https://dev.twitter.com/rest/public
+
+https://dev.twitter.com/rest/tools/console
