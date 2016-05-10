@@ -1,0 +1,34 @@
+https://www.raywenderlich.com/126063/react-native-tutorial
+https://github.com/facebook/react-native
+
+https://github.com/facebook/react-native/tree/master/Examples
+
+https://facebook.github.io/react-native/docs/tutorial.html
+https://www.raywenderlich.com/126063/react-native-tutorial
+
+https://facebook.github.io/react-native/docs/debugging.html#content
+
+
+
+=============Android=========
+https://facebook.github.io/react-native/docs/android-setup.html
+https://facebook.github.io/react-native/docs/getting-started.html#content
+http://developer.android.com/sdk/installing/index.html
+INSTALL
+
+$choco install python2
+$choco install nodejs.install
+$npm install -g react-native-cli
+$choco install jdk8
+
+Android Studio 2.0
+
+=============================
+npm install -g react-native-cli
+react-native init PropertyFinder
+
+=============================
+To run your app:   
+   $react-native run-ios
+   $react-native run-android
+   $react-native start
