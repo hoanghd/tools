@@ -1,0 +1,12 @@
+
+#left .block .title,
+#right .block .title
+{
+	padding-right:4px;
+}
+
+.global_apps_title,
+.global_apps_title_padding
+{
+	padding-right:5px;
+}

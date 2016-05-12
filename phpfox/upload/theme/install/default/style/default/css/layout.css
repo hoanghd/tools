@@ -1,0 +1,421 @@
+ 
+body
+{
+	text-align:center;
+	padding:0px;
+	background:#F1F1F1;
+	font-family:Arial,sans-serif;
+	color:#2D2E30;
+	font-size:10pt;
+	text-align:center;
+	margin:5px 0 0 0;
+}
+
+a
+{
+	color:#495A77;
+}
+
+a:hover
+{
+	color:#495A77;
+	text-decoration:none;
+}
+
+img
+{
+	border:0;
+}
+
+form
+{
+	margin:0px;
+}
+
+select
+{
+	font-size:14px;
+	background:#fff;
+	color:#000;
+	border:1px #B2B2B2 solid;
+	padding:8px 4px 8px 4px;
+	vertical-align:middle;
+}
+
+input
+{
+	font-size:10pt;
+	padding:8px 4px 8px 4px;
+	border:1px #B2B2B2 solid;
+	background: #f3f3f3 url('../image/layout/bg_form.png') left top repeat-x;	
+	vertical-align:top;
+	color:#000;	
+}
+
+input:focus,
+select:focus
+{
+	border:1px #7FDF6F solid;
+  	-moz-box-shadow:4px 4px 4px #DFDFDF;
+  	-webkit-box-shadow:4px 4px 4px #DFDFDF;
+  	box-shadow:4px 4px 4px #DFDFDF;		
+}
+
+textarea
+{
+	font-size:10pt;
+	padding:4px;
+	border:1px #B2B2B2 solid;
+	background:#F4F4F4;
+	color:#000;
+}
+
+div#container
+{
+	text-align:left;
+	width:980px;
+	position:absolute;	
+}
+
+.button
+{
+	cursor:pointer;
+	border:none;
+	font-size:12px;
+	margin:0px;
+	padding:8px;
+	vertical-align:middle;
+	font-weight:bold;
+	overflow: visible;	
+	color:#fff;	
+	background:url('../image/layout/install_button.png') repeat-x;
+	border:1px #00437F solid;
+	
+  	-moz-box-shadow:3px 3px 3px #CFCFCF;
+  	-webkit-box-shadow:3px 3px 3px #CFCFCF;
+  	box-shadow:3px 3px 3px #CFCFCF;
+}
+
+.button:focus
+{
+	border:1px #00437F solid;
+}
+
+.warning
+{
+	background:#CC0000;
+	color:#fff;
+	border:1px #D01F3C solid;
+}
+
+/* Hides from IE5-mac */
+* html div#main {height: 1%;}
+/* End hide from IE5-mac */ /*— Holly Hack for IE 6 Peekaboo bug —*/
+
+#main
+{
+	background:#FFFFFF;
+	padding:10px;
+	text-align:left;	
+	border:1px #E7E7E7 solid;
+	
+  	-moz-box-shadow:6px 6px 6px #CFCFCF;
+  	-webkit-box-shadow:6px 6px 6px #CFCFCF;
+  	box-shadow:6px 6px 6px #CFCFCF;		
+	
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;		
+	border-radius:20px;
+}
+
+#main .left
+{
+	position:absolute;
+	width:195px;
+	background:#333 url('../image/layout/install_left.png') repeat-x bottom;
+	height:400px;
+	left:0;
+	margin-left:10px;
+	color:#7F7F7F;
+	
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;	
+	border-radius:20px;
+	
+  	-moz-box-shadow:3px 3px 3px #CFCFCF;
+  	-webkit-box-shadow:3px 3px 3px #CFCFCF;
+  	box-shadow:3px 3px 3px #CFCFCF;		
+}
+
+#main .logo
+{
+	padding:10px 0px 5px 0px;
+	margin-bottom:5px;
+	text-align:center;	
+	border-bottom:1px #5F5F5F solid;		
+}
+
+#main .right
+{
+	margin-left:210px;	
+	min-height:400px;
+	height:auto !important;
+	height:400px;
+	padding-bottom:30px;
+}
+
+#main h3
+{
+	font-size:12pt;
+	margin:15px 0 10px 0;
+	border-bottom:1px #F4F4F3 solid;
+	padding:5px;	
+	background:#495A77;
+	color:#fff;
+}
+
+#main .p_4 {padding:4px;}
+#main .mT10 {margin-top:10px;}
+
+#main .valid_message 
+{
+ 	background:green;
+ 	margin:4px 0 4px 0;
+ 	color:#fff;
+ 	font-weight:bold;
+ 	font-size:10pt;
+ 	padding:4px;
+}
+
+#main .error_message 
+{
+ 	background:#b70000;
+ 	margin:4px 0 4px 0;
+ 	color:#fff;
+ 	font-weight:bold;
+ 	font-size:10pt;
+ 	padding:4px;
+}
+
+#main .public_message, #main .message
+{
+ 	margin:4px 0px 4px 0px;
+ 	color:#6B6B6B;
+ 	font-weight:bold;
+ 	font-size:10pt;
+ 	padding:4px;
+ 	display:none; 	
+	background:#FFF8CC;
+	border:1px #FFE222 solid; 	
+}
+
+#main .message
+{
+	display:block;
+}
+
+#main .alert_input 
+{
+	border:1px #b70000 solid;
+	background:#fff;
+}
+
+#main ul.step
+{
+	margin:0px;
+	padding:0px;
+	list-style-type:none;	
+}
+
+#main ul.step li
+{	
+	padding:5px;
+}
+
+#main ul.step li.active
+{
+	background:url('../image/layout/step_active.png') repeat-x;
+	color:#333;
+}
+
+#help a
+{
+	font-size: 10px;
+	text-decoration: none;
+	cursor: help;
+}
+
+#help
+{
+	position:relative;
+	bottom:20px;
+}
+
+#help .help_link
+{
+	position:absolute; 
+	right:0px;
+}
+
+#help .help_info
+{
+	display:none;
+}
+
+.t_center
+{
+	text-align:center;
+}
+
+.go_left
+{
+	float:left;
+	padding-right:10px;
+}
+
+.t_right
+{
+	text-align:right;
+}
+
+.clear
+{
+	clear:both;
+}
+
+.table_header
+{
+	background:#4D4C4C;
+	padding:5px;
+	color:#fff;
+	font-weight:bold;	
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;		
+	border-radius:6px;
+	margin-bottom:5px;
+	font-size:13px;
+	height:24px;
+	line-height:24px;
+}
+
+.table_header a { color:#fff; text-decoration:underline; }
+.table_header a:hover { color:#fff; text-decoration:none; }
+
+.table_sub_header
+{
+	background:#DFE4EE;
+	padding:4px;
+	color:#000;
+	font-size:10pt;
+	font-weight:bold;
+}
+
+.table
+{
+	padding:10px 0px 10px 0px;
+	position:relative;
+	border-bottom:1px #dfdfdf solid;	
+}
+
+.table:hover
+{
+	background:#FFFFDF;
+}
+
+.table_left
+{
+	padding:2px 0px 6px 4px; 	
+	color:#666666;
+	font-weight:bold;
+	font-size:12px;
+	position:absolute;
+	left:0px;
+	width:290px;
+}
+
+.table_right
+{
+	margin-left:300px;
+}
+
+.table_clear
+{
+	text-align:left;
+	padding:10px 0px 0px 0px;
+	position:relative;	
+}
+
+.moduleList
+{
+	width:400px;
+	height:200px;
+	border:1px #E6E6E6 solid;
+	overflow:auto;
+	margin:5px;
+	background:#F4F4F4;
+}
+
+div#copyright
+{
+	text-align:right; 
+	margin-top:15px;
+	font-size:9pt;
+	padding-right:14px;
+}
+
+div#copyright a
+{
+	color:#495A77;
+	text-decoration:none;	
+}
+
+div#copyright a:hover
+{
+	color:#495A77;
+	text-decoration:underline;	
+}
+
+div#copyright div
+{
+	padding-top:4px;
+}
+
+ul.action
+{
+	list-style-type:none;
+	margin:10px 0px 0px 0px;
+	padding:0px;
+}
+
+ul.action li
+{
+	display:inline;
+}
+
+ul.action li a
+{
+	border:1px #f1f1f1 solid;
+	padding:0px 16px 0px 16px;
+	line-height:36px;
+	height:36px;
+	font-size:15px;
+	text-decoration:none;
+	display:block;
+	position:absolute;
+	color:#fff;
+	font-weight:bold;
+	background:#6EA4D7 url('../image/layout/install_button.png') repeat-x;
+	
+	border:1px #00437F solid;
+	
+  	-moz-box-shadow:3px 3px 3px #CFCFCF;
+  	-webkit-box-shadow:3px 3px 3px #CFCFCF;
+  	box-shadow:3px 3px 3px #CFCFCF;
+}
+
+.label_flow
+{
+	overflow:auto; 
+	border:1px #CCCCCC solid;	
+	padding:4px;	
+}

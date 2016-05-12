@@ -1,0 +1,6 @@
+#! /bin/bash
+for FILE in `ls ./cmd`; do
+   sh ./gitlab.sh ./cmd/$FILE
+   #sh ./code-verify.sh ./cmd/$FILE
+   mv ./cmd/$FILE ./backup/$FILE
+done

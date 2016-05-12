@@ -1,0 +1,10 @@
+https://stedolan.github.io/jq/
+
+#Debug lỗi khi pull git
+export GIT_CURL_VERBOSE=1
+
+Trường hợp gitlab không thể pull thì cần tạo file
+vi ~/.netrc
+machine stash1.mycompany.com
+login myusername 
+password mypassword
