@@ -1,0 +1,146 @@
+
+#js_is_user_profile .profile_header
+{
+	color:#333;
+	margin:0px 0px 6px 0px;	
+	padding:0px 0px 12px 0px;
+    position:relative;
+    border-bottom:1px #D7D7D7 solid;
+	min-height:38px;
+}
+
+#js_is_user_profile .profile_header #section_menu
+{
+	position:absolute;
+	right:0px;
+}
+
+#js_is_user_profile .profile_header h1
+{
+	margin:0px;
+	padding:0px;
+}
+
+#js_is_user_profile .profile_header h1 span.profile_breadcrumb
+{
+	margin:0px 4px 0px 4px;
+}
+
+#js_is_user_profile .profile_online_status
+{
+	font-size:12px; 
+	color:#75B079;
+	font-weight:bold; 
+	position:absolute;
+	right:0px;
+	top:0px;
+}
+
+#js_is_user_profile #section_menu
+{
+	top:20px;
+}
+
+#js_is_user_profile .profile_image
+{
+	text-align:center;
+	position:relative;
+	margin-bottom:6px;
+}
+
+#js_is_user_profile .profile_image .p_4
+{
+	position:absolute;
+	right:0px;
+	top:0px;
+	background:#333;
+	display:none;
+}
+
+#js_is_user_profile .profile_image .p_4 a,
+#js_is_user_profile .profile_image .p_4 a:hover
+{
+	color:#EFEFEF;	
+}
+
+#js_is_user_profile .profile_image .p_4 a:hover
+{
+	color:#fff;
+}
+
+#js_is_user_profile .sub_section_menu
+{
+	margin-bottom:10px;
+	padding-bottom:0px;
+}
+
+#js_is_user_profile .profile_info
+{
+	color:#808080;
+	margin-top:4px;
+}
+
+#js_is_user_profile div.header_bar_menu
+{
+	margin:0px 0px 10px 0px;
+	padding:6px 0px 10px 10px;
+}
+
+#js_is_user_profile #section_menu
+{
+	bottom:5px;
+}
+
+#js_is_user_profile #content .block .title
+{	
+	padding:0px 0px 0px 4px;
+	line-height:25px;
+	font-weight:bold;
+	color:#333;	
+	border-bottom:1px #DFDFDF solid;	
+	background:#ECECEC;
+	font-size:11px;
+}
+
+#js_is_user_profile #content #js_block_border_feed_display .title
+{
+	display:none;
+}
+
+#js_is_user_profile .sub_section_menu ul li a,
+#js_is_user_profile .sub_section_menu ul li a:hover,
+#js_is_user_profile .sub_section_menu ul li.active a,
+#js_is_user_profile .sub_section_menu ul li.active a:hover
+{
+	background-repeat:no-repeat;
+	background-position:2px center;
+	padding-left:24px;
+}
+
+#js_is_user_profile h2
+{
+	font-weight:bold;
+	margin-bottom:10px;
+	color:#808080;
+	font-size:14px;
+}
+
+#js_is_user_profile .pages_profile_block
+{
+	float:left; width:75px; margin-right:10px; margin-bottom:10px;
+}
+
+#js_is_user_profile a.pages_profile_view_more
+{
+	display:block;
+	border-top:1px #D1DBEF solid;
+	line-height:30px;
+	height:30px;
+	text-align:center;	
+}
+
+#js_is_user_profile a.pages_profile_view_more:hover
+{
+	background:#333;
+	color:#fff;
+}

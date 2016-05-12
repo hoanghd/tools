@@ -1,0 +1,46 @@
+<?php 
+/**
+ * [PHPFOX_HEADER]
+ * 
+ * @copyright		[PHPFOX_COPYRIGHT]
+ * @author  		Raymond_Benc
+ * @package 		Phpfox
+ * @version 		$Id: add.html.php 2874 2011-08-23 08:40:57Z Raymond_Benc $
+ */
+
+/**
+ * Full path to where the API site is located.
+ */
+define('APP_URL', '');
+
+/**
+ * Public key you get when creating an APP.
+ */
+define('APP_PUBLIC_KEY', '');
+
+/**
+ * Private key you get when creating an APP.
+ */
+define('APP_PRIVATE_KEY', '');
+
+/**
+ * MySQL Host. Usually localhost.
+ */
+define('SQL_HOST', 'localhost');
+
+/**
+ * MySQL user name.
+ */
+define('SQL_USER', '');
+
+/**
+ * MySQL password.
+ */
+define('SQL_PASS', '');
+
+/**
+ * MySQL database  name.
+ */
+define('SQL_NAME', '');
+
+?>

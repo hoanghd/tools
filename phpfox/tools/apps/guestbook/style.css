@@ -1,0 +1,79 @@
+
+#guestbook_holder
+{
+	position:relative;
+	width:600px;	
+}
+
+#guestbook_submit
+{
+	position:relative;
+	margin-top:5px;
+}
+
+#guestbook_content
+{
+	margin-left:60px;	
+}
+
+#guesbook_user_image
+{
+	position:absolute;
+	left:0px;
+	width:50px;
+}
+
+#guestbook_user
+{
+	position:absolute;
+	right:4px;
+	top:4px;
+	color:#808080;
+}
+
+#guestbook_textarea
+{
+	width:98%;
+}
+
+#guestbook_comments
+{
+	padding-top:20px;
+}
+
+.gb_holder
+{
+	position:relative;
+	margin-bottom:10px;
+	border-bottom:1px #dfdfdf solid;
+	padding-bottom:5px;
+}
+
+.gb_image
+{
+	position:absolute;
+	left:0px;
+	width:50px;	
+}
+
+.gb_content
+{
+	margin-left:60px;
+	min-height:55px;
+}
+
+.gb_text
+{
+	padding:5px 0px 5px 0px;
+}
+
+.gb_date
+{
+	color:#808080;
+}
+
+.gb_user a,
+.gb_user a:hover
+{
+	font-weight:bold;
+}

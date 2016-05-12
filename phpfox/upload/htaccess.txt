@@ -1,0 +1,59 @@
+######################################
+## [PHPFOX_HEADER]
+##
+## @copyright		[PHPFOX_COPYRIGHT]
+## @author  		Raymond Benc
+## @package 		PhpFox
+## @version 		$Id: htaccess.txt 2605 2011-05-16 19:42:52Z Raymond_Benc $
+######################################
+
+# Header unset Pragma
+# FileETag None
+# Header unset ETag
+
+# URL Rewrite
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	#
+	#  Full path to your site
+	#
+	RewriteBase /
+
+	# Rename Photo Names
+	# RewriteRule ^file/pic/photo/([0-9]+)/([0-9]+)/([A-Za-z0-9]{32}+)\-(.*?)([_0-9]*?)\.(.*)$ file/pic/photo/$1/$2/$3$5.$6
+
+	#
+	#  Rules
+	#
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*) index.php?do=/$1
+
+	# Image Access Protection
+	# RewriteRule ^file/pic/photo/(.*)\.(.*)$ static/image.php?file=$1&ext=$2
+</IfModule>
+
+# Modify Headers
+<IfModule mod_headers.c>
+	# Cache files
+	<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|swf|mp3|mp4)$">
+		Header set Cache-Control "public"
+		Header set Expires "Mon, 20 Apr 2015 20:00:00 GMT"
+		Header unset Last-Modified
+	</FilesMatch>
+	 
+	# Cache JavaScript & CSS
+	<FilesMatch "\.(js|css)$">
+		Header set Cache-Control "public"
+		Header set Expires "Mon, 20 Apr 2015 20:00:00 GMT"
+		Header unset Last-Modified
+	</FilesMatch>
+</IfModule>
+
+# Compress JavaScript & CSS
+<IfModule mod_deflate.c>
+	<FilesMatch "\.(js|css)$">
+		SetOutputFilter DEFLATE
+	</FilesMatch>
+</IfModule>
