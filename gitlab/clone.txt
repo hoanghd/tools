@@ -1,3 +1,5 @@
+https://stedolan.github.io/jq/
+
 #Debug lỗi khi pull git
 export GIT_CURL_VERBOSE=1
 

@@ -1,0 +1,16 @@
+#! /bin/bash
+FILE=$1
+echo "============================="
+echo "./gitlab.sh $FILE"
+echo "============================="
+if [ -f $FILE ]; then
+   CMD=`cat $FILE`
+   GIT_PATH=`echo $CMD | ./jq '.git_path' | sed 's/^"\(.*\)"$/\1/'`
+
+   if [ -d "$GIT_PATH" ]; then
+        echo "cd $GIT_PATH"
+        cd $GIT_PATH
+        git checkout master
+        git pull origin master
+   fi
+fi
