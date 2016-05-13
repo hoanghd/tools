@@ -1,0 +1,6 @@
+HTML			React Native
+------------------------------
+div			-> 	View
+img			->	Image
+span,p		->	Text
+ul/ol,li	->	ListView, child items

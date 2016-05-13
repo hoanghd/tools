@@ -1,0 +1,5 @@
+<Navigator
+initialRoute={{name: 'home'}}
+renderScene={this.renderScene}
+/>
+

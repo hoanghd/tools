@@ -1,0 +1,42 @@
+<SimpleButton
+	onPress={() => console.log('Pressed!')}
+	customText='Create Note'
+/>
+
+
+<SimpleButton
+	onPress={() => {
+		navigator.push({
+			name: 'createNote'
+		});
+	}}
+	customText='Create Note'
+/>
+
+<TextInput
+	autoFocus={true}
+	placeholder="Untitled"
+	style={styles.title}
+	onEndEditing={(text) => {this.refs.body.focus()}}
+/>
+
+
+<SimpleButton
+	onPress={() => this.props.navigator.push({
+		name: 'createNote'
+	})}
+	customText="Create Note"
+	style={styles.simpleButton}
+	textStyle={styles.simpleButtonText}
+/>
+
+==============================================================
+<Text>
+The quick <Text style={{fontStyle: "italic"}}>brown</Text> fox
+jumped over the lazy <Text style={{fontWeight: "bold"}}>dog</Text>.
+</Text>
+
+
+<Text style={styles.welcome}>
+{this.state.pressing ? 'EEK!' : 'PUSH ME'}
+</Text>
