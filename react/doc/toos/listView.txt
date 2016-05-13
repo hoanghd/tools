@@ -1,0 +1,76 @@
+var BookList = React.createClass({
+	getInitialState: function() {
+		var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+		return {
+			dataSource: ds.cloneWithRows([])
+		};
+	},
+	
+	componentDidMount: function() {
+		this._refreshData();
+	},
+
+	_renderRow: function(rowData) {
+		return <BookItem coverURL={rowData.book_image}
+			title={rowData.title}
+			author={rowData.author}/>;
+	},
+	
+	_renderHeader: function() {
+		return (<View style={styles.sectionDivider}>
+			<Text style={styles.headingText}>
+				Bestsellers in Hardcover Fiction
+			</Text>
+		</View>);
+	},
+	
+	_renderFooter: function() {
+		return(
+			<View style={styles.sectionDivider}>
+				<Text>Data from the New York Times Best Seller list.</Text>
+			</View>
+		);
+	},
+	
+	_refreshData: function() {
+		fetch(ENDPOINT)
+		.then((response) => response.json())
+		.then((rjson) => {
+			this.setState({
+				dataSource: this.state.dataSource.cloneWithRows(rjson.results.books)
+			});
+		});
+	},
+	
+	render: function() {
+		return (
+			<ListView
+			style=
+			dataSource={this.state.dataSource}
+			renderRow={this._renderRow}
+			renderHeader={this._renderHeader}
+			renderFooter={this._renderFooter}
+			/>
+		);
+	}
+});
+
+
+var BookItem = React.createClass({
+	propTypes: {
+		coverURL: React.PropTypes.string.isRequired,
+		author: React.PropTypes.string.isRequired,
+		title: React.PropTypes.string.isRequired
+	},
+	render: function() {
+		return (
+			<View style={styles.bookItem}>
+				<Image style={styles.cover} source=/>
+				<View style={styles.info}>
+					<Text style={styles.author}>{this.props.author}</Text>
+					<Text style={styles.title}>{this.props.title}</Text>
+				</View>
+			</View>
+		);
+	}
+});

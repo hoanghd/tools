@@ -29,3 +29,14 @@
 	style={styles.simpleButton}
 	textStyle={styles.simpleButtonText}
 />
+
+==============================================================
+<Text>
+The quick <Text style={{fontStyle: "italic"}}>brown</Text> fox
+jumped over the lazy <Text style={{fontWeight: "bold"}}>dog</Text>.
+</Text>
+
+
+<Text style={styles.welcome}>
+{this.state.pressing ? 'EEK!' : 'PUSH ME'}
+</Text>

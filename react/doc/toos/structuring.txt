@@ -1,4 +1,12 @@
-
+- js
+|- components
+	|- Button
+		|- index.js
+		|- styles.js
+|- styles
+	|- styles.js
+	|- colors.js
+	|- fonts.js
 
 import React, {
 	Text,

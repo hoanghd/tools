@@ -1,0 +1,5 @@
+var xhr = new XMLHttpRequest();
+xhr.open('POST', 'http://posttestserver.com/post.php');
+var formdata = new FormData();
+formdata.append('image', {...this.state.photo, name: 'image.jpg'});
+xhr.send(formdata);
