@@ -1,0 +1,33 @@
+import React, {
+	Text,
+	View
+} from 'react-native';
+
+export default class SimpleButton extends React.Component {
+	render () {
+		return (
+			<View>
+				<Text>Simple Button</Text>
+			</View>
+		);
+	}
+}
+
+======================================================
+
+import React, {
+	AppRegistry,
+	StyleSheet,
+	View
+} from 'react-native';
+
+import SimpleButton from './App/Components/SimpleButton';
+class ReactNotes extends React.Component {
+	render () {
+		return (
+			<View style={styles.container}>
+				<SimpleButton />
+			</View>
+		);
+	}
+}

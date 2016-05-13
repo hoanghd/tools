@@ -1,0 +1,16 @@
+<HelloComponent text="Hello React" />
+
+import React, {
+	Text,
+	View
+} from 'react-native';
+
+class HelloComponent extends React.Component {
+	render () {
+		return (
+			<View>
+				<Text>{this.props.text}</Text>
+			View>
+		);
+	}
+}
