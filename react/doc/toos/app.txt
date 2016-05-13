@@ -1,0 +1,9 @@
+https://github.com/7kfpun/FinanceReactNative
+https://github.com/jondot/awesome-react-native
+https://github.com/corymsmith/react-native-icons
+https://github.com/leecade/react-native-swiper
+https://github.com/benoitvallon/react-native-nw-react-calculator
+
+
+
+https://github.com/ptmt/react-native-desktop
