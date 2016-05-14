@@ -30,6 +30,9 @@ Android Studio 2.0
 npm install -g react-native-cli
 react-native init PropertyFinder
 
+brew install watchman
+brew install flow
+
 =============================
 To run your app:   
    $react-native run-ios
