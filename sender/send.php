@@ -5,24 +5,46 @@ $title = "Cơ hội nhận được Iphone 6! Tham gia ngay kẽo lỡ.";
 $content = renderInternal('iphone6');
 
 foreach(file('emails.dat', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $i=>$email){
-	if(isValid($email)){
+	if($i>158 && isValid($email)){
 		echo "================================\n";
 		echo "{$i} -> {$email}\n";
 		echo "================================\n";
 		sendMail($email, $title, $content);
-		sleep(2);
+		sleep(20);
 	}
 }
 
 function isValid($email){
-	$not = array('facebook.com');
+	$not = array('facebook.com', 'taembe.com', 'trangcall.com');
 	
 	if(preg_match('/([^\@]+)$/', $email, $matches)){
-		if(!in_array($matches[1], $not) ){
+		if(!in_array($matches[1], $not) && checkMxPorts($matches[1])){
 			return true;
 		}
 	}
 	return false;
+}
+
+function checkMxPorts($domain)
+{
+	$records=dns_get_record($domain, DNS_MX);
+	if($records===false || empty($records))
+		return false;
+	usort($records,'mxSort');
+	foreach($records as $record)
+	{
+		$handle=fsockopen($record['target'],25);
+		if($handle!==false)
+		{
+			fclose($handle);
+			return true;
+		}
+	}
+	return false;
+}
+function mxSort($a, $b)
+{
+	return $a['pri']-$b['pri'];
 }
 
 function renderInternal($_viewFile_, $_data_=null)
@@ -57,9 +79,9 @@ function sendMail($sendTo, $subject, $body){
 	$mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
 	$mail->Port       = 587; 
 	
-	$mail->Username = 'big34562345657@gmail.com';
+	$mail->Username = 'big34562345658@gmail.com';
 	$mail->Password = '2Congaquay';
-	$mail->setFrom('big34562345657@gmail.com', 'BigSale');
+	$mail->setFrom('big34562345658@gmail.com', 'BigSale');
 	
 	$mail->addAddress($sendTo);
 	
