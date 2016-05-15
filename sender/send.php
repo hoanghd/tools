@@ -4,8 +4,10 @@ require './PHPMailer/autoload.php';
 $title = "Cơ hội nhận được Iphone 6! Tham gia ngay kẽo lỡ.";
 $content = renderInternal('iphone6');
 
+$curr = (int)file_get_contents("./curr.dat");
 foreach(file('emails.dat', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $i=>$email){
-	if($i>655 && isValid($email)){
+	file_put_contents("./curr.dat", $i);
+	if($i>$curr && isValid($email)){
 		echo "================================\n";
 		echo "{$i} -> {$email}\n";
 		echo "================================\n";
@@ -15,7 +17,7 @@ foreach(file('emails.dat', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $i=
 }
 
 function isValid($email){
-	$not = array('facebook.com', 'taembe.com', 'trangcall.com');
+	$not = array('facebook.com', 'taembe.com', 'trangcall.com', 'google.com', 'friend.com' ,'eic.com.vn');
 	
 	if(preg_match('/([^\@]+)$/', $email, $matches)){
 		if(!in_array($matches[1], $not) && checkMxPorts($matches[1])){
