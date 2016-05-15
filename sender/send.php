@@ -5,12 +5,12 @@ $title = "Cơ hội nhận được Iphone 6! Tham gia ngay kẽo lỡ.";
 $content = renderInternal('iphone6');
 
 foreach(file('emails.dat', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $i=>$email){
-	if($i>158 && isValid($email)){
+	if($i>655 && isValid($email)){
 		echo "================================\n";
 		echo "{$i} -> {$email}\n";
 		echo "================================\n";
 		sendMail($email, $title, $content);
-		sleep(20);
+		sleep(11);
 	}
 }
 
