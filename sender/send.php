@@ -12,7 +12,7 @@ foreach(file('emails.dat', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $i=
 		echo "{$i} -> {$email}\n";
 		echo "================================\n";
 		sendMail($email, $title, $content);
-		sleep(11);
+		sleep(rand(11, 20));
 	}
 }
 
@@ -81,9 +81,14 @@ function sendMail($sendTo, $subject, $body){
 	$mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
 	$mail->Port       = 587; 
 	
-	$mail->Username = 'big34562345658@gmail.com';
+	$list = array('big34562345657', 
+				  'big34562345658', 
+				  'big34562345659', 
+				  'big34562345610');
+	$id = 'big34562345657'; 
+	$mail->Username = $id.'@gmail.com';
 	$mail->Password = '2Congaquay';
-	$mail->setFrom('big34562345658@gmail.com', 'BigSale');
+	$mail->setFrom($id.'@gmail.com', 'BigSale');
 	
 	$mail->addAddress($sendTo);
 	
