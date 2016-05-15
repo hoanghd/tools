@@ -17,7 +17,7 @@ foreach(file('emails.dat', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $i=
 }
 
 function isValid($email){
-	$not = array('facebook.com', 'taembe.com', 'trangcall.com', 'google.com', 'friend.com' ,'eic.com.vn');
+	$not = array('facebook.com', 'taembe.com', 'trangcall.com', 'google.com', 'friend.com' ,'eic.com.vn', 'daiphuc.com.vn', 'jp.com.vn', 'lhc.vn');
 	
 	if(preg_match('/([^\@]+)$/', $email, $matches)){
 		if(!in_array($matches[1], $not) && checkMxPorts($matches[1])){
