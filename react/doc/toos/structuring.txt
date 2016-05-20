@@ -1,3 +1,8 @@
+app
+	- screens
+	- components
+	- styles
+
 - js
 |- components
 	|- Button
