@@ -1,0 +1,13 @@
+https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html
+https://www.raywenderlich.com/123862/push-notifications-tutorial
+
+
+https://github.com/manifestinteractive/easyapns
+https://www.npmjs.com/package/nodejs-apns-secure
+
+
+https://blog.engineyard.com/2013/developing-ios-push-notifications-nodejs
+
+========================================
+https://github.com/argon/node-apn
+http://stackoverflow.com/questions/36633188/apns-apple-push-notification-service-with-node-js
