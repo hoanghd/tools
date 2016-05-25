@@ -1,0 +1,6 @@
+curl  -X DELETE -H 'Accept: application/vnd.layer+json; version=1.1' -H 'Authorization: Bearer 2V5F6wRyZe22P9YWRXw2Z1SXU0vRoFvL6l0JBJeO8INGQXsL' https://api.layer.com/apps/fae0f198-12e1-11e5-9c0f-aa9e2d006589/conversations/3aca53fb-7106-4295-97eb-91ba08decd48/messages/c93fb5a8-e8a1-43a4-9c19-97ec676ad5f7;
+
+
+		
+		
+curl  -X GET  -H "Accept: application/vnd.layer+json; version=1.0"  -H 'Authorization: Bearer 2V5F6wRyZe22P9YWRXw2Z1SXU0vRoFvL6l0JBJeO8INGQXsL'  https://api.layer.com/conversations?page_size=10
