@@ -179,6 +179,9 @@ III.MYSQL
 		[root@home ~]# iptables -L -n
 		[root@home ~]# vi /etc/sysconfig/iptables
 				-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+				
+				sudo iptables -A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 5432 -j ACCEPT
+				sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 		[root@home ~]# /sbin/service iptables restart
 	6. DUMP/Restore DB
 		######### Dump #########
@@ -202,9 +205,18 @@ III.2.POSTGRE
 	######### Start / Restart #########
 	[root@home ~]# /etc/init.d/postgresql restart
 	[root@home ~]# /etc/init.d/postgresql-9.1 restart
+	
+	[root@home ~]# su - postgres
+	[root@home ~]# /usr/pgsql-9.5/bin/pg_ctl start -D /var/lib/pgsql/9.5/data
+	[root@home ~]# /usr/pgsql-9.5/bin/pg_ctl reload -D /var/lib/pgsql/9.5/data
+	[root@home ~]# vi /var/lib/pgsql/9.5/data/pg_hba.conf
 
 	[root@home ~]# vi /var/lib/pgsql/data/pg_hba.conf
 	[root@home ~]# vi /var/lib/pgsql/data/postgresql.conf
+	
+	/var/lib/pgsql/9.5/data/pg_hba.conf
+	/var/lib/pgsql/9.5/data/postgresql.conf
+	
 	
 	- File: pg_hba.conf
 	  local  	all  	all                        	trust
