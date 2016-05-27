@@ -1,2 +1,20 @@
-systemctl stop firewalld
-systemctl mask firewalld
+
+NETWORK: (http://linux-training.be/funhtml/ch05.html)
+	$nmtui
+	$systemctl restart network
+	$systemctl stop firewalld
+	$systemctl mask firewalld
+
+APACHE: http://www.liquidweb.com/kb/how-to-install-apache-on-centos-7/
+	$sudo yum clean all
+	$sudo yum -y update
+	$sudo yum -y install httpd
+	$sudo firewall-cmd --permanent --add-port=80/tcp
+	$sudo firewall-cmd --permanent --add-port=443/tcp
+	$sudo firewall-cmd --reload
+	$sudo systemctl start httpd
+	$sudo systemctl enable httpd
+	$sudo systemctl status httpd
+	$sudo systemctl stop httpd
+
+
