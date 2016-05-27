@@ -1,0 +1,10 @@
+http://redis.io/topics/quickstart
+wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+cd redis-stable
+make
+
+cd utils
+sudo ./install_server.sh
+
+/init.d/redis_6379
