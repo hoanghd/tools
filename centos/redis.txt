@@ -10,7 +10,8 @@ sudo cp src/redis-cli /usr/local/bin/
 cd utils
 sudo ./install_server.sh
 
-/init.d/redis_6379
+Please select the redis executable path [/usr/local/bin/redis-server]
+/etc/init.d/redis_6379 status
 
 ============================
 https://discuss.zendesk.com/hc/en-us/articles/205308418-How-to-install-and-use-Redis-on-Linux
