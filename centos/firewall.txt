@@ -1,5 +1,8 @@
 $vi /etc/sysconfig/iptables
 $service iptables restart
 
+iptables -I INPUT -p TCP --dport 7777 -j ACCEPT
+service iptables save
+
 //allow ip from 210.173.159.77
 -A INPUT -s 210.173.159.77 -d 27.120.83.19 -p tcp -m state --state NEW,RELATED,ESTABLISHED -m tcp --dport 2258 -j ACCEPT
