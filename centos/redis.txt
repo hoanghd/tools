@@ -13,3 +13,4 @@ sudo ./install_server.sh
 /init.d/redis_6379
 
 ============================
+https://discuss.zendesk.com/hc/en-us/articles/205308418-How-to-install-and-use-Redis-on-Linux
