@@ -1,0 +1,8 @@
+https://www.howtoforge.com/tutorial/how-to-install-gitlab-with-postgresql-and-nginx-on-ubuntu-15-04/
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-6-with-yum
+
+sudo yum install epel-release
+sudo yum install nginx
+sudo /etc/init.d/nginx start
+
+cd /etc/nginx/conf.d

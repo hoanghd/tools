@@ -1,0 +1,15 @@
+https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/nginx.md#using-a-non-bundled-web-server
+
+Using a non-bundled web-server
+$vi /etc/gitlab/gitlab.rb
+  nginx['enable'] = false
+  web_server['external_users'] = ['nginx']
+
+$chmod -R o+x /var/opt/gitlab/gitlab-rails/sockets
+$chmod 755 /var/opt/gitlab/gitlab-rails/sockets
+$usermod -a -G gitlab-www nginx
+cp /var/opt/gitlab/nginx/conf/gitlab-http.conf /etc/nginx/conf.d/
+vi gitlab-http.conf
+   #  listen [::]:80;
+   #  access_log  /var/log/gitlab/nginx/gitlab_access.log gitlab_access;
+   #  proxy_http_version 1.1;

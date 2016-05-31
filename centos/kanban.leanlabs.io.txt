@@ -1,0 +1,28 @@
+./kanban server --server-listen="0.0.0.0:9000" --server-hostname="http://kanban.domain:9000" --gitlab-url="http://git.domain.net" --gitlab-client="" --gitlab-secret="" --redis-addr="127.0.0.1:6379"
+
+http://kanban.leanlabs.io/
+
+/var/opt/gitlab/nginx/conf/kanban.conf
+
+server {
+    listen *:80;
+    server_name kanban.solazu.net;
+    
+    location / {
+		proxy_pass http://localhost:9000;
+    }
+
+    location /ws {
+        proxy_set_header Host $host;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Origin "";
+        proxy_pass http://localhost:9000;
+    }
+}
+
+sudo gitlab-ctl restart nginx
+sudo gitlab-ctl stop nginx
+ 
+vi /etc/gitlab/gitlab.rb
+sudo gitlab-ctl reconfigure
