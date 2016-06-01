@@ -1,0 +1,11 @@
+sudo rm /var/lib/mongodb/mongod.lock
+
+ps -ef | grep mongo
+
+mongod --repair
+mongod --repair --dbpath DBPATH
+sudo service mongodb start
+
+/var/lib/mongo/mongod.lock
+/home/data/db/mongod.lock
+/data/db/mongod.lock
