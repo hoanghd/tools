@@ -6,6 +6,8 @@ mongod --repair
 mongod --repair --dbpath DBPATH
 sudo service mongodb start
 
-/var/lib/mongo/mongod.lock
-/home/data/db/mongod.lock
-/data/db/mongod.lock
+mongod --fork --dbpath /data/db --logpath /data/mongodb.log
+
+/var/lib/mongo/
+/home/data/db/
+/data/db/
