@@ -1,7 +1,21 @@
 https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/nginx.md#using-a-non-bundled-web-server
-https://github.com/gitlabhq/gitlab-ci/blob/5-2-stable/doc/install/installation.md
-https://codereviewvideos.com/course/your-own-private-github/video/gitlab-ci-runner-tutorial
 
+Install gitlab-ci
+	Mặc định được install chung với gitlab
+	
+Install runner
+	- https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/docs/install/linux-repository.md
+	- Để lấy token cần vào
+		http://git.solazu.net/admin/runners
+	- Khi instal chọn loại shell
+	- gitlab-ci-multi-runner start
+	- Ở mỗi project cần tạo một file .gitlab-ci.yml file này định nghĩa việc xử lý sau khi commit ở git nó thực thi ở server runner
+		http://docs.gitlab.com/ce/ci/yaml/README.html#jobs
+		https://about.gitlab.com/2015/06/08/implementing-gitlab-ci-dot-yml/
+	
+Install gitlab
+	https://about.gitlab.com/downloads/#centos6
+	
 Using a non-bundled web-server
 $vi /etc/gitlab/gitlab.rb
   nginx['enable'] = false
@@ -15,3 +29,7 @@ vi gitlab-http.conf
    #  listen [::]:80;
    #  access_log  /var/log/gitlab/nginx/gitlab_access.log gitlab_access;
    #  proxy_http_version 1.1;
+
+   #sudo gitlab-ctl stop  nginx
+   
+
