@@ -1,4 +1,5 @@
 https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/nginx.md#using-a-non-bundled-web-server
+https://github.com/gitlabhq/gitlab-ci/blob/5-2-stable/doc/install/installation.md
 
 Using a non-bundled web-server
 $vi /etc/gitlab/gitlab.rb
