@@ -12,9 +12,12 @@ Install runner
 	- Ở mỗi project cần tạo một file .gitlab-ci.yml file này định nghĩa việc xử lý sau khi commit ở git nó thực thi ở server runner
 		http://docs.gitlab.com/ce/ci/yaml/README.html#jobs
 		https://about.gitlab.com/2015/06/08/implementing-gitlab-ci-dot-yml/
+		
+	http://www.cyberciti.biz/faq/set-environment-variable-linux/
 Yml
 	${CI_BUILD_NAME}		: Jobname
 	${CI_BUILD_REF_NAME}	: Branch
+	${CI_BUILD_STAGE}		: Comment
 	
 Install gitlab
 	https://about.gitlab.com/downloads/#centos6
