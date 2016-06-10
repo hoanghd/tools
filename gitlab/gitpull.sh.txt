@@ -9,7 +9,7 @@ if [ ! -d "${LOCAL_SRC}/${NAME}dev" ]; then
         git clone "http://git.solazu.net/wordpress/${NAME}.git" "${NAME}dev"
 fi
 
-if [ ! -d "${WEB_SRC}/${NAME}" ]; then
+if [ ! sudo -u luantruong -d "${WEB_SRC}/${NAME}" ]; then
         cd $LOCAL_SRC/src
         wget https://wordpress.org/latest.zip
         unzip latest.zip
@@ -20,7 +20,7 @@ if [ ! -d "${WEB_SRC}/${NAME}" ]; then
         rm -rf latest.zip
 fi
 
-if [ ! -d "${WEB_SRC}/${NAME}dev" ]; then
+if [ ! sudo -u luantruong -d "${WEB_SRC}/${NAME}dev" ]; then
         cd $LOCAL_SRC/src
         wget https://wordpress.org/latest.zip
         unzip latest.zip
@@ -31,10 +31,31 @@ if [ ! -d "${WEB_SRC}/${NAME}dev" ]; then
         rm -rf latest.zip
 fi
 
-if [ ! -d "${WEB_SRC}/${NAME}/wp-content/themes/${NAME}" ]; then
+if [ ! sudo -u luantruong -d "${WEB_SRC}/${NAME}/wp-content/themes/${NAME}" ]; then
         sudo -u luantruong ln -s $LOCAL_SRC/${NAME}/code/theme ${WEB_SRC}/${NAME}/wp-content/themes/${NAME}
 fi
 
-if [ ! -d "${WEB_SRC}/${NAME}dev/wp-content/themes/${NAME}" ]; then
+if [ ! sudo -u luantruong -d "${WEB_SRC}/${NAME}dev/wp-content/themes/${NAME}" ]; then
         sudo -u luantruong ln -s $LOCAL_SRC/${NAME}dev/code/theme ${WEB_SRC}/${NAME}dev/wp-content/themes/${NAME}
 fi
+
+for PLUGIN_NAME in ${LOCAL_SRC}/${NAME}/code/plugin/*/
+do
+    PLUGIN_NAME=${PLUGIN_NAME%*/}
+    PLUGIN_NAME=${PLUGIN_NAME##*/}
+	
+	if [ ! sudo -u luantruong -d "${WEB_SRC}/${NAME}/wp-content/plugins/${PLUGIN_NAME}" ]; then
+        sudo -u luantruong ln -s "${LOCAL_SRC}/${NAME}/code/plugin/${PLUGIN_NAME}" "${WEB_SRC}/${NAME}/wp-content/plugins/${PLUGIN_NAME}"
+	fi
+done
+
+for PLUGIN_NAME in ${LOCAL_SRC}/${NAME}dev/code/plugin/*/
+do
+    PLUGIN_NAME=${PLUGIN_NAME%*/}
+    PLUGIN_NAME=${PLUGIN_NAME##*/}
+	
+	if [ ! sudo -u luantruong -d "${WEB_SRC}/${NAME}dev/wp-content/plugins/${PLUGIN_NAME}" ]; then
+        sudo -u luantruong ln -s "${LOCAL_SRC}dev/${NAME}/code/plugin/${PLUGIN_NAME}" "${WEB_SRC}/${NAME}dev/wp-content/plugins/${PLUGIN_NAME}"
+	fi
+done
+
