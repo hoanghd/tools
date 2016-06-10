@@ -13,6 +13,8 @@ Install runner
 		http://docs.gitlab.com/ce/ci/yaml/README.html#jobs
 		https://about.gitlab.com/2015/06/08/implementing-gitlab-ci-dot-yml/
 		
+	- $vi /etc/gitlab-runner/config.toml
+		
 	http://www.cyberciti.biz/faq/set-environment-variable-linux/
 Yml
 	${CI_BUILD_NAME}		: Jobname

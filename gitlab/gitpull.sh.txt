@@ -1,0 +1,23 @@
+#! /bin/bash
+NAME=$1
+if [ ! -d "${LOCAL_SRC}/${NAME}" ]; then
+        cd $LOCAL_SRC
+        git clone "http://git.solazu.net/wordpress/${NAME}.git"
+fi
+
+if [ ! -d "${LOCAL_SRC}/${NAME}dev" ]; then
+        cd $LOCAL_SRC
+        git clone "http://git.solazu.net/wordpress/${NAME}.git" "${NAME}dev"
+		git checkout develop
+		git pull origin develop
+fi
+
+if [ ! -d "${WEB_SRC}/${NAME}/wp-content/themes/${NAME} ]" ]; then
+	sudo su -
+	ln -s $LOCAL_SRC/${NAME}/code/theme ${WEB_SRC}/${NAME}/wp-content/themes/${NAME}
+fi
+
+if [ ! -d "${WEB_SRC}/${NAME}dev/wp-content/themes/${NAME} ]" ]; then
+	sudo su -
+	ln -s $LOCAL_SRC/${NAME}dev/code/theme ${WEB_SRC}/${NAME}/wp-content/themes/${NAME}
+fi
