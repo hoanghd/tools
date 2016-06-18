@@ -1,8 +1,6 @@
 http://devdocs.magento.com/guides/v2.0/install-gde/system-requirements.html
 https://www.magentocommerce.com/download?_ga=1.74333205.68982923.1464409932
 
-
-
 server {
 		listen 203.162.51.61:80;
 		server_name magento.usedata.vn;
@@ -146,3 +144,17 @@ server {
 			include        fastcgi_params;
 		}
 }
+=======
+http://devdocs.magento.com/guides/v2.0/install-gde/install/cli/install-cli-install.html
+http://devdocs.magento.com/guides/v2.0/install-gde/install/cli/install-cli-adminurl.html
+
+./magento setup:install --base-url=http://127.0.0.1/magento2/ \
+--db-host=localhost --db-name=magento --db-user=magento --db-password=magento \
+--admin-firstname=Magento --admin-lastname=User --admin-email=user@example.com \
+--admin-user=admin --admin-password=admin123 --language=en_US \
+--currency=USD --timezone=America/Chicago --cleanup-database
+
+./magento indexer:reindex
+./magento cache:clean
+./magento setup:di:compile-multi-tenant
+chmod -R 777 var pub

@@ -1,5 +1,6 @@
 netstat -anp | grep 834
-netstat -plten | grep 9000
+netstat -plten | grep 80
+netstat -plten | grep nginx
 
 tcp        0      0 :::9000                     :::*                        LISTEN      0          11705254   18634/./kanban
 kill -9 18634

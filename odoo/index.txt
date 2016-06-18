@@ -1,0 +1,3 @@
+https://odootricks.wordpress.com/2014/09/30/installing-odoo-8-on-centos-6-with-virtual-python-install/
+https://www.odoo.com/documentation/9.0/howtos/themes.html
+https://github.com/OCA/server-tools/
