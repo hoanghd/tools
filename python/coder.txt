@@ -1,0 +1,10 @@
+- Cách khai báo biến giống PHP tận cùng ko cần thêm ;
+	c = [1,2,3,4,5,5]
+	k = { 'EN':'English', 'FR':'French' }
+	
+- Chú ý tab để đóng khối thay vì dùng {}
+	for i in varArray:
+	while x != 5:
+	if x != 5:
+	
+	def func(arg1, arg2):
