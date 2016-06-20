@@ -1,0 +1,6 @@
+set PATH (C:\Python27\Scripts)
+python get-pip.py
+pip install virtualenv
+easy_install Flask
+set FLASK_APP=main.py
+flask run --port 80
