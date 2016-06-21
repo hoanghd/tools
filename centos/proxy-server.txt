@@ -1,0 +1,1 @@
+http://ccm.net/faq/804-installing-an-http-proxy-server-squid
