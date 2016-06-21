@@ -1,1 +1,2 @@
 http://ccm.net/faq/804-installing-an-http-proxy-server-squid
+http://ccm.net/faq/805-installing-an-easy-http-proxy-cache-polipo
