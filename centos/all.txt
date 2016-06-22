@@ -45,6 +45,7 @@ I.APACHE
 		[root@home ~]# mkdir -p /opt/www
 		[root@home ~]# chmod -R 755 /opt/www
 		[root@home ~]# /etc/init.d/httpd restart
+		[root@home ~]# sudo chcon -R -v -t httpd_sys_rw_content_t
 	8.SELinux
 		### Check SELinux ON/OFF ###
 		[root@home ~]# getonfore

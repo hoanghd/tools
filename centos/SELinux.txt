@@ -1,0 +1,35 @@
+Nếu SELinux On
+Configuring SELinux Policies for Apache Web Servers
+[root@home ~]# getenforce
+[root@home ~]# sestatus
+[root@home ~]# setenforce 0
+[root@home ~]# setenforce 1
+[root@home ~]# vi /etc/selinux/config
+[root@home ~]# sudo chcon -R -v -t httpd_sys_rw_content_t /localsrc/web
+[root@home ~]# semanage fcontext -a -t httpd_sys_rw_content_t '/localsrc/web'
+
+Nếu config sang thư mục khác 
+
+Listen 8080
+NameVirtualHost *:8080
+<VirtualHost *:8080>
+    DocumentRoot "/localsrc/web"
+</VirtualHost>
+
+<Directory "/localsrc/web">
+    Options Indexes FollowSymLinks Includes ExecCGI
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+</Directory>
+
+Cần sử dụng 
+http://www.serverlab.ca/tutorials/linux/web-servers-linux/configuring-selinux-policies-for-apache-web-servers/
+https://www.digitalocean.com/community/tutorials/an-introduction-to-selinux-on-centos-7-part-1-basic-concepts
+
+Tìm kiếm các policy
+[root@home ~]# rpm -qa | grep selinux
+[root@home ~]# yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setroubleshoot-server setools setools-console mcstrans
+[root@home ~]# yum install -y policycoreutils-python
+[root@home ~]# restorecon -Rv /localsrc/web
+[root@home ~]# ls -lZ /localsrc/web
