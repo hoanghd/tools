@@ -29,7 +29,7 @@ Dùng để quản lý nôi dung hình ảnh ở từng lớp khác nhau từ đ
 
 ###### Loại layer
 
-- Link layers ![Link](/photoshop/images/04.png "Link"). Cho phép bạn copy, move nhiều layer cung lúc 
+- Link layers ![Link](/photoshop/images/04.png "Link"). Cho phép bạn copy, move nhiều layer cung lúc, Nếu muốn move nhiều layer có thể chọn các layer rồi nhấn Ctrl rồi click move item
 - Layer styles ![Style](/photoshop/images/05.png "Style")
 - Add Layer mask ![Mask](/photoshop/images/06.png "Mask")
 - New fill or adjustment layers ![Adjustment](/photoshop/images/07.png "Adjustment")
