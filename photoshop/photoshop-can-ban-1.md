@@ -53,6 +53,7 @@ Thay đổi hình dạng của vùng chọn (Transform Layer)
 
 1. Ctrl T
 2. Shift Alt: Thu nhỏ hình cả (W, H)
+3. Enter: Lưu thay đổi
 2. Esc (hủy)
 
 ##### Magpic Wand
