@@ -4,6 +4,7 @@
 3. Ctrl 0   : Xem toàn hình
 4. Ctrl Tab : Chuyển qua các file đang mở
 5. Tab      : Ẩn hiện các hộp thoại đang mở
+6. Ctrl A, Ctrl C, Ctrl N: Tạo mới file với cùng kích thước
 
 
 # Giới thiệu thanh công cụ
