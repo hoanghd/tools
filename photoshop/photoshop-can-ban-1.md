@@ -52,5 +52,10 @@ Mỗi một layer nên xử lý trên một đối tượng để dễ select
 Thay đổi hình dạng của vùng chọn (Transform Layer)
 
 1. Ctrl T
+2. Shift Alt: Thu nhỏ hình cả (W, H)
 2. Esc (hủy)
 
+##### Magpic Wand
+![Magpic Wand](/photoshop/images/09.png "Magpic Wand")
+
+1. Shift Alt I: Nghịch đảo vùng chọn
