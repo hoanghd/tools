@@ -60,3 +60,7 @@ Thay đổi hình dạng của vùng chọn (Transform Layer)
 ![Magpic Wand](/photoshop/images/09.png "Magpic Wand")
 
 1. Shift Alt I: Nghịch đảo vùng chọn
+2. Shift Alt: Lấy vùng giao giữa 2 vùng chọn
+2. Shift : Cộng thêm vùng chọn
+3. Alt: Loại bỏ vùng chọn
+4. Shift F6: Làm nhòe đường biên
