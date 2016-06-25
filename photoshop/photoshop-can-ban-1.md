@@ -47,6 +47,7 @@ Mỗi một layer nên xử lý trên một đối tượng để dễ select
 2. Shift Ctr D: chọn lại vùng trước đó
 3. Nếu lỡ duy chuyển Rectanglar sang nơi khác để chọn lại chi cần (Shift + Ctrl + Click vào item trên layer dialog)
 4. Nếu muốn bỏ đi một phần Rectangular thì chỉ cần nhấn (Alt + Chọn vùng muốn bỏ là ok)
+5. Muốn thay đổi kích thước vùng ?
 
 Thay đổi hình dạng của vùng chọn (Transform Layer)
 
