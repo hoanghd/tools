@@ -28,6 +28,7 @@ Dùng để quản lý nôi dung hình ảnh ở từng lớp khác nhau từ đ
 
 1. F7: Để ẩn hiện hộp công cụ
 2. Alt (Click keo) : Để clone layer
+3. Ctrl J: Copy Layer
 
 ###### Loại layer
 
