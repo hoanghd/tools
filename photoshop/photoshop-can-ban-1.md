@@ -4,6 +4,8 @@
 3. Ctrl 0   : Xem toàn hình
 4. Ctrl Tab : Chuyển qua các file đang mở
 5. Tab      : Ẩn hiện các hộp thoại đang mở
+6. Ctrl R   : Hiển thị Rule
+6. Ctrl A, Ctrl C, Ctrl N: Tạo mới file với cùng kích thước
 
 
 # Giới thiệu thanh công cụ
@@ -26,6 +28,7 @@ Dùng để quản lý nôi dung hình ảnh ở từng lớp khác nhau từ đ
 
 1. F7: Để ẩn hiện hộp công cụ
 2. Alt (Click keo) : Để clone layer
+3. Ctrl J: Copy Layer
 
 ###### Loại layer
 
@@ -45,9 +48,20 @@ Mỗi một layer nên xử lý trên một đối tượng để dễ select
 2. Shift Ctr D: chọn lại vùng trước đó
 3. Nếu lỡ duy chuyển Rectanglar sang nơi khác để chọn lại chi cần (Shift + Ctrl + Click vào item trên layer dialog)
 4. Nếu muốn bỏ đi một phần Rectangular thì chỉ cần nhấn (Alt + Chọn vùng muốn bỏ là ok)
+5. Muốn thay đổi kích thước vùng ?
 
 Thay đổi hình dạng của vùng chọn (Transform Layer)
 
 1. Ctrl T
+2. Shift Alt: Thu nhỏ hình cả (W, H)
+3. Enter: Lưu thay đổi
 2. Esc (hủy)
 
+##### Magpic Wand
+![Magpic Wand](/photoshop/images/09.png "Magpic Wand")
+
+1. Shift Alt I: Nghịch đảo vùng chọn
+2. Shift Alt: Lấy vùng giao giữa 2 vùng chọn
+2. Shift : Cộng thêm vùng chọn
+3. Alt: Loại bỏ vùng chọn
+4. Shift F6: Làm nhòe đường biên
