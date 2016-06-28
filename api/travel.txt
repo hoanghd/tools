@@ -1,0 +1,17 @@
+http://www.programmableweb.com/news/top-10-travel-apis-uber-tripadvisor-and-expedia/analysis/2015/04/24
+https://developer.sabre.com/docs/read/soap_apis/hotel
+https://developer-tripadvisor.com/content-api/documentation/location-hotels/
+http://business.skyscanner.net/portal/en-GB/Documentation/HotelsAutoSuggest
+
+https://developer.uber.com
+	
+	
+https://developer.concur.com
+https://developer.sabre.com
+https://developer-tripadvisor.com/content-api
+http://developer.ean.com/docs
+https://developer.flightstats.com
+http://tfl.gov.uk/info-for/open-data-users
+https://www.tripit.com/developer
+http://business.skyscanner.net/portal/en-GB/AffiliateNetwork
+http://flightaware.com/commercial/flightxml
