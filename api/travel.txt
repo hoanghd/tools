@@ -4,10 +4,15 @@ https://developer-tripadvisor.com/content-api/documentation/location-hotels/
 http://business.skyscanner.net/portal/en-GB/Documentation/HotelsAutoSuggest
 
 https://developer.uber.com
-	
+	- USA
+	- X (Car, Not Hotel)
 	
 https://developer.concur.com
+	- USA
+	- X
+	
 https://developer.sabre.com
+	- USA
 https://developer-tripadvisor.com/content-api
 http://developer.ean.com/docs
 https://developer.flightstats.com
