@@ -1,22 +1,196 @@
+http://terminal2.expedia.com/x/suggestions/regions?query=San+Francisco+%28v%C3%A0+v%C3%B9ng+ph%E1%BB%A5+c%E1%BA%ADn%29%2C+California%2C+M%E1%BB%B9&apikey=1rAK9OxUD6ww7eVkLIAuYWLDpOoDqsCA
+http://terminal2.expedia.com/x/suggestions/regions?query=las%20vegas&apikey=1rAK9OxUD6ww7eVkLIAuYWLDpOoDqsCA
+
+{
+  "@type": "regionResult",
+  "i": "0",
+  "f": "Las Vegas (and vicinity), Nevada, United States of America",
+  "d": "<B>Las</B> <B>Vegas</B>, NV",
+  "score": "1.0",
+  "id": "178276",
+  "gaiaId": "178276",
+  "t": "CITY",
+  "rt": "MULTICITY",
+  "s": "Las Vegas (and vicinity)",
+  "l": "Las Vegas (and vicinity), Nevada, United States of America",
+  "ll": {
+	"lat": "36.114666",
+	"lng": "-115.172872"
+  },
+  "a": "LAS",
+  "metrocode": "LAS",
+  "amc": "178276",
+  "c": "United States of America",
+  "cc": "US",
+  "ccc": "USA",
+  "hc": "259"
+}
+
+ {
+  "@type": "hotelResult",
+  "i": "11",
+  "f": "Las Vegas",
+  "d": "<B>Las</B> <B>Vegas</B>, Amsterdam, NL",
+  "id": "2691157",
+  "t": "HOTEL",
+  "ll": {
+	"lat": "52.349574",
+	"lng": "4.847600"
+  },
+  "a": "RTM",
+  "metrocode": "RTM",
+  "amc": "6035270",
+  "ad": "Woestduinstraat 155",
+  "ci": "Amsterdam",
+  "c": "NLD",
+  "cc": "NL",
+  "ccc": "NLD"
+},
+
+http://terminal2.expedia.com/x/hotels?dates=2016-07-05,2016-07-07&hotelids=2691157&apikey=1rAK9OxUD6ww7eVkLIAuYWLDpOoDqsCA
+http://terminal2.expedia.com/x/hotels?dates=2016-07-05,2016-07-07&regionids=178305&apikey=1rAK9OxUD6ww7eVkLIAuYWLDpOoDqsCA
+
+{
+  "MatchingHotelCount": "1",
+  "HotelCount": "1",
+  "StayDates": {
+    "CheckInDate": "2016-07-05",
+    "CheckOutDate": "2016-07-07"
+  },
+  "HotelInfoList": {
+    "HotelInfo": {
+      "HotelID": "2691157",
+      "Name": "Las Vegas",
+      "Location": {
+        "StreetAddress": "Woestduinstraat 155",
+        "City": "Amsterdam",
+        "Province": "",
+        "Country": "NLD",
+        "GeoLocation": {
+          "Latitude": "52.349574",
+          "Longitude": "4.8476"
+        }
+      },
+      "Description": "Located in Amsterdam South, this bed & breakfast is within 1 mi (2 km) of World Fashion Centre and Vondelpark. Stedelijk Museum and Concertgebouw are also within 2 mi (3 km). ",
+      "StatusCode": "0",
+      "Price": {
+        "BaseRate": {
+          "Value": "197.38",
+          "Currency": "USD"
+        },
+        "TaxRcAndFees": {
+          "Value": "11.85",
+          "Currency": "USD"
+        },
+        "TotalRate": {
+          "Value": "209.23",
+          "Currency": "USD"
+        }
+      },
+      "HotelMandatoryTaxesAndFees": {
+        "Value": "10.46",
+        "Currency": "USD"
+      },
+      "DetailsUrl": "http://www.expedia.com/go/hotel/info/2691157/2016-07-05/2016-07-07?NumRooms=1&NumAdult-Room1=2&tpid=1&eapid=0&langid=1033",
+      "StarRating": "3.0",
+      "ThumbnailUrl": "https://images.trvl-media.com/hotels/3000000/2700000/2691200/2691157/2691157_14_t.jpg",
+      "GuestRating": "3.1",
+      "GuestReviewCount": "15",
+      "RoomTypeList": {
+        "RoomType": {
+          "Description": "Double Room",
+          "RemainingCount": "1",
+          "Price": {
+            "BaseRate": {
+              "Value": "197.38",
+              "Currency": "USD"
+            },
+            "TaxRcAndFees": {
+              "Value": "11.85",
+              "Currency": "USD"
+            },
+            "TotalRate": {
+              "Value": "209.23",
+              "Currency": "USD"
+            }
+          },
+          "HotelMandatoryTaxesAndFees": {
+            "Value": "10.46",
+            "Currency": "USD"
+          },
+          "Refundable": "true",
+          "FreeCancellation": "false",
+          "FreeInternet": "false",
+          "FreeParking": "false",
+          "FreeBreakfast": "false",
+          "PaymentMethod": "Hotel",
+          "SmokingAvailable": {
+            "HasNonSmoking": "true",
+            "HasSmoking": "false"
+          }
+        }
+      },
+      "AmenityList": {
+        "Amenity": "High-speed Internet"
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------
+API KEY: sh583208759831313827246886612802
+http://business.skyscanner.net/portal/en-GB/Documentation/HotelsOverview
+
+http://developer.expedia.com/sample-stories
+http://terminal2.expedia.com/x/hotels?hotelids=2163007&dates=2016-10-01,2016-10-10&allroomtypes=true&apikey=1rAK9OxUD6ww7eVkLIAuYWLDpOoDqsCA
+http://business.skyscanner.net/portal/en-GB/Documentation/HotelsLivePricingQuickStart
+================================================================
+
 http://www.programmableweb.com/news/top-10-travel-apis-uber-tripadvisor-and-expedia/analysis/2015/04/24
 https://developer.sabre.com/docs/read/soap_apis/hotel
 https://developer-tripadvisor.com/content-api/documentation/location-hotels/
 http://business.skyscanner.net/portal/en-GB/Documentation/HotelsAutoSuggest
 
+http://terminal2.expedia.com/x/hotels?hotelids=178234&dates=2016-10-01,2016-10-10&allroomtypes=true&apikey=1rAK9OxUD6ww7eVkLIAuYWLDpOoDqsCA
+
+http://business.skyscanner.net/portal/en-GB/AffiliateNetwork
+	- OK
+https://developer-tripadvisor.com/content-api
+	- USA
+	- OK	
+http://developer.ean.com/docs
+	- Expedia
+
+------------	
 https://developer.uber.com
 	- USA
 	- X (Car, Not Hotel)
 	
 https://developer.concur.com
 	- USA
-	- X
-	
+	- X (Not Hotel)
 https://developer.sabre.com
 	- USA
-https://developer-tripadvisor.com/content-api
-http://developer.ean.com/docs
 https://developer.flightstats.com
+	- Not Hotel
 http://tfl.gov.uk/info-for/open-data-users
+	- FOR UK
 https://www.tripit.com/developer
-http://business.skyscanner.net/portal/en-GB/AffiliateNetwork
+	- Not Hotel
+
 http://flightaware.com/commercial/flightxml
+
+--------------------------------------------------
+http://terminal2.expedia.com/x/hotels?hotelids=2163007&dates=2016-10-01,2016-10-10&allroomtypes=true&apikey=1rAK9OxUD6ww7eVkLIAuYWLDpOoDqsCA

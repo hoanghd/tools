@@ -6,6 +6,8 @@ import com.google.inject.Injector;
 import com.shinway.util.InjectorHolder;
 import org.mybatis.guice.XMLMyBatisModule;
 
+//http://programmingcat.hatenablog.com/entry/2014/02/27/214901
+
 public class Main {
 	private Injector injector;
 	
@@ -27,8 +29,7 @@ public class Main {
 	}
 	
 	public void test(){
-		Test t = new Test();
-		t.test();
+		
 	}
 	
 	public static void main(String[] args) {
