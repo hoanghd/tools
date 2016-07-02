@@ -5,6 +5,7 @@ Configuring SELinux Policies for Apache Web Servers
 [root@home ~]# setenforce 0
 [root@home ~]# setenforce 1
 [root@home ~]# vi /etc/selinux/config
+[root@home ~]# setsebool -P httpd_can_network_connect 1 
 [root@home ~]# sudo chcon -R -v -t httpd_sys_rw_content_t /localsrc/web
 [root@home ~]# semanage fcontext -a -t httpd_sys_rw_content_t '/localsrc/web'
 

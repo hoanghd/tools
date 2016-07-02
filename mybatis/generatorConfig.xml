@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<classPathEntry location="C:\Users\DELL\.m2\repository\mysql\mysql-connector-java\6.0.2\mysql-connector-java-6.0.2.jar"/>
+  <context id="shinway">
+    <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/shinway?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;nullNamePatternMatchesAll=true" driverClass="com.mysql.jdbc.Driver" password="abc@123" userId="root" />
+    <javaModelGenerator targetPackage="com.shinway.mybatis.dto" targetProject="shinway" />
+    <sqlMapGenerator targetPackage="com.shinway.mybatis.dao" targetProject="shinway" />
+    <javaClientGenerator targetPackage="com.shinway.mybatis.dao" targetProject="shinway" type="XMLMAPPER" />
+    <table tableName="terms"/>
+  </context>
+</generatorConfiguration>

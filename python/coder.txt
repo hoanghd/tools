@@ -1,3 +1,5 @@
+http://www.tutorialspoint.com/python/python_basic_syntax.htm
+
 - Cách khai báo biến giống PHP tận cùng ko cần thêm ;
 	c = [1,2,3,4,5,5]
 	k = { 'EN':'English', 'FR':'French' }

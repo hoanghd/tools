@@ -1,0 +1,7 @@
+Config Generator (http://www.mybatis.org/generator/)
+
+1.Install Tool
+	Open Help --> Install New Software --> Add
+	https://dl.bintray.com/mybatis/mybatis-generator
+2. Wizard
+	File > Others > MyBatis > MyBatis Generator Configuration File

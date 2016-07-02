@@ -1,0 +1,1 @@
+http://devdocs.magento.com/guides/v2.1/frontend-dev-guide/themes/theme-create.html
