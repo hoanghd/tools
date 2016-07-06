@@ -11,8 +11,8 @@ sudo service apache2 restart
 
 
 <VirtualHost *:80>
-    ServerName admin.perchtravel.com
+    ServerName api.perchtravel.com
     ProxyRequests Off
-    ProxyPass / http://127.0.0.1:3001/
-    ProxyPassReverse / http://127.0.0.1:3001/
+    ProxyPass / http://127.0.0.1:3000/
+    ProxyPassReverse / http://127.0.0.1:3000/
 </VirtualHost>
