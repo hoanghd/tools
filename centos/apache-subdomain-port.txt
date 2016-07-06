@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+    ServerName admin.perchtravel.com
+    ProxyRequests Off
+    ProxyPass / http://127.0.0.1:3001/
+    ProxyPassReverse / http://127.0.0.1:3001/
+</VirtualHost>
+
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+sudo service apache2 restart
+
+
+<VirtualHost *:80>
+    ServerName admin.perchtravel.com
+    ProxyRequests Off
+    ProxyPass / http://127.0.0.1:3001/
+    ProxyPassReverse / http://127.0.0.1:3001/
+</VirtualHost>
