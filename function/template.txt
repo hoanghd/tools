@@ -1,0 +1,3 @@
+{{user.friends({active: true}).0|filter(function(itm){return itm.id==100})}}
+{{user.friends({active: true}).0|filter(100,test)|.0.name}}
+{{user.friends({active: true}).0|filter({id:name})|.0.name}}

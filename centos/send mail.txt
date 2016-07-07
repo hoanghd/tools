@@ -1,0 +1,1 @@
+cat 20110303112713.txt |  mail -s "`hostname` PostgreSQL Vacuum Daily Report(`date`)" mikoashi@gmail.com
