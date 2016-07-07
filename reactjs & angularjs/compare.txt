@@ -1,0 +1,2 @@
+- Angularjs longer than React
+- React brings increased rendering performance to the table
