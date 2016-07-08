@@ -1,6 +1,6 @@
-﻿- Create Posttype
-- Quany ly category, taxonomy
-- Shortcode -> Chon posttype, category, taxomony, attr
+﻿- Create Post_type
+- Quản ly category, taxonomy
+- Shortcode list view -> Chon post_type, category, taxomony, attr
 - Template & VC & Custom
 
 --------------------------
