@@ -1,0 +1,13 @@
+Page Term
+	get_term_by("slug", get_query_var("term"), get_query_var("taxonomy")
+	
+Get Child
+	foreach(get_term_children( $term->term_id, $term->taxonomy ) as $term_id){
+		$row = get_term_by( 'id', $term_id, $term->taxonomy );
+	}
+	
+Query Post by Term
+	
+	
+Query Post by Field
+	
