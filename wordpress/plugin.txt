@@ -1,7 +1,12 @@
 ﻿- Create Post_type
+	+ Có thể sử dung boostrap để trình bày form hiển thị
 - Quản ly category, taxonomy
 - Shortcode list view -> Chon post_type, category, taxomony, attr
 - Template & VC & Custom
+	+ Sử dụng template engine
+	+ Truy cập tài nguyên như thế nào
+	
+- Page, Post, Category, Taxomony
 
 --------------------------
 
