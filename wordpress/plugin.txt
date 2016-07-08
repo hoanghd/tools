@@ -1,4 +1,8 @@
-- Create Posttype
+﻿- Create Posttype
 - Quany ly category, taxonomy
 - Shortcode -> Chon posttype, category, taxomony, attr
 - Template & VC & Custom
+
+--------------------------
+
+Hổ trợ nhiều ngôn ngữ
