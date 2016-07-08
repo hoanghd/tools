@@ -4,6 +4,7 @@ https://codecanyon.net/item/easy-social-share-buttons-for-wordpress/6394476
 https://codecanyon.net/item/ninja-popups-for-wordpress/3476479
 
 ---------------------------
+Live Update (Tích hợp VC)
 Plugin View Google Analytics
 Nhiều trình duyệt, Iphone, Ipad
 Translate
