@@ -1,8 +1,9 @@
 https://codecanyon.net/popular_item/by_category?category=wordpress
 https://codecanyon.net/item/easy-social-share-buttons-for-wordpress/6394476
 https://codecanyon.net/item/ninja-popups-for-wordpress/3476479
-
----------------------------
+------------------------------------
+[29]
+------------------------------------
 - Live Update 
 - Tích hợp VC
 - Trinh bay dễ hiểu Admin & Video hướng dẫn
@@ -13,3 +14,8 @@ https://codecanyon.net/item/ninja-popups-for-wordpress/3476479
 - Trình duyệt (Chrom, IE, Firefox), Iphone, Ipad
 - Translate
 - Plugin View Google Analytics
+------------------------------------
+Live Review
+(Bám trên 2 plugin)
++ 
++ 
