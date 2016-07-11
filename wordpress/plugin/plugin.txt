@@ -10,5 +10,4 @@
 - Page, Post, Category, Taxomony
 
 --------------------------
-
 Hổ trợ nhiều ngôn ngữ
