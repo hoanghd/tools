@@ -1,4 +1,4 @@
-https://codecanyon.net/popular_item/by_category?category=wordpress
+﻿https://codecanyon.net/popular_item/by_category?category=wordpress
 https://codecanyon.net/item/easy-social-share-buttons-for-wordpress/6394476
 https://codecanyon.net/item/ninja-popups-for-wordpress/3476479
 ------------------------------------
@@ -16,6 +16,7 @@ https://codecanyon.net/item/ninja-popups-for-wordpress/3476479
 - Plugin View Google Analytics
 ------------------------------------
 Live Review
+Page Setting
 (Bám trên 2 plugin)
 + 
 + 
