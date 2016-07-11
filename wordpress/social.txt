@@ -1,12 +1,15 @@
 https://codecanyon.net/popular_item/by_category?category=wordpress
-
 https://codecanyon.net/item/easy-social-share-buttons-for-wordpress/6394476
 https://codecanyon.net/item/ninja-popups-for-wordpress/3476479
 
 ---------------------------
-Live Update (Tích hợp VC)
-Plugin View Google Analytics
-Nhiều trình duyệt, Iphone, Ipad
-Translate
-Hổ trợ: 
-	WooCommerce, WP e-Commerce, JigoShop, iThemes Exchange, bbPress, BuddyPress
+- Live Update 
+- Tích hợp VC
+- Trinh bay dễ hiểu Admin & Video hướng dẫn
+------------------------------------
+- Hổ trợ các loại Social (40)
+- Hiển thị vị trí của Page, Widget, Shortcode
+- Hổ trợ: WooCommerce, WP e-Commerce, JigoShop, iThemes Exchange, bbPress, BuddyPress
+- Trình duyệt (Chrom, IE, Firefox), Iphone, Ipad
+- Translate
+- Plugin View Google Analytics

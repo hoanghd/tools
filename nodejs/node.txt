@@ -1,0 +1,12 @@
+- Config Express 
+- Require Auto
+- App class -> new Request
+
+
+global.app_require = function(name) {
+    return require(__dirname + '/' + name);
+}
+
+var fs = require('fs'),
+    config = app_require('config'),
+    common = app_require('utils/common');
