@@ -1,0 +1,35 @@
+1. Add Menu (https://developer.wordpress.org/reference/functions/add_menu_page/)
+
+function wpdocs_register_menu_page(){
+	add_menu_page(
+		'Social Dashboard',	//Page title hiển thị ở header page
+		'SocialPlugn',		//Menu title hiển thị ở menu
+		'access_cp',		//Capability 
+		'socialplugn',		//Slug tên cho page
+		'admin_dashboard',	//Function call để xử nội dung trang
+		'div'				//Icon Url hoặc class để hiển thị trên menu hoặc có thể dụng 'div' rồi viết css dùng icon font để hiển thị
+	);
+}
+
+add_action( 'admin_menu', 'wpdocs_register_menu_page' );
+
+2. Add Submenu (https://developer.wordpress.org/reference/functions/add_submenu_page/)
+	$contacts = add_submenu_page(
+		"socialplugn",			//parent_slug
+		"Connects",				//page_title
+		"Connects",				//menu_title
+		"access_cp",			//capability
+		"contact-manager",		//menu_slug
+		'admin_dashboard'		//function
+	);
+	
+3. Đổi tên của menu name
+
+function wpdocs_add_admin_menu_rename(){
+	global $menu, $submenu;
+	if( isset( $submenu['socialplugn'][0][0] ) ) {
+		$submenu['socialplugn'][0][0] = 'Dashboard';
+	}
+}
+
+add_action( 'admin_menu', 'wpdocs_add_admin_menu_rename', 9999 );
