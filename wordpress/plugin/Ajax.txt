@@ -8,6 +8,17 @@ function prefix_ajax_add_foobar() {
 	   'id'=>'1',
 	   'data'=>'<p><strong>Hello world!</strong></p>'
 	);
-	$xmlResponse = new WP_Ajax_Response($response);
-	$xmlResponse->send();
+	wp_send_json($response);
 }
+
+---------------------------------
+jQuery.post(
+    ajaxurl, 
+    {
+        'action': 'add_foobar',
+        'data':   'foobarid'
+    }, 
+    function(response){
+        console.dir(response);
+    }
+);
