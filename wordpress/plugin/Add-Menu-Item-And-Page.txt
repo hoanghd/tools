@@ -33,3 +33,15 @@ function wpdocs_add_admin_menu_rename(){
 }
 
 add_action( 'admin_menu', 'wpdocs_add_admin_menu_rename', 9999 );
+
+4. Add Script/Style cho page
+
+add_action( 'admin_print_scripts-' . $page, 'convert_admin_scripts');
+
+function convert_admin_scripts(){
+	wp_enqueue_script( 'jQuery' );
+	wp_enqueue_script( 'convert-accordion-widget', plugins_url('admin/assets/js/jquery.widget.min.js',__FILE__) );
+	wp_enqueue_script( 'smile-jquery-modernizer', plugins_url('modules/assets/js/jquery.shuffle.modernizr.js',__FILE__),'','',true);
+	
+	wp_enqueue_style( 'cp-admin-css', plugins_url( 'admin/assets/css/font.css', __FILE__ ) );
+}
