@@ -1,0 +1,8 @@
+add_submenu_page(
+			        'contacts_manager',
+			        'Hidden!',
+			        'Hidden!',
+			        'access_cp',
+			        'cp_customizer',
+			        array($this, 'cp_customizer_render_hidden_page')
+			    )
