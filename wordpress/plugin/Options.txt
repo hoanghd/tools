@@ -1,0 +1,2 @@
+$prev_styles 					= get_option($option);
+update_option($option,$prev_styles);
