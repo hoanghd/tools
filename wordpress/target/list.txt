@@ -1,0 +1,3 @@
+- Create & Manage DB
+- Form Input & List View
+- Display Front
