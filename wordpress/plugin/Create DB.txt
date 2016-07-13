@@ -1,1 +1,2 @@
 https://codex.wordpress.org/Creating_Tables_with_Plugins
+http://web-profile.net/wordpress/dev/create-table-on-plugin-activation/
