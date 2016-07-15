@@ -1,9 +1,5 @@
 scp -r root@27.120.83.19:/opt/hl7socket_20130618.tar.gz .
 
-
-No Check SSH Key
--o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
-
 su -s /bin/sh apache -c "/usr/bin/sshpass -p oo204Yku /usr/bin/scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -P 2258 root@27.120.83.38:/opt/ssmix-ext/SSMIX2DB/023/000/scp.txt /localsrc/medinet3-upd-release/scp/"
 
 
