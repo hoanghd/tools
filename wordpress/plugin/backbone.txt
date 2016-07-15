@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/4074636/can-i-bind-form-inputs-to-models-in-backbone-js-without-manually-tracking-blur-e
