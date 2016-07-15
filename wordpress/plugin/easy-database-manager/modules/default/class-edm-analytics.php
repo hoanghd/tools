@@ -1,5 +1,5 @@
 <?php
-class OPE_Default_Analytics extends OPE_Abstract{
+class EDM_Default_Analytics extends EDM_Abstract{
     public function index(){
          $this->render('index');
     }

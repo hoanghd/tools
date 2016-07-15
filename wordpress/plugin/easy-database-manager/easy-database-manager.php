@@ -11,17 +11,17 @@
 
 clearstatcache();
 
-defined( 'ETM_VERSION' )        || define( 'ETM_VERSION', '1.0' );
-defined( 'ETM_LANG' )           || define( 'ETM_LANG', 'super-social-share' );
-defined( 'ETM_URI' )            || define( 'ETM_URI', plugin_dir_url( __FILE__ ) );
-defined( 'ETM_DIR' )            || define( 'ETM_DIR', dirname( __FILE__ ) );
-defined( 'ETM_INC_DIR' )        || define( 'ETM_INC_DIR', ETM_DIR . '/includes' );
-defined( 'ETM_MOD_DIR' )        || define( 'ETM_MOD_DIR', ETM_DIR . '/modules' );
-defined( 'ETM_ASSET_URI' )      || define( 'ETM_ASSET_URI', ETM_URI . 'assets' );
+defined( 'EDM_VERSION' )        || define( 'EDM_VERSION', '1.0' );
+defined( 'EDM_LANG' )           || define( 'EDM_LANG', 'easy-database-manager' );
+defined( 'EDM_URI' )            || define( 'EDM_URI', plugin_dir_url( __FILE__ ) );
+defined( 'EDM_DIR' )            || define( 'EDM_DIR', dirname( __FILE__ ) );
+defined( 'EDM_INC_DIR' )        || define( 'EDM_INC_DIR', EDM_DIR . '/includes' );
+defined( 'EDM_MOD_DIR' )        || define( 'EDM_MOD_DIR', EDM_DIR . '/modules' );
+defined( 'EDM_ASSET_URI' )      || define( 'EDM_ASSET_URI', EDM_URI . 'assets' );
 
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-require_once( plugin_dir_path( __FILE__ ) . '/includes/class-etm-manager.php' );
+require_once( plugin_dir_path( __FILE__ ) . '/includes/class-edm-manager.php' );
 
-ETM_Manager::import('Abstract');
-ETM_Manager::import('Element');
-ETM_Manager::register('core');
+EDM_Manager::import('Abstract');
+EDM_Manager::import('Element');
+EDM_Manager::register('core');

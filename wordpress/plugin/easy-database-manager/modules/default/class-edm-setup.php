@@ -1,5 +1,5 @@
 <?php
-class OPE_Default_Tool extends OPE_Abstract{
+class EDM_Default_Setup extends EDM_Abstract{
     public function index(){
          $this->render('index');
     }

@@ -1,5 +1,5 @@
 <?php
-class OPE_Manager{
+class EDM_Manager{
     public static $_mixed = array();
     
     public static function find($name, $data = NULL, $def = NULL ){
@@ -32,7 +32,7 @@ class OPE_Manager{
             }
             else return;
         }
-        
+		
         foreach( self::get_config( $name ) as $i=>$row ){
             if( $fn = array_shift( $row ) ) {
                 self::$_mixed[$name . '.' . $i] = call_user_func_array( $fn, self::magic( $row ) );
@@ -48,7 +48,7 @@ class OPE_Manager{
             return array_map( array( self, 'magic' ), $param );
         
         if( preg_match( '/^fn\((?P<class>[^\.]+)\.(?P<method>.+)\)$/' , $param ) ) {
-            return array( 'OPE_Manager', $param );
+            return array( 'EDM_Manager', $param );
         } else if( preg_match_all( '|\{(?P<name>[^\}]+)\}|U' , $param, $mt, PREG_SET_ORDER ) ){
             $data = array();
             foreach($mt as $row){
@@ -70,8 +70,8 @@ class OPE_Manager{
     public static function get_config( $name ) {
         static $setting = false;
         if( false == $setting ) {
-            if( file_exists( OPE_DIR . '/config.php' ) ) {
-                $setting = require( OPE_DIR . '/config.php' );
+            if( file_exists( EDM_DIR . '/config.php' ) ) {
+                $setting = require( EDM_DIR . '/config.php' );
             }
         }
         
@@ -104,23 +104,22 @@ class OPE_Manager{
      */
     public static function import($name){
         if( preg_match( '/^(?P<mod>\w+)\_(?P<class>\w+)$/', $name, $mt ) ) {
-            $path  = OPE_MOD_DIR . '/' . $mt['mod'];
+            $path  = EDM_MOD_DIR . '/' . $mt['mod'];
             $class = $mt['class'];
         } else {
-            $path = OPE_INC_DIR;
+            $path = EDM_INC_DIR;
             $class = $name;
         }
         
-        if( !class_exists( 'OPE_' . $name ) ) {
-            $path .=  '/class-ope-' . str_replace( '_', '-', $class ) . '.php';
+        if( !class_exists( 'EDM_' . $name ) ) {
+            $path .=  '/class-edm-' . str_replace( '_', '-', $class ) . '.php';
             $path = strtolower($path);
-            
             if( file_exists( $path ) ) {
                 require_once( $path );
             }
         }
         
-        return class_exists( 'OPE_' . $name );
+        return class_exists( 'EDM_' . $name );
     }
     
     /**
@@ -132,7 +131,7 @@ class OPE_Manager{
      */
     public static function new_object( $class, $attr = array() ) {
         if ( self::import( $class ) ) {
-            $class_name = 'OPE_' . $class;
+            $class_name = 'EDM_' . $class;
             $obj = new $class_name();
             
             if( ! empty($attr) ) {
@@ -146,6 +145,6 @@ class OPE_Manager{
             }
             return $obj;
         }
-        else exit( 'Can\'t not load class OPE_'. $class );
+        else exit( 'Can\'t not load class EDM_'. $class );
     }
 }

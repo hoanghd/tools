@@ -1,5 +1,5 @@
 <?php
-class OPE_Element{
+class EDM_Element{
     /**
      * Generates a text field input.
      * @param string $name the input name
@@ -553,9 +553,9 @@ class OPE_Element{
         if( empty( $htmlOptions[ 'class' ] ) )
             $htmlOptions[ 'class' ] = '';
         
-        $htmlOptions[ 'class' ] .= ' wp-ope-color-picker';
+        $htmlOptions[ 'class' ] .= ' wp-edm-color-picker';
         
-        OPE_Manager::register('admin.elements_scripts.colorpicker');
+        EDM_Manager::register('admin.elements_scripts.colorpicker');
         return self::textfield( $name, $value, $htmlOptions );
     }
     
@@ -573,7 +573,7 @@ class OPE_Element{
         
         $htmlOptions[ 'class' ] .= ' wp-ope-date-picker';
         
-        OPE_Manager::register('admin.elements_scripts.datepicker');
+        EDM_Manager::register('admin.elements_scripts.datepicker');
         return self::textfield( $name, $value, $htmlOptions );
     }
     
@@ -608,7 +608,7 @@ class OPE_Element{
             
         unset( $htmlOptions['template'], $htmlOptions['theme'], $htmlOptions['labelOn'], $htmlOptions['labelOff'] );
         
-        OPE_Manager::register('admin.elements_scripts.switchbutton');
+        EDM_Manager::register('admin.elements_scripts.switchbutton');
         return strtr($template, array(
                 '{checkbox}' => self::checkBox( $name, $checked, $htmlOptions ),
                 '{theme}'    => $theme,
@@ -634,15 +634,15 @@ class OPE_Element{
         if( empty( $htmlOptions[ 'class' ] ) )
             $htmlOptions[ 'class' ] = '';
         
-        $htmlOptions[ 'class' ] .= ' wp-ope-slider';
+        $htmlOptions[ 'class' ] .= ' wp-edm-slider';
         $sliderOptions['value'] = $value;
         
         foreach($sliderOptions as $key=>$val){
             $htmlOptions[ 'data-' . $key ] = $val;
         }
         
-        OPE_Manager::register('admin.elements_scripts.numeric_stepper');
-        return self::openTag('div', array('class' => 'wp-ope-group-slider')) . strtr($template, array(
+        EDM_Manager::register('admin.elements_scripts.numeric_stepper');
+        return self::openTag('div', array('class' => 'wp-edm-group-slider')) . strtr($template, array(
             '{slider}' => self::tag( 'div', $htmlOptions, '' ),
             '{stepper}'  => self::stepper( $name, $value, $stepperOptions )
         )) . '</div>';
@@ -662,13 +662,13 @@ class OPE_Element{
         if( empty( $htmlOptions[ 'class' ] ) )
             $htmlOptions[ 'class' ] = '';
         
-        $htmlOptions[ 'class' ] .= ' wp-ope-stepper';
+        $htmlOptions[ 'class' ] .= ' wp-edm-stepper';
         
         foreach($options as $key=>$val){
             $htmlOptions[ 'data-' . $key ] = $val;
         }
         
-        OPE_Manager::register('admin.elements_scripts.numeric_stepper');
+        EDM_Manager::register('admin.elements_scripts.numeric_stepper');
         return self::textfield( $name, $value, $htmlOptions );
     }
 
@@ -686,13 +686,13 @@ class OPE_Element{
         if( empty( $htmlOptions[ 'class' ] ) )
             $htmlOptions[ 'class' ] = '';
         
-        $htmlOptions[ 'class' ] .= ' wp-ope-select2';
+        $htmlOptions[ 'class' ] .= ' wp-edm-select2';
         
         foreach($options as $key=>$val){
             $htmlOptions[ 'data-' . $key ] = $val;
         }
         
-        OPE_Manager::register('admin.elements_scripts.select2');
+        EDM_Manager::register('admin.elements_scripts.select2');
         return self::dropDownList( $name, $select, $data, $htmlOptions );
     }
     
@@ -705,7 +705,7 @@ class OPE_Element{
      */
     public static function media($name, $value=NULL, $htmlOptions = array() ){
         $template = isset( $htmlOptions['template'] ) ? $htmlOptions['template'] : '
-            <div class="wp-ope-media-group">
+            <div class="wp-edm-media-group">
                 {hidden}
                 <div class="image"></div>
                 <div class="sizes"><select></select></div>
@@ -745,7 +745,7 @@ class OPE_Element{
             $htmlOptions[ 'data-' . $key ] = $val;
         }
         
-        OPE_Manager::register('admin.elements_scripts.media');
+        EDM_Manager::register('admin.elements_scripts.media');
         return strtr($template, array(
             '{hidden}' => self::hiddenField( $name , $value , $htmlOptions )
         ));

@@ -1,5 +1,5 @@
 <?php
-class OPE_Abstract{
+class EDM_Abstract{
     /**
      * Renders a view file.
      *

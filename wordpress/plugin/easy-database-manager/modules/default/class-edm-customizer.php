@@ -1,5 +1,5 @@
 <?php
-class OPE_Default_Customizer extends OPE_Abstract{
+class EDM_Default_Customizer extends EDM_Abstract{
     public function index(){
          
     }
