@@ -18,6 +18,8 @@ function wpse26388_query_vars( $query_vars ){
     return $query_vars;
 }
 
+NGhien cuu xem wp_query co cach nao query khac voi table default ?
+
 wp-includes/class-wp.php
 wp-includes/canonical.php
 wp-includes/rewrite.php
