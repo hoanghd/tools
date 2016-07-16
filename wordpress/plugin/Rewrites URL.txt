@@ -1,1 +1,3 @@
 http://wordpress.stackexchange.com/questions/26388/how-to-create-custom-url-routes
+
+https://thereforei.am/2011/10/28/advanced-taxonomy-queries-with-pretty-urls/
