@@ -3,7 +3,7 @@ return array(
     'core' => array(
         array( 'add_action', 'admin_menu', 'fn(~.admin.menu)' ),
         array( 'add_action', 'admin_enqueue_scripts', 'fn(~.admin.scripts_default|0|/\_edm\-/)' ),
-        array( 'add_action', 'admin_enqueue_scripts', 'fn(~.admin.elements_default|0|/\_edm\-/)' )//
+        array( 'add_action', 'admin_enqueue_scripts', 'fn(~.admin.elements_default|0|/\_edm\-/)' )
     ),
     'admin' => array(
         'menu' => array(
@@ -25,13 +25,15 @@ return array(
             array( 'wp_enqueue_script', 'jQuery' ),
             array( 'wp_enqueue_script', 'backbone' ),
             array( 'wp_enqueue_script', 'underscore' ),
+			array( 'wp_enqueue_style', 'edm-main-style', plugins_url('/assets/css/main.css',__FILE__)),
 			array( 'wp_enqueue_style', 'bootstrap-style', plugins_url('/assets/vender/bootstrap/css/bootstrap.min.css',__FILE__)),
+			array( 'wp_enqueue_style', 'font-awesome-style', plugins_url('/assets/vender/font-awesome/css/font-awesome.min.css',__FILE__)),
+			array( 'wp_enqueue_style', 'font-ionicons-style', plugins_url('/assets/vender/ionicons/css/ionicons.min.css',__FILE__)),
 			array( 'wp_enqueue_style', 'bootstrap.theme-style', plugins_url('/assets/vender/bootstrap/css/bootstrap-theme.min.css',__FILE__)),
 			array( 'wp_enqueue_script', 'bootstrap-script', plugins_url('/assets/vender/bootstrap/js/bootstrap.min.js', __FILE__), array(), false, true ),
         ),
         'elements_default' => array(
-            array( 'wp_enqueue_script', 'jquery-ui-core' ),
-            array( 'wp_enqueue_script', 'jquery-effects-core' ),
+            
         ),
         'elements_scripts' => array(
             'media' => array(
@@ -42,15 +44,11 @@ return array(
                 //array( 'wp_enqueue_script', 'wp-color-picker' )
             ),
             'datepicker' => array(
-                //array( 'wp_enqueue_script', 'jquery-ui-datepicker')
+                
             ),
             'numeric_stepper' => array(
-                //array( 'wp_enqueue_script', 'jquery-numeric-stepper-script', plugins_url('/assets/libs/jquery-numeric-stepper/stepper/jquery.stepper.min.js', __FILE__), array(), false, true ),
-                //array( 'wp_enqueue_style', 'jquery-numeric-stepper-style', plugins_url('/assets/libs/jquery-numeric-stepper/stepper/jquery.stepper.min.css',__FILE__)),
             ),
             'switchbutton' => array(
-                //array( 'wp_enqueue_script', 'jquery-switchbutton-script', plugins_url('/assets/libs/jquery-switchbutton/jquery.switchbutton.min.js', __FILE__), array(), false, true ),
-                //array( 'wp_enqueue_style', 'jquery-switchbutton-style', plugins_url('/assets/libs/jquery-switchbutton/ui.switchbutton.min.css',__FILE__)),
             ),
             'select2' => array(
                // array( 'wp_enqueue_script', 'jquery-select2-script', plugins_url('/assets/libs/select2/dist/js/select2.full.min.js', __FILE__), array(), false, true ),
