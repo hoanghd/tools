@@ -1,3 +1,38 @@
 http://wordpress.stackexchange.com/questions/26388/how-to-create-custom-url-routes
 
 https://thereforei.am/2011/10/28/advanced-taxonomy-queries-with-pretty-urls/
+
+add_action( 'init', 'wpse26388_rewrites_init' );
+function wpse26388_rewrites_init(){
+	global $wp_rewrite;
+    add_rewrite_rule(
+        '([0-9]{4})/([0-9]{1,2})/category/(.+?)/?$',
+        'index.php?year=$matches[1]&monthnum=$matches[2]&category_name=$matches[3]',
+        'top' );
+	$wp_rewrite->flush_rules( false );
+}
+
+add_filter( 'query_vars', 'wpse26388_query_vars' );
+function wpse26388_query_vars( $query_vars ){
+    $query_vars[] = 'category_name';
+    return $query_vars;
+}
+
+wp-includes/class-wp.php
+wp-includes/canonical.php
+wp-includes/rewrite.php
+
+Xu ly URL
+
+wp-includes\functions.php
+	->wp
+	
+wp-includes\class-wp.php	
+	->main (672)
+		-> parse_request : Xử lý URL check URL co thoa voi wp_rewrite ru ko de parse params
+		-> query_posts
+
+wp-includes\query.php
+	-> get_posts (4015)
+
+	
