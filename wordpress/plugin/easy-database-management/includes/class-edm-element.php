@@ -555,7 +555,7 @@ class EDM_Element{
         
         $htmlOptions[ 'class' ] .= ' wp-edm-color-picker';
         
-        EDM_Manager::register('admin.elements_scripts.colorpicker');
+        EDM_Management::register('admin.elements_scripts.colorpicker');
         return self::textfield( $name, $value, $htmlOptions );
     }
     
@@ -573,7 +573,7 @@ class EDM_Element{
         
         $htmlOptions[ 'class' ] .= ' wp-ope-date-picker';
         
-        EDM_Manager::register('admin.elements_scripts.datepicker');
+        EDM_Management::register('admin.elements_scripts.datepicker');
         return self::textfield( $name, $value, $htmlOptions );
     }
     
@@ -608,7 +608,7 @@ class EDM_Element{
             
         unset( $htmlOptions['template'], $htmlOptions['theme'], $htmlOptions['labelOn'], $htmlOptions['labelOff'] );
         
-        EDM_Manager::register('admin.elements_scripts.switchbutton');
+        EDM_Management::register('admin.elements_scripts.switchbutton');
         return strtr($template, array(
                 '{checkbox}' => self::checkBox( $name, $checked, $htmlOptions ),
                 '{theme}'    => $theme,
@@ -641,7 +641,7 @@ class EDM_Element{
             $htmlOptions[ 'data-' . $key ] = $val;
         }
         
-        EDM_Manager::register('admin.elements_scripts.numeric_stepper');
+        EDM_Management::register('admin.elements_scripts.numeric_stepper');
         return self::openTag('div', array('class' => 'wp-edm-group-slider')) . strtr($template, array(
             '{slider}' => self::tag( 'div', $htmlOptions, '' ),
             '{stepper}'  => self::stepper( $name, $value, $stepperOptions )
@@ -668,7 +668,7 @@ class EDM_Element{
             $htmlOptions[ 'data-' . $key ] = $val;
         }
         
-        EDM_Manager::register('admin.elements_scripts.numeric_stepper');
+        EDM_Management::register('admin.elements_scripts.numeric_stepper');
         return self::textfield( $name, $value, $htmlOptions );
     }
 
@@ -692,7 +692,7 @@ class EDM_Element{
             $htmlOptions[ 'data-' . $key ] = $val;
         }
         
-        EDM_Manager::register('admin.elements_scripts.select2');
+        EDM_Management::register('admin.elements_scripts.select2');
         return self::dropDownList( $name, $select, $data, $htmlOptions );
     }
     
@@ -745,7 +745,7 @@ class EDM_Element{
             $htmlOptions[ 'data-' . $key ] = $val;
         }
         
-        EDM_Manager::register('admin.elements_scripts.media');
+        EDM_Management::register('admin.elements_scripts.media');
         return strtr($template, array(
             '{hidden}' => self::hiddenField( $name , $value , $htmlOptions )
         ));

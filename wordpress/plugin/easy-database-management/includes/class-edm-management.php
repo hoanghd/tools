@@ -1,5 +1,5 @@
 <?php
-class EDM_Manager{
+class EDM_Management{
     public static $_mixed = array();
     
     public static function find($name, $data = NULL, $def = NULL ){
@@ -48,7 +48,7 @@ class EDM_Manager{
             return array_map( array( self, 'magic' ), $param );
         
         if( preg_match( '/^fn\((?P<class>[^\.]+)\.(?P<method>.+)\)$/' , $param ) ) {
-            return array( 'EDM_Manager', $param );
+            return array( 'EDM_Management', $param );
         } else if( preg_match_all( '|\{(?P<name>[^\}]+)\}|U' , $param, $mt, PREG_SET_ORDER ) ){
             $data = array();
             foreach($mt as $row){

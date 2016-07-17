@@ -1,23 +1,3 @@
-#wpwrap{
-	background-color:#F1F1F1;	
-}
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
-html,
-body {
-  min-height: 100%;
-}
-.layout-boxed html,
-.layout-boxed body {
-  height: 100%;
-}
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
 /* Layout */
 .wrapper {
   min-height: 100%;
@@ -136,26 +116,11 @@ body.hold-transition .main-header .logo {
 /* Content */
 .content {
   min-height: 20px;
-  padding: 15px;
+  padding: 20px;
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-/* H1 - H6 font */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-  font-family: 'Source Sans Pro', sans-serif;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 /* General Links */
 a {
@@ -277,22 +242,6 @@ a:focus {
   padding: 2px 3px;
   line-height: .9;
 }
-.main-header .logo {
-  -webkit-transition: width 0.3s ease-in-out;
-  -o-transition: width 0.3s ease-in-out;
-  transition: width 0.3s ease-in-out;
-  display: block;
-  float: left;
-  height: 50px;
-  font-size: 20px;
-  line-height: 50px;
-  text-align: center;
-  width: 230px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  padding: 0 15px;
-  font-weight: 300;
-  overflow: hidden;
-}
 .main-header .logo .logo-lg {
   display: block;
 }
@@ -304,7 +253,7 @@ a:focus {
 }
 .content-header {
   position: relative;
-  padding: 15px 15px 0 15px;
+  padding: 20px 20px 0 20px;
 }
 .content-header > h1 {
   margin: 0;
@@ -1531,7 +1480,7 @@ a:focus {
   position: relative;
   border-radius: 3px;
   background: #ffffff;
-  border-top: 3px solid #d2d6de;
+  border-top: 1px solid #d2d6de;
   margin-bottom: 20px;
   width: 100%;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
@@ -4915,4 +4864,17 @@ table.text-center th {
   .table-responsive > .table tr td {
     white-space: normal !important;
   }
+}
+
+#wpcontent {
+    padding-left: 0px;
+}
+#wpwrap{
+	background-color:#F1F1F1;	
+}
+.tab-pane .action{
+	padding-bottom:10px;	
+}
+.mb10{
+	margin-bottom:10px;	
 }
