@@ -2409,7 +2409,7 @@ a:focus {
 /* NAV TABS */
 .nav-tabs-custom {
   margin-bottom: 20px;
-  background: #fff;
+  background: #FFF;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }
@@ -4865,7 +4865,6 @@ table.text-center th {
     white-space: normal !important;
   }
 }
-
 #wpcontent {
     padding-left: 0px;
 }
@@ -4877,4 +4876,10 @@ table.text-center th {
 }
 .mb10{
 	margin-bottom:10px;	
+}
+.mt10{
+	margin-top:10px;	
+}
+.lh30{
+	line-height:30px;	
 }

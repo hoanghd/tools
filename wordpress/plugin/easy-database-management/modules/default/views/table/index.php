@@ -1,5 +1,5 @@
 <section class="content-header">
-  <h1> Manage Forms </h1>
+  <h1> Manage Forms <button class="btn btn-default btn-sm publish" type="button"><i class="fa fa-floppy-o"></i> Publish</button></h1>
 </section>
 <div class="content">
   <div class="row">
@@ -12,8 +12,15 @@
         <div class="tab-content">
           <div id="form-elements" class="tab-pane active table-responsive no-padding">
           	<div class="action">
-                <button class="btn btn-default btn-sm" type="button"><i class="fa fa-trash-o"></i></button>
-                <button class="btn btn-default btn-sm" type="button"><i class="fa fa-plus"></i></button>
+                <div class="pull-left">                
+                  	<button class="btn btn-default btn-sm" type="button"><i class="fa fa-trash-o"></i> Delete Field</button>
+                	<button class="btn btn-default btn-sm" type="button"><i class="fa fa-plus"></i> Add Field</button>
+                    <button class="btn btn-default btn-sm" type="button"><i class="fa fa-plus"></i> Add Category</button>
+                </div>
+                <div class="pull-right editable">
+                    <a class="lh30" data-id="form.name" data-type="text"  data-title="Form Name">Form Name</a>
+                </div>
+                <div class="clearfix"></div>
             </div>
             <table class="table table-hover editable">
               <tbody>
@@ -29,8 +36,8 @@
                 </tr>
                 <tr>
                   <td><input type="checkbox"></td>
-                  <td><a href="#" data-id="name" data-index="1" data-type="text" data-pk="1" data-title="Enter Name">Link ID</a></td>
-                  <td><a href="#" data-id="type" data-index="1" data-type="select" data-title="Select Type">String</a></td>
+                  <td><a data-id="form.rows.0.name" data-type="text" data-pk="1" data-title="Enter Name">Link ID</a></td>
+                  <td><a class="form" data-id="form.rows.0.type" data-type="select" data-title="Select Type">String</a></td>
                   <td>20</td>
                   <td>0</td>
                   <td><i class="fa fa-check"></i></td>
@@ -42,12 +49,13 @@
           </div>
           <div id="database-elements" class="tab-pane table-responsive no-padding">
             <div class="action">
-            	<div class="pull-left mb10">
-            		<input type="text" placeholder="Table Name" class="form-control">
+                <div class="pull-left">                
+                  <button class="btn btn-default btn-sm" type="button"><i class="fa fa-refresh"></i> Update</button>
                 </div>
-                <div class="pull-right">                
-                  <button class="btn btn-default btn-sm" type="button"><i class="fa fa-refresh"></i></button>
+                <div class="pull-right editable">
+                    <a class="lh30" data-id="database.category" data-type="text"  data-title="Category Name">Category Name</a>
                 </div>
+                <div class="clearfix"></div>
             </div>
             <table class="table table-hover">
               <tbody>
@@ -71,6 +79,7 @@
             </table>
           </div>
         </div>
+        <div class="clearfix"></div>
       </div>
     </div>
     <div class="col-xs-3">
@@ -78,8 +87,8 @@
         <div class="box-header with-border">
           <h3 class="box-title">Forms</h3>
           <div class="box-tools">
-            <button class="btn btn-box-tool" type="button"><i class="fa fa-trash-o"></i></button>
-            <button class="btn btn-box-tool" type="button"><i class="fa fa-plus"></i> </button>
+            <button class="btn btn-box-tool" type="button"><i class="fa fa-trash-o"></i> Delete Form</button>
+            <button class="btn btn-box-tool" type="button"><i class="fa fa-plus"></i> Add Form</button>
           </div>
         </div>
         <div class="box-body no-padding">
