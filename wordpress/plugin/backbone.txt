@@ -1,3 +1,11 @@
 http://stackoverflow.com/questions/4074636/can-i-bind-form-inputs-to-models-in-backbone-js-without-manually-tracking-blur-e
 
 https://github.com/theironcook/Backbone.ModelBinder
+
+//http://stackoverflow.com/questions/27266901/display-javascript-object-in-html
+//http://www.tutorialspoint.com/backbonejs
+//http://backbonejs.org/docs/todos.html
+//http://adrianmejia.com/blog/2012/09/13/backbone-js-for-absolute-beginners-getting-started-part-2/
+//http://code.tutsplus.com/articles/using-backbone-within-the-wordpress-admin-the-front-end--wp-30121
+//http://www.bardev.com/2012/01/16/understanding-backbone-js-simple-example/
+//http://stackoverflow.com/questions/16591359/backbone-js-update-view-on-model-change

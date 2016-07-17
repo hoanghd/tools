@@ -1,5 +1,5 @@
-<section id="edm-container-main" class="content-header">
-	<h1> Manage Forms <button class="btn btn-default btn-sm publish edm-btn-save" type="button"><i class="fa fa-floppy-o"></i> Publish</button></h1>
+<section class="content-header">
+  <h1> Manage Forms <button class="btn btn-default btn-sm publish bb-save" type="button"><i class="fa fa-floppy-o"></i> Publish</button></h1>
 </section>
 <div class="content">
   <div class="row">
@@ -82,31 +82,30 @@
         <div class="clearfix"></div>
       </div>
     </div>
-    <div class="col-xs-3" id="edm-container-forms">
+    <div class="col-xs-3">
       <div class="box box-solid">
         <div class="box-header with-border">
           <h3 class="box-title">Forms</h3>
           <div class="box-tools">
-            <button class="btn btn-box-tool edm-btn-delete" type="button"><i class="fa fa-trash-o"></i> Delete Form</button>
-            <button class="btn btn-box-tool edm-btn-add" type="button"><i class="fa fa-plus"></i> Add Form</button>
+            <button class="btn btn-box-tool" type="button"><i class="fa fa-trash-o"></i> Delete Form</button>
+            <button class="btn btn-box-tool" type="button"><i class="fa fa-plus"></i> Add Form</button>
           </div>
         </div>
         <div class="box-body no-padding">
-          <ul class="nav nav-pills nav-stacked edm-data-list"></ul>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#"><i class="fa fa-wpforms"></i> Sent</a></li>
+            <li><a href="#"><i class="fa fa-wpforms"></i> Drafts</a></li>
+            <li><a href="#"><i class="fa fa-wpforms"></i> Junk</a> </li>
+            <li><a href="#"><i class="fa fa-wpforms"></i> Trash</a></li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<script type="text/template" name="forms" container="#edm-container-forms">
-	<% _.each(forms, function(form, index) { %>
-	<li class="<%= ( params.current == form.id ) ? 'active'  : '' %>" data-id="<%= form.id %>"><a href="javascript:void(0);"><i class="fa fa-wpforms"></i> <%= form.name %></a></li>
-	<% }); %>
+<div id="container" style="padding:50px;"></div>
+<script type="text/template" name="movie">
+	Title: <%=title%>;
+	<div class="rating" style="<%=style%>">Rating: <%=rating%></div>
 </script> 
-<script type="text/template" name="formElements" container="#edm-container-formElements">
-	
-</script> 
-<script type="text/template" name="databaseElements" container="#edm-container-databaseElements">
-	
-</script>

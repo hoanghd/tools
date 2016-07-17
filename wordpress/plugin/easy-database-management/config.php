@@ -3,7 +3,9 @@ return array(
     'core' => array(
         array( 'add_action', 'admin_menu', 'fn(~.admin.menu)' ),
         array( 'add_action', 'admin_enqueue_scripts', 'fn(~.admin.scripts_default|0|/\_edm\-/)' ),
-        array( 'add_action', 'admin_enqueue_scripts', 'fn(~.admin.elements_default|0|/\_edm\-/)' )
+        array( 'add_action', 'admin_enqueue_scripts', 'fn(~.admin.elements_default|0|/\_edm\-/)' ),
+		array( 'add_action', 'wp_ajax_edm_get_forms', 'fn(Default_Table.forms)' ),
+		array( 'add_action', 'wp_ajax_nopriv_edm_get_forms', 'fn(Default_Table.forms)' )
     ),
     'admin' => array(
         'menu' => array(
@@ -49,7 +51,7 @@ return array(
         ),
         'pages' => array(
             'table_script' => array( 
-                array( 'wp_enqueue_script', 'edm-tool-script', plugins_url('/assets/js/table.js', __FILE__), array(), false, true  )  
+                array( 'wp_enqueue_script', 'edm-table-*-script', '/assets/js/table/(params|form|form_element|form_element_list|form_element_view|form_list|form_view|main_view|init).js', array(), false, true  )  
             ),
         )
     )

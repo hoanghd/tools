@@ -22,3 +22,14 @@ jQuery.post(
         console.dir(response);
     }
 );
+
+
+this.collection.fetch({
+				data: {action: 'edm_get_forms'},
+				success: function(collection, object, jqXHR) {
+					console.dir(collection);
+				},
+				error: function(jqXHR, statusText, error) {
+				
+				}
+			});
