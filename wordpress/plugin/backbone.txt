@@ -9,3 +9,10 @@ https://github.com/theironcook/Backbone.ModelBinder
 //http://code.tutsplus.com/articles/using-backbone-within-the-wordpress-admin-the-front-end--wp-30121
 //http://www.bardev.com/2012/01/16/understanding-backbone-js-simple-example/
 //http://stackoverflow.com/questions/16591359/backbone-js-update-view-on-model-change
+
+
+Add
+Customizer.Data.Network.push({type: 'pinterest', name:'Pinterest'})
+
+Remove
+Customizer.Data.Network.at(1).destroy()

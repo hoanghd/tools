@@ -1,0 +1,50 @@
+https://robertnyman.com/html5/postMessage/postMessage.html
+===============================================================
+
+var data 			= JSON.stringify(url_string);
+var iframe_container = document.getElementById('smile_design_iframe');
+if( iframe_container ) {
+
+	var iframe 			= iframe_container.contentWindow;
+	// Send the data
+	iframe.postMessage(data, frame_url);
+
+	// create cookie for unsaved changes
+	var cookieName = 'cp-unsaved-changes';
+	createCookie(cookieName,true,1);
+}
+
+
+=============================
+
+window.onload = function() {
+	function receiveMessage(e){
+
+		var origin = e.origin;
+
+        // If request is from our domain then only process data
+		if(origin.indexOf(window.location.host) >= 0)
+		{
+			var test_data = '',
+				e_data = '';
+			var e_data = e.data.replace(/\"/g,'');
+			var pairs = e_data.split('&');
+			var result = {};
+			pairs.forEach(function(pair) {
+				pair = pair.split('=');
+				if(result[pair[0]]){
+					result[pair[0]] = result[pair[0]]+","+decodeURIComponent(pair[1]);
+				} else {
+					result[pair[0]] = decodeURIComponent(pair[1]);
+				}
+			});
+			smile_global_data = result;
+
+			jQuery(document).trigger('smile_data_continue_received',[smile_global_data]);
+		}
+	}
+	window.addEventListener('message',receiveMessage);
+}
+
+----------------------------------------------
+
