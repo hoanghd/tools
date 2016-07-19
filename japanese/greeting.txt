@@ -22,7 +22,9 @@ Are you fine?; It is often translated into "how are you", but it's not used to t
 atsui desu ne
 It's hot, isn't it?; These expressions on weather are used as daily greetings, like English "How are you?".
 
-
+寒いですね
+samui desu ne
+It's cold, isn't it?
 
 http://www.japanesepod101.com/
 http://japanese-phrases.sakura.ne.jp/
