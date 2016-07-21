@@ -1,7 +1,9 @@
+https://github.com/powmedia/backbone-forms
+
+
+
 http://stackoverflow.com/questions/4074636/can-i-bind-form-inputs-to-models-in-backbone-js-without-manually-tracking-blur-e
-
 https://github.com/theironcook/Backbone.ModelBinder
-
 //http://stackoverflow.com/questions/27266901/display-javascript-object-in-html
 //http://www.tutorialspoint.com/backbonejs
 //http://backbonejs.org/docs/todos.html
@@ -10,6 +12,7 @@ https://github.com/theironcook/Backbone.ModelBinder
 //http://www.bardev.com/2012/01/16/understanding-backbone-js-simple-example/
 //http://stackoverflow.com/questions/16591359/backbone-js-update-view-on-model-change
 
+https://github.com/powmedia/backbone-forms
 
 Add
 Customizer.Data.Network.push({type: 'pinterest', name:'Pinterest'})
