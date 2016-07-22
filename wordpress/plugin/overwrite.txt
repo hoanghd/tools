@@ -1,5 +1,14 @@
-- C� th�m fieldset
+﻿- Có thêm fieldset
 	<div class="form-group has-counter">
         <label><%=label%></label>
         <div element="true"></div>
     </div>
+
+- <div fn="select2" data-model="model" data-name="pos_count"></div>
+	+ Đổi thành <select data-model="model" data-name="pos_count"></select>
+	+ Cần xử lý khi select
+	+ Replace with luôn & add thêm một số thuột tính trể lại
+	
+- Khi change model không cần phải render lại mà chỉ cần update lại thuột tính là ok
+
+- Merge htmlOptions từ config & Html
