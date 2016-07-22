@@ -43,9 +43,9 @@ var NewAddress = Backbone.View.extend({
 	},
 	initialize: function() {
 		this.render();
+		this.render1();
 		this.listenTo( this.model, 'change', this.render1 );
-		
-		
+		Backbone.Validation.bind(this);
 	},
 	render: function() {
 		this.$el.html( this.template( {'data': this.model.toJSON() } ));
@@ -53,7 +53,7 @@ var NewAddress = Backbone.View.extend({
 		return this;
 	},
 	render1: function() {
-		$("#content1").html( this.template1( {'data': this.model.toJSON() } ));
+		$("#content1").html( this.template1( {'data': this.model.toJSON(), model: this.model } ));
 		return this;
 	}
 });
