@@ -12,3 +12,23 @@
 - Khi change model không cần phải render lại mà chỉ cần update lại thuột tính là ok
 
 - Merge htmlOptions từ config & Html
+
+------------------------------------------------
+
+Có thể tổ chức như vầy
+Sử dụng chung một model
+Viết Func trong template để xử lý riêng lẻ
+
+<script type="text/template" name="Page">
+<?php $this->render(dirname(__FILE__) . '/page.php');?>
+</script>
+<script type="text/template" name="Fieldset">
+<?php $this->render(dirname(__FILE__) . '/fieldset.php');?>
+</script>
+
+
+(function($){    
+    _.fn({
+        $ope: { }
+	})
+})(jQuery);
