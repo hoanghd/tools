@@ -59,6 +59,9 @@ var NewAddress = Backbone.View.extend({
 });
 
 var model = new Address();
+model.bind('validated', function(isValid, model, errors) {
+  console.dir(errors);
+});
 var view = new NewAddress( {
 	'model': model
 } );
