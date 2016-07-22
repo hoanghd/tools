@@ -1,0 +1,5 @@
+- Có thêm fieldset
+	<div class="form-group has-counter">
+        <label><%=label%></label>
+        <div element="true"></div>
+    </div>
