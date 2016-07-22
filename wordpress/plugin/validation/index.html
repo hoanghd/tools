@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JS</title>
+<script src="js/jquery-1.12.4.min.js"></script>
+<script src="js/underscore/underscore-min.js"></script>
+<script src="js/backbone-min.js"></script>
+<script src="js/backbone.validation/dist/backbone-validation-min.js"></script>
+<script src="js/backbone.stickit/backbone.stickit.js"></script>
+</head>
+<body>
+<div id="content"></div>
+<div id="content1"></div>
+<script type="text/template" id="Preview">
+    <ul class="ope-link-list">
+       <h2>Edit your details</h2> 
+    <ul> 
+    <li><label for="name">Name</label><input id="name" name="name" type="text"></li> 
+    <li><label for="email">Email</label><input id="email" name="email" type="text"></li> 
+    <li><label for="street">Street</label><input id="street" name="street" type="text"></li> 
+    <li><label for="zip">ZIP</label><input id="zip" name="zip" type="text"></li> 
+    <li><label for="city">City</label><input id="city" name="city" type="text"></li> 
+    <li><label for="country">Country</label><input id="country" name="country" type="text"></li> 
+    <li><label for="phone">Phone</label><input id="phone" name="phone" type="text"></li> 
+    <li><label for="phone">Web</label><input id="web" name="web" type="text"></li> 
+	<li><label for="phone">Checkbox</label><input type="checkbox" class="checkbox" name="checkbox[]" value="1"><input type="checkbox" class="checkbox" name="checkbox[]" value="2"></li> 
+	<li><label for="phone">Radio</label><input type="radio" class="radio" name="radio" value="1"><input type="radio" class="radio" name="radio" value="2"></li> 
+	<li><label for="phone">Gender</label><select id="gender" name="gender"><option value="male">male</option><option value="Nu">Nu</option></select></li> 
+   </ul>
+    </ul>
+	<br/>
+</script>
+<script type="text/template" id="Preview1">
+	<%=data.name%>
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>
