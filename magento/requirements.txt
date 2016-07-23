@@ -1,0 +1,13 @@
+https://www.magentocommerce.com/download?_ga=1.91003354.1312675677.1465650282
+
+System Requirements
+http://devdocs.magento.com/guides/m1x/system-requirements.html
+
+Magento Community Edition User Guide
+http://merch.docs.magento.com/ce/user_guide/Magento_Community_Edition_User_Guide.html
+
+Magento Reference Developer Documentation
+http://devdocs.magento.com/guides/m1x/index.html
+
+Magento Designer's Guide
+http://info2.magento.com/rs/magentoenterprise/images/MagentoDesignGuide.pdf
