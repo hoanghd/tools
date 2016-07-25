@@ -43,7 +43,7 @@ var NewAddress = Backbone.View.extend({
 	initialize: function() {
 		this.render();
 		this.render1();
-		this.listenTo( this.model, 'change:name', this.render1 );
+		this.listenTo( this.model, 'change:name.*', this.render1 );
 		Backbone.Validation.bind(this);
 	},
 	render: function() {
