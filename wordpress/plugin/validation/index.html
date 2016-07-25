@@ -8,6 +8,7 @@
 <script src="js/backbone-min.js"></script>
 <script src="js/backbone.validation/dist/backbone-validation-min.js"></script>
 <script src="js/backbone.stickit/backbone.stickit.js"></script>
+<script src="js/overwrite.js"></script>
 </head>
 <body>
 <div id="content"></div>
@@ -16,7 +17,7 @@
     <ul class="ope-link-list">
        <h2>Edit your details</h2> 
     <ul> 
-    <li><label for="name">Name</label><input id="name" name="name" type="text"></li> 
+    <li><label for="name">Name</label><%=$el.textfield('name')%></li> 
     <li><label for="email">Email</label><input id="email" name="email" type="text"></li> 
     <li><label for="street">Street</label><input id="street" name="street" type="text"></li> 
     <li><label for="zip">ZIP</label><input id="zip" name="zip" type="text"></li> 
