@@ -35,7 +35,9 @@
 </script>
 <script type="text/template" id="Preview1">
    <%=(model.isValid(true) ? 'T' : 'F')%><br/>
-	<%=data.name.first%>
+	<%=data.name.first%><br/>
+	<%=data.checkbox.join('-')%><br/>
+	<%=JSON.stringify(data.otherSpies)%>
 </script>
 <script src="js/main.js"></script>
 </body>

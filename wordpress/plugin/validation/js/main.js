@@ -10,7 +10,11 @@ var Address = Backbone.DeepModel.extend({
     "web": "https://www.youtube.com/watch?v=lz0J88gnINc",
 	"gender": 'male',
 	"checkbox": ["1"],
-	"radio": "1"
+	"radio": "1",
+		otherSpies: [
+			{ name: 'Lana' },
+			{ name: 'Cyrril' }
+		]
   },
   validation: {
     name: {
@@ -28,8 +32,8 @@ var NewAddress = Backbone.View.extend({
 	template: _.template( jQuery("#Preview").html() ),
 	template1: _.template( jQuery("#Preview1").html() ),
 	bindings: {
-		'#name': 'name.first',
-		'#email': 'email',
+		'#name': 'otherSpies.0.name',
+		'#email': 'name.first',
 		'#street': 'street',
 		'#zip': 'zip',
 		'#city': 'city',
@@ -44,6 +48,8 @@ var NewAddress = Backbone.View.extend({
 		this.render();
 		this.render1();
 		this.listenTo( this.model, 'change:name.*', this.render1 );
+		this.listenTo( this.model, 'change:otherSpies.*', this.render1 );
+		this.listenTo( this.model, 'change:checkbox', this.render1 );
 		Backbone.Validation.bind(this);
 	},
 	render: function() {
@@ -65,3 +71,15 @@ var view = new NewAddress( {
 	'model': model
 } );
 
+/*
+model.set({
+    'user.name.first': 'Lana',
+    'user.name.last':  'Kang'
+});
+
+//Use get() with path names so you can create getters later
+console.log(model.get('user.type'));    // 'Spy'
+
+//You can use index notation to fetch from arrays
+console.log(model.get('otherSpies.0.name')) //'Lana'
+*/
