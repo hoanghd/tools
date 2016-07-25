@@ -1,1 +1,15 @@
 https://github.com/thedersen/backbone.validation
+https://github.com/powmedia/backbone-deep-model
+
+
+defaults: {
+    myArray : [0,1,2]
+}
+
+
+
+myModel.get("myArray")[0] = 5
+myModel.trigger("change");
+myModel.trigger("change:myArray");
+
+myModel.get("myArray"); //=> [5, 1, 2]

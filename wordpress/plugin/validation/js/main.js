@@ -1,7 +1,6 @@
-var Address = Backbone.Model.extend({
-
+var Address = Backbone.DeepModel.extend({
   defaults: {
-    "name": "Baloo The Bear",
+    "name": {first: "Baloo", last:"The Bear"},
     "email": "balu@junglebook.com",
     "street": "Middle of Nowhere 1",
     "zip": "12345",
@@ -29,7 +28,7 @@ var NewAddress = Backbone.View.extend({
 	template: _.template( jQuery("#Preview").html() ),
 	template1: _.template( jQuery("#Preview1").html() ),
 	bindings: {
-		'#name': 'name',
+		'#name': 'name.first',
 		'#email': 'email',
 		'#street': 'street',
 		'#zip': 'zip',
