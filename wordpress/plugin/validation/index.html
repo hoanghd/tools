@@ -101,7 +101,7 @@
     <ul class="ope-link-list">
        <h2>Edit your details</h2> 
     <ul> 
-    <li><label for="name">Name</label><%=_.textfield('name')%></li> 
+    <li><label for="name">Name</label><%=_.form().textfield('name')%></li> 
     <li><label for="email">Email</label><input id="email" name="email" type="text"></li> 
     <li><label for="street">Street</label><input id="street" name="street" type="text"></li> 
     <li><label for="zip">ZIP</label><input id="zip" name="zip" type="text"></li> 
@@ -124,7 +124,7 @@
 </script>
 
 <script type="text/template" id="PreviewLi">
-   <%=_.textfield('name', '', {class:'name'})%>
+   <%=_.form().textfield('name', '', {class:'name'})%>
 </script>
 
 <script src="js/main.js"></script>
