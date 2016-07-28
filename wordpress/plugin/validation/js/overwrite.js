@@ -1,29 +1,6 @@
-(function() {
-    var _original_template = _.template;
-    var _template_helpers = {};
-    _.mixin( {
-        fn : function( newHelpers ) {
-            _.extend( _template_helpers, newHelpers );
-        },
-        template : function( text, data, settings ) {
-            if( data ) {
-                _.defaults( data, _template_helpers );
-                return _original_template.apply( this, arguments );
-            }
-            
-            var template = _original_template.apply( this, arguments );
-            var wrappedTemplate = function( data ) {
-                data = _.defaults( {}, data, _template_helpers );
-                return template.call( this, data );
-            };
-            return wrappedTemplate;
-        }
-    } );
-} )();
-
 (function ($) {
     "use strict";
-    var Element = {
+    _.mixin( {
         template: {},
         fieldset: function(el, htmlOptions){
             if( _.has(htmlOptions, 'fieldset') ) {
@@ -596,9 +573,9 @@
 				}
 			}
         }
-    };
-    
-    $.fn.outerHTML = function() {
+    });
+	
+	$.fn.outerHTML = function() {
        return (this[0]) ? this[0].outerHTML : ''; 
     };
     
@@ -610,7 +587,5 @@
             replaceString = replaceString.replace(regex, replace[i]);
         }
         return replaceString;
-    };
-    _.fn({ '$pl': Element });
-    _.mixin( Element );
+    };	
 }(window.jQuery));
