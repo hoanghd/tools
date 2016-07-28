@@ -487,111 +487,113 @@
             return exists;
         },
         
-        utils: {
-            date: function(){
-				return JSON.stringify(arguments);
-			},
-			
-			get: function (key, data) {
-				var keys = key.split( '|' );
-				var params = [];
-				var fn = null;
-				 
-				if( keys && keys.length == 2 ){
-					key = keys[0];
-					fn = keys[1];
-					
-					if( fn.indexOf( ':' ) >= 0 ){
-						var _fn = fn;
-						var _parts = _fn.split( ':' );
+        utils: function(){
+			return {
+				date: function(){
+					return JSON.stringify(arguments);
+				},
+				
+				get: function (key, data) {
+					var keys = key.split( '|' );
+					var params = [];
+					var fn = null;
+					 
+					if( keys && keys.length == 2 ){
+						key = keys[0];
+						fn = keys[1];
 						
-						fn = _parts[0];
-						params = _fn.match( /['"]([^'"]+?)['"]/g );
-					}
-				}
-				
-				var keys = key.split( '.' );
-				var curr = data;
-				var self = this;
-				
-				for (var i = 0, len = keys.length; i < len; i++) {
-					var mt = keys[i].match( /^([^\(]+)\(([^\)]+)\)$/ );
-					var filter = null;
-					
-					if( mt ) {
-						keys[ i ] = mt[ 1 ];
-						filter = JSON.parse( mt[ 2 ] );
+						if( fn.indexOf( ':' ) >= 0 ){
+							var _fn = fn;
+							var _parts = _fn.split( ':' );
+							
+							fn = _parts[0];
+							params = _fn.match( /['"]([^'"]+?)['"]/g );
+						}
 					}
 					
-					if( _.isNull( curr ) || _.isUndefined( curr[ keys[ i ] ] ) ) {
-						return undefined;
-					}
-					else {
-						curr = curr[ keys[ i ] ];
+					var keys = key.split( '.' );
+					var curr = data;
+					var self = this;
+					
+					for (var i = 0, len = keys.length; i < len; i++) {
+						var mt = keys[i].match( /^([^\(]+)\(([^\)]+)\)$/ );
+						var filter = null;
+						
+						if( mt ) {
+							keys[ i ] = mt[ 1 ];
+							filter = JSON.parse( mt[ 2 ] );
+						}
+						
+						if( _.isNull( curr ) || _.isUndefined( curr[ keys[ i ] ] ) ) {
+							return undefined;
+						}
+						else {
+							curr = curr[ keys[ i ] ];
+						}
+						
+						if( !_.isEmpty( filter ) && _.isArray( curr )) {
+							curr = _.filter( curr, _.matcher( filter ) );
+						}
 					}
 					
-					if( !_.isEmpty( filter ) && _.isArray( curr )) {
-						curr = _.filter( curr, _.matcher( filter ) );
-					}
-				}
+					return fn ? this[ fn ].apply( this, [ curr ].concat( params ) ) : curr;
+				},
 				
-				return fn ? this[ fn ].apply( this, [ curr ].concat( params ) ) : curr;
-			},
-			
-			query: function(){
-				var vars = {};
-				var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-				  vars[ key ] = value;
-				});
-				return vars;
-			},
-			
-			makeUrl: function(url, params){
-				var parameters = {};
-				
-				var parser = document.createElement('a');
-				parser.href = (( url == 'current') ? location.href : url);
-				
-				var search = parser.search.replace( /^\?|#.*$/g, '' );
-				if( search ) {
-					var i, nv;
-					var parts = search.split('&');
-					for (i = 0; i < parts.length; i++) {
-						nv = parts[ i ].split('=');
-						parameters[ decodeURIComponent( nv[ 0 ] ) ] = decodeURIComponent( nv[ 1 ] );
-					}
-				}
-				
-				if( params ) {
-					_.each(params, function( value, key ){
-						parameters[  key ] = value;					
+				query: function(){
+					var vars = {};
+					var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+					  vars[ key ] = value;
 					});
+					return vars;
+				},
+				
+				makeUrl: function(url, params){
+					var parameters = {};
+					
+					var parser = document.createElement('a');
+					parser.href = (( url == 'current') ? location.href : url);
+					
+					var search = parser.search.replace( /^\?|#.*$/g, '' );
+					if( search ) {
+						var i, nv;
+						var parts = search.split('&');
+						for (i = 0; i < parts.length; i++) {
+							nv = parts[ i ].split('=');
+							parameters[ decodeURIComponent( nv[ 0 ] ) ] = decodeURIComponent( nv[ 1 ] );
+						}
+					}
+					
+					if( params ) {
+						_.each(params, function( value, key ){
+							parameters[  key ] = value;					
+						});
+					}
+					
+					var list = [];
+					_.each(parameters, function(value, key){
+						list.push( encodeURIComponent( key ) + '=' + encodeURIComponent( value ) );
+					})
+					
+					parser.search = '?' + list.join('&');
+					return parser.href;
+				},
+				
+				listView: function(result, columns, actions, options){
+					var template  = options['template']  || '';
+					
+					if( _.isString( template ) ) {
+						template = _.template( jQuery(template).html() );
+					}
+					
+					return template( {
+						'rows': result.rows,
+						'pageCount': Math.ceil(result.total/result.limit),
+						'currentPage': result.page,
+						'columns': (columns || {}),
+						'actions': (actions || {}),
+						'options': (options || {})
+					} );
 				}
-				
-				var list = [];
-				_.each(parameters, function(value, key){
-					list.push( encodeURIComponent( key ) + '=' + encodeURIComponent( value ) );
-				})
-				
-				parser.search = '?' + list.join('&');
-				return parser.href;
-			},
-			
-			listView: function(result, columns, actions, options){
-				var template  = options['template']  || '';
-				
-				if( _.isString( template ) ) {
-					template = _.template( jQuery(template).html() );
-				}
-				
-				return template( {
-					'rows': result.rows,
-					'pageCount': Math.ceil(result.total/result.limit),
-					'currentPage': result.page,
-					'columns': (columns || {}),
-					'actions': (actions || {}),
-					'options': (options || {})
-				} );
 			}
         }
     };
