@@ -11,10 +11,10 @@ var Address = Backbone.DeepModel.extend({
 	"gender": 'male',
 	"checkbox": ["1"],
 	"radio": "1",
-		otherSpies: [
-			{ name: 'Lana' },
-			{ name: 'Cyrril' }
-		]
+	otherSpies: [
+		{ name: 'Lana' },
+		{ name: 'Cyrril' }
+	]
   },
   validation: {
     name: {
@@ -44,26 +44,90 @@ var NewAddress = Backbone.View.extend({
 		'.checkbox': 'checkbox',
 		'.radio': 'radio'
 	},
+	
 	initialize: function() {
 		this.render();
 		this.render1();
-		this.listenTo( this.model, 'change:name.*', this.render1 );
-		this.listenTo( this.model, 'change:otherSpies.*', this.render1 );
-		this.listenTo( this.model, 'change:checkbox', this.render1 );
+		//this.listenTo( this.model, 'change:name.*', this.render1 );
+		//this.listenTo( this.model, 'all:otherSpies.*', this.render1 );
+		this.listenTo( this.model, 'all:otherSpies.*', this.log );
 		Backbone.Validation.bind(this);
 	},
+	
 	render: function() {
 		this.$el.html( this.template( {'data': this.model.toJSON() } ));
 		this.stickit();
 		return this;
 	},
+	
 	render1: function() {
-		$("#content1").html( this.template1( {'data': this.model.toJSON(), model: this.model } ));
+		var view = new ListView( {collection: this.model.get('otherSpies') } );
+		
+		$("#content1").html( view.render().el );
+		console.log(this.model.get('otherSpies').toJSON());
 		return this;
+	},
+	
+	log: function(){
+		console.log(this.model.toJSON());
 	}
 });
 
+
+var OtherSpiesModel = Backbone.Model.extend({
+  defaults: {
+    name: "Baloo"
+  }
+});
+
+   
+var OtherSpiesCollections = Backbone.Collection.extend({
+	 model: OtherSpiesModel
+});
+
+var ListView = Backbone.View.extend({
+  tagName: 'ul',
+  render: function() {
+    var self = this;
+    this.collection.each(function(item) {
+      var itemView = new ItemView({model:item});
+      self.$el.append(itemView.render().el);
+    });
+	
+	return this;
+  }
+});
+
+var ItemView = Backbone.View.extend({
+  tagName: 'li',
+  bindings: { '.name': 'name' },
+  
+  template: _.template( jQuery("#PreviewLi").html() ),
+  initialize: function() {
+		this.render();
+		this.listenTo( this.model, 'change:name', this.log );
+	},
+  render: function() {
+    this.$el.html( this.template({model:this.model}));
+    this.stickit();
+    return this;
+  },
+  log: function(){
+	  console.log(this.model.toJSON());
+	  
+  }
+});
+
 var model = new Address();
+
+var list = new OtherSpiesCollections();
+list.set([
+		{ name: 'Lana' },
+		{ name: 'Cyrril' }
+	]);
+
+model.set({otherSpies: list});
+
 model.bind('validated', function(isValid, model, errors) {
   console.dir(errors);
 });
