@@ -14,11 +14,94 @@
 <body>
 <div id="content"></div>
 <div id="content1"></div>
+<script  type="text/template" id="GridView">
+<table class="table table-hover">
+    <tr>
+        <% _.each( columns, function( column ){ %>
+			<th class="item-<%= column.name %>">
+				<a href="<%=$pl.utils.makeUrl('current', {sort: column.name, type:(($pl.utils.query().sort == column.name) && ($pl.utils.query().type == 'asc')) ? 'desc' : 'asc'})%>"><%=column.header%>
+					<% if($pl.utils.query().sort == column.name) {%><i class="fa fa-fw fa-sort-<%=(($pl.utils.query().type == 'asc')?'desc':'asc')%>"></i><%}%>
+				</a>
+			</th>
+          <% }) %>
+        <% _.each( actions, function( action ){ %>
+            <th nowrap="nowrap"><%=action.header%></th>
+        <% }) %>
+    </tr>
+    <% if( rows && rows.length>0 ){ %>
+        <% _.each( rows, function( row, index ){ %>
+            <tr>
+               <% _.each( columns, function( column ){ %>
+                  <% if(!_.isEmpty( column.template )){%>
+                    <td><%= (_.template(column.template))({'row': row, 'value': ($pl.utils.get((column.populate || column.name), row) || '')})%>
+                  <% } else { %>
+                    <td><%= ($pl.utils.get((column.populate || column.name), row) || '') %></td>
+                  <% } %>
+               <% }) %>
+               <% _.each(actions, function( action ){ %>
+                    <td nowrap="nowrap"><%= (_.template( action.template ))( row ) %></td>
+               <% }) %>
+            </tr>
+        <% }) %>
+    <% } else { %>
+    <tr>
+       <td colspan="<%=(columns.length + actions.length)%>">No data found</td>
+    </tr>
+    <% } %>
+  </table>
+  <% if (pageCount > 1) { %>
+    <ul class="pagination pagination-sm no-margin pull-right">
+        <% if (currentPage > 1) { %>
+            <li><a href="<%=$pl.utils.makeUrl('current', {page: 1})%>">&laquo;</a></li>
+        <% } %>
+        <% var i = 1;
+        if (currentPage > 5) {
+            i = +currentPage - 4;
+        } %>
+        <% if (i !== 1) { %>
+            <li class="disabled"><a href="javascript:void(0);">...</a></li>
+        <% } %>
+        <% for (i; i<=pageCount; i++) { %>
+            <% if (currentPage == i) { %>
+                <li class="active"><span><%= i %></span></li>
+            <% } else { %>
+                <li><a href="<%=$pl.utils.makeUrl('current', {page: i})%>"><%= i %></a></li>
+            <% } %>
+            <% if (i == (+currentPage + 4)) { %>
+                <li class="disabled"><a href="javascript:void(0);">...</a></li>
+            <% break; } %>
+        <% } %>
+        <% if (currentPage != pageCount) { %>
+            <li><a href="<%=$pl.utils.makeUrl('current', {page: pageCount})%>">&raquo;</a></li>
+        <% } %>
+    </ul>
+<% } %>
+</script>
 <script type="text/template" id="Preview">
+<%=$pl.utils.listView({
+          rows: [
+            {id:1, name:'Monotonectally procras 1', test: {first:"Hoang1", last:"Hoa4"}},
+            {id:2, name:'Monotonectally procras 2', test: {first:"Hoang2", last:"Hoa5"}},
+            {id:3, name:'Monotonectally procras 3', test: {first:"Hoang3", last:"Hoa6"}},
+            {id:4, name:'Monotonectally procras 4', test: {first:"Hoang4", last:"Hoa7"}},
+            {id:5, name:'Monotonectally procras 5', test: {first:"Hoang5", last:"Hoa9"}}
+          ], 
+          total: 100,
+          limit: 10,
+		  page: ($pl.utils.query().page || 1)
+      }, 
+	  [
+        {name: 'id', header: 'ID'},
+        {name: 'name', header: 'Name', populate:'test.first|date:"parameter1":"parameter2"'}
+      ], 
+	  {}, 
+	  {template: '#GridView'}
+)%>
+	  
     <ul class="ope-link-list">
        <h2>Edit your details</h2> 
     <ul> 
-    <li><label for="name">Name</label><%=$el.textfield('name')%></li> 
+    <li><label for="name">Name</label><%=$pl.textfield('name')%></li> 
     <li><label for="email">Email</label><input id="email" name="email" type="text"></li> 
     <li><label for="street">Street</label><input id="street" name="street" type="text"></li> 
     <li><label for="zip">ZIP</label><input id="zip" name="zip" type="text"></li> 
@@ -41,7 +124,7 @@
 </script>
 
 <script type="text/template" id="PreviewLi">
-   <%=$el.textfield('name', '', {class:'name'})%>
+   <%=$pl.textfield('name', '', {class:'name'})%>
 </script>
 
 <script src="js/main.js"></script>

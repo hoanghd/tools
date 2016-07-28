@@ -24,59 +24,140 @@
 (function ($) {
     "use strict";
     var Element = {
-        textfield: function( name, value, htmlOptions ){
-            return this.inputField( 'text', name, value, htmlOptions );
+        template: {},
+        fieldset: function(el, htmlOptions){
+            if( _.has(htmlOptions, 'fieldset') ) {
+                var fieldset = htmlOptions.fieldset;
+                
+                var compiled = null;
+                if( this.template[ fieldset.id ] ) {
+                    compiled = this.template[ fieldset.id ];
+                } else {
+                    this.template[ fieldset.id ] = compiled = _.template( $( fieldset.id ).html() );
+                }
+                
+                return compiled({
+                    'element'        : el,
+                    'fieldset'       : _.omit(fieldset, 'id'),
+                    'htmlOptions'    : _.omit(htmlOptions, 'fieldset')
+                });
+            } else if( this.template['default'] ){
+                return this.template['default']({
+                    'element': el,
+                    'fieldset': {},
+                    'htmlOptions': htmlOptions
+                });
+            }
+            
+            return el;
         },
+        
+        switchfield: function(name, value, htmlOptions){
+            var compiled = _.template('<label class="switch">\
+                    <%=checkBox%>\
+                    <span class="switch-label" data-on="On" data-off="Off"></span>\
+                    <span class="switch-handle"></span>\
+                </label>');
+                
+            return this.fieldset(
+                compiled({'checkBox': this.checkBox(name, value, _.omit(htmlOptions, 'fieldset'))}),
+                htmlOptions
+            );
+        },
+        
+        textfield: function( name, value, htmlOptions ){
+            return this.fieldset(
+                this.inputField( 'text', name, value, _.omit(htmlOptions, 'fieldset') ),
+                htmlOptions
+            );
+        },
+        
         numberField: function( name, value, htmlOptions ) {
-            return this.inputField( 'number', name, value, htmlOptions );
+            return this.fieldset(
+                this.inputField( 'number', name, value, _.omit(htmlOptions, 'fieldset') ),
+                htmlOptions
+            );
         },
         
         rangeField: function( name, value, htmlOptions ) {
-            return this.inputField( 'range', name, value, htmlOptions );
+            return this.fieldset(
+                this.inputField( 'range', name, value, _.omit(htmlOptions, 'fieldset') ),
+                htmlOptions
+            );
         },
         
         dateField: function( name, value, htmlOptions ) {
-            return this.inputField( 'date', name, value, htmlOptions );
+            return this.fieldset(
+                this.inputField( 'date', name, value, _.omit(htmlOptions, 'fieldset') ),
+                htmlOptions
+            );
         },
         
         timeField: function( name, value, htmlOptions ) {
-            return this.inputField( 'time', name, value, htmlOptions );
+            return this.fieldset(
+                this.inputField( 'time', name, value, _.omit(htmlOptions, 'fieldset') ),
+                htmlOptions
+            );
         },
         
         dateTimeField: function( name, value, htmlOptions ) {
-            return this.inputField( 'datetime', name, value, htmlOptions );
+            return this.fieldset(
+                this.inputField( 'datetime', name, value, _.omit(htmlOptions, 'fieldset') ),
+                htmlOptions
+            );
         },
         
         dateTimeLocalField: function( name, value, htmlOptions ) {
-            return this.inputField( 'datetime-local', name, value, htmlOptions );
+            return this.fieldset(
+                this.inputField( 'datetime-local', name, value, _.omit(htmlOptions, 'fieldset') ),
+                htmlOptions
+            );
         },
         
         weekField: function( name, value, htmlOptions ) {
-            return this.inputField( 'week', name, value, htmlOptions );
+            return this.fieldset(
+                this.inputField( 'week', name, value, _.omit(htmlOptions, 'fieldset') ),
+                htmlOptions
+            );
         },
         
         emailField: function( name, value, htmlOptions) {
-            return this.inputField( 'email', name, value, htmlOptions );
+            return this.fieldset(
+                this.inputField( 'email', name, value, _.omit(htmlOptions, 'fieldset') ),
+                htmlOptions
+            );
         },
         
         telField: function( name, value, htmlOptions ) {
-            return this.inputField( 'tel', name, value, htmlOptions );
+            return this.fieldset(
+                this.inputField( 'tel', name, value, _.omit(htmlOptions, 'fieldset') ),
+                htmlOptions
+            );
         },
         
         urlField: function( name, value, htmlOptions ) {
-            return this.inputField( 'url', name, value, htmlOptions );
+            return this.fieldset(
+                this.inputField( 'url', name, value, _.omit(htmlOptions, 'fieldset') ),
+                htmlOptions
+            );
         },
         
         hiddenField: function( name, value, htmlOptions ) {
-            return this.inputField( 'hidden', name, value, htmlOptions );
+            return this.inputField( 'hidden', name, value, _.omit(htmlOptions, 'fieldset') );
         },
         
         passwordField: function( name, value, htmlOptions ) {
-            return this.inputField( 'password', name, value, htmlOptions );
+            return this.fieldset(
+                this.inputField( 'password', name, value, _.omit(htmlOptions, 'fieldset') ),
+                htmlOptions
+            );
         },
         
         fileField: function( name, value, htmlOptions ) {
-            return this.inputField( 'file', name, value, htmlOptions );
+            return this.fieldset(
+                this.inputField( 'file', name, value, _.omit(htmlOptions, 'fieldset') ),
+                htmlOptions
+            );
         },
         
         textArea: function( name, value, $htmlOptions ) {
@@ -84,9 +165,14 @@
             
             if( !_.has(htmlOptions, 'id') ) {
                 htmlOptions['id'] = this.toIdByName( name );
+            } else if( htmlOptions['id'] == false ){
+                htmlOptions = _.omit(htmlOptions, 'id')
             }
-                
-            return this.tag( 'textarea', htmlOptions, value );
+            
+            return this.fieldset(
+                this.tag( 'textarea', _.omit(htmlOptions, 'fieldset'), value ),
+                htmlOptions
+            );
         },
         
         radioButton: function( name, checked, $htmlOptions ) {
@@ -111,7 +197,10 @@
                 hidden = this.hiddenField( name, uncheck );
             }
             
-            return hidden + this.inputField( 'radio', name, value, htmlOptions );
+            return this.fieldset(
+                (hidden + this.inputField( 'radio', name, value, _.omit(htmlOptions, 'fieldset') )),
+                htmlOptions
+            );
         },
         
         checkBox: function( name, checked, $htmlOptions ) {
@@ -137,7 +226,10 @@
                 hidden = this.hiddenField( name, uncheck );
             }
             
-            return hidden + this.inputField( 'checkbox', name, value, htmlOptions );
+            return this.fieldset(
+                (hidden + this.inputField( 'checkbox', name, value, _.omit(htmlOptions, 'fieldset') )),
+                htmlOptions
+            );
         },
         
         dropDownList: function( name, value, $htmlOptions, data ) {
@@ -145,6 +237,8 @@
             
             if( !_.has(htmlOptions, 'id') ) {
                 htmlOptions['id'] = this.toIdByName( name );
+            } else if( htmlOptions['id'] == false ){
+                htmlOptions = _.omit(htmlOptions, 'id')
             }
                 
             var options = "\n" + this.listOptions( value, data, htmlOptions );
@@ -161,7 +255,10 @@
                 }
             }
             
-            return hidden + this.tag( 'select', htmlOptions, options );
+            return this.fieldset(
+                (hidden + this.tag( 'select', _.omit(htmlOptions, 'fieldset'), options )),
+                htmlOptions
+            );
         },
         
         listBox: function( name, value, data, $htmlOptions ) {
@@ -208,7 +305,7 @@
                 
                 htmlOptions['value'] = val;
                 htmlOptions['id']    = baseID + '_' + (id++);
-                var option           = self.checkBox( name, checked, htmlOptions );
+                var option           = self.checkBox( name, checked, _.omit(htmlOptions, 'fieldset') );
                 var beginLabel       = self.openTag( 'label', labelOptions );
                 var label            = self.label( labelTitle, htmlOptions['id'], labelOptions );
                 var endLabel         = self.closeTag( 'label' );
@@ -219,9 +316,11 @@
                 ));
             });
             
-            return items.join(separator);
+            return this.fieldset(
+                items.join(separator),
+                htmlOptions
+            );
         },
-        
         
         radioButtonList: function( name, value, $htmlOptions, data ) {
             var self = this;
@@ -253,7 +352,7 @@
                 htmlOptions['id']        = baseID + '_' + (id++);
                 
                 var checked    = (value == val);
-                var option     = self.radioButton( name, checked, htmlOptions );
+                var option     = self.radioButton( name, checked, _.omit(htmlOptions, 'fieldset') );
                 var beginLabel = self.openTag( 'label', labelOptions );
                 var label      = self.label( labelTitle, htmlOptions['id'], labelOptions );
                 var endLabel   = self.closeTag('label');
@@ -264,7 +363,10 @@
                 ));
             });
             
-            return items.join(separator);
+            return this.fieldset(
+                items.join(separator),
+                htmlOptions
+            );
         },
         
         listOptions: function(selection, listData, $htmlOptions ) {
@@ -338,6 +440,8 @@
             
             if( !_.has(htmlOptions, 'id') ) {
                 htmlOptions['id'] = this.toIdByName( name );
+            } else if( htmlOptions['id'] == false ){
+                htmlOptions = _.omit(htmlOptions, 'id')
             }
             
             return this.tag('input', htmlOptions);
@@ -381,6 +485,114 @@
             });
             
             return exists;
+        },
+        
+        utils: {
+            date: function(){
+				return JSON.stringify(arguments);
+			},
+			
+			get: function (key, data) {
+				var keys = key.split( '|' );
+				var params = [];
+				var fn = null;
+				 
+				if( keys && keys.length == 2 ){
+					key = keys[0];
+					fn = keys[1];
+					
+					if( fn.indexOf( ':' ) >= 0 ){
+						var _fn = fn;
+						var _parts = _fn.split( ':' );
+						
+						fn = _parts[0];
+						params = _fn.match( /['"]([^'"]+?)['"]/g );
+					}
+				}
+				
+				var keys = key.split( '.' );
+				var curr = data;
+				var self = this;
+				
+				for (var i = 0, len = keys.length; i < len; i++) {
+					var mt = keys[i].match( /^([^\(]+)\(([^\)]+)\)$/ );
+					var filter = null;
+					
+					if( mt ) {
+						keys[ i ] = mt[ 1 ];
+						filter = JSON.parse( mt[ 2 ] );
+					}
+					
+					if( _.isNull( curr ) || _.isUndefined( curr[ keys[ i ] ] ) ) {
+						return undefined;
+					}
+					else {
+						curr = curr[ keys[ i ] ];
+					}
+					
+					if( !_.isEmpty( filter ) && _.isArray( curr )) {
+						curr = _.filter( curr, _.matcher( filter ) );
+					}
+				}
+				
+				return fn ? this[ fn ].apply( this, [ curr ].concat( params ) ) : curr;
+			},
+			
+			query: function(){
+				var vars = {};
+				var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+				  vars[ key ] = value;
+				});
+				return vars;
+			},
+			
+			makeUrl: function(url, params){
+				var parameters = {};
+				
+				var parser = document.createElement('a');
+				parser.href = (( url == 'current') ? location.href : url);
+				
+				var search = parser.search.replace( /^\?|#.*$/g, '' );
+				if( search ) {
+					var i, nv;
+					var parts = search.split('&');
+					for (i = 0; i < parts.length; i++) {
+						nv = parts[ i ].split('=');
+						parameters[ decodeURIComponent( nv[ 0 ] ) ] = decodeURIComponent( nv[ 1 ] );
+					}
+				}
+				
+				if( params ) {
+					_.each(params, function( value, key ){
+						parameters[  key ] = value;					
+					});
+				}
+				
+				var list = [];
+				_.each(parameters, function(value, key){
+					list.push( encodeURIComponent( key ) + '=' + encodeURIComponent( value ) );
+				})
+				
+				parser.search = '?' + list.join('&');
+				return parser.href;
+			},
+			
+			listView: function(result, columns, actions, options){
+				var template  = options['template']  || '';
+				
+				if( _.isString( template ) ) {
+					template = _.template( jQuery(template).html() );
+				}
+				
+				return template( {
+					'rows': result.rows,
+					'pageCount': Math.ceil(result.total/result.limit),
+					'currentPage': result.page,
+					'columns': (columns || {}),
+					'actions': (actions || {}),
+					'options': (options || {})
+				} );
+			}
         }
     };
     
@@ -397,7 +609,6 @@
         }
         return replaceString;
     };
-    
-    _.fn({ '$el': Element });
+    _.fn({ '$pl': Element });
     _.mixin( Element );
 }(window.jQuery));
