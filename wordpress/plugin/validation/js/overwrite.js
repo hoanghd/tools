@@ -521,9 +521,9 @@
                     return fn ? this[ fn ].apply( this, [ curr ].concat( params ) ) : curr;
                 },
                 
-                query: function(){
+                query: function(url){
                     var vars = {};
-                    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                    var parts = (url || window.location.href).replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
                       vars[ key ] = value;
                     });
                     return vars;
