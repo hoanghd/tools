@@ -11,3 +11,5 @@
 
 --------------------------
 Hổ trợ nhiều ngôn ngữ
+
+http://schinagl.priv.at/nt/hardlinkshellext/linkshellextension.html
