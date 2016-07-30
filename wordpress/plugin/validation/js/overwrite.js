@@ -470,6 +470,8 @@
 				},
 				
 				utils: {
+					data: {},
+					
 					date: function(){
 						return JSON.stringify(arguments);
 					},
@@ -520,22 +522,22 @@
 						return fn ? this[ fn ].apply( this, [ curr ].concat( params ) ) : curr;
 					},
 					
-					_query: {},
 					query: function(url){
+						this.data[ 'query' ] = this.data[ 'query' ] || {};
 						
 						url = (url || window.location.href);
 						
-						if( this._query[ url ] )
-							return this._query[ url ];
+						if( this.data[ 'query' ][ url ] )
+							return this.data[ 'query' ][ url ];
 						
 						var self = this;
-						this._query[ url ] = {};
+						self.data[ 'query' ][ url ] = {};
 						
 						url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
-						  self._query[ url ][ key ] = value;
+						  self.data[ 'query' ][ url ][ key ] = value;
 						});
 						
-						return self._query[ url ];
+						return self.data[ 'query' ][ url ];
 					},
 					
 					makeUrl: function(url, params){
