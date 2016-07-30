@@ -593,8 +593,10 @@
 		
 		listView: function(result, columns, actions, options){
 			var self = this;
-			var template = options['template']  || './gridView';
 			
+			options = _.extend((options || {}), {'template': './gridView'});
+			
+			var template = options.template ;			
 			if( !template || !Override.data[ 'load' ][ template ] ) return;
 			
 			return Override.data[ 'load' ][ template ]( {
