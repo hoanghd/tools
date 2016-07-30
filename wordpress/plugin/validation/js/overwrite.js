@@ -520,12 +520,22 @@
 						return fn ? this[ fn ].apply( this, [ curr ].concat( params ) ) : curr;
 					},
 					
+					_query: {},
 					query: function(url){
-						var vars = {};
-						var parts = (url || window.location.href).replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
-						  vars[ key ] = value;
+						
+						url = (url || window.location.href);
+						
+						if( this._query[ url ] )
+							return this._query[ url ];
+						
+						var self = this;
+						this._query[ url ] = {};
+						
+						url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+						  self._query[ url ][ key ] = value;
 						});
-						return vars;
+						
+						return self._query[ url ];
 					},
 					
 					makeUrl: function(url, params){
