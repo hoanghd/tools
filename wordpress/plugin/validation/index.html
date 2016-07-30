@@ -19,8 +19,8 @@
     <tr>
         <% _.each( columns, function( column ){ %>
 			<th class="item-<%= column.name %>">
-				<a href="<%=_.utils().makeUrl('current', {sort: column.name, type:((_.utils().query().sort == column.name) && (_.utils().query().type == 'asc')) ? 'desc' : 'asc'})%>"><%=column.header%>
-					<% if(_.utils().query().sort == column.name) {%><i class="fa fa-fw fa-sort-<%=((_.utils().query().type == 'asc')?'desc':'asc')%>"></i><%}%>
+				<a href="<%=_.com().utils.makeUrl('current', {sort: column.name, type:((_.com().utils.query().sort == column.name) && (_.com().utils.query().type == 'asc')) ? 'desc' : 'asc'})%>"><%=column.header%>
+					<% if(_.com().utils.query().sort == column.name) {%><i class="fa fa-fw fa-sort-<%=((_.com().utils.query().type == 'asc')?'desc':'asc')%>"></i><%}%>
 				</a>
 			</th>
           <% }) %>
@@ -33,9 +33,9 @@
             <tr>
                <% _.each( columns, function( column ){ %>
                   <% if(!_.isEmpty( column.template )){%>
-                    <td><%= (_.template(column.template))({'row': row, 'value': (_.utils().get((column.populate || column.name), row) || '')})%>
+                    <td><%= (_.template(column.template))({'row': row, 'value': (_.com().utils.get((column.populate || column.name), row) || '')})%>
                   <% } else { %>
-                    <td><%= (_.utils().get((column.populate || column.name), row) || '') %></td>
+                    <td><%= (_.com().utils.get((column.populate || column.name), row) || '') %></td>
                   <% } %>
                <% }) %>
                <% _.each(actions, function( action ){ %>
@@ -52,7 +52,7 @@
   <% if (pageCount > 1) { %>
     <ul class="pagination pagination-sm no-margin pull-right">
         <% if (currentPage > 1) { %>
-            <li><a href="<%=_.utils().makeUrl('current', {page: 1})%>">&laquo;</a></li>
+            <li><a href="<%=_.com().utils.makeUrl('current', {page: 1})%>">&laquo;</a></li>
         <% } %>
         <% var i = 1;
         if (currentPage > 5) {
@@ -65,20 +65,20 @@
             <% if (currentPage == i) { %>
                 <li class="active"><span><%= i %></span></li>
             <% } else { %>
-                <li><a href="<%=_.utils().makeUrl('current', {page: i})%>"><%= i %></a></li>
+                <li><a href="<%=_.com().utils.makeUrl('current', {page: i})%>"><%= i %></a></li>
             <% } %>
             <% if (i == (+currentPage + 4)) { %>
                 <li class="disabled"><a href="javascript:void(0);">...</a></li>
             <% break; } %>
         <% } %>
         <% if (currentPage != pageCount) { %>
-            <li><a href="<%=_.utils().makeUrl('current', {page: pageCount})%>">&raquo;</a></li>
+            <li><a href="<%=_.com().utils.makeUrl('current', {page: pageCount})%>">&raquo;</a></li>
         <% } %>
     </ul>
 <% } %>
 </script>
 <script type="text/template" id="Preview">
-<%=_.utils().listView({
+<%=_.com().utils.listView({
           rows: [
             {id:1, name:'Monotonectally procras 1', test: {first:"Hoang1", last:"Hoa4"}},
             {id:2, name:'Monotonectally procras 2', test: {first:"Hoang2", last:"Hoa5"}},
@@ -88,7 +88,7 @@
           ], 
           total: 100,
           limit: 10,
-		  page: (_.utils().query().page || 1)
+		  page: (_.com().utils.query().page || 1)
       }, 
 	  [
         {name: 'id', header: 'ID'},
@@ -101,7 +101,7 @@
     <ul class="ope-link-list">
        <h2>Edit your details</h2> 
     <ul> 
-    <li><label for="name">Name</label><%=_.form().textfield('name')%></li> 
+    <li><label for="name">Name</label><%=_.com().form.textfield('name')%></li> 
     <li><label for="email">Email</label><input id="email" name="email" type="text"></li> 
     <li><label for="street">Street</label><input id="street" name="street" type="text"></li> 
     <li><label for="zip">ZIP</label><input id="zip" name="zip" type="text"></li> 
@@ -124,7 +124,7 @@
 </script>
 
 <script type="text/template" id="PreviewLi">
-   <%=_.form().textfield('name', '', {class:'name'})%>
+   <%=_.com().form.textfield('name', '', {class:'name'})%>
 </script>
 
 <script src="js/main.js"></script>
