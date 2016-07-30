@@ -29,11 +29,9 @@ var Address = Backbone.DeepModel.extend({
 
 var NewAddress = Backbone.View.extend({
 	el: $('#content'),
-	template: _.template( jQuery("#Preview").html() ),
-	template1: _.template( jQuery("#Preview1").html() ),
 	bindings: {
-		'#name': 'otherSpies.0.name',
-		'#email': 'name.first',
+		'#name': 'name.first',
+		'#email': 'email',
 		'#street': 'street',
 		'#zip': 'zip',
 		'#city': 'city',
@@ -48,15 +46,20 @@ var NewAddress = Backbone.View.extend({
 	initialize: function() {
 		this.render();
 		this.render1();
-		//this.listenTo( this.model, 'change:name.*', this.render1 );
+		this.listenTo( this.model, 'change:name.*', this.render1 );
 		//this.listenTo( this.model, 'all:otherSpies.*', this.render1 );
-		this.listenTo( this.model, 'all:otherSpies.*', this.log );
+		this.listenTo( this.model, 'change:name.*', this.log );
 		Backbone.Validation.bind(this);
 	},
 	
 	render: function() {
-		this.$el.html( this.template( {'data': this.model.toJSON() } ));
-		this.stickit();
+		var self = this;
+		_.com().render( './main', { 'data': self.model.toJSON() }, function( content ){
+			self.$el.html( content );
+			self.stickit();
+		}, 
+		['./gridView']);
+		
 		return this;
 	},
 	
@@ -69,7 +72,7 @@ var NewAddress = Backbone.View.extend({
 	},
 	
 	log: function(){
-		console.log(this.model.toJSON());
+		console.dir(this.model.toJSON());
 	}
 });
 

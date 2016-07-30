@@ -1,0 +1,37 @@
+<%=_.com().listView({
+	  rows: [
+		{id:1, name:'Monotonectally procras 1', test: {first:"Hoang1", last:"Hoa4"}},
+		{id:2, name:'Monotonectally procras 2', test: {first:"Hoang2", last:"Hoa5"}},
+		{id:3, name:'Monotonectally procras 3', test: {first:"Hoang3", last:"Hoa6"}},
+		{id:4, name:'Monotonectally procras 4', test: {first:"Hoang4", last:"Hoa7"}},
+		{id:5, name:'Monotonectally procras 5', test: {first:"Hoang5", last:"Hoa9"}}
+	  ], 
+	  total: 100,
+	  limit: 10,
+	  page: (_.com().query().page || 1)
+  }, 
+  [
+	{name: 'id', header: 'ID'},
+	{name: 'name', header: 'Name', populate:'test.first|date:"parameter1":"parameter2"'}
+  ], 
+  {}, 
+  {template: './gridView'}
+)%>
+  
+<ul class="ope-link-list">
+   <h2>Edit your details</h2> 
+<ul> 
+<li><label for="name">Name</label><%=_.com().form.textfield('name')%></li> 
+<li><label for="email">Email</label><input id="email" name="email" type="text"></li> 
+<li><label for="street">Street</label><input id="street" name="street" type="text"></li> 
+<li><label for="zip">ZIP</label><input id="zip" name="zip" type="text"></li> 
+<li><label for="city">City</label><input id="city" name="city" type="text"></li> 
+<li><label for="country">Country</label><input id="country" name="country" type="text"></li> 
+<li><label for="phone">Phone</label><input id="phone" name="phone" type="text"></li> 
+<li><label for="phone">Web</label><input id="web" name="web" type="text"></li> 
+<li><label for="phone">Checkbox</label><input type="checkbox" class="checkbox" name="checkbox[]" value="1"><input type="checkbox" class="checkbox" name="checkbox[]" value="2"></li> 
+<li><label for="phone">Radio</label><input type="radio" class="radio" name="radio" value="1"><input type="radio" class="radio" name="radio" value="2"></li> 
+<li><label for="phone">Gender</label><select id="gender" name="gender"><option value="male">male</option><option value="Nu">Nu</option></select></li> 
+</ul>
+</ul>
+<br/>
