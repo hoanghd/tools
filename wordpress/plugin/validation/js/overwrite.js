@@ -518,8 +518,8 @@
 		query: function(url){
 			url = (url || window.location.href);
 			
-			if( Override.data[ 'query' ][ url ] )
-				return Override.data[ 'query' ][ url ];
+			//if( Override.data[ 'query' ][ url ] )
+			//	return Override.data[ 'query' ][ url ];
 			
 			var self = this;
 			Override.data[ 'query' ][ url ] = {};
@@ -529,6 +529,18 @@
 			});
 			
 			return Override.data[ 'query' ][ url ];
+		},
+		
+		redirect: function(url, fn){
+			var parser = document.createElement('a');
+			parser.href = url;
+
+			if( parser.pathname == window.location.pathname ) {
+				window.history.pushState({}, null, url);
+				fn.call();
+			} else {
+				window.location.href = url;
+			}
 		},
 		
 		makeUrl: function(url, params){

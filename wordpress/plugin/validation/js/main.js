@@ -29,6 +29,9 @@ var Address = Backbone.DeepModel.extend({
 
 var NewAddress = Backbone.View.extend({
 	el: $('#content'),
+	events: {
+		'click a[href]': 'redirect'
+	},
 	bindings: {
 		'#name': 'name.first',
 		'#email': 'email',
@@ -41,6 +44,16 @@ var NewAddress = Backbone.View.extend({
 		'#gender': 'gender',
 		'.checkbox': 'checkbox',
 		'.radio': 'radio'
+	},
+	
+	redirect: function(e){
+		e.preventDefault();
+		
+		var self = this;
+		var href = $(e.currentTarget).attr("href");
+		_.com().redirect(href, function(){
+			self.render();	
+		});
 	},
 	
 	initialize: function() {
