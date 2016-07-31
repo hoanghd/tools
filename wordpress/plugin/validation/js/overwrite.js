@@ -2,33 +2,17 @@
     "use strict";
 	var Override = {
 		form: {				
-			template: {},
-			
 			fieldset: function(el, htmlOptions){
-				if( _.has(htmlOptions, 'fieldset') ) {
-					var fieldset = htmlOptions.fieldset;
-					
-					var compiled = null;
-					if( this.template[ fieldset.id ] ) {
-						compiled = this.template[ fieldset.id ];
-					} else {
-						this.template[ fieldset.id ] = compiled = _.template( $( fieldset.id ).html() );
-					}
-					
-					return compiled({
-						'element'        : el,
-						'fieldset'       : _.omit(fieldset, 'id'),
-						'htmlOptions'    : _.omit(htmlOptions, 'fieldset')
-					});
-				} else if( this.template['default'] ){
-					return this.template['default']({
-						'element': el,
-						'fieldset': {},
-						'htmlOptions': htmlOptions
-					});
-				}
+				htmlOptions = _.extend(( htmlOptions || {} ), { 'fieldset': {} });
 				
-				return el;
+				if( !Override.data[ 'form' ].fieldset )
+					return el;
+			
+				return Override.data[ 'form' ].fieldset({
+					'element'        : el,
+					'fieldset'       : htmlOptions.fieldset,
+					'htmlOptions'    : _.omit(htmlOptions, 'fieldset')
+				});
 			},
 			
 			switchfield: function(name, value, htmlOptions){
@@ -467,7 +451,7 @@
 			}
 		},
 		
-		data: {'query': {}, 'load': {}},
+		data: {'form': {}, 'load': {}},
 		
 		get: function (key, data) {
 			var keys = key.split( '|' );
@@ -517,18 +501,13 @@
 		
 		query: function(url){
 			url = (url || window.location.href);
-			
-			//if( Override.data[ 'query' ][ url ] )
-			//	return Override.data[ 'query' ][ url ];
-			
-			var self = this;
-			Override.data[ 'query' ][ url ] = {};
+			var params = {};
 			
 			url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
-			  Override.data[ 'query' ][ url ][ key ] = value;
+			   params[ key ] = value;
 			});
 			
-			return Override.data[ 'query' ][ url ];
+			return params;
 		},
 		
 		redirect: function(url, fn){
