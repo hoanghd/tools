@@ -1,14 +1,16 @@
 (function ($) {
     "use strict";
 	var Override = {
+		cache: {'form': {}, 'load': {}},
+		
 		form: {				
 			fieldset: function(el, htmlOptions){
 				htmlOptions = _.extend(( htmlOptions || {} ), { 'fieldset': {} });
 				
-				if( !Override.data[ 'form' ].fieldset )
+				if( !Override.cache[ 'form' ].fieldset )
 					return el;
 			
-				return Override.data[ 'form' ].fieldset({
+				return Override.cache[ 'form' ].fieldset({
 					'element'        : el,
 					'fieldset'       : htmlOptions.fieldset,
 					'htmlOptions'    : _.omit(htmlOptions, 'fieldset')
@@ -451,8 +453,6 @@
 			}
 		},
 		
-		data: {'form': {}, 'load': {}},
-		
 		get: function (key, data) {
 			var keys = key.split( '|' );
 			var params = [];
@@ -556,13 +556,13 @@
 		render: function(view, data, fn, urls){
 			var self = this;
 			self.load( _.union( ( urls || [] ), [ view ] ), function(){
-				fn.call(self, Override.data[ 'load' ][ view ]( data ))
+				fn.call(self, Override.cache[ 'load' ][ view ]( data ))
 			});
 		},
 		
 		load: function(urls, fn){
 			self = this;
-			urls = _.filter(urls, function( url ){ return !Override.data[ 'load' ][ url ]; });
+			urls = _.filter(urls, function( url ){ return !Override.cache[ 'load' ][ url ]; });
 			
 			if( urls.length>0 ) {
 				$.when.apply($, urls.map(function( url ) {
@@ -571,7 +571,7 @@
 				.done(function(){
 					for (var i = 0; i < urls.length; i++) {
 						if( arguments[ i ][ 1 ] == 'success' ) {
-							Override.data[ 'load' ][ urls[ i ] ] = _.template( arguments[ i ][ 0 ] );
+							Override.cache[ 'load' ][ urls[ i ] ] = _.template( arguments[ i ][ 0 ] );
 						}								
 					}
 					
@@ -588,9 +588,9 @@
 			options = _.extend(( options || {} ), { 'template': './gridView' });
 			
 			var template = options.template ;			
-			if( !template || !Override.data[ 'load' ][ template ] ) return;
+			if( !template || !Override.cache[ 'load' ][ template ] ) return;
 			
-			return Override.data[ 'load' ][ template ]( {
+			return Override.cache[ 'load' ][ template ]( {
 				'rows': result.rows,
 				'pageCount': Math.ceil(result.total/result.limit),
 				'currentPage': result.page,
