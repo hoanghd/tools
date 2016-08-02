@@ -19,3 +19,16 @@ Customizer.Data.Network.push({type: 'pinterest', name:'Pinterest'})
 
 Remove
 Customizer.Data.Network.at(1).destroy()
+
+OPE_Customizer.Model.fetch({url: _.makeUrl(ajaxurl, {action: 'customizer_save'})});
+OPE_Customizer.Model.fetch({data: {action: 'customizer_save'}});
+
+OPE_Customizer.Model.save({},{
+	url: _.makeUrl(ajaxurl, {action: 'customizer_save'}),
+	success: function (model, response) {
+		
+	},
+	error: function (model, response) {
+	   
+	}
+});
