@@ -45,3 +45,7 @@ Backbone.Stickit.addHandler({
         });
     }
 });
+
+jQuery("#title").on('change keyup paste cut', function() {
+    console.log(jQuery(this).val());
+});
