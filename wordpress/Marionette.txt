@@ -1,0 +1,2 @@
+http://qiita.com/tohashi/items/b5d1bac3f32d324527ce
+https://marionette.gitbooks.io/marionette-guides/content/en/views/collections.html
