@@ -34,3 +34,14 @@ OPE_Customizer.Model.save({},{
 	   
 	}
 });
+
+Backbone.Stickit.addHandler({
+    selector: '.jquery-datepicker',
+    initialize: function($el, model, options) {
+        $el.datepicker({
+            onChangeMonthYear: function() {
+                model.set(options.observe, $el.val());
+            }
+        });
+    }
+});
