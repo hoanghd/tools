@@ -5,25 +5,36 @@
         
         form: {
             render: function( view, fields, fn, urls ){
-                var html = '';
                 var self = this;
+                urls = urls || [];
                 
                 _.each( fields, function( row ){
-                    html += self[ row[0] ].apply( self, row[1] );
+                    var fieldset = Override.get( '1.2.fieldset.view', row );
+                    if( fieldset ){
+                        urls.push( fieldset );
+                    }
                 });
                 
-                return html;
+                Override.load( _.union( ( _.uniq( urls ) || [] ), [ view ] ), function(){
+                    var html = '';
+                    _.each( fields, function( row ){
+                        html += self[ row[0] ].apply( self, row[1] );
+                    });
+                    
+                    fn.call(self, Override.cache[ 'load' ][ view ]( { 'form': html } ))
+                });
             },
             
             fieldset: function(el, htmlOptions){
                 htmlOptions = _.extend(( htmlOptions || {} ), { 'fieldset': {} });
                 
-                if( !Override.cache[ 'form' ].fieldset )
+                var view = Override.get( 'fieldset.view', htmlOptions );
+                if( !view || !Override.cache[ 'load' ][ view ] )
                     return el;
                 
-                return Override.cache[ 'form' ].fieldset({
+                return Override.cache[ 'load' ][ htmlOptions.fieldset.view ]({
                     'element'        : el,
-                    'fieldset'       : htmlOptions.fieldset,
+                    'fieldset'       : _.omit(htmlOptions.fieldset, 'view'),
                     'htmlOptions'    : _.omit(htmlOptions, 'fieldset')
                 });
             },
