@@ -4,7 +4,7 @@
         cache: {'form': {}, 'load': {}},
         
         form: {
-            fields: function( fields ){
+            render: function( view, fields, fn, urls ){
                 var html = '';
                 var self = this;
                 
