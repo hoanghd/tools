@@ -147,8 +147,8 @@
                 );
             },
             
-            textArea: function( name, value, $htmlOptions ) {
-                var htmlOptions = $.extend( true, {}, ( $htmlOptions || {} ) , { 'name': name });
+            textArea: function( name, value, htmlOptions ) {
+                var htmlOptions = $.extend( true, {}, ( htmlOptions || {} ) , { 'name': name });
                 
                 if( !_.has(htmlOptions, 'id') ) {
                     htmlOptions['id'] = this.toIdByName( name );
@@ -162,8 +162,7 @@
                 );
             },
             
-            radioButton: function( name, checked, $htmlOptions ) {
-                var htmlOptions = _.clone( $htmlOptions );
+            radioButton: function( name, checked, htmlOptions ) {
                 htmlOptions = (htmlOptions || {});
                 
                 if(checked)
@@ -190,8 +189,7 @@
                 );
             },
             
-            checkBox: function( name, checked, $htmlOptions ) {
-                var htmlOptions = _.clone( $htmlOptions );
+            checkBox: function( name, checked, htmlOptions ) {
                 htmlOptions = (htmlOptions || {});
                 
                 if( checked )
@@ -219,8 +217,8 @@
                 );
             },
             
-            dropDownList: function( name, value, $htmlOptions, data ) {
-                var htmlOptions = $.extend( true, {}, ( $htmlOptions || {} ) , { 'name': name });
+            dropDownList: function( name, value, htmlOptions, data ) {
+                var htmlOptions = $.extend( true, {}, ( htmlOptions || {} ) , { 'name': name });
                 
                 if( !_.has(htmlOptions, 'id') ) {
                     htmlOptions['id'] = this.toIdByName( name );
@@ -248,8 +246,7 @@
                 );
             },
             
-            listBox: function( name, value, data, $htmlOptions ) {
-                var htmlOptions = _.clone( $htmlOptions );
+            listBox: function( name, value, data, htmlOptions ) {
                 if( !_.has(htmlOptions, 'size') ) {
                     htmlOptions['size'] = 4;
                 }
@@ -263,9 +260,8 @@
                 return this.dropDownList( name, value, htmlOptions, data );
             },
             
-            checkBoxList: function( name, value, $htmlOptions, data ) {
+            checkBoxList: function( name, value, htmlOptions, data ) {
                 var self = this;
-                var htmlOptions = _.clone( $htmlOptions );
                 var template = ( htmlOptions['template'] || '{input} {label}' );
                 var separator = ( htmlOptions['separator'] || this.tag('br') );
                 
@@ -309,9 +305,8 @@
                 );
             },
             
-            radioButtonList: function( name, value, $htmlOptions, data ) {
+            radioButtonList: function( name, value, htmlOptions, data ) {
                 var self = this;
-                var htmlOptions = _.clone( $htmlOptions );
                 var template  = htmlOptions['template']  || '{input} {label}';
                 var separator = htmlOptions['separator'] || this.tag('br');
                 
@@ -356,10 +351,9 @@
                 );
             },
             
-            listOptions: function(selection, listData, $htmlOptions ) {
+            listOptions: function(selection, listData, htmlOptions ) {
                 var self = this;
                 var content = '';
-                var htmlOptions = _.clone( $htmlOptions );
                 
                 if( htmlOptions['prompt'] ) {
                     content += self.tag( 'option', {'value': ''}, htmlOptions['prompt'] ) + "\n";
@@ -434,9 +428,7 @@
                 return this.tag('input', htmlOptions);
             },
             
-            label: function(label, $for, $htmlOptions) {
-                var htmlOptions = _.clone( $htmlOptions );
-                
+            label: function(label, $for, htmlOptions) {
                 if($for===false)
                     delete htmlOptions['for'];
                 else
@@ -445,12 +437,12 @@
                 return this.tag( 'label', htmlOptions, label );
             },
             
-            tag: function(name, htmlOptions, content, closeTag){
+            tag: function(tag, htmlOptions, content, closeTag){
 				var html ='<' + tag + this.renderAttributes( htmlOptions );
 				if( !content ) {
-					return closeTag ? html + ' />' : html + '>';
+					return ( closeTag === undefined || closeTag ) ? html + ' />' : html + '>';
 				} else {
-					return closeTag ? html + '>' + content + '</' + tag + '>' : html + '>' + content;
+					return ( closeTag === undefined || closeTag ) ? html + '>' + content + '</' + tag + '>' : html + '>' + content;
 				}
             },
             
@@ -517,12 +509,12 @@
 						if( value===false ) {
 							html += ' ' + name + '="false"';
 						} else if( value ) {
-							html += ' ' + name '="' + name + '"';
+							html += ' ' + name + '="' + name + '"';
 						}
 					} else if( value !== null ) {
 						html += ' ' + name + '="' + self.escape( value ) + '"';
 					}
-				}
+				});
 
 				return html;
 			},
@@ -713,10 +705,6 @@
             return Override;
         }
     });
-    
-    $.fn.outerHTML = function() {
-       return (this[0]) ? this[0].outerHTML : ''; 
-    };
     
     String.prototype.replaceArray = function(find, replace) {
         var replaceString = this;
