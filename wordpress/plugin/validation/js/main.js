@@ -71,7 +71,15 @@ var NewAddress = Backbone.View.extend({
             self.$el.html( content );
             self.stickit();
         }, 
-        ['components/gridView']);
+        ['components/gridView']);		
+		
+		var fields = [
+			['textfield', [ 'username', 'Nguyen Van A', {'class':'form-field'} ]],
+			['textfield', [ 'fullname', 'Nguyen Van C', {'class':'form-field'} ]]
+		];
+		_.com().form.render( 'modules/demo/form', fields, function( content ){
+            $("#content2").html( content );
+        });
         
         return this;
     },

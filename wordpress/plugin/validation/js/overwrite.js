@@ -15,24 +15,24 @@
                     }
                 });
                 
-                Override.load( _.union( ( _.uniq( urls ) || [] ), [ view ] ), function(){
+                Override.load( _.union( ( _.uniq( urls ) || [] ), [ view, 'components/fieldset' ] ), function(){
                     var html = '';
                     _.each( fields, function( row ){
                         html += self[ row[0] ].apply( self, row[1] );
                     });
-                    
+					
                     fn.call(self, Override.cache[ 'load' ][ view ]( { 'form': html } ))
                 });
             },
             
             fieldset: function(el, htmlOptions){
-                htmlOptions = _.extend(( htmlOptions || {} ), { 'fieldset': {} });
+				htmlOptions = $.extend( true, {}, ( htmlOptions || {} ) , { 'fieldset': {'view': 'components/fieldset'} });
                 
-                var view = Override.get( 'fieldset.view', htmlOptions );
+                var view = Override.get( 'fieldset.view', htmlOptions ); 
                 if( !view || !Override.cache[ 'load' ][ view ] )
                     return el;
                 
-                return Override.cache[ 'load' ][ htmlOptions.fieldset.view ]({
+                return Override.cache[ 'load' ][ view ]({
                     'element'        : el,
                     'fieldset'       : _.omit(htmlOptions.fieldset, 'view'),
                     'htmlOptions'    : _.omit(htmlOptions, 'fieldset')
@@ -662,11 +662,17 @@
                     return $.get('skin/' + url + '.html');
                 }))
                 .done(function(){
-                    for (var i = 0; i < urls.length; i++) {
-                        if( arguments[ i ][ 1 ] == 'success' ) {
-                            Override.cache[ 'load' ][ urls[ i ] ] = _.template( arguments[ i ][ 0 ] );
-                        }
-                    }
+					if( urls.length == 1 ) {
+						if( arguments[ 1 ] == 'success' ) {
+							Override.cache[ 'load' ][ urls[ 0 ] ] = _.template( arguments[ 0 ] );
+						}
+					} else {
+						for (var i = 0; i < urls.length; i++) {
+							if( arguments[ i ][ 1 ] == 'success' ) {
+								Override.cache[ 'load' ][ urls[ i ] ] = _.template( arguments[ i ][ 0 ] );
+							}
+						}	
+					}
                     
                     fn.call(self);
                 });
