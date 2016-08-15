@@ -4,6 +4,20 @@
         cache: {'form': {}, 'load': {}},
         
         form: {
+            /**
+             * [[type, [args]], []]
+             */
+            fields: function( fields ){
+                var html = '';
+                var self = this;
+                
+                _.each( fields, function( row ){
+                    html += self[ row[0] ].apply( self, row[1] );
+                });
+                
+                return html;
+            },
+            
             fieldset: function(el, htmlOptions){
                 htmlOptions = _.extend(( htmlOptions || {} ), { 'fieldset': {} });
                 
@@ -572,7 +586,7 @@
                     for (var i = 0; i < urls.length; i++) {
                         if( arguments[ i ][ 1 ] == 'success' ) {
                             Override.cache[ 'load' ][ urls[ i ] ] = _.template( arguments[ i ][ 0 ] );
-                        }                                
+                        }
                     }
                     
                     fn.call(self);
