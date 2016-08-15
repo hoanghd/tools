@@ -362,7 +362,7 @@
                 var htmlOptions = _.clone( $htmlOptions );
                 
                 if( htmlOptions['prompt'] ) {
-                    content += $( '<option></option>' ).val('').html( htmlOptions['prompt'] ).outerHTML() + "\n";
+                    content += self.tag( 'option', {'value': ''}, htmlOptions['prompt'] ) + "\n";
                     delete htmlOptions['prompt'];
                 }
                 
@@ -372,7 +372,7 @@
                     }
                     
                     _.each(htmlOptions['empty'], function(label, value){
-                        content += $( '<option></option>' ).val( value ).html( label ).outerHTML() + "\n";
+                        content += self.tag( 'option', {'value': value}, label ) + "\n";
                     });
                     
                     delete htmlOptions['empty'];
@@ -445,8 +445,13 @@
                 return this.tag( 'label', htmlOptions, label );
             },
             
-            tag: function(name, htmlOptions, content){
-                return $('<' + name + '/>', (htmlOptions || {}) ).html(content).outerHTML();
+            tag: function(name, htmlOptions, content, closeTag){
+				var html ='<' + tag + this.renderAttributes( htmlOptions );
+				if( !content ) {
+					return closeTag ? html + ' />' : html + '>';
+				} else {
+					return closeTag ? html + '>' + content + '</' + tag + '>' : html + '>' + content;
+				}
             },
             
             openTag: function(name, htmlOptions){
@@ -461,6 +466,80 @@
             toIdByName: function(name) {
                 return name.replace('[]', '').replace('][', '_').replace('[', '_').replace('[', '_');
             },
+			
+			/**
+			 * Renders the HTML tag attributes.
+			 * Since version 1.1.5, attributes whose value is null will not be rendered.
+			 * Special attributes, such as 'checked', 'disabled', 'readonly', will be rendered
+			 * properly based on their corresponding boolean value.
+			 * @param array $htmlOptions attributes to be rendered
+			 * @return string the rendering result
+			 */
+			renderAttributes: function( htmlOptions ) {
+				var specialAttributes = {
+					'autofocus':1,
+					'autoplay':1,
+					'async':1,
+					'checked':1,
+					'controls':1,
+					'declare':1,
+					'default':1,
+					'defer':1,
+					'disabled':1,
+					'formnovalidate':1,
+					'hidden':1,
+					'ismap':1,
+					'itemscope':1,
+					'loop':1,
+					'multiple':1,
+					'muted':1,
+					'nohref':1,
+					'noresize':1,
+					'novalidate':1,
+					'open':1,
+					'readonly':1,
+					'required':1,
+					'reversed':1,
+					'scoped':1,
+					'seamless':1,
+					'selected':1,
+					'typemustmatch':1,
+				};
+
+				if( _.isEmpty( htmlOptions ) )
+					return '';
+
+				var html = '';
+				var self = this;
+				
+				_.each( htmlOptions, function( value, name ){
+					if( specialAttributes[ name ] ) {
+						if( value===false ) {
+							html += ' ' + name + '="false"';
+						} else if( value ) {
+							html += ' ' + name '="' + name + '"';
+						}
+					} else if( value !== null ) {
+						html += ' ' + name + '="' + self.escape( value ) + '"';
+					}
+				}
+
+				return html;
+			},
+			
+			escape: function(s) {
+				return ('' + s) /* Forces the conversion to string. */
+					.replace(/\\/g, '\\\\') /* This MUST be the 1st replacement. */
+					.replace(/\t/g, '\\t') /* These 2 replacements protect whitespaces. */
+					.replace(/\n/g, '\\n')
+					.replace(/\u00A0/g, '\\u00A0') /* Useful but not absolutely necessary. */
+					.replace(/&/g, '\\x26') /* These 5 replacements protect from HTML/XML. */
+					.replace(/'/g, '\\x27')
+					.replace(/"/g, '\\x22')
+					.replace(/</g, '\\x3C')
+					.replace(/>/g, '\\x3E')
+					;
+			},
             
             inArray: function(data, val){
                 var exists = false;
