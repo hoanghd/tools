@@ -67,11 +67,11 @@ var NewAddress = Backbone.View.extend({
     
     render: function() {
         var self = this;
-        _.com().render( './main', { 'data': self.model.toJSON() }, function( content ){
+        _.com().render( 'modules/demo/main', { 'data': self.model.toJSON() }, function( content ){
             self.$el.html( content );
             self.stickit();
         }, 
-        ['./gridView']);
+        ['components/gridView']);
         
         return this;
     },

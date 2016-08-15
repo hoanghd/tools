@@ -588,7 +588,7 @@
             
             if( urls.length>0 ) {
                 $.when.apply($, urls.map(function( url ) {
-                    return $.get(url + '.html');
+                    return $.get('skin/' + url + '.html');
                 }))
                 .done(function(){
                     for (var i = 0; i < urls.length; i++) {
@@ -607,7 +607,7 @@
         listView: function(result, columns, actions, options){
             var self = this;
             
-            options = _.extend(( options || {} ), { 'template': './gridView' });
+            options = _.extend(( options || {} ), { 'template': 'components/gridView' });
             
             var template = options.template ;
             if( !template || !Override.cache[ 'load' ][ template ] ) return;
