@@ -4,9 +4,6 @@
         cache: {'form': {}, 'load': {}},
         
         form: {
-            /**
-             * [[type, [args]], []]
-             */
             fields: function( fields ){
                 var html = '';
                 var self = this;
