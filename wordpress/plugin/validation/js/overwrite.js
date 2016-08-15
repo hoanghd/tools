@@ -16,12 +16,12 @@
                 });
                 
                 Override.load( _.union( ( _.uniq( urls ) || [] ), [ view, 'components/fieldset' ] ), function(){
-                    var html = '';
+                    var form = {};
                     _.each( fields, function( row ){
-                        html += self[ row[0] ].apply( self, row[1] );
+                        form[ row[1][0] ] = self[ row[0] ].apply( self, row[1] );
                     });
 					
-                    fn.call(self, Override.cache[ 'load' ][ view ]( { 'form': html } ))
+                    fn.call(self, Override.cache[ 'load' ][ view ]( { 'form': form } ));
                 });
             },
             
