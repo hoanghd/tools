@@ -1,6 +1,11 @@
 https://github.com/thedersen/backbone.validation
 https://github.com/powmedia/backbone-deep-model
 
+https://addyosmani.com/blog/large-scale-jquery/
+https://www.captechconsulting.com/blogs/modularizing-your-backbone-router-using-requirejs
+https://github.com/thomasdavis/backboneboilerplate/blob/gh-pages/js/router.js
+https://github.com/thomasdavis/backboneboilerplate/blob/gh-pages/js/vm.js
+
 
 defaults: {
     myArray : [0,1,2]

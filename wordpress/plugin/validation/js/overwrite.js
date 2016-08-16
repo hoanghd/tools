@@ -1,7 +1,7 @@
 (function ($) {
     "use strict";
     var Override = {
-        cache: {'form': {}, 'load': {}},
+        cache: {'form': {}, 'load': {}, views: {}},
         
         form: {
             fieldset: function(el, htmlOptions){
@@ -710,6 +710,28 @@
             } );
         },
         
+        create: function( context, name, View, options ) {
+            if( typeof this.cache.views[ name ] !== 'undefined' ) {
+                this.cache.views[ name ].undelegateEvents();
+                if(typeof this.cache.views[ name ].clean === 'function') {
+                    this.cache.views[ name ].clean();
+                }
+            }
+            
+            var view = new View( options );
+            this.cache.views[ name ] = view;
+            
+            if(typeof context.children === 'undefined'){
+                context.children = {};
+                context.children[ name ] = view;
+            } else {
+                context.children[ name ] = view;
+            }
+            
+            //Events.trigger('viewCreated');
+            return view;
+        },
+        
         utils: {
             date: function(){
                 return JSON.stringify(arguments);
@@ -737,3 +759,26 @@
         return replaceString;
     };    
 }(window.jQuery));
+
+(function() {
+    _.extend(Backbone.Router.prototype, Backbone.Events, {
+        register: function( route, name, path ){
+            var self = this;
+            this.route(route, name, function(){
+                var args = arguments;
+                require([ path ], function( module ) {
+                    var options = null;
+                    var params = route.match(/[:\*]\w+/g);
+                    if (params) {
+                        options = {};
+                        _.each(params, function( name, index ) {
+                             options[ name.substring(1) ] = args[ index ];
+                        });
+                    }
+                    var page = _.com().create( name, module, options );
+                    page.render();
+                });
+            });
+        }
+    });
+}).call(this);
