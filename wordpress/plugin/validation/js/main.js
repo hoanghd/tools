@@ -67,18 +67,35 @@ var NewAddress = Backbone.View.extend({
     
     render: function() {
         var self = this;
-        _.com().render( 'modules/demo/main', { 'data': self.model.toJSON() }, function( content ){
+        
+        var params = {
+            form: [
+                ['textfield', [ 'username', 'Nguyen Van A', {'class':'form-field'} ]],
+                ['textfield', [ 'fullname', 'Nguyen Van C', {'class':'form-field'} ]]
+            ],
+            listView: [{
+                  rows: [
+                    {id:1, name:'Monotonectally procras 1', test: {first:"Hoang1", last:"Hoa4"}},
+                    {id:2, name:'Monotonectally procras 2', test: {first:"Hoang2", last:"Hoa5"}},
+                    {id:3, name:'Monotonectally procras 3', test: {first:"Hoang3", last:"Hoa6"}},
+                    {id:4, name:'Monotonectally procras 4', test: {first:"Hoang4", last:"Hoa7"}},
+                    {id:5, name:'Monotonectally procras 5', test: {first:"Hoang5", last:"Hoa9"}}
+                  ], 
+                  total: 100,
+                  limit: 10,
+                  page: (_.com().query().page || 1)
+              }, 
+              [
+                {name: 'id', header: 'ID'},
+                {name: 'name', header: 'Name', populate:'test.first|date:"parameter1":"parameter2"'}
+              ]
+            ],
+            'data': self.model.toJSON()
+        };
+        
+        _.com().render( 'modules/demo/main', params, function( content ){
             self.$el.html( content );
             self.stickit();
-        }, 
-        ['components/gridView']);		
-		
-		var fields = [
-			['textfield', [ 'username', 'Nguyen Van A', {'class':'form-field'} ]],
-			['textfield', [ 'fullname', 'Nguyen Van C', {'class':'form-field'} ]]
-		];
-		_.com().form.render( 'modules/demo/form', fields, function( content ){
-            $("#content2").html( content );
         });
         
         return this;

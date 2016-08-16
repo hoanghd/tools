@@ -4,29 +4,8 @@
         cache: {'form': {}, 'load': {}},
         
         form: {
-            render: function( view, fields, fn, urls ){
-                var self = this;
-                urls = urls || [];
-                
-                _.each( fields, function( row ){
-                    var fieldset = Override.get( '1.2.fieldset.view', row );
-                    if( fieldset ){
-                        urls.push( fieldset );
-                    }
-                });
-                
-                Override.load( _.union( ( _.uniq( urls ) || [] ), [ view, 'components/fieldset' ] ), function(){
-                    var form = {};
-                    _.each( fields, function( row ){
-                        form[ row[1][0] ] = self[ row[0] ].apply( self, row[1] );
-                    });
-					
-                    fn.call(self, Override.cache[ 'load' ][ view ]( { 'form': form } ));
-                });
-            },
-            
             fieldset: function(el, htmlOptions){
-				htmlOptions = $.extend( true, {}, ( htmlOptions || {} ) , { 'fieldset': {'view': 'components/fieldset'} });
+                htmlOptions = $.extend( true, {}, ( htmlOptions || {} ) , { 'fieldset': {'view': 'components/fieldset'} });
                 
                 var view = Override.get( 'fieldset.view', htmlOptions ); 
                 if( !view || !Override.cache[ 'load' ][ view ] )
@@ -438,12 +417,12 @@
             },
             
             tag: function(tag, htmlOptions, content, closeTag){
-				var html ='<' + tag + this.renderAttributes( htmlOptions );
-				if( !content ) {
-					return ( closeTag === undefined || closeTag ) ? html + ' />' : html + '>';
-				} else {
-					return ( closeTag === undefined || closeTag ) ? html + '>' + content + '</' + tag + '>' : html + '>' + content;
-				}
+                var html ='<' + tag + this.renderAttributes( htmlOptions );
+                if( !content ) {
+                    return ( closeTag === undefined || closeTag ) ? html + ' />' : html + '>';
+                } else {
+                    return ( closeTag === undefined || closeTag ) ? html + '>' + content + '</' + tag + '>' : html + '>' + content;
+                }
             },
             
             openTag: function(name, htmlOptions){
@@ -458,80 +437,72 @@
             toIdByName: function(name) {
                 return name.replace('[]', '').replace('][', '_').replace('[', '_').replace('[', '_');
             },
-			
-			/**
-			 * Renders the HTML tag attributes.
-			 * Since version 1.1.5, attributes whose value is null will not be rendered.
-			 * Special attributes, such as 'checked', 'disabled', 'readonly', will be rendered
-			 * properly based on their corresponding boolean value.
-			 * @param array $htmlOptions attributes to be rendered
-			 * @return string the rendering result
-			 */
-			renderAttributes: function( htmlOptions ) {
-				var specialAttributes = {
-					'autofocus':1,
-					'autoplay':1,
-					'async':1,
-					'checked':1,
-					'controls':1,
-					'declare':1,
-					'default':1,
-					'defer':1,
-					'disabled':1,
-					'formnovalidate':1,
-					'hidden':1,
-					'ismap':1,
-					'itemscope':1,
-					'loop':1,
-					'multiple':1,
-					'muted':1,
-					'nohref':1,
-					'noresize':1,
-					'novalidate':1,
-					'open':1,
-					'readonly':1,
-					'required':1,
-					'reversed':1,
-					'scoped':1,
-					'seamless':1,
-					'selected':1,
-					'typemustmatch':1,
-				};
-
-				if( _.isEmpty( htmlOptions ) )
-					return '';
-
-				var html = '';
-				var self = this;
-				
-				_.each( htmlOptions, function( value, name ){
-					if( specialAttributes[ name ] ) {
-						if( value===false ) {
-							html += ' ' + name + '="false"';
-						} else if( value ) {
-							html += ' ' + name + '="' + name + '"';
-						}
-					} else if( value !== null ) {
-						html += ' ' + name + '="' + self.escape( value ) + '"';
-					}
-				});
-
-				return html;
-			},
-			
-			escape: function(s) {
-				return ('' + s) /* Forces the conversion to string. */
-					.replace(/\\/g, '\\\\') /* This MUST be the 1st replacement. */
-					.replace(/\t/g, '\\t') /* These 2 replacements protect whitespaces. */
-					.replace(/\n/g, '\\n')
-					.replace(/\u00A0/g, '\\u00A0') /* Useful but not absolutely necessary. */
-					.replace(/&/g, '\\x26') /* These 5 replacements protect from HTML/XML. */
-					.replace(/'/g, '\\x27')
-					.replace(/"/g, '\\x22')
-					.replace(/</g, '\\x3C')
-					.replace(/>/g, '\\x3E')
-					;
-			},
+            
+            renderAttributes: function( htmlOptions ) {
+                var specialAttributes = {
+                    'autofocus':1,
+                    'autoplay':1,
+                    'async':1,
+                    'checked':1,
+                    'controls':1,
+                    'declare':1,
+                    'default':1,
+                    'defer':1,
+                    'disabled':1,
+                    'formnovalidate':1,
+                    'hidden':1,
+                    'ismap':1,
+                    'itemscope':1,
+                    'loop':1,
+                    'multiple':1,
+                    'muted':1,
+                    'nohref':1,
+                    'noresize':1,
+                    'novalidate':1,
+                    'open':1,
+                    'readonly':1,
+                    'required':1,
+                    'reversed':1,
+                    'scoped':1,
+                    'seamless':1,
+                    'selected':1,
+                    'typemustmatch':1,
+                };
+                
+                if( _.isEmpty( htmlOptions ) )
+                    return '';
+                
+                var html = '';
+                var self = this;
+                
+                _.each( htmlOptions, function( value, name ){
+                    if( specialAttributes[ name ] ) {
+                        if( value===false ) {
+                            html += ' ' + name + '="false"';
+                        } else if( value ) {
+                            html += ' ' + name + '="' + name + '"';
+                        }
+                    } else if( value !== null ) {
+                        html += ' ' + name + '="' + self.escape( value ) + '"';
+                    }
+                });
+                
+                return html;
+            },
+            
+            escape: function(s) {
+                return ('' + s) /* Forces the conversion to string. */
+                    .replace(/\\/g, '\\\\') /* This MUST be the 1st replacement. */
+                    .replace(/\t/g, '\\t') /* These 2 replacements protect whitespaces. */
+                    .replace(/\n/g, '\\n')
+                    .replace(/\u00A0/g, '\\u00A0') /* Useful but not absolutely necessary. */
+                    .replace(/&/g, '\\x26') /* These 5 replacements protect from HTML/XML. */
+                    .replace(/'/g, '\\x27')
+                    .replace(/"/g, '\\x22')
+                    .replace(/</g, '\\x3C')
+                    .replace(/>/g, '\\x3E')
+                    ;
+            },
             
             inArray: function(data, val){
                 var exists = false;
@@ -648,7 +619,42 @@
         
         render: function(view, data, fn, urls){
             var self = this;
-            self.load( _.union( ( urls || [] ), [ view ] ), function(){
+            urls = urls || [];
+            
+            if( _.has( data, 'form' ) ) {
+                _.each( data.form, function( row ){
+                    var fieldset = Override.get( '1.2.fieldset.view', row );
+                    if( fieldset ){
+                        urls.push( fieldset );
+                    }
+                });
+                
+                urls.push( 'components/fieldset' );
+            }
+            
+            if( _.has( data, 'listView' ) ) {
+                var listView = Override.get( 'listView.3.template', data );
+                if( !listView ) {
+                    urls.push( 'components/gridView' );
+                } else {
+                    urls.push( listView );
+                }
+            }
+            
+            self.load( _.union( _.uniq( urls ), [ view ] ), function(){
+                if( _.has( data, 'form' ) ) {
+                    var form = {};
+                    _.each( data.form, function( row ){
+                        form[ row[1][0] ] = self.form[ row[0] ].apply( self.form, row[1] );
+                    });
+                    
+                    data.form = form;
+                }
+                
+                if( _.has( data, 'listView' ) ) {
+                    data.listView = self.listView.apply( self, data.listView );
+                }
+                
                 fn.call(self, Override.cache[ 'load' ][ view ]( data ))
             });
         },
@@ -662,17 +668,17 @@
                     return $.get('skin/' + url + '.html');
                 }))
                 .done(function(){
-					if( urls.length == 1 ) {
-						if( arguments[ 1 ] == 'success' ) {
-							Override.cache[ 'load' ][ urls[ 0 ] ] = _.template( arguments[ 0 ] );
-						}
-					} else {
-						for (var i = 0; i < urls.length; i++) {
-							if( arguments[ i ][ 1 ] == 'success' ) {
-								Override.cache[ 'load' ][ urls[ i ] ] = _.template( arguments[ i ][ 0 ] );
-							}
-						}	
-					}
+                    if( urls.length == 1 ) {
+                        if( arguments[ 1 ] == 'success' ) {
+                            Override.cache[ 'load' ][ urls[ 0 ] ] = _.template( arguments[ 0 ] );
+                        }
+                    } else {
+                        for (var i = 0; i < urls.length; i++) {
+                            if( arguments[ i ][ 1 ] == 'success' ) {
+                                Override.cache[ 'load' ][ urls[ i ] ] = _.template( arguments[ i ][ 0 ] );
+                            }
+                        }    
+                    }
                     
                     fn.call(self);
                 });
