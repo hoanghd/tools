@@ -5,9 +5,9 @@
         
         form: {
             fieldset: function(el, htmlOptions){
-                htmlOptions = $.extend( true, {}, ( htmlOptions || {} ) , { 'fieldset': {'view': 'components/fieldset'} });
+                htmlOptions = $.extend( true, {}, ( htmlOptions || {} ) , { 'fieldset': {'template': 'components/fieldset'} });
                 
-                var view = Override.get( 'fieldset.view', htmlOptions ); 
+                var view = Override.get( 'fieldset.template', htmlOptions ); 
                 if( !view || !Override.cache[ 'load' ][ view ] ) {
                     Override.debug( 'Form.Fieldset: `' + view + '` Not Found!' );
                     return el;
@@ -15,7 +15,7 @@
                 
                 return Override.cache[ 'load' ][ view ]({
                     'element'        : el,
-                    'fieldset'       : _.omit(htmlOptions.fieldset, 'view'),
+                    'fieldset'       : _.omit(htmlOptions.fieldset, 'template'),
                     'htmlOptions'    : _.omit(htmlOptions, 'fieldset')
                 });
             },
@@ -625,7 +625,7 @@
             
             if( _.has( data, '$form' ) ) {
                 _.each( data[ '$form' ], function( row ){
-                    var fieldset = Override.get( '1.2.fieldset.view', row );
+                    var fieldset = Override.get( '1.2.fieldset.template', row );
                     if( fieldset ){
                         urls.push( fieldset );
                     }
