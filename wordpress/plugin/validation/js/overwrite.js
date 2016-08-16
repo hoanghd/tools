@@ -8,8 +8,10 @@
                 htmlOptions = $.extend( true, {}, ( htmlOptions || {} ) , { 'fieldset': {'view': 'components/fieldset'} });
                 
                 var view = Override.get( 'fieldset.view', htmlOptions ); 
-                if( !view || !Override.cache[ 'load' ][ view ] )
+                if( !view || !Override.cache[ 'load' ][ view ] ) {
+                    Override.debug( 'Form.Fieldset: `' + view + '` Not Found!' );
                     return el;
+                }
                 
                 return Override.cache[ 'load' ][ view ]({
                     'element'        : el,
@@ -563,7 +565,7 @@
             return fn ? this.utils[ fn ].apply( this, [ curr ].concat( params ) ) : curr;
         },
         
-        query: function(url){
+        query: function( url ){
             url = (url || window.location.href);
             var params = {};
             
@@ -621,8 +623,8 @@
             var self = this;
             urls = urls || [];
             
-            if( _.has( data, 'form' ) ) {
-                _.each( data.form, function( row ){
+            if( _.has( data, '$form' ) ) {
+                _.each( data[ '$form' ], function( row ){
                     var fieldset = Override.get( '1.2.fieldset.view', row );
                     if( fieldset ){
                         urls.push( fieldset );
@@ -632,8 +634,8 @@
                 urls.push( 'components/fieldset' );
             }
             
-            if( _.has( data, 'listView' ) ) {
-                var listView = Override.get( 'listView.3.template', data );
+            if( _.has( data, '$listView' ) ) {
+                var listView = Override.get( '$listView.3.template', data );
                 if( !listView ) {
                     urls.push( 'components/gridView' );
                 } else {
@@ -641,18 +643,18 @@
                 }
             }
             
-            self.load( _.union( _.uniq( urls ), [ view ] ), function(){
-                if( _.has( data, 'form' ) ) {
+            self.load( _.union( urls, [ view ] ), function(){
+                if( _.has( data, '$form' ) ) {
                     var form = {};
-                    _.each( data.form, function( row ){
+                    _.each( data[ '$form' ], function( row ){
                         form[ row[1][0] ] = self.form[ row[0] ].apply( self.form, row[1] );
                     });
                     
-                    data.form = form;
+                    data[ '$form' ] = form;
                 }
                 
-                if( _.has( data, 'listView' ) ) {
-                    data.listView = self.listView.apply( self, data.listView );
+                if( _.has( data, '$listView' ) ) {
+                    data[ '$listView' ] = self.listView.apply( self, data[ '$listView' ] );
                 }
                 
                 fn.call(self, Override.cache[ 'load' ][ view ]( data ))
@@ -661,7 +663,7 @@
         
         load: function(urls, fn){
             self = this;
-            urls = _.filter(urls, function( url ){ return !Override.cache[ 'load' ][ url ]; });
+            urls = _.filter( _.uniq( urls ) , function( url ){ return !Override.cache[ 'load' ][ url ]; });
             
             if( urls.length>0 ) {
                 $.when.apply($, urls.map(function( url ) {
@@ -693,7 +695,10 @@
             options = _.extend(( options || {} ), { 'template': 'components/gridView' });
             
             var template = options.template ;
-            if( !template || !Override.cache[ 'load' ][ template ] ) return;
+            if( !template || !Override.cache[ 'load' ][ template ] ) {
+                self.debug( 'ListView: `' + template + '` Not Found!' );
+                return;
+            }
             
             return Override.cache[ 'load' ][ template ]( {
                 'rows': result.rows,
@@ -709,6 +714,10 @@
             date: function(){
                 return JSON.stringify(arguments);
             }
+        },
+        
+        debug: function( message ){
+            console.log( message );
         }
     };
     

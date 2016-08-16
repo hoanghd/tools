@@ -69,11 +69,11 @@ var NewAddress = Backbone.View.extend({
         var self = this;
         
         var params = {
-            form: [
+            $form: [
                 ['textfield', [ 'username', 'Nguyen Van A', {'class':'form-field'} ]],
                 ['textfield', [ 'fullname', 'Nguyen Van C', {'class':'form-field'} ]]
             ],
-            listView: [{
+            $listView: [{
                   rows: [
                     {id:1, name:'Monotonectally procras 1', test: {first:"Hoang1", last:"Hoa4"}},
                     {id:2, name:'Monotonectally procras 2', test: {first:"Hoang2", last:"Hoa5"}},
