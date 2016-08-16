@@ -103,7 +103,6 @@ var NewAddress = Backbone.View.extend({
     
     render1: function() {
         var view = new ListView( {collection: this.model.get('otherSpies') } );
-        
         $("#content1").html( view.render().el );
         console.log(this.model.get('otherSpies').toJSON());
         return this;
