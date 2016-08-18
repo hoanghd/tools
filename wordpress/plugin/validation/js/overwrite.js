@@ -577,6 +577,10 @@
         },
         
         redirect: function(url, fn){
+            if( !_.isString( url ) ) {
+                 url = $(url.currentTarget).attr("href");
+            }
+            
             var parser = document.createElement('a');
             parser.href = url;
             

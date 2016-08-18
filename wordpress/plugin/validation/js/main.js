@@ -56,8 +56,7 @@ var NewAddress = Backbone.View.extend({
         e.preventDefault();
         
         var self = this;
-        var href = $(e.currentTarget).attr("href");
-        _.com().redirect(href, function(){
+        _.com().redirect(e, function(){
             self.render();
         });
     },
