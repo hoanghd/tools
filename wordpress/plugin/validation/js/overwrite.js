@@ -623,6 +623,9 @@
             var self = this;
             urls = urls || [];
             
+            /**
+             * {$form: [ [type, [name, value, htmlOptions, data]], ]}
+             */
             if( _.has( data, '$form' ) ) {
                 _.each( data[ '$form' ], function( row ){
                     var fieldset = Override.get( '1.2.fieldset.template', row );
@@ -634,6 +637,9 @@
                 urls.push( 'components/fieldset' );
             }
             
+            /**
+             * {$listView: [result, columns, actions, options]}
+             */
             if( _.has( data, '$listView' ) ) {
                 var listView = Override.get( '$listView.3.template', data );
                 if( !listView ) {
@@ -641,6 +647,17 @@
                 } else {
                     urls.push( listView );
                 }
+            }
+            
+            /**
+             * {$partial: {selector: {template: '', params: {}}}}
+             */
+            if( _.has( data, '$partial' ) ) {
+                _.each( data[ '$partial' ], function( row ){
+                    if( !_.isEmpty( row[ 'template' ] ) ){
+                        urls.push( row.template );
+                    }
+                });
             }
             
             self.load( _.union( urls, [ view ] ), function(){
@@ -655,6 +672,12 @@
                 
                 if( _.has( data, '$listView' ) ) {
                     data[ '$listView' ] = self.listView.apply( self, data[ '$listView' ] );
+                }
+                
+                if( _.has( data, '$partial' ) ) {
+                    _.each( data[ '$partial' ], function( row, key ){
+                        data[ '$partial' ][ key ] = Override.cache[ 'load' ][ row.template ]( {'data': data, 'params': (row.params || {})} );
+                    });
                 }
                 
                 fn.call(self, Override.cache[ 'load' ][ view ]( data ))
