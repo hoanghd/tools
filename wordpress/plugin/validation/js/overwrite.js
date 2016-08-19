@@ -1,11 +1,15 @@
 (function ($) {
     "use strict";
     var Override = {
-        cache: {'form': {}, 'load': {}, views: {}},
+        cache: {
+			'form': {}, 
+			'load': {}, 
+			'views': {}
+		},
         
         form: {
             fieldset: function(el, htmlOptions){
-                htmlOptions = $.extend( true, {}, ( htmlOptions || {} ) , { 'fieldset': {'template': 'components/fieldset'} });
+                htmlOptions = $.extend( true, {}, { 'fieldset': {'template': Override.getView( 'fieldset' )} }, ( htmlOptions || {} ) );
                 
                 var view = Override.get( 'fieldset.template', htmlOptions ); 
                 if( !view || !Override.cache[ 'load' ][ view ] ) {
@@ -129,7 +133,7 @@
             },
             
             textArea: function( name, value, htmlOptions ) {
-                var htmlOptions = $.extend( true, {}, ( htmlOptions || {} ) , { 'name': name });
+                var htmlOptions = $.extend( true, {} , { 'name': name }, ( htmlOptions || {} ));
                 
                 if( !_.has(htmlOptions, 'id') ) {
                     htmlOptions['id'] = this.toIdByName( name );
@@ -199,7 +203,7 @@
             },
             
             dropDownList: function( name, value, htmlOptions, data ) {
-                var htmlOptions = $.extend( true, {}, ( htmlOptions || {} ) , { 'name': name });
+                var htmlOptions = $.extend( true, {}, { 'name': name }, ( htmlOptions || {} ) );
                 
                 if( !_.has(htmlOptions, 'id') ) {
                     htmlOptions['id'] = this.toIdByName( name );
@@ -398,7 +402,7 @@
             },
             
             inputField: function( type, name, value, $htmlOptions ){
-                var htmlOptions = $.extend( true, {}, ( $htmlOptions || {} ) , { 'type': type, 'value': value, 'name': name });
+                var htmlOptions = $.extend( true, {}, { 'type': type, 'value': value, 'name': name }, ( $htmlOptions || {} ) );
                 
                 if( !_.has(htmlOptions, 'id') ) {
                     htmlOptions['id'] = this.toIdByName( name );
@@ -495,7 +499,7 @@
             escape: function(s) {
                 return ('' + s) /* Forces the conversion to string. */
                     .replace(/\\/g, '\\\\') /* This MUST be the 1st replacement. */
-                    .replace(/\t/g, '\\t') /* These 2 replacements protect whitespaces. */
+                    .replace(/    /g, '\    ') /* These 2 replacements protect whitespaces. */
                     .replace(/\n/g, '\\n')
                     .replace(/\u00A0/g, '\\u00A0') /* Useful but not absolutely necessary. */
                     .replace(/&/g, '\\x26') /* These 5 replacements protect from HTML/XML. */
@@ -637,8 +641,8 @@
                         urls.push( fieldset );
                     }
                 });
-                
-                urls.push( 'components/fieldset' );
+				
+                urls.push( self.getView( 'fieldset' ) );
             }
             
             /**
@@ -647,7 +651,7 @@
             if( _.has( data, '$listView' ) ) {
                 var listView = Override.get( '$listView.3.template', data );
                 if( !listView ) {
-                    urls.push( 'components/gridView' );
+                    urls.push( self.getView( 'listView' ) );
                 } else {
                     urls.push( listView );
                 }
@@ -689,8 +693,21 @@
         },
         
         load: function(urls, fn){
-            self = this;
-            urls = _.filter( _.uniq( urls ) , function( url ){ return !Override.cache[ 'load' ][ url ]; });
+            var self = this;
+			
+            urls = _.filter( _.uniq( urls ) , function( url ){
+				var loaded = _.has( Override.cache[ 'load' ], url );
+				
+				if( !loaded && /^\#/.test( url ) ) {
+					if( $( url ).length>0 ) {
+						Override.cache[ 'load' ][ url ] = _.template( $( url ).html() );
+					}				
+					
+					loaded = true;
+				}
+				
+				return !loaded; 
+			});
             
             if( urls.length>0 ) {
                 $.when.apply($, urls.map(function( url ) {
@@ -719,7 +736,7 @@
         listView: function(result, columns, actions, options){
             var self = this;
             
-            options = _.extend(( options || {} ), { 'template': 'components/gridView' });
+            options = _.extend({ 'template': self.getView( 'listView' ) }, ( options || {} ));
             
             var template = options.template ;
             if( !template || !Override.cache[ 'load' ][ template ] ) {
@@ -736,6 +753,14 @@
                 'options': (options || {})
             } );
         },
+		
+		getView: function( type ){
+			if( type == 'fieldset' ) {
+				return (( $("script#FieldSet").length > 0 ) ? '#FieldSet' : 'components/fieldset' );
+			} else if( type == 'listView' ) {
+				return (( $("script#ListView").length > 0 ) ? '#ListView' : 'components/listView' );
+			}
+		},
         
         utils: {
             date: function(){
