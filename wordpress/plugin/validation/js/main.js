@@ -32,6 +32,7 @@ var NewAddress = Backbone.View.extend({
     events: {
         'click a[href]': 'redirect'
     },
+	
     bindings: {
         '#name': 'name.first',
         '#email': 'email',
