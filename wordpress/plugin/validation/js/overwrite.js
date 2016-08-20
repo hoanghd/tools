@@ -698,7 +698,7 @@
             urls = _.filter( _.uniq( urls ) , function( url ){
 				var loaded = _.has( Override.cache[ 'load' ], url );
 				
-				if( !loaded && /^\#/.test( url ) ) {
+				if( !loaded && /^script\#/.test( url ) ) {
 					if( $( url ).length>0 ) {
 						Override.cache[ 'load' ][ url ] = _.template( $( url ).html() );
 					}				
@@ -756,9 +756,9 @@
 		
 		getView: function( type ){
 			if( type == 'fieldset' ) {
-				return (( $("script#FieldSet").length > 0 ) ? '#FieldSet' : 'components/fieldset' );
+				return (( $("script#FieldSet").length > 0 ) ? 'script#FieldSet' : 'components/fieldset' );
 			} else if( type == 'listView' ) {
-				return (( $("script#ListView").length > 0 ) ? '#ListView' : 'components/listView' );
+				return (( $("script#ListView").length > 0 ) ? 'script#ListView' : 'components/listView' );
 			}
 		},
         
