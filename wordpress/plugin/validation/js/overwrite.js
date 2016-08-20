@@ -24,19 +24,6 @@
                 });
             },
             
-            switchfield: function(name, value, htmlOptions){
-                var compiled = _.template('<label class="switch">\
-                        <%=checkBox%>\
-                        <span class="switch-label" data-on="On" data-off="Off"></span>\
-                        <span class="switch-handle"></span>\
-                    </label>');
-                    
-                return this.fieldset(
-                    compiled({'checkBox': this.checkBox(name, value, _.omit(htmlOptions, 'fieldset'))}),
-                    htmlOptions
-                );
-            },
-            
             textfield: function( name, value, htmlOptions ){
                 return this.fieldset(
                     this.inputField( 'text', name, value, _.omit(htmlOptions, 'fieldset') ),
