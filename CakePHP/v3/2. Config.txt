@@ -1,4 +1,5 @@
 Environments
+	- http://book.cakephp.org/3.0/en/development/configuration.html
 	- https://github.com/josegonzalez/cakephp-environments
 	- https://www.loadsys.com/environment-specific-cakephp-configuration/
 	- http://www.b-prep.com/blog/?p=1255
@@ -14,6 +15,21 @@ Environments
 	}
 
 	Configure::load("app-{$env}", 'default');
-
-Create file config:
-	- database.php
+	
+Tách các config, mà thay đổi theo môi trường ra các file riêng với file app.php, các config db, cache, ....
+	- app.php
+	- app-production.php
+	- app-staging.php
+	- app-development.php
+	
+Get/Set Config
+	- use Cake\Core\Configure;
+	
+	- Configure::read($key);
+	- Configure::write('<key>','<value>');
+	
+	- Configure::check($key)
+	- Configure::delete($key);
+	- Configure::consume($key); //Reading & Deleting
+	- Configure::config($name, $engine); //Reading and writing
+	- Configure::load($key, $config = 'default', $merge = true); //Loading Configuration Files
