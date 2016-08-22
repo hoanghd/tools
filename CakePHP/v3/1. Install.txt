@@ -1,0 +1,38 @@
+URL
+	http://cakephp.org/
+
+Install Link
+	http://book.cakephp.org/3.0/en/installation.html
+
+Requirements
+	- PHP 5.5.9 or greater (including PHP 7).
+	- mbstring PHP extension
+	- intl PHP extension
+	- MySQL (5.1.10 or greater)
+
+Composer
+	- https://getcomposer.org/download/
+	- https://getcomposer.org/composer.phar
+	
+Create App
+	- php composer.phar create-project --prefer-dist cakephp/app demo
+	- cd demo
+	- php composer.phar install
+	
+Update App
+	- php composer.phar update
+
+CHMOD
+	- /logs
+	- /tmp
+
+VHOST
+	- /demo
+
+Config File
+	- /demo/config/app.php
+	
+
+
+
+	

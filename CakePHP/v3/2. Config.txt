@@ -1,0 +1,16 @@
+Environments
+	- https://github.com/josegonzalez/cakephp-environments
+	- https://www.loadsys.com/environment-specific-cakephp-configuration/
+	- http://www.b-prep.com/blog/?p=1255
+	
+<VirtualHost *:80>
+    ServerName stagingsite.com
+    SetEnv APP_ENV staging
+</VirtualHost>
+
+$env = getenv('APP_ENV');
+if( empty( $env ) || !in_array( $env, array( 'production', 'staging', 'development' ) ) ) {
+	$env = 'development';
+}
+
+Configure::load("app-{$env}", 'default');
