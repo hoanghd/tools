@@ -33,3 +33,6 @@ Get/Set Config
 	- Configure::consume($key); //Reading & Deleting
 	- Configure::config($name, $engine); //Reading and writing
 	- Configure::load($key, $config = 'default', $merge = true); //Loading Configuration Files
+	- Configure::dump($key, $config = 'default', $keys =[]) //Creating or Modifying Configuration Files
+	- Configure::store($name, $cacheConfig = 'default', $data = null) //Storing Runtime Configuration
+	- Configure::restore($name, $cacheConfig = 'default') //Restoring Runtime Configuration
