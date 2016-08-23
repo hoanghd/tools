@@ -18,7 +18,7 @@ Composer
 Create App
 	- php composer.phar create-project --prefer-dist cakephp/app demo
 	- cd demo
-	- php composer.phar install
+	- php ../composer.phar install
 	
 Update App
 	- php composer.phar update
