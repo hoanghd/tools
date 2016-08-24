@@ -1,0 +1,40 @@
+File
+	- /config/routes.php
+	- Cake\Routing\Router
+	
+Example
+	- http://lecterror.com/articles/view/advanced-routing-with-cakephp-one-example
+	- http://miftyisbored.com/complete-tutorial-admin-routing-cakephp/
+
+Chức năng
+	- connect($route, $defaults =[], $options =[])
+		+ route
+			- '/:controller/:action'
+			- '/blog/:id-:slug'
+				+ /blog/3-CakePHP_Rocks
+				
+			- '/articles/*'
+				+ /articles/products
+				+ /articles/15
+				
+			- '/pages/**'
+				+ /pages/the-example-/-and-proof
+		+ defaults			
+			- controller: Used to name the controller for a route.
+			- action: Used to name the controller action for a route.
+			- plugin: Used to name the plugin a controller is located in.
+			- prefix: Used for Prefix Routing
+			- _ext: Used for File extentions routing.
+			- _base: Set to false to remove the base path from the generated URL. If your application is not in the root directory, this can be used to generate URLs that are ‘cake relative’.
+			- _scheme: Set to create links on different schemes like webcal or ftp. Defaults to the current scheme.
+			- _host: Set the host to use for the link. Defaults to the current host.
+			- _port: Set the port if you need to create links on non-standard ports.
+			- _full: If true the FULL_BASE_URL constant will be prepended to generated URLs.
+			- #: Allows you to set URL hash fragments.
+			- _ssl: Set to true to convert the generated URL to https or false to force http.
+			- _method: Define the HTTP verb/method to use. Useful when working with Creating RESTful Routes.
+			- _name: Name of route. If you have setup named routes, you can use this key to specify it.
+			
+Get params from URLs
+	- connect('/:category/:title', array('controller' => 'posts', 'action' => 'view'));
+		+ $this->params['title']
