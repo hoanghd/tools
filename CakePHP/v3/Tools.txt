@@ -1,3 +1,0 @@
-http://book.cakephp.org/3.0/en/bake/usage.html
-
-https://waltherlalk.com/blog/cakephp-3-tutorial-part-5
