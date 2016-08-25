@@ -1,0 +1,5 @@
+Thông tin
+	- http://book.cakephp.org/3.0/en/plugins.html
+	
+Create Plugin
+	- bin\\cake bake plugin MyPlugin
