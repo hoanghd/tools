@@ -5,6 +5,7 @@ File
 Example
 	- http://lecterror.com/articles/view/advanced-routing-with-cakephp-one-example
 	- http://miftyisbored.com/complete-tutorial-admin-routing-cakephp/
+	- http://ad7six.com/blog/2014/09/16/cakephp-entity-routing/
 
 Chức năng
 	- connect($route, $defaults =[], $options =[])
