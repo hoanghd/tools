@@ -1,0 +1,32 @@
+Info
+	- http://book.cakephp.org/3.0/en/controllers/request-response.html
+Namespace
+	- Cake\Network\Request
+	- 
+	
+Sample
+	Route, $_POST, $_GET, $_FILE
+	- $this->request->params['controller'];
+	- $this->request->param('controller');
+	
+	$_GET
+	- $this->request->query('page'); ///posts/index?page=1&sort=title
+	
+	POST FORM $_POST
+	- $this->request->data('MyModel.title'); //<input type="text" name="MyModel[title]"/>
+	- $this->request->data['MyModel']['title'];
+	
+	GET/SET $_SERVER, $_ENV
+	- $this->request->env('HTTP_HOST'); //$_SERVER['HTTP_HOST'] or $_ENV['HTTP_HOST']
+	- $this->request->env('REQUEST_METHOD', 'POST');
+	
+	- $this->request->is('get') //put, patch, post, delete, head, options, ajax, ssl, flash, requested, json, xml
+	
+	SESSION
+	- $this->request->session()->read('Auth.User.name');
+	
+	PUT, DELETE
+	- $data = $this->request->input('json_decode');
+	- $data = $this->request->input('Cake\Utility\Xml::build', ['return' => 'domdocument']);
+		-> Get Xml encoded data submitted to a PUT/POST action
+	- $request->webroot
