@@ -26,11 +26,18 @@ Chức năng
 				+ Gọi tham chiếu sử dụng plugin có thể tạo các plugin đặt ở thư mục ./plugins/
 				-> $routes->connect('/:controller/:action', ['plugin'=>'MyPlugin']);
 					./plugins/MyPlugin/src/
+				+ Router::scope('/blog', ['plugin' => 'Blog'], function ($routes) {
+						$routes->connect('/', ['controller' => 'Articles']);
+				  });
+				+ 
 				
 			- prefix: Used for Prefix Routing
 				+ Có thể tạo sub-namespace 
 				-> /src/Controller/Admin/ArticleController.php
 				-> $routes->connect('/:controller/:action', ['prefix'=>'Admin']);
+				-> Router::prefix('admin', function ($routes) {
+				 	 $routes->connect('/', ['controller' => 'Pages', 'action' => 'index']);
+				   });
 		
 		+ $options
 			- _ext: Used for File extentions routing.
@@ -58,5 +65,17 @@ Chức năng
 				-> http://demo.vn/articles/view			
 			
 Get params from URLs
-	- connect('/:category/:title', array('controller' => 'posts', 'action' => 'view'));
+	- $routes->connect('/:category/:title', []);
 		+ $this->params['title']
+	- $routes->connect( '/:controller/:id', [], ['id' => '[0-9]+']);
+		+ $this->request->params['id']
+	- $routes->connect( '/:userShortcut', [], ['userShortcut' => '(?i:principal)']);
+	- $routes->connect('/:controller/:year/:month/:day', [], [
+        'year' => '[12][0-9]{3}',
+        'month' => '0[1-9]|1[012]',
+        'day' => '0[1-9]|[12][0-9]|3[01]'
+    ]);
+	
+Make URL
+	$this->Html->link('New todo', ['plugin' => 'Todo', 'controller' => 'TodoItems', 'action' => 'create'])
+	Router::url(['_name' => 'admin_login']);
