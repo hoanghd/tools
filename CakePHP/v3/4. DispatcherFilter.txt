@@ -1,0 +1,6 @@
+Info
+	- http://book.cakephp.org/3.0/en/development/dispatch-filters.html
+	- https://www.thinkingmedia.ca/2015/07/how-to-fix-404-error-on-options-request-in-cakephp-3-when-making-a-post-request-with-rest/
+	
+Vai trò
+	- Cho phép chặn xử lý trước tất cả các request, để kiểm tra OPTIONS phương thức để cập nhật header trả về
