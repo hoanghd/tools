@@ -25,7 +25,7 @@ Sample
 	SESSION
 	- $this->request->session()->read('Auth.User.name');
 	
-	PUT, DELETE ????????????????????????????????????
+	PUT, DELETE (-)
 	- $data = $this->request->input('json_decode');
 	- $data = $this->request->input('Cake\Utility\Xml::build', ['return' => 'domdocument']);
 		-> Get Xml encoded data submitted to a PUT/POST action
@@ -33,3 +33,7 @@ Sample
 	- $request->webroot
 	- $request->here
 	- $request->base;
+	
+	DETECT (-)
+	- $this->request->addDetector( 'post', ['env' => 'REQUEST_METHOD', 'value' => 'POST'] );
+
