@@ -30,9 +30,19 @@ Sample
 	- $data = $this->request->input('Cake\Utility\Xml::build', ['return' => 'domdocument']);
 		-> Get Xml encoded data submitted to a PUT/POST action
 	
-	- $request->webroot
-	- $request->here
-	- $request->base;
+	- $this->request->domain()
+	- $this->request->subdomains()
+	- $this->request->port()
+	- $this->request->scheme()
+	- $this->request->host()
+	- $this->request->method()
+	- $this->request->header( $name )
+	- $this->request->referer()
+	- $this->request->clientIp()
+	
+	- $this->request->webroot
+	- $this->request->here
+	- $this->request->base;
 	
 	DETECT (-)
 	- $this->request->addDetector( 'post', ['env' => 'REQUEST_METHOD', 'value' => 'POST'] );
