@@ -65,16 +65,17 @@ Chức năng
 				-> http://demo.vn/articles/view			
 			
 Get params from URLs
-	- $routes->connect('/:category/:title', []);
+	- $routes->connect('/:category/:title');
 		+ $this->params['title']
+		
 	- $routes->connect( '/:controller/:id', [], ['id' => '[0-9]+']);
 		+ $this->request->params['id']
+		
 	- $routes->connect( '/:userShortcut', [], ['userShortcut' => '(?i:principal)']);
-	- $routes->connect('/:controller/:year/:month/:day', [], [
-        'year' => '[12][0-9]{3}',
-        'month' => '0[1-9]|1[012]',
-        'day' => '0[1-9]|[12][0-9]|3[01]'
-    ]);
+	
+	- $routes->connect('/:controller/:year/:month/:day', [], ['year' => '[12][0-9]{3}', 'month' => '0[1-9]|1[012]', 'day' => '0[1-9]|[12][0-9]|3[01]' ]);
+	
+	- $routes->connect('/:promo', [], ['promo' => '[a-zA-Z\-_]+' ])
 	
 Make URL
 	$this->Html->link('New todo', ['plugin' => 'Todo', 'controller' => 'TodoItems', 'action' => 'create'])
