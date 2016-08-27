@@ -1,5 +1,6 @@
 Info
 	- http://book.cakephp.org/3.0/en/controllers/request-response.html
+	- http://api.cakephp.org/3.3/class-Cake.Network.Request.html
 Namespace
 	- Cake\Network\Request
 	- 
@@ -23,12 +24,11 @@ Sample
 	- $this->request->is('get') //put, patch, post, delete, head, options, ajax, ssl, flash, requested, json, xml
 	
 	SESSION
-	- $this->request->session()->read('Auth.User.name');
-	
-	PUT, DELETE (-)
-	- $data = $this->request->input('json_decode');
-	- $data = $this->request->input('Cake\Utility\Xml::build', ['return' => 'domdocument']);
-		-> Get Xml encoded data submitted to a PUT/POST action
+	- $this->request->session()->read( $key );
+	- $this->request->session()->write( $key, $value );
+	- $this->request->session()->delete( $key )
+	- $this->request->session()->consume( $key ) //Read & Delete
+	- $this->request->session()->check( $key ) //Exists & Not NULL
 	
 	- $this->request->domain()
 	- $this->request->subdomains()
@@ -42,8 +42,47 @@ Sample
 	
 	- $this->request->webroot
 	- $this->request->here
-	- $this->request->base;
+	- $this->request->base
+
+	PUT, DELETE
+	- $this->request->input($callback [, $options][, $options])
+		+ $callback: Function để xử lý data trước khi return
+		+ $options: các đối số phía sau của $callback
+		
+		$.ajax({  
+			url: "/test/index.html",  
+			type: "POST",  
+			dataType: "json",  
+			contentType: "json",  
+			data: JSON.stringify({"customer": customer_id})
+		});
+		
+		$this->request->input('json_decode', true)		
 	
-	DETECT (-)
-	- $this->request->addDetector( 'post', ['env' => 'REQUEST_METHOD', 'value' => 'POST'] );
+	- $data = $this->request->input('json_decode');
+	- $data = $this->request->input('Cake\Utility\Xml::build', ['return' => 'domdocument']);
+		-> Get Xml encoded data submitted to a PUT/POST action
+	
+	- $this->request->is('get') //put, patch, post, delete, head, options, ajax, ssl, flash, requested, json, xml
+	
+	DETECT (Để tạo is( 'awesome' ) thì có thể dùng addDetector để xử lý)
+	- http://api.cakephp.org/3.3/class-Cake.Network.Request.html#_addDetector
+	- $this->request->addDetector( $name, $options );
+	- $this->request->
+		addDetector( 'post', ['env' => 'REQUEST_METHOD', 'value' => 'POST'] );
+		addDetector('extension', ['param' => 'ext', 'options' => ['pdf', 'csv']]
+		addDetector('requested', ['param' => 'requested', 'value' => 1])
+		addDetector('mobile', ['env' => 'HTTP_USER_AGENT', 'options' => ['Fennec']]);
+		
+	- Example 
+		public function beforeFilter(Event $event){
+		  $this->request->addDetector('awesome', function( $request ){
+				return $request->query('awesome');
+		  });
+		  
+		  parent::beforeFilter($event);
+		}
+		
+		$this->request->isAwesome()
+		$this->request->is( 'awesome' )
 
