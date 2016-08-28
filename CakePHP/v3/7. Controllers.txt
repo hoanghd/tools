@@ -1,0 +1,39 @@
+Info
+	http://book.cakephp.org/3.0/en/controllers.html
+
+Setting View Variables
+	- $this->set(string $var, mixed $value)
+	- $this->set(array $value)
+	
+Render
+	- $this->render(string $view, string $layout) //src/Template/<Ctr>/<Action>.ctp
+	
+		+ $this->render('/Home/index') //src/Template/Home/index.ctp
+			+ Mặc định view dựa vào controller && action
+			
+		+ $this->render('Users.UserDetails/custom_file')
+			+ /plugins/Users/src/Template/UserDetails/custom_file.ctp
+
+Redirect
+	- $this->redirect(string|array $url, integer $status)
+		+ return $this->redirect($this->referer());
+		+ return $this->redirect(['controller' => 'Orders', 'action' => 'thanks']);
+		+ return $this->redirect('/orders/thanks');
+		+ return $this->redirect('http://www.example.com');
+		+ return $this->redirect([
+			'controller' => 'Orders', 'action' => 'confirm',
+			'?' => [ 'product' => 'pizza', 'quantity' => 5 ],
+			'#' => 'top'
+		]);
+		//http://www.example.com/orders/confirm?product=pizza&quantity=5#top
+
+Forward the current action to a different action
+	- $this->setAction($action, $args...)
+
+Loading Additional Models ( Model/Table ) (-)
+	- $this->loadModel(string $modelClass, string $type)
+		$this->loadModel('Articles');
+		$recentArticles = $this->Articles->find('all', [
+			'limit' => 5,
+			'order' => 'Articles.created DESC'
+		]);
