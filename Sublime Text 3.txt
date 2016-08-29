@@ -16,3 +16,34 @@ CSS Extended Completions
 http://docs.emmet.io/
 
 http://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html#download
+
+Ctrl+L: select 1 dòng
+Ctrl + KK: xóa từ vị trí con trỏ tới cuối dòng
+Ctrl + K + U : chuyển đổi toàn bộ chuỗi từ thường sang HOA
+Ctrl + K + L : chuyển đổi toàn bộ chuỗi từ HOA sang thường
+Ctrl + Shift + D: sao chép dòng hiện tại thành một dòng mới
+Ctrl + Shift + K : xóa một dòng
+Ctrl + Shift + Up,Down: di chuyển một dòng lên trên hoặc xuống dưới
+Ctrl + Shift + Enter: thêm một dòng phía trước
+Ctrl + Enter: thêm một dòng phía sau
+
+
+Ctrl+[: bỏ indent
+Ctrl + T : hoán đổi 2 ký tự đứng kế nhau
+Ctrl+K+B: ẩn/hiện side bar
+Ctrl+/: comment
+Ctrl+Shift+/: comment dạng block
+Ctrl+]: indent
+Ctrl+J: nối dòng với dòng tiếp theo
+Ctrl+Shift+[: đóng 1 đoạn code
+Ctrl+Shift+]: mở 1 đoạn code
+Ctrl+F: tìm kiếm
+Ctrl+H: tìm kiếm và thay thế
+Ctrl+Shift+N: mở cửa sổ mới
+Ctrl+N: mở tab mới
+Alt+<number>: chuyển tab (ví dụ Alt+3)
+Ctrl + P : xuất hiện một bảng chọn file trong toàn bộ các file của folder project.
+Ctrl + G : xuất hiện một bảng nhập số dòng mình muốn tới.
+Ctrl + R : xuất hiện bảng chọn hàm trong file để di chuyển đến đó.
+Ctrl + Pageup­/Pa­gedown : di chuyển qua lại giữa các tập tin
+Ctrl + Delete/Backspace: xóa một cụm từ trước hoặc sau vị trí con trỏ
