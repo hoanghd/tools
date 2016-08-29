@@ -1,0 +1,18 @@
+http://blogit.vn/huong-dan-cai-dat-va-su-dung-sublime-text-3.html
+http://blogit.vn/phim-tat-trong-sublime-text-3.html
+
+https://packagecontrol.io/installation
+	Ctr + `
+
+Ctr + Ship + p
+in
+
+Sublime CodeIntel
+Emmet	#http://docs.emmet.io/
+HTML5
+CSS3
+CSS Extended Completions
+
+
+
+http://docs.emmet.io/
