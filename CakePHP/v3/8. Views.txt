@@ -1,3 +1,31 @@
 Info
-	http://book.cakephp.org/3.0/en/views.html
+	- http://book.cakephp.org/3.0/en/views.html
 
+Class
+	- Cake\View\View
+	
+Folder	
+    - views
+    - elements
+    - layouts
+    - helpers
+    - cells
+
+Escape
+	- <?= h($user->bio); ?>
+	
+Extending Views
+	- $this->fetch('title')
+	- $this->extend('/Common/view')
+	- $this->assign('title', $post)
+	- $this->start('sidebar')
+	- $this->end()
+	- $this->append()
+	- $this->prepend()
+	- $this->reset('sidebar')
+	- $this->script()
+	- $this->css()
+	- $this->meta()
+	- $this->element(string $elementPath, array $data, array $options =[])
+	- $this->cache(callable $block, array $options =[])
+	
