@@ -64,7 +64,9 @@ Configuring Components to Load (List các component và chức năng)
 
 Configuring Helpers to Load
 	- public $helpers = ['Form'];
-	
+
+---------------------------------------------------------------
+---------------------------------------------------------------
 Tổng kết
 	- Load Model, modelFactory
 	- loadComponent: Liệt kê xem có những component và chức năng là gì, thêm mới như thế nào
