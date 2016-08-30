@@ -1,6 +1,18 @@
 Info
 	http://book.cakephp.org/3.0/en/controllers.html
 
+Event List	
+    - initialize
+    - startup
+    - beforeRedirect
+    - beforeRender
+    - shutdown
+	
+Controller Callback Methods¶
+	- beforeFilter(Event $event)
+	- beforeRender(Event $event)
+	- afterFilter(Event $event)
+
 Setting View Variables
 	- $this->set(string $var, mixed $value)
 	- $this->set(array $value)
@@ -37,3 +49,25 @@ Loading Additional Models ( Model/Table ) (-)
 			'limit' => 5,
 			'order' => 'Articles.created DESC'
 		]);
+		
+	- $this->modelFactory()
+
+Paginating a Model
+	- public $paginate = [
+			'Articles' => [
+				'conditions' => ['published' => 1]
+			]
+		];
+
+Configuring Components to Load (List các component và chức năng)
+	- $this->loadComponent($name, $config =[])
+
+Configuring Helpers to Load
+	- public $helpers = ['Form'];
+	
+Tổng kết
+	- Load Model, modelFactory
+	- loadComponent: Liệt kê xem có những component và chức năng là gì, thêm mới như thế nào
+	- helpers: Liêt kê xem có những helper nào vai trò ra sao, tạo thêm như thế nào
+	- paginate: Có ví dụ & điều kiện
+	
