@@ -1,0 +1,2 @@
+https://github.com/jamesallardice/notepadplus-jQuery
+https://github.com/junichi11/cakephp3-netbeans/releases/tag/v0.3.0
