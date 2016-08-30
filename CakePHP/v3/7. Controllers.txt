@@ -48,17 +48,17 @@ Forward the current action to a different action
 	- $this->setAction($action, $args...)
 
 Loading Additional Models ( Model/Table ) (-)
-	- $this->loadModel(string $modelClass, string $type)
+	- 	$this->loadModel(string $modelClass, string $type)
 		$this->loadModel('Articles');
 		$recentArticles = $this->Articles->find('all', [
 			'limit' => 5,
 			'order' => 'Articles.created DESC'
 		]);
 		
-	- $this->modelFactory()
+	- 	$this->modelFactory()
 
 Paginating a Model
-	- public $paginate = [
+	- 	public $paginate = [
 			'Articles' => [
 				'conditions' => ['published' => 1]
 			]

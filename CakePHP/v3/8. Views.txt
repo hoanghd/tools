@@ -15,6 +15,7 @@ Escape
 	- <?= h($user->bio); ?>
 	
 Extending Views
+	- $this->exists()
 	- $this->fetch('title')
 	- $this->extend('/Common/view')
 	- $this->assign('title', $post)
@@ -26,6 +27,8 @@ Extending Views
 	- $this->script()
 	- $this->css()
 	- $this->meta()
+	
+	- $this->elementExists()
 	- $this->element(string $elementPath, array $data, array $options =[])
 	- $this->cache(callable $block, array $options =[])
 	
