@@ -1,83 +1,14 @@
 Info
-	http://book.cakephp.org/3.0/en/controllers.html
+	http://book.cakephp.org/3.0/en/controllers/components/pagination.html
 
-Layout
-	$this->viewBuilder()->layout('Contacts.contact');
-	$this->layout = 'Contacts.contact'; // or the following before 3.1
-
-Event List	
-    - initialize
-    - startup
-    - beforeRedirect
-    - beforeRender
-    - shutdown
-	
-Controller Callback Methods¶
-	- beforeFilter(Event $event)
-	- beforeRender(Event $event)
-	- afterFilter(Event $event)
-
-Setting View Variables
-	- $this->set(string $var, mixed $value)
-	- $this->set(array $value)
-	
-Render
-	- $this->render(string $view, string $layout) //src/Template/<Ctr>/<Action>.ctp
-	
-		+ $this->render('/Home/index') //src/Template/Home/index.ctp
-			+ Mặc định view dựa vào controller && action
-			
-		+ $this->render('Users.UserDetails/custom_file')
-			+ /plugins/Users/src/Template/UserDetails/custom_file.ctp
-
-Redirect
-	- $this->redirect(string|array $url, integer $status)
-		+ return $this->redirect($this->referer());
-		+ return $this->redirect(['controller' => 'Orders', 'action' => 'thanks']);
-		+ return $this->redirect('/orders/thanks');
-		+ return $this->redirect('http://www.example.com');
-		+ return $this->redirect([
-			'controller' => 'Orders', 'action' => 'confirm',
-			'?' => [ 'product' => 'pizza', 'quantity' => 5 ],
-			'#' => 'top'
-		]);
-		//http://www.example.com/orders/confirm?product=pizza&quantity=5#top
-
-Forward the current action to a different action
-	- $this->setAction($action, $args...)
-
-Loading Additional Models ( Model/Table ) (-)
-	- 	$this->loadModel(string $modelClass, string $type)
-		$this->loadModel('Articles');
-		$recentArticles = $this->Articles->find('all', [
-			'limit' => 5,
-			'order' => 'Articles.created DESC'
-		]);
-		
-		+ $modelClass: nếu không định nghĩa trong Model sử dụng ORM
-			/src/Model/Table/ 	-> Cake\ORM\Table
-			/src/Model/Entity/ 	-> \Cake\ORM\Entity
-		
-	- 	$this->modelFactory(  string $type , callable $factory )
-
-Paginating a Model
-	- 	public $paginate = [
-			'Articles' => [
-				'conditions' => ['published' => 1]
+Variable
+	- public $paginate : Định nghĩa giá trị mặc định cho function $this->paginate()
+		+ public $paginate = [
+			'Options' => [
+				'limit' => 25,
+				'conditions' => ['autoload' => 'no']
 			]
-		];
-
-Configuring Components to Load (List các component và chức năng)
-	- $this->loadComponent($name, $config =[])
-
-Configuring Helpers to Load
-	- public $helpers = ['Form'];
-
----------------------------------------------------------------
----------------------------------------------------------------
-Tổng kết
-	- modelFactory
-	- loadComponent: Liệt kê xem có những component và chức năng là gì, thêm mới như thế nào
-	- helpers: Liêt kê xem có những helper nào vai trò ra sao, tạo thêm như thế nào
-	- paginate: Có ví dụ & điều kiện
-	
+		  ];
+		  
+		  $this->paginate( 'Options' )
+		  $this->paginate( $this->Options )

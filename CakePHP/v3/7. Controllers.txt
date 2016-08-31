@@ -69,15 +69,32 @@ Paginating a Model
 
 Configuring Components to Load (List các component và chức năng)
 	- $this->loadComponent($name, $config =[])
+		+ Auth
+		+ Csrf
+		+ Security
+		+ Paginator
+		+ RequestHandler
+		+ Cookie
+		+ Flash
 
 Configuring Helpers to Load
-	- public $helpers = ['Form'];
-
+	- Link
+		http://book.cakephp.org/3.0/en/views/helpers.html#configuring-helpers
+	
+	- public $helpers = ['Form'];	
+		+ Flash
+		+ Form			http://book.cakephp.org/3.0/en/views/helpers/form.html
+		+ Html			http://book.cakephp.org/3.0/en/views/helpers/html.html
+		+ Number
+		+ Paginator
+		+ Rss
+		+ Session
+		+ Text
+		+ Time
+		+ Url
+		
 ---------------------------------------------------------------
 ---------------------------------------------------------------
 Tổng kết
 	- modelFactory
-	- loadComponent: Liệt kê xem có những component và chức năng là gì, thêm mới như thế nào
-	- helpers: Liêt kê xem có những helper nào vai trò ra sao, tạo thêm như thế nào
-	- paginate: Có ví dụ & điều kiện
-	
+	- Tham số của paginate gồm những gì
