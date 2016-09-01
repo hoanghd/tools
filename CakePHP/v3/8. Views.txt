@@ -1,5 +1,6 @@
 Info
 	- http://book.cakephp.org/3.0/en/views.html
+	- http://api.cakephp.org/3.3/class-Cake.View.View.html
 
 Class
 	- Cake\View\View
@@ -15,37 +16,37 @@ Escape
 	- <?= h($user->bio); ?>
 	
 Extending Views
-	- $this->extend('/Common/view')
+	- $this->extend(string $name)
 		+ Tạo một view common rồi từ các view của controller có thể sử dụng lại
 		+ Sử dụng các hàm assign để gán biến
 		+ Hoặc tạo các block start, end, append, prepend
 		
-	- $this->exists()
+	- $this->exists(string $name)
 		+ Check block tồn tại hay không
 		
-	- $this->assign('title', $post)
+	- $this->assign(string $name , mixed $value)
 		+ Gán biến ở View
 		
-	- $this->fetch( <variable> )
+	- $this->fetch( string $name , string $default '' )
 		+ Biến sử dụng từ $this->assign(<variable>, <value>)	
 	
-	- $this->start('sidebar')
+	- $this->start(string $name)
 		+ Tạo block
 	- $this->append()
 		+ Add them vào block cuối
-	- $this->prepend()
+	- $this->prepend(string $name , mixed $value)
 		+ Add thêm vào block ở đầu
 	- $this->end()
 		+ Kết thúc của start, append, prepend
 	
-	- $this->reset('sidebar')
+	- $this->reset(string $name)
 		+ Clean nội dung của block hiện tại
 		
 	- $this->script()
 	- $this->css()
 	- $this->meta()
 	
-	- $this->elementExists()
+	- $this->elementExists(string $name)
 	- $this->element(string $elementPath, array $data, array $options =[])
 	- $this->cache(callable $block, array $options =[])
 	
