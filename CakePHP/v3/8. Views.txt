@@ -41,12 +41,9 @@ Extending Views
 	
 	- $this->reset(string $name)
 		+ Clean nội dung của block hiện tại
-		
-	- $this->script()
-	- $this->css()
-	- $this->meta()
 	
-	- $this->elementExists(string $name)
-	- $this->element(string $elementPath, array $data, array $options =[])
+
+	- $this->element(string $elementPath, array $data, array $options =[])	
+	- $this->elementExists(string $name)	
 	- $this->cache(callable $block, array $options =[])
 	
