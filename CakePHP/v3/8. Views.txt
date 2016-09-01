@@ -1,6 +1,7 @@
 Info
 	- http://book.cakephp.org/3.0/en/views.html
 	- http://api.cakephp.org/3.3/class-Cake.View.View.html
+	- http://book.cakephp.org/3.0/en/views/cells.html
 
 Class
 	- Cake\View\View
@@ -40,10 +41,19 @@ Extending Views
 		+ Kết thúc của start, append, prepend
 	
 	- $this->reset(string $name)
-		+ Clean nội dung của block hiện tại
-	
+		+ Clean nội dung của block hiện tại	
 
-	- $this->element(string $elementPath, array $data, array $options =[])	
+	- $this->element(string $elementPath, array $data, array $options =[]) //Tạo các block nhỏ để sử dụng lại	
+		+ $this->element('Test/helpbox'); //Template/Element/Test/helpbox.ctp
+		+ $this->element('Contacts.sidebar/helpbox'); //plugins/Contacts/Template/Element/sidebar/helpbox.ctp
+	
 	- $this->elementExists(string $name)	
 	- $this->cache(callable $block, array $options =[])
+	
+Cells
+	- Cell có vẻ giống như một Controller
+	- $this->cell(string $cell , array $data [] , array $options [])
+		+ $this->cell('TagCloud') //App/View/Cell/TagCloudCell::display()
+		+ $this->cell('TagCloud::smallList') //App/View/Cell/TagCloudCell::smallList()
+		+ $this->cell('Taxonomy.TagCloud::smallList') //plugins/Taxonomy/View/Cell/TagCloudCell::smallList()
 	
