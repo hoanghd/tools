@@ -3,7 +3,9 @@
 	+ Layout
 	+ Helper
 	+ Cell
+
 2. ORM Query, Paginate
+
 3. Components
 	+ Auth
 	+ Csrf
@@ -12,6 +14,7 @@
 	+ RequestHandler 
 	+ Cookie
 	+ Flash
+
 4. Helpers
 	+ Flash
 	+ Form			http://book.cakephp.org/3.0/en/views/helpers/form.html
@@ -23,4 +26,7 @@
 	+ Text
 	+ Time
 	+ Url
+
 5. Cell (Với template chưa biết sử dụng thế nào)
+
+6. Validate

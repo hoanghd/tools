@@ -26,4 +26,43 @@
 	- Link:
 		+ http://book.cakephp.org/3.0/en/views/helpers/form.html
 		+ http://api.cakephp.org/3.3/class-Cake.View.Helper.FormHelper.html
-	- 
+		
+	- Method
+		+ create( mixed $model null , array $options [] )
+			- $options
+				+ type: Form method defaults to autodetecting based on the form context. If the form context's isCreate() method returns false, a PUT request will be done.
+					- get, post, put, delete
+					
+				+ action: The controller action the form submits to, (optional). Use this option if you don't need to change the controller from the current request's controller. Deprecated since 3.2, use url.
+					
+				+ url: The URL the form submits to. Can be a string or a URL array. If you use 'url' you should leave 'action' undefined.
+					- ['url' => ['controller' => 'Articles', 'action' => 'publish']]
+					
+				+ encoding: Set the accept-charset encoding for the form. Defaults to Configure::read('App.encoding')
+				
+				+ templates: The templates you want to use for this form. Any templates will be merged on top of the already loaded templates. This option can either be a filename in /config that contains the templates you want to load, or an array of templates to use.
+				
+				+ context: Additional options for the context class. For example the EntityContext accepts a 'table' option that allows you to set the specific Table class the form should be based on.
+					- 	['context' => ['validator' => 'register']]
+					- 	['context' => [
+							'validator' => [
+								'Users' => 'register',
+								'Comments' => 'default'
+							]
+						]]
+						
+				+ idPrefix: Prefix for generated ID attributes.
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
