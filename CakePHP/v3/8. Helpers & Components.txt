@@ -55,7 +55,19 @@
 						register: Là method trong /src/Model/Table/OptionsTable.validationRegister
 						
 				+ idPrefix: Prefix for generated ID attributes.
-				
+		
+		+ inputs(array $fields, array $options = [])
+			+ fields: [`name` => $options, ...]
+			+ $options: fieldset, legend (options of fieldset)
+			-> template: legend, fieldset
+		
+		+ fieldset($fields = '', array $options = [])
+			+ $options: fieldset, legend (options of fieldset)
+			-> template: legend, fieldset
+ 		
+		+ allInputs(array $fields = [], array $options = [])
+			Tương tự như inputs
+			
 		+ input($fieldName, array $options = [])
 			+ http://book.cakephp.org/3.0/en/views/helpers/form.html#creating-form-inputs
 			+ $fieldName : $name, modelname.fieldname
@@ -68,24 +80,73 @@
 				-> Tạo input mà các field ở các table có mối liên hệ với nhau
 
 			+ $options: 
-				- type: file, text, checkbox, number, textarea, password, email, tel, day, month, year, hour, minute, meridian
-				- label
-				- options: ['s' => 'Small', 'm' => 'Medium', 'l' => 'Large']
+				* type: file, text, checkbox, number, textarea, password, email, tel, day, month, year, hour, minute, meridian
+				* label
+				* options: ['s' => 'Small', 'm' => 'Medium', 'l' => 'Large']
 					+ Chuyển đổi thành dạng select, radio
-				- empty: Sử dụng cho select giá trị đâu tiên
-				- required
-				- error				
-				- nestedInput
-				- templates
+				* empty: Sử dụng cho select giá trị đâu tiên
+				* required
+				* error				
+				* nestedInput
+				* templates
 					+ `type` . FormGroup
 					+ formGroup
 					-> [{{input}}, {{label}}, {{error}}, {{templateVars}}]
-				- templateVars
+				* templateVars
 					templateVars => ['help' => 'At least 8 characters long.']
 					=> '{{input}}, {{label}}, {{help}}'
 		
+		+ checkbox($fieldName, array $options = [])
+			+ http://book.cakephp.org/3.0/en/views/helpers/form.html#creating-checkboxes
+			+ $options: value, checked, hiddenField, disabled, default: Giá trị khi mà không checked khi submit
 		
+		+ multiCheckbox($fieldName, $options, array $attributes = [])
+			+ $options: List value
+			+ $attributes: escape, val, class, disabled, hiddenField
+			
+		+ radio($fieldName, $options = [], array $attributes = [])
+			+ http://book.cakephp.org/3.0/en/views/helpers/form.html#creating-radio-buttons
+			+ $attributes: value, label, hiddenField, disabled, empty
+			
+		+ textarea($fieldName, array $options = [])
+			+ $options: escape
 		
+		+ select($fieldName, $options = [], array $attributes = [])
+			+ $options: options hoặc optgroups
+				* [1 => 'one', 2 => 'two']
+				* [1 => 'bill', 'fred' => [ 2 => 'fred', 3 => 'fred jr.' ] ]
+			+ $attributes: multiple, empty, escape, val, disabled
+	 
+		+ file($fieldName, array $options = [])
+		+ day($fieldName = null, array $options = [])
+			+ $options: empty, val
+		+ month($fieldName, array $options = [])
+			+ monthNames, empty, val
+		+ year($fieldName, array $options = [])
+			+ $options: empty, val, orderYear : ['asc', 'desc'], maxYear, minYear
+		+ hour($fieldName, array $options = [])
+			+ $options: empty, format : [12, 24(default)], val
+		+ minute($fieldName, array $options = [])
+			+ $options: empty, interval, val, round
+		+ meridian($fieldName, array $options = [])
+			+ $options: empty, val
+		+ dateTime($fieldName, array $options = [])
+			+ $options: Tất cả các option của trên
+		+ time($fieldName, array $options = [])
+			+ $options: Tất cả các option của trên
+			
+		+ hidden($fieldName, array $options = [])
+		+ button($title, array $options = [])
+			+ $options: escape
+		
+		+ submit($caption = null, array $options = [])
+			+ $options: type, templateVars
+			+ template: inputSubmit, submitContainer
+		
+		+ postButton($title, $url, array $options = [])
+			+ $options: data, method, form
+		+ postLink($title, $url = null, array $options = [])
+			+ $options: data, method, confirm, block
 		
 		
 		
