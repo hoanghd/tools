@@ -1,0 +1,27 @@
+1. Flash
+	- Link:
+		+ http://book.cakephp.org/3.0/en/views/helpers/flash.html
+		+ http://book.cakephp.org/3.0/en/controllers/components/flash.html
+		
+		+ http://api.cakephp.org/3.3/class-Cake.Controller.Component.FlashComponent.html
+		+ http://api.cakephp.org/3.3/class-Cake.View.Helper.FlashHelper.html
+	
+	- $this->Flash->set( string|Exception $message , array $options [] )
+		+ $options
+			+ key: The key to set under the session's Flash key
+			+ element: The element used to render the flash message. Default to 'default'.
+				- /src/Template/Flash/*.ctp
+			+ params: An array of variables to make available when using an element
+			+ clear: A bool stating if the current stack should be cleared to start a new one
+			+ escape: Set to false to allow templates to print out HTML content
+			
+	- $this->Flash->render( string $key 'flash' , array $options [] ) 
+		+ $key = function set $options.key
+	
+	- Default sử dụng /src/Template/Element/Flash/default.ctp
+		+ $this->Flash->set('This is a message'); //Controller
+		+ <?= $this->Flash->render() ?>	//View
+	
+
+		
+		
