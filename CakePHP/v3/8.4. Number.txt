@@ -1,5 +1,5 @@
 4.Number
-	
+	- http://book.cakephp.org/3.0/en/views/helpers/number.html
 	- currency(mixed $value, string $currency = null, array $options =[])
 		+ $currency : EUR, GBP, USD (€, £, $)
 		+ $options
@@ -41,16 +41,21 @@
 		// Output '¥ 123,456.79 !'
 	
 	- ordinal(mixed $value, array $options =[])
-		+ 
+		+ 1 -> 1st, 2-> 2nd
 	
+	- formatDelta(mixed $value, array $options =[])
+		+ $options
+			* places 		Number of decimal places to use, ie. 2
+			* precision 	Maximum number of decimal places to use, ie. 2
+			* locale 		The locale name to use for formatting number, ie. “fr_FR”.
+			* before 		Text to display before the rendered number.
+			* after 		Text to display after the rendered number.
 	
-	
-	
-	
-	
-	
-	
-	
-	
+		$this->Number->formatDelta('123456.7890', [
+			'places' => 2,
+			'before' => '[',
+			'after' => ']'
+		]);
+		// Output '[+123,456.79]'
 	
 	
