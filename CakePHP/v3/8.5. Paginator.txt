@@ -11,6 +11,13 @@
 				]
 			  ];
 			  
+			  $this->paginate['contain'] = [
+					'Comments' => function (\Cake\ORM\Query $query) {
+						return $query->select(['body', 'author_id'])
+						->where(['Comments.approved' => true]);
+					}
+				];
+
 			  $this->paginate( 'Options' )
 			  $this->paginate( $this->Options )
 	
@@ -90,5 +97,8 @@
 				
 	- Như vậy sử dụng Paginator & $this->Html->tableCells() để hiển thị list
 		+ $this->Paginator->sort() : Xử lý header.
-		+ $this->Html->tableCells() : Xử lý Body, Xử dụng từ ResultSet như thế nào.
+		+ $this->Html->tableCells()
+			Từ Table chuyển về array
+			$query->hydrate(false)
+				  ->toList()
 		+ $this->Paginator->[first, prev, number, next, last] : Để xử lý phân trang.

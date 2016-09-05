@@ -3,7 +3,7 @@
 		+ ['id', 'name']
 		+ ['pk'=>'id', 'name'] // id AS pk
 		+ ['slug' => $query->func()->concat(['title', '-', 'id'])] //CONCAT((id), (title)) AS slug
-		+ ['count' => $query->func()->count('*')]	// COUNT(*)
+		+ ['count' => $query->func()->count('*')]	// COUNT(*)		
 		+ ['number_published' => $query->func()->sum(
 			$query->newExpr()
 				->addCase(
@@ -16,10 +16,32 @@
 	* distinct($on = [], $overwrite = false)
 	* from($tables = [], $overwrite = false)
 	* join($tables = null, $types = [], $overwrite = false)
+		->hydrate(false)
+		->join([
+			'c' => [
+				'table' => 'comments',
+				'type' => 'LEFT',
+				'conditions' => 'c.article_id = articles.id',
+			],
+			'u' => [
+				'table' => 'users',
+				'type' => 'INNER',
+				'conditions' => 'u.id = articles.user_id',
+			]
+		]);
 	* leftJoin($table, $conditions = [], $types = [])
 	* rightJoin($table, $conditions = [], $types = [])
 	* innerJoin($table, $conditions = [], $types = [])
 	* where($conditions = null, $types = [], $overwrite = false)
+		+ ['OR' => [['view_count' => 2], ['view_count' => 3]]] // (view_count = 2 OR view_count = 3)
+		+ [$query->newExpr()->between('id', 1, 10)] //id BETWEEN 1 AND 10
+		+ where(function ($exp) {
+			return $exp
+				->eq('author_id', 2)
+				->eq('published', true)
+				->notEq('spam', true)
+				->gt('view_count', 10);
+		  });
 	* andWhere($conditions, $types = [])
 	* orWhere($conditions, $types = [])
 	* order($fields, $overwrite = false)
@@ -35,15 +57,39 @@
 	* union($query, $overwrite = false)
 	* unionAll($query, $overwrite = false)
 	* insert(array $columns, array $types = [])
+		$query = $articles->query();
+		$query->insert(['title', 'body'])
+		->values([
+			'title' => 'First post',
+			'body' => 'Some body text'
+		])
+		->execute();
+	
 	* update($table)
+		$query = $articles->query();
+		$query->update()
+			->set(['published' => true])
+			->where(['id' => $id])
+			->execute();
+			
 	* delete($table = null)
+		$query = $articles->query();
+		$query->delete()
+			->where(['id' => $id])
+			->execute();
+		
 	* into($table)
 	* values($data)
 	* set($key, $value = null, $types = [])
 	* epilog($expression = null)
 	* modifier($modifiers, $overwrite = false)
 	* newExpr($rawExpression = null) Cake\Database\Expression\QueryExpression
+		* http://book.cakephp.org/3.0/en/orm/query-builder.html
 		- add($conditions, $types = [])
+			$query->select([
+				'two' => $query->newExpr()->add('1 + 1')
+			]);
+			
 		- eq($field, $value, $type = null)
 		- notEq($field, $value, $type = null)
 		- gt($field, $value, $type = null)
@@ -111,18 +157,40 @@
 	* count()
 	* counter($counter)
 	* hydrate($enable = null)
+		+ Return dạng array không phải là Entry
+		+ $query->hydrate(false)
+				->toList();
+				
 	* all()
 	* find($finder, array $options = [])
 	* update($table = null)
 	* delete($table = null)
-	* insert(array $columns, array $types = [])		
-	* leftJoinWith($assoc, callable $builder = null)
-	* innerJoinWith($assoc, callable $builder = null)
-	* notMatching($assoc, callable $builder = null)
+	* insert(array $columns, array $types = [])	
 	* addDefaultTypes(Table $table)
+	
+	* leftJoinWith($assoc, callable $builder = null)
+		$query = $articles->find();
+		$query->innerJoinWith('Tags', function ($q) {
+			return $q->where(['Tags.name' => 'CakePHP']);
+		});
+	* innerJoinWith($assoc, callable $builder = null)
+	* notMatching($assoc, callable $builder = null)	
 	* eagerLoader(EagerLoader $instance = null)
 	* contain($associations = null, $override = false)
+		+ Load với các table related
+		* $articles->find('all', ['contain' => ['Authors', 'Comments']]);
+		* $query = $articles->find()->contain([
+			'Comments' => function ($q) {
+			   return $q
+					->select(['body', 'author_id'])
+					->where(['Comments.approved' => true]);
+			}
+		  ]);
 	* matching($assoc, callable $builder = null)
+		$query = $articles->find();
+		$query->matching('Tags', function ($q) {
+			return $q->where(['Tags.name' => 'CakePHP']);
+		});
 
 - Result
 	* execute() //insert/update/delete
@@ -138,4 +206,10 @@
         $row->trimmedTitle = trim($row->title);
         return $row;
     })
+	* formatResults(function (\Cake\Datasource\ResultSetInterface $results) {
+		return $results->map(function ($row) {
+			$row['age'] = $row['birth_date']->diff(new \DateTime)->y;
+			return $row;
+		});
+	 });
 	
