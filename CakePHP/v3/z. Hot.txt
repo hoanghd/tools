@@ -18,6 +18,7 @@
 4. Helpers
 	+ Flash
 	+ Form			http://book.cakephp.org/3.0/en/views/helpers/form.html
+		* Tiềm hiểu thêm về cách thay đổi html contener
 		* Nghiên cứu trường hợp Form với model related nhiều model khác nhau
 		* Thêm widget
 	+ Html			http://book.cakephp.org/3.0/en/views/helpers/html.html
