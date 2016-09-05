@@ -186,6 +186,14 @@
 					->where(['Comments.approved' => true]);
 			}
 		  ]);
+		  
+		* $query->contain([
+			'Comments' => [
+				'sort' => ['Comment.created' => 'DESC']
+			]
+		 ]);
+		 
+		 
 	* matching($assoc, callable $builder = null)
 		$query = $articles->find();
 		$query->matching('Tags', function ($q) {
