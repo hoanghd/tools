@@ -1,0 +1,141 @@
+9.2. Query	
+	* select($fields = [], $overwrite = false)
+		+ ['id', 'name']
+		+ ['pk'=>'id', 'name'] // id AS pk
+		+ ['slug' => $query->func()->concat(['title', '-', 'id'])] //CONCAT((id), (title)) AS slug
+		+ ['count' => $query->func()->count('*')]	// COUNT(*)
+		+ ['number_published' => $query->func()->sum(
+			$query->newExpr()
+				->addCase(
+					$query->newExpr()->add(['published' => 'Y']),
+					1,
+					'integer'
+				)
+		  )] //SUM(CASE published = 'Y' THEN 1 ELSE 0) AS number_published
+	
+	* distinct($on = [], $overwrite = false)
+	* from($tables = [], $overwrite = false)
+	* join($tables = null, $types = [], $overwrite = false)
+	* leftJoin($table, $conditions = [], $types = [])
+	* rightJoin($table, $conditions = [], $types = [])
+	* innerJoin($table, $conditions = [], $types = [])
+	* where($conditions = null, $types = [], $overwrite = false)
+	* andWhere($conditions, $types = [])
+	* orWhere($conditions, $types = [])
+	* order($fields, $overwrite = false)
+	* orderAsc($field, $overwrite = false)
+	* orderDesc($field, $overwrite = false)
+	* group($fields, $overwrite = false)
+	* having($conditions = null, $types = [], $overwrite = false)
+	* andHaving($conditions, $types = [])
+	* orHaving($conditions, $types = [])
+	* page($num, $limit = null)
+	* limit($num)
+	* offset($num)
+	* union($query, $overwrite = false)
+	* unionAll($query, $overwrite = false)
+	* insert(array $columns, array $types = [])
+	* update($table)
+	* delete($table = null)
+	* into($table)
+	* values($data)
+	* set($key, $value = null, $types = [])
+	* epilog($expression = null)
+	* modifier($modifiers, $overwrite = false)
+	* newExpr($rawExpression = null) Cake\Database\Expression\QueryExpression
+		- add($conditions, $types = [])
+		- eq($field, $value, $type = null)
+		- notEq($field, $value, $type = null)
+		- gt($field, $value, $type = null)
+		- lt($field, $value, $type = null)
+		- gte($field, $value, $type = null)
+		- lte($field, $value, $type = null)
+		- isNull($field)
+		- isNotNull($field)
+		- like($field, $value, $type = null)
+		- notLike($field, $value, $type = null)
+		- in($field, $values, $type = null)
+		- addCase($conditions, $values = [], $types = [])
+		- notIn($field, $values, $type = null)
+		- exists(ExpressionInterface $query)
+		- notExists(ExpressionInterface $query)
+		- between($field, $from, $to, $type = null)
+		- and_($conditions, $types = [])
+		- or_($conditions, $types = [])
+		- not($conditions, $types = [])
+		- count()
+		- equalFields($left, $right)
+		
+	* func()  \Cake\Database\FunctionsBuilder
+		- sum() 		Calculate a sum. The arguments will be treated as literal values.
+		- avg() 		Calculate an average. The arguments will be treated as literal values.
+		- min() 		Calculate the min of a column. The arguments will be treated as literal values.
+		- max() 		Calculate the max of a column. The arguments will be treated as literal values.
+		- count() 		Calculate the count. The arguments will be treated as literal values.
+		- concat() 		Concatenate two values together. The arguments are treated as bound parameters unless marked as literal.
+			$query->orderAsc(
+				$query->func()->concat(['id' => 'identifier', 'title' => 'identifier' ])
+			);
+			//ORDER BY CONCAT((id), (title)) ASC
+		
+		- coalesce() 	Coalesce values. The arguments are treated as bound parameters unless marked as literal.
+		- dateDiff() 	Get the difference between two dates/times. The arguments are treated as bound parameters unless marked as literal.
+		- datePart()
+		- now() 		Take either ‘time’ or ‘date’ as an argument allowing you to get either the current time, or current date.
+		- extract() 	Returns the specified date part from the SQL expression.
+		- dateAdd() 	Add the time unit to the date expression.
+		- dayOfWeek() 	Returns a FunctionExpression representing a call to SQL WEEKDAY function.
+		- weekday()
+	
+	* getIterator()
+	* clause($name)
+	* decorateResults($callback, $overwrite = false)
+	* traverseExpressions(callable $callback)
+	* bind($param, $value, $type = 'string')
+	* valueBinder($binder = null)
+	* bufferResults($enable = null)
+	* selectTypeMap(TypeMap $typeMap = null)
+	
+	* applyOptions(array $options)
+		- fields: 		Maps to the select method
+		- conditions: 	Maps to the where method
+		- limit: 		Maps to the limit method
+		- order: 		Maps to the order method
+		- offset: 		Maps to the offset method
+		- group: 		Maps to the group method
+		- having: 		Maps to the having method
+		- contain: 		Maps to the contain options for eager loading
+		- join: 		Maps to the join method
+		- page: 		Maps to the page method
+	* cleanCopy()
+	* count()
+	* counter($counter)
+	* hydrate($enable = null)
+	* all()
+	* find($finder, array $options = [])
+	* update($table = null)
+	* delete($table = null)
+	* insert(array $columns, array $types = [])		
+	* leftJoinWith($assoc, callable $builder = null)
+	* innerJoinWith($assoc, callable $builder = null)
+	* notMatching($assoc, callable $builder = null)
+	* addDefaultTypes(Table $table)
+	* eagerLoader(EagerLoader $instance = null)
+	* contain($associations = null, $override = false)
+	* matching($assoc, callable $builder = null)
+
+- Result
+	* execute() //insert/update/delete
+	* all()
+	* toArray()
+	* first()
+	* extract('title')
+		foreach ($query as $title) {
+			echo $title;
+		}
+	* combine('id', 'title') //Same find( 'list' )
+	* map(function ($row){
+        $row->trimmedTitle = trim($row->title);
+        return $row;
+    })
+	

@@ -117,13 +117,15 @@ Link
 				- list[keyField, valueField, groupField] : Trả về dạng hash (key=>value)
 				- threaded[keyField, parentField, nestingKey] : Trả về dạng tree
 			+ $options
-				- fields
-				- conditions
-				- order
+				- fields		: [field1, field2, ..]
+					* select (Query)
+				- conditions	: ['created >=' => '2013-01-01', 'name LIKE ' => "h%"]
+					* where (Query)
+				- order			: ['created' => 'DESC']
 				- limit
 				- offset
 				- page
-				- group
+				- group			: ['Users.id']
 				- having
 				- contain
 				- join
@@ -171,77 +173,6 @@ Link
 			+ Mặc định [ 'keyField' => $this->primaryKey(), 'valueField' => $this->displayField() ]
 		* findThreaded(Query $query, array $options)
 		* findOrCreate($search, callable $callback = null, $options = [])
-		
-	- Query
-		* applyOptions(array $options)
-			- fields: 		Maps to the select method
-			- conditions: 	Maps to the where method
-			- limit: 		Maps to the limit method
-			- order: 		Maps to the order method
-			- offset: 		Maps to the offset method
-			- group: 		Maps to the group method
-			- having: 		Maps to the having method
-			- contain: 		Maps to the contain options for eager loading
-			- join: 		Maps to the join method
-			- page: 		Maps to the page method
-		* cleanCopy()
-		* count()
-		* counter($counter)
-		* hydrate($enable = null)
-		* all()
-		* find($finder, array $options = [])
-		* update($table = null)
-		* delete($table = null)
-		* insert(array $columns, array $types = [])		
-		* leftJoinWith($assoc, callable $builder = null)
-		* innerJoinWith($assoc, callable $builder = null)
-		* notMatching($assoc, callable $builder = null)
-		* addDefaultTypes(Table $table)
-		* eagerLoader(EagerLoader $instance = null)
-		* contain($associations = null, $override = false)
-		* matching($assoc, callable $builder = null)
-		
-		* select($fields = [], $overwrite = false)
-		* distinct($on = [], $overwrite = false)
-		* modifier($modifiers, $overwrite = false)
-		* from($tables = [], $overwrite = false)
-		* join($tables = null, $types = [], $overwrite = false)
-		* leftJoin($table, $conditions = [], $types = [])
-		* rightJoin($table, $conditions = [], $types = [])
-		* innerJoin($table, $conditions = [], $types = [])
-		* where($conditions = null, $types = [], $overwrite = false)
-		* andWhere($conditions, $types = [])
-		* orWhere($conditions, $types = [])
-		* order($fields, $overwrite = false)
-		* orderAsc($field, $overwrite = false)
-		* orderDesc($field, $overwrite = false)
-		* group($fields, $overwrite = false)
-		* having($conditions = null, $types = [], $overwrite = false)
-		* andHaving($conditions, $types = [])
-		* orHaving($conditions, $types = [])
-		* page($num, $limit = null)
-		* limit($num)
-		* offset($num)
-		* union($query, $overwrite = false)
-		* unionAll($query, $overwrite = false)
-		* insert(array $columns, array $types = [])
-		* into($table)
-		* values($data)
-		* update($table)
-		* set($key, $value = null, $types = [])
-		* delete($table = null)
-		* epilog($expression = null)
-		* newExpr($rawExpression = null)
-		* func()
-		* getIterator()
-		* clause($name)
-		* decorateResults($callback, $overwrite = false)
-		* traverseExpressions(callable $callback)
-		* bind($param, $value, $type = 'string')
-		* valueBinder($binder = null)
-		* bufferResults($enable = null)
-		* selectTypeMap(TypeMap $typeMap = null)
-		
 		
 	- Tổng kết
 		+ Query
