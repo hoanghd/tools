@@ -30,5 +30,8 @@
 			['validate' => 'update']
 		);
 
-		Sử dụng Table để save Entry
+	- Sử dụng Table để save Entry
+		$userEntity->email = 'not an email!!!';
+		$usersTable->save($userEntity);
+		$userEntity->errors('email'); // Invalid email
 		
