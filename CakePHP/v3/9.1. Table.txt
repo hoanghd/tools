@@ -160,6 +160,9 @@ Link
 			+ $options: associated, fieldList, accessibleFields, validate
 		* newEntities(array $data, array $options = [])
 		* patchEntity(EntityInterface $entity, array $data, array $options = [])
+			$article = $articles->patchEntity($article, $newData, [
+				'validate' => false
+			]);
 		* patchEntities($entities, array $data, array $options = [])
 		* validateUnique($value, array $options, array $context = null)
 		* buildRules(RulesChecker $rules)
