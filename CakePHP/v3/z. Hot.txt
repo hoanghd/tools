@@ -10,10 +10,8 @@
 	+ Auth
 	+ Csrf
 	+ Security
-	+ Paginator
 	+ RequestHandler 
 	+ Cookie
-	+ Flash
 
 4. Helpers
 	+ Flash
@@ -33,11 +31,10 @@
 		* $this->loadHelper('Paginator', ['templates' => 'paginator-templates']) /config/paginator-templates.php
 		* $this->Paginator->templates([])		
 	
-	+ Session
-	+ Text
-	+ Time
-	+ Url
-	+ Rss
+	+ Session		http://book.cakephp.org/3.0/en/views/helpers/session.html
+	+ Text			http://book.cakephp.org/3.0/en/views/helpers/text.html
+	+ Time			http://book.cakephp.org/3.0/en/views/helpers/time.html
+	+ Url			http://book.cakephp.org/3.0/en/views/helpers/url.html
 
 5. Cell (Với template chưa biết sử dụng thế nào)
 
