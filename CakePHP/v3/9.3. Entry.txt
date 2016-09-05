@@ -29,4 +29,6 @@
 		$this->request->data,
 			['validate' => 'update']
 		);
+
+		Sử dụng Table để save Entry
 		
