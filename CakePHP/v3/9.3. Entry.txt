@@ -6,7 +6,7 @@
 		'title' => 'New Article',
 		'created' => new DateTime('now')
 	  ]);
-	  
+	  use Cake\ORM\TableRegistry;
 	  $article = TableRegistry::get('Articles')->newEntity([
 		'id' => 1,
 		'title' => 'New Article',
@@ -30,8 +30,19 @@
 			['validate' => 'update']
 		);
 
-	- Sử dụng Table để save Entry
-		$userEntity->email = 'not an email!!!';
-		$usersTable->save($userEntity);
-		$userEntity->errors('email'); // Invalid email
+	- Sử dụng Table để save Entry 
+		* http://book.cakephp.org/3.0/en/orm/saving-data.html
+		$articlesTable = TableRegistry::get('Articles');
+		$article = $articlesTable->newEntity();
+
+		$article->title = 'A New Article';
+		$article->body = 'This is the body of the article';
+		
+		//$entity = $articles->newEntity($this->request->data());
+		//$entity = $articles->newEntity($data, ['validate' => false]);
+		
+		if ($articlesTable->save($article)) {
+			// The $article entity contains the id now
+			$id = $article->id;
+		}
 		

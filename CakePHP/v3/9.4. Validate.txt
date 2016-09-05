@@ -1,2 +1,120 @@
 9.3. Validate
-	- 
+	- http://book.cakephp.org/3.0/en/orm/validation.html
+	- Cake\Validation\Validator
+		* add($field, $name, Cake\Validation\ValidationRule $rule = [])
+			+ $rule	
+				* rule : Là các rule bên dưới, hoặc method
+					Tham khảo \Cake\Validation\Validation xem cách truyền đối số
+				* on
+				* message
+				* last
+				* provider
+				* pass
+
+		  $validator
+			  ->add('title', 'required', ['rule' => 'notBlank'])
+			  ->add('user_id', 'valid', ['rule' => 'numeric', 'message' => 'Invalid User'])
+
+		  $validator->add('password', [
+			  'size' => ['rule' => ['lengthBetween', 8, 20]],
+			  'hasSpecialCharacter' => ['rule' => 'validateSpecialchar', 'message' => 'not valid']
+		  ]);
+
+		  $validator->add('title', 'custom', [
+			 'rule' => [$this, 'method'],
+			 'message' => 'The title is not valid'
+		  ]);
+
+	      $validator->add('name', 'custom', [ 
+			'rule'=> [ 'custom', '/^test/' ], 
+			'message' => 'start with test' 
+		  ]);
+		  
+		  ? $validator->add('id', 'multiple', [ 
+			'rule'=> [ 'multiple', [
+				'in' => [1,2,3,4], 
+				'max' => 100, 
+				'min' => 5	
+			]], 
+			'message' => 'multiple validate' 
+		  ]);
+		
+		  $validator->add('id', 'userDefined', [ 
+			'rule'=> [ 'userDefined', $object, 'method', $data], 
+			'message' => 'multiple validate' 
+		  ]);
+		
+		
+		* addNested($field, Validator $validator)
+		* addNestedMany($field, Validator $validator)
+		* remove($field, $rule = null)
+		* requirePresence(mixed $field, $mode = true|false|create|update|callable, $message = null)			
+			$validator->requirePresence(['author_id', 'title'], 'create');
+			$validator->requirePresence([
+				'author_id' => [
+					'mode' => 'create',
+					'message' => 'An author is required.',
+				],
+				'published' => [
+					'mode' => 'update',
+					'message' => 'The published state is required.',
+				]
+			]);
+			
+		* allowEmpty(mixed $field, $when = true|create|update|callable, $message = null)
+			$validator->allowEmpty('email', function ($context) {
+				return !$context['newRecord'] || $context['data']['role'] === 'admin';
+			});
+	 
+		* notEmpty($field, $message = null, $when = false|create|update|callable)
+			+ Khi value = '' || NULL
+			
+		* notBlank($field, $message = null, $when = null)
+			+ Khi value = '' || NULL
+			
+		* alphaNumeric($field, $message = null, $when = null)
+		* lengthBetween($field, array $range, $message = null, $when = null)
+		* creditCard($field, $type = 'all|mastercard|visa|amex', $message = null, $when = null)
+		* greaterThan($field, $value, $message = null, $when = null)
+		* greaterThanOrEqual($field, $value, $message = null, $when = null)
+		* lessThan($field, $value, $message = null, $when = null)
+		* lessThanOrEqual($field, $value, $message = null, $when = null)
+		* equals($field, $value, $message = null, $when = null)
+		* notEquals($field, $value, $message = null, $when = null)
+		* sameAs($field, $secondField, $message = null, $when = null)
+		* containsNonAlphaNumeric($field, $limit = 1, $message = null, $when = null)
+		* date($field, $formats = ['ymd'], $message = null, $when = null)
+		* dateTime($field, $formats = ['ymd'], $message = null, $when = null)
+		* time($field, $message = null, $when = null)
+		* localizedTime($field, $type = 'datetime', $message = null, $when = null)
+		* boolean($field, $message = null, $when = null)
+		* decimal($field, $places = null, $message = null, $when = null)
+		* email($field, $checkMX = false, $message = null, $when = null)
+		* ip($field, $message = null, $when = null)
+		* ipv4($field, $message = null, $when = null)
+		* ipv6($field, $message = null, $when = null)
+		* minLength($field, $min, $message = null, $when = null)
+		* maxLength($field, $max, $message = null, $when = null)
+		* numeric($field, $message = null, $when = null)
+		* naturalNumber($field, $message = null, $when = null)
+		* nonNegativeInteger($field, $message = null, $when = null)
+		* range($field, array $range, $message = null, $when = null)
+		* url($field, $message = null, $when = null)
+		* urlWithProtocol($field, $message = null, $when = null)
+		* inList($field, array $list, $message = null, $when = null)
+		* uuid($field, $message = null, $when = null)
+		* uploadedFile($field, array $options, $message = null, $when = null)
+		* latLong($field, $message = null, $when = null)
+		* latitude($field, $message = null, $when = null)
+		* longitude($field, $message = null, $when = null)
+		* ascii($field, $message = null, $when = null)
+		* utf8($field, $message = null, $when = null)
+		* utf8Extended($field, $message = null, $when = null)
+		* integer($field, $message = null, $when = null)
+		* isArray($field, $message = null, $when = null)
+		* multipleOptions($field, array $options = [], $message = null, $when = null)
+		* hasAtLeast($field, $count, $message = null, $when = null)
+		* hasAtMost($field, $count, $message = null, $when = null)
+		* isEmptyAllowed($field, $newRecord)
+		* isPresenceRequired($field, $newRecord)
+		* 
