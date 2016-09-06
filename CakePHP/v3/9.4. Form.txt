@@ -1,5 +1,8 @@
 9.4. Form 
 	- http://book.cakephp.org/3.0/en/core-libraries/form.html
+	- http://josediazgonzalez.com/2015/12/15/stuffing-complex-logic-into-model-less-forms/
+	- http://stackoverflow.com/questions/33413268/cakephp-3-modelless-form-with-dotted-fields
+	
 	- Cake\Form\Form
 		* validate(array $data)
 		* errors()
