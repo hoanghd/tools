@@ -18,13 +18,19 @@
 		  $validator->add('password', [
 			  'size' => ['rule' => ['lengthBetween', 8, 20]],
 			  'hasSpecialCharacter' => ['rule' => 'validateSpecialchar', 'message' => 'not valid']
-		  ]);
+		  ]);	
+		  
+		  ---------------------------------------------------
 
 		  $validator->add('title', 'custom', [
-			 'rule' => [$this, 'method'],
+			 'rule' => [[$this, 'method'], 1],
 			 'message' => 'The title is not valid'
 		  ]);
-
+		  
+		  public function method($check, $num)
+		
+		  ---------------------------------------------------
+		
 	      $validator->add('name', 'custom', [ 
 			'rule'=> [ 'custom', '/^test/' ], 
 			'message' => 'start with test' 
@@ -38,13 +44,7 @@
 			]], 
 			'message' => 'multiple validate' 
 		  ]);
-		
-		  $validator->add('id', 'userDefined', [ 
-			'rule'=> [ 'userDefined', $object, 'method', $data], 
-			'message' => 'multiple validate' 
-		  ]);
-		
-		
+				
 		* addNested($field, Validator $validator)
 		* addNestedMany($field, Validator $validator)
 		* remove($field, $rule = null)
