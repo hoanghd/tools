@@ -1,6 +1,9 @@
 9.3. Entry
 	- http://book.cakephp.org/3.0/en/orm/entities.html
 	- http://book.cakephp.org/3.0/en/orm/validation.html
+	- http://book.cakephp.org/3.0/en/orm/deleting-data.html
+	- http://book.cakephp.org/3.0/en/orm/saving-data.html
+		
 	- $article = new Article([
 		'id' => 1,
 		'title' => 'New Article',

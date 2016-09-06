@@ -179,9 +179,11 @@ Link
 		
 	- Tổng kết
 		+ Query
-		+ Related
-		+ Insert, Update, Delete
-		+ Validate
+		+ Related					http://book.cakephp.org/3.0/en/orm/associations.html
+		+ Insert, Update, Delete	
+									http://book.cakephp.org/3.0/en/orm/saving-data.html
+									http://book.cakephp.org/3.0/en/orm/deleting-data.html
+		+ Validate					http://book.cakephp.org/3.0/en/orm/validation.html
 		+ Trigger
-		+ Behavior
+		+ Behavior					http://book.cakephp.org/3.0/en/orm/behaviors.html
 		
