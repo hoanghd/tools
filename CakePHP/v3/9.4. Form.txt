@@ -11,6 +11,8 @@
 		* _buildSchema(Schema $schema)
 		* _buildValidator(Validator $validator)
 		* _execute(array $data)
+			* Thực hiện tác vụ gì 
+			* Thường dữ liệu hợp lệ mới call function này
 		
 	- Cake\Form\Schema
 		* addField($name, $attrs)
