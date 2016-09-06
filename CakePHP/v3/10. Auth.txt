@@ -1,2 +1,7 @@
 10. Auth
+	- http://book.cakephp.org/3.0/en/controllers/components/authentication.html
+	- http://book.cakephp.org/3.0/en/tutorials-and-examples/blog-auth-example/auth.html
 	
+	- FormAuthenticate 		POST Auth
+    - BasicAuthenticate 	HTTP authentication.
+    - DigestAuthenticate: 	For API/Webservice
