@@ -19,8 +19,9 @@
  
 .css-treeview a
 {
-    color: #35d;
+    color: black;
     text-decoration: none;
+	margin: 0 0 0 18px;
 }
  
 .css-treeview a:hover
@@ -60,6 +61,12 @@
 {
     background: url("../images/icons.png") no-repeat;
 }
+
+.css-treeview a,
+.css-treeview a::before
+{
+    background: url("../images/files.png") no-repeat;
+}
  
 .css-treeview label,
 .css-treeview a,
@@ -83,6 +90,14 @@
     margin: 0 22px 0 0;
     vertical-align: middle;
     background-position: 0 -32px;
+}
+
+.css-treeview a::before
+{
+    content: "";
+    width: 16px;
+    margin: 0 22px 0 0;
+    vertical-align: middle;
 }
  
 .css-treeview input:checked + label::before
