@@ -1,2 +1,21 @@
-9.4. Form
+9.4. Form 
+	- http://book.cakephp.org/3.0/en/core-libraries/form.html
+	- Cake\Form\Form
+		* validate(array $data)
+		* errors()
+		* execute(array $data)
+		*	-> validate
+		*	-> _execute
+		*
+		* Overwrite
+		* _buildSchema(Schema $schema)
+		* _buildValidator(Validator $validator)
+		* _execute(array $data)
+		
+	- Cake\Form\Schema
+		* addField($name, $attrs)
+			+ $attrs
+				* type: string|text
+				* length
+				* precision
 	
