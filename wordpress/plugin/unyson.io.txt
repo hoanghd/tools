@@ -1,3 +1,8 @@
 http://manual.unyson.io/
 https://media.readthedocs.org/pdf/unyson-framework/latest/unyson-framework.pdf
 https://github.com/ThemeFuse/Unyson-Learning-Extension
+
+fw()->extensions->get(’slider’)->render(10, array(
+	’width’  => 300,
+	’height’ => 200
+));
