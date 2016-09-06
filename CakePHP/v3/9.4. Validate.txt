@@ -22,11 +22,28 @@
 		  
 		  ---------------------------------------------------
 
-		  $validator->add('title', 'custom', [
+		  $validator->add('title', 'method', [
 			 'rule' => [[$this, 'method'], 1],
 			 'message' => 'The title is not valid'
 		  ]);
 		  
+		  OR 
+		  
+		  $validator->add('title', 'method', [
+			 'rule' => [ 'method', 1 ],
+			 'message' => 'The title is not valid',
+			 'provider' => 'table'
+		  ]);
+		  
+		  $validator->add('title', 'method', [
+			 'rule' => function( $data, $provider ){
+				if ($data > 1) {
+					return true;
+				}
+				return 'Not a good value.';
+			 }
+		  ]);
+				
 		  public function method($check, $num)
 		
 		  ---------------------------------------------------
