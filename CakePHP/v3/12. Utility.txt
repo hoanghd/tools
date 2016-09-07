@@ -9,13 +9,13 @@
 		* path($type, $plugin = null)
 		* core($type)
 	
-	- Cake\Collection\Collection  #http://book.cakephp.org/3.0/en/core-libraries/collections.html
+	- Cake\Collection\Collection  
+	    #http://book.cakephp.org/3.0/en/core-libraries/collections.html
 		* Cake\Collection\Iterator\FilterIterator		
 			* each(callable $c) 
 				(new Collection($items))->each(function($value, $key){});
 			
-			* append($items);
-			
+			* append($items);			
 			* sample($size = 10) Create Random $size item
 			
 			* insert($path, $values);
@@ -26,6 +26,7 @@
 			* toList();
 			* jsonSerialize();
 			* buffered();			
+			* through(callable $handler)
 			
 		- Filter		
 			* filter(callable $c = null);
@@ -33,6 +34,12 @@
 				
 			* reject(callable $c) Ngược lại với filter
 				(new Collection($items))->reject(function($value, $key){ return true/false; });
+			
+			* stopWhen($condition) : DỪng lấy khi thỏa điều kiện
+				stopWhen(['is_approved' => false]);
+				stopWhen(function ($value, $key) {
+					return (new DateTime($value))->format('Y') < 2012;
+				})
 			
 			* take($size = 1, $from = 0) //Lấy $size phần tử bắt đầu từ $from
 			
@@ -80,7 +87,16 @@
 			* indexBy($callback); Lấy value of item ra làm key
 				[['age' => 3, 'name'=>'A'], ['age' => 2, 'name'=>'B'], ['age' => 5, 'name'=>'C']];
 				[3=>['age' => 3, 'name'=>'A'], 2=>['age' => 2, 'name'=>'B'], 5=>['age' => 5, 'name'=>'C']];
-		
+			
+			* zip($items)
+				(new Collection([1, 2]))->zip([3, 4], [5, 6])->toList() //[[1, 3, 5], [2, 4, 6]]
+				
+			* zipWith($items, $callable)
+				(new Collection([1, 2]))->zipWith([3, 4], [5, 6], function () {
+					return array_sum(func_get_args());
+				})
+				//[9, 12]; of [(1 + 3 + 5), (2 + 4 + 6)]
+				
 			* countBy($callback);
 				[['age' => 2, 'name'=>'A'], ['age' => 2, 'name'=>'B'], ['age' => 5, 'name'=>'C']];
 				Count theo age: 2 người 2 tuổi và 1 người 5 tuổi
@@ -93,7 +109,18 @@
 		
 			* shuffle()
 				['a' => 1, 'b' => 2, 'c' => 3]
-				[2, 3, 1]			
+				[2, 3, 1]
+				
+			* unfold(callable $transformer = null)
+				[[1, 2, 3], [4, 5]] => [1, 2, 3, 4, 5]
+				
+				unfold(function ($page) {
+					return $service->fetchPage($page)->toArray();
+				});
+			
+			* chunk($chunkSize) //Cắt các array thành nhiều array
+				[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]->chunk( 3 ) => 
+				[[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11]]
 			
 			* combine($keyPath, $valuePath, $groupPath = null);
 				Tạo hash key, value được chỉ định là field of row
@@ -104,8 +131,23 @@
 					['id' => 3, 'name' => 'baz', 'parent' => 'a'],
 				];
 				
-				[1 => 'foo', 2 => 'bar', 3 => 'baz']
-				
+				[1 => 'foo', 2 => 'bar', 3 => 'baz']			
+			
+			* transpose() Transpose rows and columns into columns and rows			
+				$items = [
+					['Products', '2012', '2013', '2014'],
+					['Product A', '200', '100', '50'],
+					['Product B', '300', '200', '100'],
+					['Product C', '400', '300', '200'],
+				]				
+				[
+					['Products', 'Product A', 'Product B', 'Product C'],
+					['2012', '200', '300', '400'],
+					['2013', '100', '200', '300'],
+					['2014', '50', '100', '200'],
+				]
+			
+			* unwrap()
 			* nest($idPath, $parentPath, $nestingKey = 'children'); //Trả về dạng tree
 			* listNested($dir = 'desc', $nestingKey = 'children');
 				
@@ -139,25 +181,9 @@
 				
 			* contains($value); //Kiểm tra $value có trong Collection không
 			
+			* isEmpty();
 			
-			
-    [3] => count
-    [5] => rewind
-    [6] => valid
-    [7] => key
-    [8] => current
-    [9] => next
-    [10] => getInnerIterator
-    [45] => stopWhen
-    [46] => unfold
-    [47] => through
-    [48] => zip
-    [49] => zipWith
-    [50] => chunk
-    [51] => isEmpty
-    [52] => unwrap
-    [53] => transpose
-    [54] => _unwrap
-	
+			* count()			
+    	
 	- Hash
 	- Date & Time
