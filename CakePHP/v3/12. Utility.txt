@@ -1,2 +1,88 @@
 12. Utility
+	- Cake\Core\App
+		* className($class, $type = '', $suffix = '')
+			App::classname('Auth', 'Controller/Component', 'Component'); //Cake\Controller\Component\AuthComponent
+			App::classname('DebugKit.Toolbar', 'Controller/Component', 'Component'); //DebugKit\Controller\Component\ToolbarComponent
+			App::classname('App\Cache\ComboCache'); //App\Cache\ComboCache
+		
+		* shortName($class, $type, $suffix = '')
+		* path($type, $plugin = null)
+		* core($type)
 	
+	- Cake\Collection\Collection  #http://book.cakephp.org/3.0/en/core-libraries/collections.html
+		* Cake\Collection\Iterator\FilterIterator		
+			* each(callable $c) 
+				(new Collection($items))->each(function($value, $key){});
+				
+		- Filter		
+			* filter(callable $c = null);
+				(new Collection($items))->filter(function($value, $key){ return true/false; });			
+				
+			* reject(callable $c) Ngược lại với filter
+				(new Collection($items))->reject(function($value, $key){ return true/false; });
+		
+		- Change Value		
+			* map(callable $c); Trả về một Collection value thay đổi trong callback return
+				(new Collection($items))->map(function($value, $key){ return true/false; });			
+				
+				(new Collection(['one' => 1, 'two' => 2, 'three' => 3]))
+					->map(function($value, $key){ return $value * 2; })
+					->toArray()
+				
+					//['one' => 2, 'two' => 4, 'three' => 6];
+			
+		- Verify		
+			* every(callable $c) //Kiểm tra all item thỏa điều kiện
+				(new Collection($items))->every(function($value, $key){ return true/false; });
+				
+			* some(callable $c)	//Nếu có bất kỳ item thỏa điều kiện
+				(new Collection($items))->every(function($value, $key){ return true/false; });
+				
+			* contains($value); //Kiểm tra $value có trong Collection không
+			
+			
+			
+    [3] => count
+    [5] => rewind
+    [6] => valid
+    [7] => key
+    [8] => current
+    [9] => next
+    [10] => getInnerIterator
+    [18] => reduce
+    [19] => extract
+    [20] => max
+    [21] => min
+    [22] => sortBy
+    [23] => groupBy
+    [24] => indexBy
+    [25] => countBy
+    [26] => sumOf
+    [27] => shuffle
+    [28] => sample
+    [29] => take
+    [30] => skip
+    [31] => match
+    [32] => firstMatch
+    [33] => first
+    [34] => last
+    [35] => append
+    [36] => combine
+    [37] => nest
+    [38] => insert
+    [39] => toArray
+    [40] => toList
+    [41] => jsonSerialize
+    [42] => compile
+    [43] => buffered
+    [44] => listNested
+    [45] => stopWhen
+    [46] => unfold
+    [47] => through
+    [48] => zip
+    [49] => zipWith
+    [50] => chunk
+    [51] => isEmpty
+    [52] => unwrap
+    [53] => transpose
+    [54] => _unwrap
