@@ -13,14 +13,39 @@
 		* Cake\Collection\Iterator\FilterIterator		
 			* each(callable $c) 
 				(new Collection($items))->each(function($value, $key){});
-				
+			
+			* append($items);
+			
+			* sample($size = 10) Create Random $size item
+			
+			* insert($path, $values);
+				insert('comment.user.age', $ages);
+			
+			* compile($preserveKeys = true); clone Collection
+			* toArray($preserveKeys = true);
+			* toList();
+			* jsonSerialize();
+			* buffered();			
+			
 		- Filter		
 			* filter(callable $c = null);
 				(new Collection($items))->filter(function($value, $key){ return true/false; });			
 				
 			* reject(callable $c) Ngược lại với filter
 				(new Collection($items))->reject(function($value, $key){ return true/false; });
-		
+			
+			* take($size = 1, $from = 0) //Lấy $size phần tử bắt đầu từ $from
+			
+			* skip($howMany) //Bỏ qua $howMany phần tử
+			
+			* match(array $conditions) Lọc những item thỏa điều kiện
+				match(['user.name' => 'Mark'])
+				
+			* firstMatch(array $conditions); Tương tự như match nhưng mà chi lấy phần tử đâu tiên
+				
+			* first();
+			* last()
+			
 		- Change Value		
 			* map(callable $c); Trả về một Collection value thay đổi trong callback return
 				(new Collection($items))->map(function($value, $key){ return true/false; });			
@@ -68,11 +93,21 @@
 		
 			* shuffle()
 				['a' => 1, 'b' => 2, 'c' => 3]
-				[2, 3, 1]
+				[2, 3, 1]			
 			
-			* sample($size = 10) Create Random $size item
-			
-			* 
+			* combine($keyPath, $valuePath, $groupPath = null);
+				Tạo hash key, value được chỉ định là field of row
+				
+				$items = [
+					['id' => 1, 'name' => 'foo', 'parent' => 'a'],
+					['id' => 2, 'name' => 'bar', 'parent' => 'b'],
+					['id' => 3, 'name' => 'baz', 'parent' => 'a'],
+				];
+				
+				[1 => 'foo', 2 => 'bar', 3 => 'baz']
+				
+			* nest($idPath, $parentPath, $nestingKey = 'children'); //Trả về dạng tree
+			* listNested($dir = 'desc', $nestingKey = 'children');
 				
 		- Single Value
 			* reduce(callable $c, $zero = null); Chuyên đổi list thành một phần tử
@@ -113,24 +148,6 @@
     [8] => current
     [9] => next
     [10] => getInnerIterator
-    [27] => shuffle
-    [28] => sample
-    [29] => take
-    [30] => skip
-    [31] => match
-    [32] => firstMatch
-    [33] => first
-    [34] => last
-    [35] => append
-    [36] => combine
-    [37] => nest
-    [38] => insert
-    [39] => toArray
-    [40] => toList
-    [41] => jsonSerialize
-    [42] => compile
-    [43] => buffered
-    [44] => listNested
     [45] => stopWhen
     [46] => unfold
     [47] => through
@@ -141,3 +158,6 @@
     [52] => unwrap
     [53] => transpose
     [54] => _unwrap
+	
+	- Hash
+	- Date & Time
