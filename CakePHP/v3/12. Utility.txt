@@ -52,6 +52,28 @@
 				  9 => [ ['name' => 'Mark', 'grade' => 9], ['name' => 'Barbara', 'grade' => 9] ]
 				]
 			
+			* indexBy($callback); Lấy value of item ra làm key
+				[['age' => 3, 'name'=>'A'], ['age' => 2, 'name'=>'B'], ['age' => 5, 'name'=>'C']];
+				[3=>['age' => 3, 'name'=>'A'], 2=>['age' => 2, 'name'=>'B'], 5=>['age' => 5, 'name'=>'C']];
+		
+			* countBy($callback);
+				[['age' => 2, 'name'=>'A'], ['age' => 2, 'name'=>'B'], ['age' => 5, 'name'=>'C']];
+				Count theo age: 2 người 2 tuổi và 1 người 5 tuổi
+				[2=>2, 5=>1]	
+			
+			* sumOf($matcher = null)
+				[1,2,3,4]	=> 10
+				[['age' => 2, 'name'=>'A'], ['age' => 2, 'name'=>'B'], ['age' => 5, 'name'=>'C']]
+				-> 9 | sumOf('age')
+		
+			* shuffle()
+				['a' => 1, 'b' => 2, 'c' => 3]
+				[2, 3, 1]
+			
+			* sample($size = 10) Create Random $size item
+			
+			* 
+				
 		- Single Value
 			* reduce(callable $c, $zero = null); Chuyên đổi list thành một phần tử
 				+ Tính total của đơn hàng
@@ -91,9 +113,6 @@
     [8] => current
     [9] => next
     [10] => getInnerIterator
-    [24] => indexBy
-    [25] => countBy
-    [26] => sumOf
     [27] => shuffle
     [28] => sample
     [29] => take
