@@ -6,3 +6,6 @@ fw()->extensions->get(’slider’)->render(10, array(
 	’width’  => 300,
 	’height’ => 200
 ));
+
+
+https://wordpress.org/plugins/wpdatatables/
