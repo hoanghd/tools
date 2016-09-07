@@ -29,9 +29,51 @@
 					->map(function($value, $key){ return $value * 2; })
 					->toArray()
 				
-					//['one' => 2, 'two' => 4, 'three' => 6];
+					//['one' => 2, 'two' => 4, 'three' => 6];				
 			
-		- Verify		
+			* extract($matcher); Truy xuất phần tử ở từng row theo rule (sử dụng ., {*})
+				(new Collection($items))->extract('comment.votes.{*}.value');
+			
+			* sortBy($callback, $dir = SORT_DESC, $type = SORT_NUMERIC);
+				sortBy('age');
+				sortBy(function($user){
+					return $user->age;
+				});
+				
+			* groupBy($callback);
+				$students = [
+					['name' => 'Mark', 'grade' => 9],
+					['name' => 'Andrew', 'grade' => 10],
+					['name' => 'Stacy', 'grade' => 10],
+					['name' => 'Barbara', 'grade' => 9]
+				];
+				[
+				  10 => [ ['name' => 'Andrew', 'grade' => 10],['name' => 'Stacy', 'grade' => 10] ],
+				  9 => [ ['name' => 'Mark', 'grade' => 9], ['name' => 'Barbara', 'grade' => 9] ]
+				]
+			
+		- Single Value
+			* reduce(callable $c, $zero = null); Chuyên đổi list thành một phần tử
+				+ Tính total của đơn hàng
+					$totalPrice = $collection->reduce(function ($accumulated, $orderLine) {
+						return $accumulated + $orderLine->price;
+					}, 0);
+					
+				+ List all tag của rows
+					$allTags = $collection->reduce(function ($accumulated, $article) {
+						return array_merge($accumulated, $article->tags);
+					}, []);	
+			
+			* max($callback, $type = SORT_NUMERIC) Trả về row với item max
+				max('user.salary')
+				max(function($e){
+					return $e->get('user')->get('salary');
+				});
+			
+			* min($callback, $type = SORT_NUMERIC); Tương tự như min
+			
+			
+		- Verify	
 			* every(callable $c) //Kiểm tra all item thỏa điều kiện
 				(new Collection($items))->every(function($value, $key){ return true/false; });
 				
@@ -49,12 +91,6 @@
     [8] => current
     [9] => next
     [10] => getInnerIterator
-    [18] => reduce
-    [19] => extract
-    [20] => max
-    [21] => min
-    [22] => sortBy
-    [23] => groupBy
     [24] => indexBy
     [25] => countBy
     [26] => sumOf
