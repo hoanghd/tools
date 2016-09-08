@@ -1,6 +1,3 @@
-- Login
-- http://book.cakephp.org/3.0/en/tutorials-and-examples/blog/blog.html
-
 CREATE TABLE `posts` (
 `id` int(11) unsigned NOT NULL auto_increment,
 `name` varchar(255) default NULL,

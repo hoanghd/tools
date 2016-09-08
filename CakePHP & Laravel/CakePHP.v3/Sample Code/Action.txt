@@ -1,0 +1,14 @@
+List Post Page
+- posts.id, posts.name, post.date, users.name, count(comments.id), join(tags.name)
+
+Insert, Update
+- Add Post
+	+ List User
+	+ List Tags (Add -> Tags)
+
+- Edit Post
+	+ Edit Comments
+	
+- Remove User
+	+ Remove Comments
+	+ Remove Post
