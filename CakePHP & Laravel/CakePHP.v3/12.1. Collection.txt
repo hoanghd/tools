@@ -1,0 +1,186 @@
+12. Collection
+	- Cake\Core\App
+		* className($class, $type = '', $suffix = '')
+			App::classname('Auth', 'Controller/Component', 'Component'); //Cake\Controller\Component\AuthComponent
+			App::classname('DebugKit.Toolbar', 'Controller/Component', 'Component'); //DebugKit\Controller\Component\ToolbarComponent
+			App::classname('App\Cache\ComboCache'); //App\Cache\ComboCache
+		
+		* shortName($class, $type, $suffix = '')
+		* path($type, $plugin = null)
+		* core($type)
+	
+	- Cake\Collection\Collection  
+	    #http://book.cakephp.org/3.0/en/core-libraries/collections.html
+		* Cake\Collection\Iterator\FilterIterator		
+			* each(callable $c) 
+				(new Collection($items))->each(function($value, $key){});
+			
+			* append($items);			
+			* sample($size = 10) Create Random $size item
+			
+			* insert($path, $values);
+				insert('comment.user.age', $ages);
+			
+			* compile($preserveKeys = true); clone Collection
+			* toArray($preserveKeys = true);
+			* toList();
+			* jsonSerialize();
+			* buffered();			
+			* through(callable $handler)
+			
+		- Filter		
+			* filter(callable $c = null);
+				(new Collection($items))->filter(function($value, $key){ return true/false; });			
+				
+			* reject(callable $c) Ngược lại với filter
+				(new Collection($items))->reject(function($value, $key){ return true/false; });
+			
+			* stopWhen($condition) : DỪng lấy khi thỏa điều kiện
+				stopWhen(['is_approved' => false]);
+				stopWhen(function ($value, $key) {
+					return (new DateTime($value))->format('Y') < 2012;
+				})
+			
+			* take($size = 1, $from = 0) //Lấy $size phần tử bắt đầu từ $from
+			
+			* skip($howMany) //Bỏ qua $howMany phần tử
+			
+			* match(array $conditions) Lọc những item thỏa điều kiện
+				match(['user.name' => 'Mark'])
+				
+			* firstMatch(array $conditions); Tương tự như match nhưng mà chi lấy phần tử đâu tiên
+				
+			* first();
+			* last()
+			
+		- Change Value		
+			* map(callable $c); Trả về một Collection value thay đổi trong callback return
+				(new Collection($items))->map(function($value, $key){ return true/false; });			
+				
+				(new Collection(['one' => 1, 'two' => 2, 'three' => 3]))
+					->map(function($value, $key){ return $value * 2; })
+					->toArray()
+				
+					//['one' => 2, 'two' => 4, 'three' => 6];				
+			
+			* extract($matcher); Truy xuất phần tử ở từng row theo rule (sử dụng ., {*})
+				(new Collection($items))->extract('comment.votes.{*}.value');
+			
+			* sortBy($callback, $dir = SORT_DESC, $type = SORT_NUMERIC);
+				sortBy('age');
+				sortBy(function($user){
+					return $user->age;
+				});
+				
+			* groupBy($callback);
+				$students = [
+					['name' => 'Mark', 'grade' => 9],
+					['name' => 'Andrew', 'grade' => 10],
+					['name' => 'Stacy', 'grade' => 10],
+					['name' => 'Barbara', 'grade' => 9]
+				];
+				[
+				  10 => [ ['name' => 'Andrew', 'grade' => 10],['name' => 'Stacy', 'grade' => 10] ],
+				  9 => [ ['name' => 'Mark', 'grade' => 9], ['name' => 'Barbara', 'grade' => 9] ]
+				]
+			
+			* indexBy($callback); Lấy value of item ra làm key
+				[['age' => 3, 'name'=>'A'], ['age' => 2, 'name'=>'B'], ['age' => 5, 'name'=>'C']];
+				[3=>['age' => 3, 'name'=>'A'], 2=>['age' => 2, 'name'=>'B'], 5=>['age' => 5, 'name'=>'C']];
+			
+			* zip($items)
+				(new Collection([1, 2]))->zip([3, 4], [5, 6])->toList() //[[1, 3, 5], [2, 4, 6]]
+				
+			* zipWith($items, $callable)
+				(new Collection([1, 2]))->zipWith([3, 4], [5, 6], function () {
+					return array_sum(func_get_args());
+				})
+				//[9, 12]; of [(1 + 3 + 5), (2 + 4 + 6)]
+				
+			* countBy($callback);
+				[['age' => 2, 'name'=>'A'], ['age' => 2, 'name'=>'B'], ['age' => 5, 'name'=>'C']];
+				Count theo age: 2 người 2 tuổi và 1 người 5 tuổi
+				[2=>2, 5=>1]	
+			
+			* sumOf($matcher = null)
+				[1,2,3,4]	=> 10
+				[['age' => 2, 'name'=>'A'], ['age' => 2, 'name'=>'B'], ['age' => 5, 'name'=>'C']]
+				-> 9 | sumOf('age')
+		
+			* shuffle()
+				['a' => 1, 'b' => 2, 'c' => 3]
+				[2, 3, 1]
+				
+			* unfold(callable $transformer = null)
+				[[1, 2, 3], [4, 5]] => [1, 2, 3, 4, 5]
+				
+				unfold(function ($page) {
+					return $service->fetchPage($page)->toArray();
+				});
+			
+			* chunk($chunkSize) //Cắt các array thành nhiều array
+				[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]->chunk( 3 ) => 
+				[[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11]]
+			
+			* combine($keyPath, $valuePath, $groupPath = null);
+				Tạo hash key, value được chỉ định là field of row
+				
+				$items = [
+					['id' => 1, 'name' => 'foo', 'parent' => 'a'],
+					['id' => 2, 'name' => 'bar', 'parent' => 'b'],
+					['id' => 3, 'name' => 'baz', 'parent' => 'a'],
+				];
+				
+				[1 => 'foo', 2 => 'bar', 3 => 'baz']			
+			
+			* transpose() Transpose rows and columns into columns and rows			
+				$items = [
+					['Products', '2012', '2013', '2014'],
+					['Product A', '200', '100', '50'],
+					['Product B', '300', '200', '100'],
+					['Product C', '400', '300', '200'],
+				]				
+				[
+					['Products', 'Product A', 'Product B', 'Product C'],
+					['2012', '200', '300', '400'],
+					['2013', '100', '200', '300'],
+					['2014', '50', '100', '200'],
+				]
+			
+			* unwrap()
+			* nest($idPath, $parentPath, $nestingKey = 'children'); //Trả về dạng tree
+			* listNested($dir = 'desc', $nestingKey = 'children');
+				
+		- Single Value
+			* reduce(callable $c, $zero = null); Chuyên đổi list thành một phần tử
+				+ Tính total của đơn hàng
+					$totalPrice = $collection->reduce(function ($accumulated, $orderLine) {
+						return $accumulated + $orderLine->price;
+					}, 0);
+					
+				+ List all tag của rows
+					$allTags = $collection->reduce(function ($accumulated, $article) {
+						return array_merge($accumulated, $article->tags);
+					}, []);	
+			
+			* max($callback, $type = SORT_NUMERIC) Trả về row với item max
+				max('user.salary')
+				max(function($e){
+					return $e->get('user')->get('salary');
+				});
+			
+			* min($callback, $type = SORT_NUMERIC); Tương tự như min
+			
+			
+		- Verify	
+			* every(callable $c) //Kiểm tra all item thỏa điều kiện
+				(new Collection($items))->every(function($value, $key){ return true/false; });
+				
+			* some(callable $c)	//Nếu có bất kỳ item thỏa điều kiện
+				(new Collection($items))->every(function($value, $key){ return true/false; });
+				
+			* contains($value); //Kiểm tra $value có trong Collection không
+			
+			* isEmpty();
+			
+			* count()

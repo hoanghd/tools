@@ -1,0 +1,51 @@
+9.3. Entry
+	- http://book.cakephp.org/3.0/en/orm/entities.html
+	- http://book.cakephp.org/3.0/en/orm/validation.html
+	- http://book.cakephp.org/3.0/en/orm/deleting-data.html
+	- http://book.cakephp.org/3.0/en/orm/saving-data.html
+		
+	- $article = new Article([
+		'id' => 1,
+		'title' => 'New Article',
+		'created' => new DateTime('now')
+	  ]);
+	  use Cake\ORM\TableRegistry;
+	  $article = TableRegistry::get('Articles')->newEntity([
+		'id' => 1,
+		'title' => 'New Article',
+		'created' => new DateTime('now')
+	  ]);
+	  
+	- errors($field = null, $errors = null)
+	-	$article = $articles->newEntity($this->request->data);
+		if ($article->errors()) {
+			// Entity failed validation.
+		}
+		
+		$article = $articles->patchEntity($article, $newData, [
+			'validate' => false
+		]);
+		
+		//Chỉ định function validate 
+		//validationUpdate
+		$article = $articles->newEntity(
+		$this->request->data,
+			['validate' => 'update']
+		);
+
+	- Sử dụng Table để save Entry 
+		* http://book.cakephp.org/3.0/en/orm/saving-data.html
+		$articlesTable = TableRegistry::get('Articles');
+		$article = $articlesTable->newEntity();
+
+		$article->title = 'A New Article';
+		$article->body = 'This is the body of the article';
+		
+		//$entity = $articles->newEntity($this->request->data());
+		//$entity = $articles->newEntity($data, ['validate' => false]);
+		
+		if ($articlesTable->save($article)) {
+			// The $article entity contains the id now
+			$id = $article->id;
+		}
+		

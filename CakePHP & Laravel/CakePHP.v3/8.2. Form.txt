@@ -1,0 +1,129 @@
+2. Form
+	- Link:
+		+ http://book.cakephp.org/3.0/en/views/helpers/form.html
+		+ http://api.cakephp.org/3.3/class-Cake.View.Helper.FormHelper.html
+		
+	- Method
+		+ create( mixed $model null , array $options [] )
+			- $options
+				+ type: Form method defaults to autodetecting based on the form context. If the form context's isCreate() method returns false, a PUT request will be done.
+					- get, post, put, delete
+					
+				+ action: The controller action the form submits to, (optional). Use this option if you don't need to change the controller from the current request's controller. Deprecated since 3.2, use url.
+					
+				+ url: The URL the form submits to. Can be a string or a URL array. If you use 'url' you should leave 'action' undefined.
+					- ['url' => ['controller' => 'Articles', 'action' => 'publish']]
+					
+				+ encoding: Set the accept-charset encoding for the form. Defaults to Configure::read('App.encoding')
+				
+				+ templates: The templates you want to use for this form. Any templates will be merged on top of the already loaded templates. This option can either be a filename in /config that contains the templates you want to load, or an array of templates to use.
+					- http://stackoverflow.com/questions/26068782/cakephp-3-multiple-custom-template-formhelpers
+					- http://www.sanisoft.com/blog/2014/08/11/twitter-bootstrap-forms-cakephp-3/
+				+ context: Additional options for the context class. For example the EntityContext accepts a 'table' option that allows you to set the specific Table class the form should be based on.
+					- 	['context' => ['validator' => 'register']]
+					- 	['context' => [
+							'validator' => [
+								'Users' => 'register',
+								'Comments' => 'default'
+							]
+						]]
+						
+						register: Là method trong /src/Model/Table/OptionsTable.validationRegister
+						
+				+ idPrefix: Prefix for generated ID attributes.
+		
+		+ inputs(array $fields, array $options = [])
+			+ fields: [`name` => $options, ...]
+			+ $options: fieldset, legend (options of fieldset)
+			-> template: legend, fieldset
+		
+		+ fieldset($fields = '', array $options = [])
+			+ $options: fieldset, legend (options of fieldset)
+			-> template: legend, fieldset
+ 		
+		+ allInputs(array $fields = [], array $options = [])
+			Tương tự như inputs
+			
+		+ input($fieldName, array $options = [])
+			+ http://book.cakephp.org/3.0/en/views/helpers/form.html#creating-form-inputs
+			+ $fieldName : $name, modelname.fieldname
+				+ title, author.id, tags.0.id, tags.0._joinData.starred, comments.0.id
+					+ Authors HasOne Profiles
+					+ Authors HasMany Articles
+					+ Articles HasMany Comments
+					+ Articles BelongsTo Authors
+					+ Articles BelongsToMany Tags
+				-> Tạo input mà các field ở các table có mối liên hệ với nhau
+
+			+ $options: 
+				* type: file, text, checkbox, number, textarea, password, email, tel, day, month, year, hour, minute, meridian
+				* label
+				* options: ['s' => 'Small', 'm' => 'Medium', 'l' => 'Large']
+					+ Chuyển đổi thành dạng select, radio
+				* empty: Sử dụng cho select giá trị đâu tiên
+				* required
+				* error				
+				* nestedInput
+				* templates
+					+ `type` . FormGroup
+					+ formGroup
+					-> [{{input}}, {{label}}, {{error}}, {{templateVars}}]
+				* templateVars
+					templateVars => ['help' => 'At least 8 characters long.']
+					=> '{{input}}, {{label}}, {{help}}'
+		
+		+ checkbox($fieldName, array $options = [])
+			+ http://book.cakephp.org/3.0/en/views/helpers/form.html#creating-checkboxes
+			+ $options: value, checked, hiddenField, disabled, default: Giá trị khi mà không checked khi submit
+		
+		+ multiCheckbox($fieldName, $options, array $attributes = [])
+			+ $options: List value
+			+ $attributes: escape, val, class, disabled, hiddenField
+			
+		+ radio($fieldName, $options = [], array $attributes = [])
+			+ http://book.cakephp.org/3.0/en/views/helpers/form.html#creating-radio-buttons
+			+ $attributes: value, label, hiddenField, disabled, empty
+			
+		+ textarea($fieldName, array $options = [])
+			+ $options: escape
+		
+		+ select($fieldName, $options = [], array $attributes = [])
+			+ $options: options hoặc optgroups
+				* [1 => 'one', 2 => 'two']
+				* [1 => 'bill', 'fred' => [ 2 => 'fred', 3 => 'fred jr.' ] ]
+			+ $attributes: multiple, empty, escape, val, disabled
+	 
+		+ file($fieldName, array $options = [])
+		+ day($fieldName = null, array $options = [])
+			+ $options: empty, val
+		+ month($fieldName, array $options = [])
+			+ monthNames, empty, val
+		+ year($fieldName, array $options = [])
+			+ $options: empty, val, orderYear : ['asc', 'desc'], maxYear, minYear
+		+ hour($fieldName, array $options = [])
+			+ $options: empty, format : [12, 24(default)], val
+		+ minute($fieldName, array $options = [])
+			+ $options: empty, interval, val, round
+		+ meridian($fieldName, array $options = [])
+			+ $options: empty, val
+		+ dateTime($fieldName, array $options = [])
+			+ $options: Tất cả các option của trên
+		+ time($fieldName, array $options = [])
+			+ $options: Tất cả các option của trên
+			
+		+ hidden($fieldName, array $options = [])
+		+ button($title, array $options = [])
+			+ $options: escape
+		
+		+ submit($caption = null, array $options = [])
+			+ $options: type, templateVars
+			+ template: inputSubmit, submitContainer
+		
+		+ postButton($title, $url, array $options = [])
+			+ $options: data, method, form
+		+ postLink($title, $url = null, array $options = [])
+			+ $options: data, method, confirm, block
+	
+
+		
+		

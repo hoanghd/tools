@@ -1,1 +1,0 @@
-ftp://ik.su.lt/PHP/

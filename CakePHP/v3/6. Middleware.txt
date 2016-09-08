@@ -1,9 +1,0 @@
-- http://book.cakephp.org/3.0/en/controllers/middleware.html
-- Khái niệm: 
-	Là đối tượng trung gian đảm nhiệm xử lý gì đó
-	Là một layer trong một phiên request
-	Tất cả các Routing đều đi qua
-
-- Ví dụ
-	
-	

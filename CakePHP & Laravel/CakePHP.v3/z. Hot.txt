@@ -1,0 +1,42 @@
+1. View
+	+ Element
+	+ Layout
+	+ Helper
+	+ Cell
+
+2. ORM Query, Paginate
+
+3. Components
+	+ Auth
+	+ Csrf
+	+ Security
+	+ RequestHandler 
+	+ Cookie
+
+4. Helpers
+	+ Flash
+	+ Form			http://book.cakephp.org/3.0/en/views/helpers/form.html
+		* Nghiên cứu trường hợp Form với model related nhiều model khác nhau
+		* Thêm widget
+		
+		* $this->loadHelper('Form', ['templates' => 'form-templates']) /config/html-templates.php
+		* $this->Form->templates([])
+		
+	+ Html			http://book.cakephp.org/3.0/en/views/helpers/html.html
+		* $this->loadHelper('Html', ['templates' => 'html-templates']) /config/html-templates.php
+		* $this->Paginator->templates([])
+		
+	+ Number
+	+ Paginator		http://book.cakephp.org/3.0/en/views/helpers/paginator.html
+		* $this->loadHelper('Paginator', ['templates' => 'paginator-templates']) /config/paginator-templates.php
+		* $this->Paginator->templates([])		
+	
+	+ Session		http://book.cakephp.org/3.0/en/views/helpers/session.html
+	+ Text			http://book.cakephp.org/3.0/en/views/helpers/text.html
+	+ Time			http://book.cakephp.org/3.0/en/views/helpers/time.html
+	+ Url			http://book.cakephp.org/3.0/en/views/helpers/url.html
+
+5. Cell (Với template chưa biết sử dụng thế nào)
+
+6. Validate
+	+ Model, FormModel
