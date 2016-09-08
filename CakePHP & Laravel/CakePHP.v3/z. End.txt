@@ -1,8 +1,8 @@
 1. View
-	+ Element
+	+ Element	: Tạo block nhỏ để sử dụng lại
 	+ Layout
 	+ Helper
-	+ Cell
+	+ Cell		: Là một small Controller
 
 2. ORM Query, Paginate
 
@@ -35,8 +35,3 @@
 	+ Text			http://book.cakephp.org/3.0/en/views/helpers/text.html
 	+ Time			http://book.cakephp.org/3.0/en/views/helpers/time.html
 	+ Url			http://book.cakephp.org/3.0/en/views/helpers/url.html
-
-5. Cell (Với template chưa biết sử dụng thế nào)
-
-6. Validate
-	+ Model, FormModel
