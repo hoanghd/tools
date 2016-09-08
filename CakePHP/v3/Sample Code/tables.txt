@@ -10,6 +10,12 @@ CREATE TABLE `posts` (
 PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `tags` (
+`id` int(11) unsigned NOT NULL auto_increment,
+`name` varchar(255) default NULL,
+PRIMARY KEY (`id`)
+);
+
 CREATE TABLE `posts_tags` (
 `id` int(11) unsigned NOT NULL auto_increment,
 `post_id` int(11) unsigned default NULL,
@@ -24,6 +30,7 @@ CREATE TABLE `comments` (
 `post_id` int(11) default NULL,
 PRIMARY KEY (`id`)
 );
+
 CREATE TABLE `users` (
 `id` int(11) unsigned NOT NULL auto_increment,
 `name` varchar(100) default NULL,
