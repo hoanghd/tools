@@ -5,3 +5,19 @@
 	- FormAuthenticate 		POST Auth
     - BasicAuthenticate 	HTTP authentication.
     - DigestAuthenticate: 	For API/Webservice
+	
+	- Get Current User Login
+		$this->Auth->user()
+		$this->Auth->user('role')
+		
+	- $this->Auth->allow($actions = null)
+		// Allow all actions
+		$this->Auth->allow();
+
+		// Allow only the index action.
+		$this->Auth->allow('index');
+
+		// Allow only the view and index actions.
+		$this->Auth->allow(['view', 'index']);
+		
+	- $this->Auth->deny($actions = null)

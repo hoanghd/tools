@@ -30,11 +30,11 @@ PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `users` (
-`id` int(11) unsigned NOT NULL auto_increment,
-`name` varchar(100) default NULL,
-`email` varchar(150) default NULL,
-`firstname` varchar(60) default NULL,
-`lastname` varchar(60) default NULL,
+`id` INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+`username` VARCHAR(50),
+`password` VARCHAR(255),
+`role` VARCHAR(20),
+`created` DATETIME DEFAULT NULL,
+`modified` DATETIME DEFAULT NULL,
 PRIMARY KEY (`id`)
 );
-
