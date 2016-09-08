@@ -1,7 +1,7 @@
 1. View
 	+ Element	: Tạo block nhỏ để sử dụng lại
 	+ Layout
-	+ Helper
+	+ Helper	: Các class định nghĩa các function để hổ trợ cho View
 	+ Cell		: Là một small Controller
 
 2. ORM Query, Paginate
