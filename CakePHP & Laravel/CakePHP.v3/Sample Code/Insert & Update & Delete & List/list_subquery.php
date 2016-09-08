@@ -5,12 +5,7 @@
 	public function index()
     {
 		$this->loadModel( 'Users' );
-		$this->loadModel( 'Comments' );		
-		
-		$subQuery = $this->Comments
-						->find()
-						->select(['post_id'=>'post_id', 'order_num' => 'COUNT(id)'])
-						->group('post_id');
+		$this->loadModel( 'Comments' );	
 		
 		$select = $this->Posts->find()
 					->select($this->Posts)
@@ -29,9 +24,32 @@
         $this->set(compact('posts'));
         $this->set('_serialize', ['posts']);
     }
+	
+	Hoặc
+	
+	$this->paginate = [
+            'contain' => ['Users'],
+			'fields' => function( $q ){
+				return array_merge(
+					$q->aliasFields($this->Posts->schema()->columns(), $this->Posts->alias()),
+					$q->aliasFields($this->Posts->Users->schema()->columns(), $this->Posts->Users->alias()),
+					['Comments.order_num']
+				);
+			},
+			'join' => [
+				'Comments' => [
+					'table' => $this->Posts->Comments
+								->find()
+								->select(['post_id'=>'post_id', 'order_num' => 'COUNT(id)'])
+								->group('post_id'),
+					'type' => 'LEFT',
+					'conditions' => 'Comments.post_id=Posts.id'					
+				]				
+			]
+        ];
 	?>	
 	------------------------------------------------------
 						View
 	------------------------------------------------------
 	<?php $post->Comments['order_num'] ?>
-	<?php $post->Users['id'] ?>
+	<?php $post->users->id ?>

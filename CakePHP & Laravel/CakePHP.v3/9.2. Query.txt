@@ -1,4 +1,6 @@
 9.2. Query
+	* Cake\ORM\Query
+	* 
 	* http://book.cakephp.org/3.0/en/orm/query-builder.html
 	* http://stackoverflow.com/questions/29723013/cakephp-3-contain-select-fields
 	* https://github.com/cakephp/cakephp/issues/7050
