@@ -1,4 +1,6 @@
 9.3. Entry
+	- Cake\Datasource\EntityInterface
+	
 	- http://book.cakephp.org/3.0/en/orm/entities.html
 	- http://book.cakephp.org/3.0/en/orm/validation.html
 	- http://book.cakephp.org/3.0/en/orm/deleting-data.html

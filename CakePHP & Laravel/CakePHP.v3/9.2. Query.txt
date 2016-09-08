@@ -1,4 +1,11 @@
-9.2. Query	
+9.2. Query
+	* http://book.cakephp.org/3.0/en/orm/query-builder.html
+	* http://stackoverflow.com/questions/29723013/cakephp-3-contain-select-fields
+	* https://github.com/cakephp/cakephp/issues/7050
+		SubQuery
+	* http://stackoverflow.com/questions/5770032/cakephp-and-subquery
+		JOIN SubQuery
+	
 	* select($fields = [], $overwrite = false)
 		+ ['id', 'name']
 		+ ['pk'=>'id', 'name'] // id AS pk

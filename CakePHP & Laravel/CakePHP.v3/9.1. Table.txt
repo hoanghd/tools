@@ -1,6 +1,7 @@
 Link
 	- http://book.cakephp.org/3.0/en/orm.html
 	- Cake\ORM\Table
+		* autoFIeld()
 		* initialize(array $config) Sử dụng để khởi tạo các cấu hình
 		* table($table = null): Chỉ định table name trong database, mặc định dựa vào tên class
 		* alias($alias = null): Chỉ định alias mặc định dựa vào tên class
