@@ -16,10 +16,10 @@ Link
 		* association($name)
 		
 		* addAssociations(array $params)
-			+ belongsTo
+			+ belongsTo 	: Posts -> User ('foreignKey' => 'user_id')
 			+ hasOne
-			+ hasMany
-			+ belongsToMany
+			+ hasMany		: Posts -> Comments ('foreignKey' => 'post_id')
+			+ belongsToMany	: Posts -> Tags	('foreignKey' => 'post_id', 'targetForeignKey' => 'tag_id', 'joinTable' => 'posts_tags')
 		
 		* belongsTo($associated, array $options = [])
 			+ $options
