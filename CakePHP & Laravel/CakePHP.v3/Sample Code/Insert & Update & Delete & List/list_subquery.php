@@ -17,7 +17,12 @@
 					->select($this->Users)
 					->select('Comments.order_num')
 					->leftJoin(['Users' => 'users' ], 'Users.id=Posts.user_id')
-					->leftJoin( ['Comments' => $subQuery ], 'Comments.post_id=Posts.id' );
+					->leftJoin( ['Comments' => (					
+						$this->Comments
+							->find()
+							->select(['post_id'=>'post_id', 'order_num' => 'COUNT(id)'])
+							->group('post_id')
+					) ], 'Comments.post_id=Posts.id' );
 		
 		$posts = $this->paginate( $select );
 
