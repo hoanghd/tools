@@ -12,6 +12,7 @@
 
 2. Config
   - config/database.php
+  - .env
   
 3. Cấu trúc
   - app: Chứa các phần chính để phát triển chương trình models, controllers, and middleware
@@ -41,9 +42,9 @@
     });
   
   - Controller  /app/Http/Controllers/
-  - Model
+  - Model	/app/*
   - View        /resources/views/
-  - Layout
+  - Layout	/resources/views/layouts
 
 6. Route
   - Route::get('/', 'WelcomeController@index');
@@ -70,6 +71,8 @@
   Route::get('blog/category/{category}', ['as' => 'blog.category', 'uses' => 'BlogController@category']);
     -> <a href="{{ URL::route('blog.category', ['category' => 'php']) }}">PHP</a>
   
+  Route::get('area/{area}', function($area) {})->where('area, '[0-9]+');
+  
   
 7. Controller
   - return view('home.welcome');  /resources/views/home/welcome.blade.php
@@ -92,6 +95,8 @@
     * {{ $name or 'California' }} //Nếu không tồn tại thì lấy giá trị mặc định
     * {{{ $name }}}
     * {!! $name !!} //Hiển thị không escape
+    * {{ asset('css/bootstrap.min.css')}}
+    * {{ url('cats/'.$cat->id) }}
     
     Sử dụng LaravelCollective/HTML
     * {!! HTML::image('images/logo.png', 'TODOParrot logo') !!}
@@ -127,16 +132,92 @@
       @section('content')
       //
       @endsection
-      
-      
+  
+9. Model
+    * protected $table = 'users';
+    * all()
+    * find( id );
+    * count(), max('amount'), min('amount'), avg('amount'), sum('amount')
+    * where('id', '=', 1)->first();
+    * take(5)->get()
+    * skip(10)->get()
+    * orderBy('rating', 'asc')
+    * save();
+    * create($data)
+    * delete();
+    * destroy(1);
+    * withTrashed()->get()
+    * onlyTrashed()->get()
+    * restore();
+    * forceDelete();
+    
+    class User extends Model {
+	public function profile(){
+		return $this->hasOne('App\Profile');
+	}
+    }
+    
+    class Profile extends Model {
+	public function user(){
+		return $this->belongsTo('App\User');
+	}
+    }
+    
+    class User extends Model {
+	public function roles(){
+		return $this->belongsToMany('App\Role');
+	}
+    }
+    
+    class Product extends Model {
+	public function orders() {
+		return $this->hasManyThrough('App\Order', 'App\OrderItem');
+	}
+    }
+    
+    class Image extends Model {
+	public function imageable(){
+		return $this->morphTo();
+	}
+   }
+   
+   class Article extends Model {
+	public function images() {
+		$this->morphMany('App\Image', 'imageable');
+	}
+   }
+    
+    $profile = User::find(1)->profile;
+    $roles = User::find(1)->roles;
+    $user->roles()->attach($roleId);
+    $user->roles()->detach($roleId);
+    $user->roles()->sync(1, 2, 3, 4, 5);
+    $user->groups()->attach(1, ['is_moderator' => true]);
+    $user->groups()->sync([1 => ['is_moderator' => true]]);
+    
+    
+10. Session
+    * Session::has('success')
+    * Session::get('success')
       
 N. Tool
   - php artisan route:list
     * Liệt kê các route hiện tại đang đăng ký
   - php artisan route:cache
   - php artisan route:clear
-  - php artisan make:controller WelcomeController
   
+  - php artisan make:controller WelcomeController
+  - php artisan make:model Users
+  
+  - php artisan make:command
+  - php artisan make:console
+  - php artisan make:controller
+  - php artisan make:event
+  - php artisan make:middleware
+  - php artisan make:migration
+  - php artisan make:model
+  - php artisan make:provider
+  - php artisan make:request
   
 X.Plugin
   - composer require laravelcollective/html
