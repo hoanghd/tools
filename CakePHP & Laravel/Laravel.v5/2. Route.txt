@@ -8,8 +8,10 @@
 	- Route::match(['get', 'post'], '/', function(){});
 	- Route::any('foo', function(){});
 
+	- Route::get('profile', 'UserController@show')->middleware('auth');
 	- Route::get('/', 'WelcomeController@index');
 	- Route::post('/', 'WelcomeController@index');
+	- Route::get('foo', 'Photos\AdminController@method');
 	- Route::resource('lists', 'ListsController'); Tự động link theo các action sau
 		* GET     /lists            lists#index
 		* GET     /lists/new        lists#create
@@ -18,7 +20,11 @@
 		* GET     /lists/:id/edit   lists#edit
 		* PUT     /lists/:id        lists#update
 		* DELETE  /lists/:id        lists#destroy
-
+		
+	- Route::resource('photo', 'PhotoController', ['only' => [ 'index', 'show' ]]);
+	- Route::resource('photo', 'PhotoController', ['except' => [ 'create', 'store', 'update', 'destroy']]);
+	- Route::resource('photo', 'PhotoController', ['names' => [ 'create' => 'photo.build']]);
+	- Route::resource('user', 'AdminUserController', ['parameters' => [ 'user' => 'admin_user']]);
 	- Route::controllers([ 'lists' => 'ListsController' ]); Theo rule như sau
 	* GET /lists/index    -> ListsController::getIndex()
 	* Method  /Controller/Action  -> Controller::<Method>Action()

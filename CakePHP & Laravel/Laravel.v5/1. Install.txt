@@ -59,7 +59,7 @@ N. Tool
   - php artisan make:console
   - php artisan make:controller
   - php artisan make:event
-  - php artisan make:middleware
+  - php artisan make:middleware		https://laravel.com/docs/5.3/middleware
   - php artisan make:migration
   - php artisan make:model
   - php artisan make:provider
