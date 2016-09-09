@@ -75,16 +75,68 @@
   - return view('home.welcome');  /resources/views/home/welcome.blade.php
   - Gán biến to View
     return view('home.welcome')
-            ->with('category', $category);
-  
+            ->with('category', $category); 
+            
+            //Tương tự như 
+            view('home.welcome')
+              ->withCategory($category);
+              
+            view('home.welcome')
+              ->with(['category' => $category]);
+              
+            view('welcome', compact('category'));
+            
+8. View
+  - Blade Template Engine
+    * {{ $name }}   //Biến giá trị
+    * {{ $name or 'California' }} //Nếu không tồn tại thì lấy giá trị mặc định
+    * {{{ $name }}}
+    * {!! $name !!} //Hiển thị không escape
     
+    Sử dụng LaravelCollective/HTML
+    * {!! HTML::image('images/logo.png', 'TODOParrot logo') !!}
+    * {!! HTML::style('css/app.min.css') !!}
+    * {!! HTML::script('javascript/jquery-1.10.1.min.js') !!}
     
+    * @foreach ($lists as $list)    //Loop array
+       <li>{{ $list }}</li>
+      @endforeach
+      
+    * @forelse($lists as $list)    //Loop array
+  			<li>{{ $list }}</li>
+  			@empty
+  			<li>You don't have any lists saved.</li>
+		  @endforelse
+
+    * @if (count($lists) > 0)
+        //
+      @elseif (count($lists) == 1)
+        //
+      @else
+        //
+      @endif
+      
+    * @include('partials.row', array('link' => $link))
+      /resources/views/partials/row.blade.php
     
+  - Layout
+    * /resources/views/layouts/master.blade.php
     
+    * View 
+      @extends('layouts.master')
+      @section('content')
+      //
+      @endsection
+      
+      
+      
 N. Tool
   - php artisan route:list
     * Liệt kê các route hiện tại đang đăng ký
   - php artisan route:cache
   - php artisan route:clear
   - php artisan make:controller WelcomeController
-
+  
+  
+X.Plugin
+  - composer require laravelcollective/html
