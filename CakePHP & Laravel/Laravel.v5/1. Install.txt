@@ -12,3 +12,18 @@
 
 2. Config
   - config/database.php
+  
+3. Cấu trúc
+  - app: Chứa các phần chính để phát triển chương trình models, controllers, and middleware
+  - bootstrap: Chứa các file để khởi tạo Application
+  - config: Chứa các config file
+  - database: Chứa các Entry
+  - public: Thư mục public server 
+  - resources: Chứa View file, các file ngôn ngữ, assets (CoffeeScript, SCSS, etc.).
+  - storage: cache, session, log
+  
+4. Controller, Model, View
+  - Controller
+  - Model
+  - View        /resources/views/
+
