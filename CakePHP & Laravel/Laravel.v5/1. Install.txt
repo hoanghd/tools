@@ -21,9 +21,70 @@
   - public: Thư mục public server 
   - resources: Chứa View file, các file ngôn ngữ, assets (CoffeeScript, SCSS, etc.).
   - storage: cache, session, log
+
+4. Debug
+  - dd()
+  - \Log::debug($items);
+  - \Log::info('Just an informational message.');
+  - \Log::warning('Something may be going wrong.');
+  - \Log::error('Something is definitely going wrong.');
+  - \Log::critical('Danger, Will Robinson! Danger!');
   
-4. Controller, Model, View
-  - Controller
+5. Controller, Model, View
+  - routes
+    * Trỏ tới Controller[Action]
+    Route::get('/', 'WelcomeController@index');
+    
+    * Trỏ tới View
+    Route::get('/', function(){
+    	return view('welcome');
+    });
+  
+  - Controller  /app/Http/Controllers/
   - Model
   - View        /resources/views/
+  - Layout
+
+6. Route
+  - Route::get('/', 'WelcomeController@index');
+  - Route::post('/', 'WelcomeController@index');
+  - Route::resource('lists', 'ListsController'); Tự động link theo các action sau
+    * GET     /lists            lists#index
+    * GET     /lists/new        lists#create
+    * POST    /lists            lists#store
+    * GET     /lists/:id        lists#show
+    * GET     /lists/:id/edit   lists#edit
+    * PUT     /lists/:id        lists#update
+    * DELETE  /lists/:id        lists#destroy
+  
+  - Route::controllers([ 'lists' => 'ListsController' ]); Theo rule như sau
+    * GET /lists/index    -> ListsController::getIndex()
+    * Method  /Controller/Action  -> Controller::<Method>Action()
+    
+  ************************************
+  ************************************
+  Route::get('blog/category/{category}/{subcategory?}', 'BlogController@category');
+    -> public function category( $category, $subcategory )
+    * {subcategory?}: Có thể biến không tồn tại giá trị
+  
+  Route::get('blog/category/{category}', ['as' => 'blog.category', 'uses' => 'BlogController@category']);
+    -> <a href="{{ URL::route('blog.category', ['category' => 'php']) }}">PHP</a>
+  
+  
+7. Controller
+  - return view('home.welcome');  /resources/views/home/welcome.blade.php
+  - Gán biến to View
+    return view('home.welcome')
+            ->with('category', $category);
+  
+    
+    
+    
+    
+N. Tool
+  - php artisan route:list
+    * Liệt kê các route hiện tại đang đăng ký
+  - php artisan route:cache
+  - php artisan route:clear
+  - php artisan make:controller WelcomeController
 
