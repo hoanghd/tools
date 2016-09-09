@@ -1,0 +1,63 @@
+5. Model
+    * protected $table = 'users';
+    * all()
+    * find( id );
+    * count(), max('amount'), min('amount'), avg('amount'), sum('amount')
+    * where('id', '=', 1)->first();
+    * take(5)->get()
+    * skip(10)->get()
+    * orderBy('rating', 'asc')
+    * save();
+    * create($data)
+    * delete();
+    * destroy(1);
+    * withTrashed()->get()
+    * onlyTrashed()->get()
+    * restore();
+    * forceDelete();
+    
+    class User extends Model {
+	public function profile(){
+		return $this->hasOne('App\Profile');
+	}
+    }
+    
+    class Profile extends Model {
+	public function user(){
+		return $this->belongsTo('App\User');
+	}
+    }
+    
+    class User extends Model {
+	public function roles(){
+		return $this->belongsToMany('App\Role');
+	}
+    }
+    
+    class Product extends Model {
+	public function orders() {
+		return $this->hasManyThrough('App\Order', 'App\OrderItem');
+	}
+    }
+    
+    class Image extends Model {
+	public function imageable(){
+		return $this->morphTo();
+	}
+   }
+   
+   class Article extends Model {
+	public function images() {
+		$this->morphMany('App\Image', 'imageable');
+	}
+   }
+    
+    $profile = User::find(1)->profile;
+    $roles = User::find(1)->roles;
+    $user->roles()->attach($roleId);
+    $user->roles()->detach($roleId);
+    $user->roles()->sync(1, 2, 3, 4, 5);
+    $user->groups()->attach(1, ['is_moderator' => true]);
+    $user->groups()->sync([1 => ['is_moderator' => true]]);
+    
+    

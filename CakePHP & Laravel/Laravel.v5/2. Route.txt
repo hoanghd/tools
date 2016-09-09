@@ -1,0 +1,28 @@
+2. Route
+  - Route::get('/', 'WelcomeController@index');
+  - Route::post('/', 'WelcomeController@index');
+  - Route::resource('lists', 'ListsController'); Tự động link theo các action sau
+    * GET     /lists            lists#index
+    * GET     /lists/new        lists#create
+    * POST    /lists            lists#store
+    * GET     /lists/:id        lists#show
+    * GET     /lists/:id/edit   lists#edit
+    * PUT     /lists/:id        lists#update
+    * DELETE  /lists/:id        lists#destroy
+  
+  - Route::controllers([ 'lists' => 'ListsController' ]); Theo rule như sau
+    * GET /lists/index    -> ListsController::getIndex()
+    * Method  /Controller/Action  -> Controller::<Method>Action()
+    
+  ************************************
+  ************************************
+  Route::get('blog/category/{category}/{subcategory?}', 'BlogController@category');
+    -> public function category( $category, $subcategory )
+    * {subcategory?}: Có thể biến không tồn tại giá trị
+  
+  Route::get('blog/category/{category}', ['as' => 'blog.category', 'uses' => 'BlogController@category']);
+    -> <a href="{{ URL::route('blog.category', ['category' => 'php']) }}">PHP</a>
+  
+  Route::get('area/{area}', function($area) {})->where('area, '[0-9]+');
+  
+  

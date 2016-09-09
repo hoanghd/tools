@@ -1,0 +1,16 @@
+3. Controller
+  - return view('home.welcome');  /resources/views/home/welcome.blade.php
+  - Gán biến to View
+    return view('home.welcome')
+            ->with('category', $category); 
+            
+            //Tương tự như 
+            view('home.welcome')
+              ->withCategory($category);
+              
+            view('home.welcome')
+              ->with(['category' => $category]);
+              
+            view('welcome', compact('category'));
+            
+
