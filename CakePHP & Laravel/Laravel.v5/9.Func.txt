@@ -5,6 +5,8 @@
 	Redirect::to('party')->with_input('only', array('betty', 'simon'));
 	Redirect::to('party')->with_input('except', array('uncle_bob'));
 	
+	redirect()->route('profile');
+	
 	URL::base();
 	URL::current();
 	URL::full();
@@ -13,6 +15,9 @@
 	URL::to_route('blog.category');	//alias	
 	URL::to_action('dashboard@home');
 	URL::to_asset('css/style.css');
+	
+	$url = route('profile');
+	
 	
 6. Session
     * Session::has('success')

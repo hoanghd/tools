@@ -1,4 +1,13 @@
 2. Route
+	- Route::get($uri, $callback);
+	- Route::post($uri, $callback);
+	- Route::put($uri, $callback);
+	- Route::patch($uri, $callback);
+	- Route::delete($uri, $callback);
+	- Route::options($uri, $callback);
+	- Route::match(['get', 'post'], '/', function(){});
+	- Route::any('foo', function(){});
+
 	- Route::get('/', 'WelcomeController@index');
 	- Route::post('/', 'WelcomeController@index');
 	- Route::resource('lists', 'ListsController'); Tự động link theo các action sau
@@ -13,6 +22,9 @@
 	- Route::controllers([ 'lists' => 'ListsController' ]); Theo rule như sau
 	* GET /lists/index    -> ListsController::getIndex()
 	* Method  /Controller/Action  -> Controller::<Method>Action()
+	
+	Route::get('user/{id}/profile', function($id){ })->name('profile');
+	$url = route('profile', ['id' => 1]);
 
 	************************************
 	************************************
@@ -42,9 +54,17 @@
 		return View::make('account/profile');
 	}));
 	
+	//Route::group(['middleware' => 'auth'], function () {
+	//Route::group(['namespace' => 'Admin'], function() {
+		//// Controllers Within The "App\Http\Controllers\Admin" Namespace
+	//Route::group(['domain' => '{account}.myapp.com'], function () {
+	//Route::group(['prefix' => 'admin'], function () {
 	Route::group(array('before' => 'auth'), function(){
 		Route::get('panel', function(){});
 		Route::get('dashboard', function(){});
 	});
+	
+	
+	Route::get('api/users/{user}', function (App\User $user) {})
   
 	
