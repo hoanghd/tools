@@ -1,0 +1,24 @@
+5. Func
+    Redirect::to('account/profile')
+	Redirect::to_route('blog.category'); //alias	
+	Redirect::to('party')->with_input();
+	Redirect::to('party')->with_input('only', array('betty', 'simon'));
+	Redirect::to('party')->with_input('except', array('uncle_bob'));
+	
+	URL::base();
+	URL::current();
+	URL::full();
+	URL::to('my/route')
+	URL::to_secure('my/route');
+	URL::to_route('blog.category');	//alias	
+	URL::to_action('dashboard@home');
+	URL::to_asset('css/style.css');
+	
+6. Session
+    * Session::has('success')
+    * Session::get('success')
+	* Section::inject('title', 'My Site');
+	
+7. Config
+	* $value = config('app.timezone');
+	* config(['app.timezone' => 'America/Chicago']);

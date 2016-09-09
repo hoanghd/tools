@@ -6,6 +6,7 @@
     * {!! $name !!} //Hiển thị không escape
     * {{ asset('css/bootstrap.min.css')}}
     * {{ url('cats/'.$cat->id) }}
+	* {{ 5 * time() }}
     
     Sử dụng LaravelCollective/HTML
     * {!! HTML::image('images/logo.png', 'TODOParrot logo') !!}

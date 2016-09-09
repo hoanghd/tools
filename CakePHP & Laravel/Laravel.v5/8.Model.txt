@@ -1,21 +1,64 @@
+	Query
+	
 5. Model
     * protected $table = 'users';
     * all()
-    * find( id );
-    * count(), max('amount'), min('amount'), avg('amount'), sum('amount')
-    * where('id', '=', 1)->first();
-    * take(5)->get()
-    * skip(10)->get()
+    * find( id )
+    * count()
+	* max('amount|size')
+	* min('amount|size')
+	* avg('amount|size')
+	* sum('amount|size')
+    * where('id', '=', 1)
+	* or_where('face', 'LIKE', '%malemodel%')
+	* where_in()
+	* where_not_in()
+	* or_where_in() 
+	* or_where_not_in()
+	* where_null()
+	* where_not_null() 
+	* or_where_null()
+	* or_where_not_null()
+	* where_size(5)
+	* where_size_and_height(700, 400)
+    * take(5)
+    * skip(10)
     * orderBy('rating', 'asc')
+	* order_by('size', 'asc')->
     * save();
     * create($data)
     * delete();
     * destroy(1);
-    * withTrashed()->get()
-    * onlyTrashed()->get()
+    * withTrashed()
+    * onlyTrashed()
     * restore();
     * forceDelete();
-    
+	* join('project', 'tasks.id', '=', 'project.task_id')
+	* increment('size');
+	* decrement('size');
+	
+	* update(array('worn' => DB::raw('NOW()')));
+	
+	* join('project', function($join) {
+		$join->on('tasks.id', '=', 'project.task_id');
+		$join->or_on('tasks.author_id', '=', 'project.author_id');
+	 }) //and_on()
+	
+	* or_where(function( $query ){
+		$query->where('age', '>', 25);
+		$query->where('votes' '>', 100);
+	 })
+	
+	Result
+	* get()
+	* first()
+	* find( $id )
+	* only( $fieldname )
+	* get(array())
+	
+	Set To Model
+	* fill($arr)
+	   
     class User extends Model {
 	public function profile(){
 		return $this->hasOne('App\Profile');
@@ -52,6 +95,8 @@
 	}
    }
     
+	
+	DB::table('users')
     $profile = User::find(1)->profile;
     $roles = User::find(1)->roles;
     $user->roles()->attach($roleId);

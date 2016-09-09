@@ -42,14 +42,10 @@
     });
   
   - Controller  /app/Http/Controllers/
-  - Model	/app/*
+  - Model		/app/*
   - View        /resources/views/
-  - Layout	/resources/views/layouts 
+  - Layout		/resources/views/layouts 
     
-6. Session
-    * Session::has('success')
-    * Session::get('success')
-      
 N. Tool
   - php artisan route:list
     * Liệt kê các route hiện tại đang đăng ký

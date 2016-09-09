@@ -1,28 +1,50 @@
 2. Route
-  - Route::get('/', 'WelcomeController@index');
-  - Route::post('/', 'WelcomeController@index');
-  - Route::resource('lists', 'ListsController'); Tự động link theo các action sau
-    * GET     /lists            lists#index
-    * GET     /lists/new        lists#create
-    * POST    /lists            lists#store
-    * GET     /lists/:id        lists#show
-    * GET     /lists/:id/edit   lists#edit
-    * PUT     /lists/:id        lists#update
-    * DELETE  /lists/:id        lists#destroy
+	- Route::get('/', 'WelcomeController@index');
+	- Route::post('/', 'WelcomeController@index');
+	- Route::resource('lists', 'ListsController'); Tự động link theo các action sau
+		* GET     /lists            lists#index
+		* GET     /lists/new        lists#create
+		* POST    /lists            lists#store
+		* GET     /lists/:id        lists#show
+		* GET     /lists/:id/edit   lists#edit
+		* PUT     /lists/:id        lists#update
+		* DELETE  /lists/:id        lists#destroy
+
+	- Route::controllers([ 'lists' => 'ListsController' ]); Theo rule như sau
+	* GET /lists/index    -> ListsController::getIndex()
+	* Method  /Controller/Action  -> Controller::<Method>Action()
+
+	************************************
+	************************************
+	Route::get('blog/category/{category}/{subcategory?}', 'BlogController@category');
+	-> public function category( $category, $subcategory )
+		* {subcategory?}: Có thể biến không tồn tại giá trị
+
+	Route::get('blog/category/{category}', ['as' => 'blog.category', 'uses' => 'BlogController@category']);
+	-> <a href="{{ URL::route('blog.category', ['category' => 'php']) }}">PHP</a>
+
+	Route::get('area/{area}', function($area) {})->where('area, '[0-9]+');
   
-  - Route::controllers([ 'lists' => 'ListsController' ]); Theo rule như sau
-    * GET /lists/index    -> ListsController::getIndex()
-    * Method  /Controller/Action  -> Controller::<Method>Action()
-    
-  ************************************
-  ************************************
-  Route::get('blog/category/{category}/{subcategory?}', 'BlogController@category');
-    -> public function category( $category, $subcategory )
-    * {subcategory?}: Có thể biến không tồn tại giá trị
+	Route::filter('before', function(){});
+	Route::filter('after', function( $response ){});
+	
+	Route::filter('csrf', function(){
+		if (Request::forged()) return Response::error('500');
+	});
+	
+	Route::filter('auth', function(){
+		if (Auth::guest()) return Redirect::to('login');
+	});
+	
+	Route::filter('pattern: admin/*', 'auth');
+	
+	Route::get('/', array('as' => 'profile', 'before' => 'auth', 'do' => function(){
+		return View::make('account/profile');
+	}));
+	
+	Route::group(array('before' => 'auth'), function(){
+		Route::get('panel', function(){});
+		Route::get('dashboard', function(){});
+	});
   
-  Route::get('blog/category/{category}', ['as' => 'blog.category', 'uses' => 'BlogController@category']);
-    -> <a href="{{ URL::route('blog.category', ['category' => 'php']) }}">PHP</a>
-  
-  Route::get('area/{area}', function($area) {})->where('area, '[0-9]+');
-  
-  
+	
