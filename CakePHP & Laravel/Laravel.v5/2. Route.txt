@@ -1,76 +1,81 @@
 2. Route
-	- Route::get($uri, $callback);
-	- Route::post($uri, $callback);
-	- Route::put($uri, $callback);
-	- Route::patch($uri, $callback);
-	- Route::delete($uri, $callback);
-	- Route::options($uri, $callback);
-	- Route::match(['get', 'post'], '/', function(){});
-	- Route::any('foo', function(){});
+    - https://laravel.com/docs/5.3/controllers
+    - /routes/*
 
-	- Route::get('profile', 'UserController@show')->middleware('auth');
-	- Route::get('/', 'WelcomeController@index');
-	- Route::post('/', 'WelcomeController@index');
-	- Route::get('foo', 'Photos\AdminController@method');
-	- Route::resource('lists', 'ListsController'); Tự động link theo các action sau
-		* GET     /lists            lists#index
-		* GET     /lists/new        lists#create
-		* POST    /lists            lists#store
-		* GET     /lists/:id        lists#show
-		* GET     /lists/:id/edit   lists#edit
-		* PUT     /lists/:id        lists#update
-		* DELETE  /lists/:id        lists#destroy
-		
-	- Route::resource('photo', 'PhotoController', ['only' => [ 'index', 'show' ]]);
-	- Route::resource('photo', 'PhotoController', ['except' => [ 'create', 'store', 'update', 'destroy']]);
-	- Route::resource('photo', 'PhotoController', ['names' => [ 'create' => 'photo.build']]);
-	- Route::resource('user', 'AdminUserController', ['parameters' => [ 'user' => 'admin_user']]);
-	- Route::controllers([ 'lists' => 'ListsController' ]); Theo rule như sau
-	* GET /lists/index    -> ListsController::getIndex()
-	* Method  /Controller/Action  -> Controller::<Method>Action()
-	
-	Route::get('user/{id}/profile', function($id){ })->name('profile');
-	$url = route('profile', ['id' => 1]);
+    - Route::get($uri, $callback);
+    - Route::post($uri, $callback);
+    - Route::put($uri, $callback);
+    - Route::patch($uri, $callback);
+    - Route::delete($uri, $callback);
+    - Route::options($uri, $callback);
+    - Route::match(['get', 'post'], '/', function(){});
+    - Route::any('foo', function(){});
 
-	************************************
-	************************************
-	Route::get('blog/category/{category}/{subcategory?}', 'BlogController@category');
-	-> public function category( $category, $subcategory )
-		* {subcategory?}: Có thể biến không tồn tại giá trị
+    - Route::get('/', 'UserController@show')->middleware('auth');
+    - Route::get('/', 'WelcomeController@index');
+    - Route::post('/', 'WelcomeController@index');
+    - Route::get('/', 'Photos\AdminController@method');
+    
+    - Route::resource('lists', 'ListsController'); Tự động link theo các action sau
+        * GET     /lists            lists#index
+        * GET     /lists/new        lists#create
+        * POST    /lists            lists#store
+        * GET     /lists/:id        lists#show
+        * GET     /lists/:id/edit   lists#edit
+        * PUT     /lists/:id        lists#update
+        * DELETE  /lists/:id        lists#destroy
+        
+    - Route::resource('photo', 'PhotoController', ['only' => [ 'index', 'show' ]]);
+    - Route::resource('photo', 'PhotoController', ['except' => [ 'create', 'store', 'update', 'destroy']]);
+    - Route::resource('photo', 'PhotoController', ['names' => [ 'create' => 'photo.build']]);
+    - Route::resource('user', 'AdminUserController', ['parameters' => [ 'user' => 'admin_user']]);
+    - Route::controllers([ 'lists' => 'ListsController' ]); Theo rule như sau
+    
+    * GET /lists/index    -> ListsController::getIndex()
+    * Method  /Controller/Action  -> Controller::<Method>Action()
+    
+    Route::get('user/{id}/profile', function($id){ })->name('profile');
+    $url = route('profile', ['id' => 1]);
 
-	Route::get('blog/category/{category}', ['as' => 'blog.category', 'uses' => 'BlogController@category']);
-	-> <a href="{{ URL::route('blog.category', ['category' => 'php']) }}">PHP</a>
+    ************************************
+    ************************************
+    Route::get('blog/category/{category}/{subcategory?}', 'BlogController@category');
+    -> public function category( $category, $subcategory )
+        * {subcategory?}: Có thể biến không tồn tại giá trị
 
-	Route::get('area/{area}', function($area) {})->where('area, '[0-9]+');
+    Route::get('blog/category/{category}', ['as' => 'blog.category', 'uses' => 'BlogController@category']);
+    -> <a href="{{ URL::route('blog.category', ['category' => 'php']) }}">PHP</a>
+
+    Route::get('area/{area}', function($area) {})->where('area, '[0-9]+');
   
-	Route::filter('before', function(){});
-	Route::filter('after', function( $response ){});
-	
-	Route::filter('csrf', function(){
-		if (Request::forged()) return Response::error('500');
-	});
-	
-	Route::filter('auth', function(){
-		if (Auth::guest()) return Redirect::to('login');
-	});
-	
-	Route::filter('pattern: admin/*', 'auth');
-	
-	Route::get('/', array('as' => 'profile', 'before' => 'auth', 'do' => function(){
-		return View::make('account/profile');
-	}));
-	
-	//Route::group(['middleware' => 'auth'], function () {
-	//Route::group(['namespace' => 'Admin'], function() {
-		//// Controllers Within The "App\Http\Controllers\Admin" Namespace
-	//Route::group(['domain' => '{account}.myapp.com'], function () {
-	//Route::group(['prefix' => 'admin'], function () {
-	Route::group(array('before' => 'auth'), function(){
-		Route::get('panel', function(){});
-		Route::get('dashboard', function(){});
-	});
-	
-	
-	Route::get('api/users/{user}', function (App\User $user) {})
+    Route::filter('before', function(){});
+    Route::filter('after', function( $response ){});
+    
+    Route::filter('csrf', function(){
+        if (Request::forged()) return Response::error('500');
+    });
+    
+    Route::filter('auth', function(){
+        if (Auth::guest()) return Redirect::to('login');
+    });
+    
+    Route::filter('pattern: admin/*', 'auth');
+    
+    Route::get('/', array('as' => 'profile', 'before' => 'auth', 'do' => function(){
+        return View::make('account/profile');
+    }));
+    
+    //Route::group(['middleware' => 'auth'], function () {
+    //Route::group(['namespace' => 'Admin'], function() {
+        //// Controllers Within The "App\Http\Controllers\Admin" Namespace
+    //Route::group(['domain' => '{account}.myapp.com'], function () {
+    //Route::group(['prefix' => 'admin'], function () {
+    Route::group(array('before' => 'auth'), function(){
+        Route::get('panel', function(){});
+        Route::get('dashboard', function(){});
+    });
+    
+    
+    Route::get('api/users/{user}', function (App\User $user) {})
   
-	
+    

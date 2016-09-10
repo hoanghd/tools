@@ -1,0 +1,167 @@
+8.1. Query
+    - https://laravel.com/docs/5.3/queries
+    - use Illuminate\Support\Facades\DB;
+    - Illuminate\Database\Query\Builder
+    
+    * select($columns = ['*'])
+    * addSelect($column) //Thêm field nếu như đã gọi select trước đó
+    * distinct()
+    * from($table)
+    
+    * join($table, $one, $operator = null, $two = null, $type = 'inner', $where = false)
+        + join('contacts', 'users.id', '=', 'contacts.user_id')
+        + join('contacts', function ($join) {
+            $join->on('users.id', '=', 'contacts.user_id')
+                 ->on('arrival','>=',DB::raw("'2012-05-01'"))
+                 ->on('link_tag.link_id', 'in', $linkIds ?: [-1], 'and', true)
+                 ->where('contacts.user_id', '>', 5);
+          })
+    
+    * joinWhere($table, $one, $operator, $two, $type = 'inner')
+    * leftJoin($table, $first, $operator = null, $second = null)
+    * leftJoinWhere($table, $one, $operator, $two)
+    * rightJoin($table, $first, $operator = null, $second = null)
+    * rightJoinWhere($table, $one, $operator, $two)
+    * crossJoin($table, $first = null, $operator = null, $second = null)
+    
+    * where($column, $operator = null, $value = null, $boolean = 'and')
+        + where('name', 'John')
+        + where('status', '<>', 1)
+        + where('name', 'like', 'T%')
+        + where([ ['status', '=', '1'], ['subscribed', '<>', '1'] ])
+        
+    * orWhere($column, $operator = null, $value = null)
+        + orWhere(function ($query) {
+            $query->where('votes', '>', 100)
+                  ->where('title', '<>', 'Admin');
+          })
+    * whereColumn($first, $operator = null, $second = null, $boolean = 'and')
+        + whereColumn('first_name', 'last_name')
+    * orWhereColumn($first, $operator = null, $second = null)    
+    * whereBetween($column, array $values, $boolean = 'and', $not = false)
+    * orWhereBetween($column, array $values)
+    * whereNotBetween($column, array $values, $boolean = 'and')
+    * orWhereNotBetween($column, array $values)
+    * whereIn($column, $values, $boolean = 'and', $not = false)
+    * orWhereIn($column, $values)
+    * whereNotIn($column, $values, $boolean = 'and')
+    * orWhereNotIn($column, $values)    
+    * whereInExistingQuery($column, $query, $boolean, $not)
+    * whereNull($column, $boolean = 'and', $not = false)
+    * orWhereNull($column)
+    * whereNotNull($column, $boolean = 'and')
+    * orWhereNotNull($column)
+    * whereDate($column, $operator, $value = null, $boolean = 'and')
+        + whereDate('created_at', '2016-10-10')
+        
+    * orWhereDate($column, $operator, $value)
+    * whereTime($column, $operator, $value, $boolean = 'and')
+    * orWhereTime($column, $operator, $value)
+    * whereDay($column, $operator, $value = null, $boolean = 'and')
+    * whereMonth($column, $operator, $value = null, $boolean = 'and')
+    * whereYear($column, $operator, $value = null, $boolean = 'and')
+    
+    * groupBy(...$groups)
+    * having($column, $operator = null, $value = null, $boolean = 'and')
+    * orHaving($column, $operator = null, $value = null)
+    * havingRaw($sql, array $bindings = [], $boolean = 'and')
+        + havingRaw('SUM(price) > 2500')
+        
+    * orHavingRaw($sql, array $bindings = [])
+    
+    * orderBy($column, $direction = 'asc')    
+    * inRandomOrder($seed = '')
+    
+    * offset($value)
+    * skip($value)
+    * limit($value)
+    
+    * take($value)
+    * forPage($page, $perPage = 15)
+    * forPageAfterId($perPage = 15, $lastId = 0, $column = 'id')
+    
+    * union($query, $all = false)
+    * unionAll($query)
+    
+    * lock($value = true)
+    * lockForUpdate()
+    * sharedLock()
+    
+    * toSql()
+    * find($id, $columns = ['*'])
+    * value($column)
+    * first($columns = ['*'])
+    * get($columns = ['*'])
+    * paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
+    * simplePaginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
+    * getCountForPagination($columns = ['*'])
+    
+    * cursor()
+    * chunk($count, callable $callback)
+    * chunkById($count, callable $callback, $column = 'id', $alias = null)
+    * each(callable $callback, $count = 1000)
+    * pluck($column, $key = null)
+    * implode($column, $glue = '')
+    * exists()
+    * count($columns = '*')
+    * min($column)
+    * max($column)
+    * sum($column)
+    * avg($column)
+    * average($column)
+    * aggregate($function, $columns = ['*'])
+    * numericAggregate($function, $columns = ['*'])
+    
+    * insert(array $values)
+    * insertGetId(array $values, $sequence = null)
+    * update(array $values)
+    * updateOrInsert(array $attributes, array $values = [])
+    * increment($column, $amount = 1, array $extra = [])
+    * decrement($column, $amount = 1, array $extra = [])
+    * delete($id = null)
+    
+    * truncate()
+    * newQuery()   
+    
+    * getBindings()
+    * getRawBindings()
+    * setBindings(array $bindings, $type = 'where')
+    * addBinding($value, $type = 'where')
+    * mergeBindings(Builder $query)
+    * getConnection()
+    * getProcessor()
+    * getGrammar()
+    * useWritePdo()    
+    
+    * raw($value): Giữ nguyên giá trị không thay đổi, vì thường SQL được format lại
+        + select(DB::raw('count(*) as user_count, status'))
+        
+    * mergeWheres($wheres, $bindings)
+    * orderByRaw($sql, $bindings = [])
+    * latest($column = 'created_at')
+    * oldest($column = 'created_at')
+    * dynamicWhere($method, $parameters)
+    * whereInSub($column, Closure $callback, $boolean, $not)
+    * whereSub($column, $operator, Closure $callback, $boolean)
+    * whereExists(Closure $callback, $boolean = 'and', $not = false)
+        + whereExists(function ($query) {
+            $query->select(DB::raw(1))
+                  ->from('orders')
+                  ->whereRaw('orders.user_id = users.id');
+          })
+          //exists (select 1 from `orders` where orders.user_id = users.id)
+    
+    * orWhereExists(Closure $callback, $not = false)
+    * whereNotExists(Closure $callback, $boolean = 'and')
+    * orWhereNotExists(Closure $callback)
+    * addWhereExistsQuery(Builder $query, $boolean = 'and', $not = false)
+    `* whereNested(Closure $callback, $boolean = 'and')
+    `* forNestedWhere()
+    `* addNestedWhereQuery($query, $boolean = 'and')
+    `* whereRaw($sql, $bindings = [], $boolean = 'and')
+    `* orWhereRaw($sql, array $bindings = [])
+    `* when($value, $callback)
+    `* selectRaw($expression, array $bindings = [])
+    `* selectSub($query, $as)
+    
+    

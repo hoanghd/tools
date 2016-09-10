@@ -1,4 +1,6 @@
 4. View
+  - https://laravel.com/docs/5.3/blade
+  
   - Blade Template Engine
     * {{ $name }}   //Biến giá trị
     * {{ $name or 'California' }} //Nếu không tồn tại thì lấy giá trị mặc định
@@ -6,22 +8,36 @@
     * {!! $name !!} //Hiển thị không escape
     * {{ asset('css/bootstrap.min.css')}}
     * {{ url('cats/'.$cat->id) }}
-	* {{ 5 * time() }}
+    * {{ 5 * time() }}
+    * {{ isset($name) ? $name : 'Default' }}
+    * @{{ name }}
     
     Sử dụng LaravelCollective/HTML
     * {!! HTML::image('images/logo.png', 'TODOParrot logo') !!}
     * {!! HTML::style('css/app.min.css') !!}
     * {!! HTML::script('javascript/jquery-1.10.1.min.js') !!}
     
+    * @for ($i = 0; $i < 10; $i++)
+        The current value is {{ $i }}
+      @endfor
+      
     * @foreach ($lists as $list)    //Loop array
        <li>{{ $list }}</li>
       @endforeach
       
     * @forelse($lists as $list)    //Loop array
-  			<li>{{ $list }}</li>
-  			@empty
-  			<li>You don't have any lists saved.</li>
-		  @endforelse
+            <li>{{ $list }}</li>
+            @empty
+            <li>You don't have any lists saved.</li>
+          @endforelse
+          
+    *   @while (true)
+        <p>I'm looping forever.</p>
+        @endwhile
+        
+    * @unless (Auth::check())
+        You are not signed in.
+      @endunless
 
     * @if (count($lists) > 0)
         //
@@ -34,13 +50,45 @@
     * @include('partials.row', array('link' => $link))
       /resources/views/partials/row.blade.php
     
+    * @each('view.name', $jobs, 'job')
+    
+    
+  - Loop
+    $loop->index        The index of the current loop iteration (starts at 0).
+    $loop->iteration    The current loop iteration (starts at 1).
+    $loop->remaining    The iteration remaining in the loop.
+    $loop->count        The total number of items in the array being iterated.
+    $loop->first        Whether this is the first iteration through the loop.
+    $loop->last         Whether this is the last iteration through the loop.
+    $loop->depth        The nesting level of the current loop.
+    $loop->parent       When in a nested loop, the parent's loop variable.
+  
   - Layout
     * /resources/views/layouts/master.blade.php
-    
+        @yield('content')
+        
     * View 
       @extends('layouts.master')
+      
       @section('content')
-      //
+        //
       @endsection
+      
+    * Echo thang ra 
+      @verbatim
+      @endverbatim
+      
+    * @push('scripts')
+        <script src="/example.js"></script>
+      @endpush
+      
+      Sử dụng
+      @stack('scripts')
+      
+   - Call Service 
+    * @inject('metrics', 'App\Services\MetricsService')
+    
+  - Session
+    * session('status')
   
 

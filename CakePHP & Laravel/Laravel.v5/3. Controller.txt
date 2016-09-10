@@ -1,4 +1,5 @@
 3. Controller
+  - https://laravel.com/docs/5.3/controllers
   - return view('home.welcome');  /resources/views/home/welcome.blade.php
   - Gán biến to View
     return view('home.welcome')
@@ -13,4 +14,29 @@
               
             view('welcome', compact('category'));
             
+  - Request
+    * https://laravel.com/docs/5.3/requests
+    * use Illuminate\Http\Request;
+    
+    /**
+     * Store a new user.
+     *
+     * @param  Request  $request
+     * @param  string  $id
+     * @return Response
+     */
+    
+    public function store(Request $request, $id)
 
+  - Response
+    * https://laravel.com/docs/5.3/responses
+    * Illuminate\Http\Response
+
+  - Session
+    * https://laravel.com/docs/5.3/session
+    
+    * $request->session()->get('key', 'default');
+    * $value = session('key', 'default');
+    * session(['key' => 'value']);
+    
+    * $request->session()->flash('status', 'Task was successful!');

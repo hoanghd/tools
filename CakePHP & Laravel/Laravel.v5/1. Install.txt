@@ -38,13 +38,13 @@
     
     * Trỏ tới View
     Route::get('/', function(){
-    	return view('welcome');
+        return view('welcome');
     });
   
   - Controller  /app/Http/Controllers/
-  - Model		/app/*
+  - Model       /app/*
   - View        /resources/views/
-  - Layout		/resources/views/layouts 
+  - Layout      /resources/views/layouts 
     
 N. Tool
   - php artisan route:list
@@ -53,13 +53,14 @@ N. Tool
   - php artisan route:clear
   
   - php artisan make:controller WelcomeController
+  - php artisan make:controller PhotoController --resource
   - php artisan make:model Users
   
   - php artisan make:command
   - php artisan make:console
   - php artisan make:controller
   - php artisan make:event
-  - php artisan make:middleware		https://laravel.com/docs/5.3/middleware
+  - php artisan make:middleware     https://laravel.com/docs/5.3/middleware
   - php artisan make:migration
   - php artisan make:model
   - php artisan make:provider

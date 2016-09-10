@@ -1,5 +1,3 @@
-	Query
-	
 5. Model
     * protected $table = 'users';
     * all()
