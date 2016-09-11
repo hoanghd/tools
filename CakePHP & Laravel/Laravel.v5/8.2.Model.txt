@@ -66,6 +66,10 @@
     * hasMany($related, $foreignKey = null, $localKey = null)
     * belongsToMany($related, $table = null, $foreignKey = null, $otherKey = null, $relation = null)
     
+    * morphMany($related, $name, $type = null, $id = null, $localKey = null)    
+    * morphToMany($related, $name, $table = null, $foreignKey = null, $otherKey = null, $inverse = false)
+    * morphedByMany($related, $name, $table = null, $foreignKey = null, $otherKey = null)      
+    
     * getGlobalScopes()    
     * forceFill(array $attributes)
     * newInstance($attributes = [], $exists = false)
@@ -76,9 +80,7 @@
     * morphOne($related, $name, $type = null, $id = null, $localKey = null)    
     * morphTo($name = null, $type = null, $id = null)
     * getActualClassNameForMorph($class)    
-    * morphMany($related, $name, $type = null, $id = null, $localKey = null)    
-    * morphToMany($related, $name, $table = null, $foreignKey = null, $otherKey = null, $inverse = false)
-    * morphedByMany($related, $name, $table = null, $foreignKey = null, $otherKey = null)        
+      
     * getObservableEvents()
     * setObservableEvents(array $observables)
     * addObservableEvents($observables)
