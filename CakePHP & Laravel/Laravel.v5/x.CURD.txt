@@ -1,0 +1,10 @@
+x. List
+    - Controller
+        * paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
+            Có <pre numbers next>
+        * simplePaginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
+            Chỉ có <prev next>
+    - View
+        * Illuminate\Contracts\Pagination\Presenter
+        * {{ $users->links() }}
+        * {{ $users->links( 'views.links' ) }}

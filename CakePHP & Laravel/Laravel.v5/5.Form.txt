@@ -1,2 +1,5 @@
 5. Form
-    
+    - https://www.sitepoint.com/crud-create-read-update-delete-laravel-app/
+    - https://github.com/illuminate/html
+    - Illuminate\Html\FormFacade
+    - Illuminate\Html\HtmlFacade

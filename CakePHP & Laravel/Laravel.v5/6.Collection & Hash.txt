@@ -1,1 +1,5 @@
-5. 
+5. Collection
+    - https://laravel.com/docs/5.3/collections
+    - https://laravel.com/docs/5.3/helpers
+    
+    - collect(['taylor', 'abigail', null])
