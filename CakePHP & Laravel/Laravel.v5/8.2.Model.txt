@@ -1,106 +1,229 @@
-5. Model
-    * protected $table = 'users';
-    * all()
-    * find( id )
-    * count()
-	* max('amount|size')
-	* min('amount|size')
-	* avg('amount|size')
-	* sum('amount|size')
-    * where('id', '=', 1)
-	* or_where('face', 'LIKE', '%malemodel%')
-	* where_in()
-	* where_not_in()
-	* or_where_in() 
-	* or_where_not_in()
-	* where_null()
-	* where_not_null() 
-	* or_where_null()
-	* or_where_not_null()
-	* where_size(5)
-	* where_size_and_height(700, 400)
-    * take(5)
-    * skip(10)
-    * orderBy('rating', 'asc')
-	* order_by('size', 'asc')->
-    * save();
-    * create($data)
-    * delete();
-    * destroy(1);
-    * withTrashed()
-    * onlyTrashed()
-    * restore();
-    * forceDelete();
-	* join('project', 'tasks.id', '=', 'project.task_id')
-	* increment('size');
-	* decrement('size');
-	
-	* update(array('worn' => DB::raw('NOW()')));
-	
-	* join('project', function($join) {
-		$join->on('tasks.id', '=', 'project.task_id');
-		$join->or_on('tasks.author_id', '=', 'project.author_id');
-	 }) //and_on()
-	
-	* or_where(function( $query ){
-		$query->where('age', '>', 25);
-		$query->where('votes' '>', 100);
-	 })
-	
-	Result
-	* get()
-	* first()
-	* find( $id )
-	* only( $fieldname )
-	* get(array())
-	
-	Set To Model
-	* fill($arr)
-	   
-    class User extends Model {
-	public function profile(){
-		return $this->hasOne('App\Profile');
-	}
+8.2. Model
+    - https://laravel.com/docs/5.3/eloquent
+    - https://laravel.com/docs/5.3/pagination
+    - https://laravel.com/docs/5.3/eloquent-relationships
+    - Illuminate\Database\Eloquent\Model
+    
+    - protected $table = 'users';
+    - Sử dụng được các function Query
+    ---------------------------------------
+    -----------------::--------------------
+    ---------------------------------------
+    * clearBootedModels()
+    * addGlobalScope($scope, Closure $implementation = null)
+    * hasGlobalScope($scope)
+    * getGlobalScope($scope)
+    * observe($class, $priority = 0)
+    * hydrate(array $items, $connection = null)
+    * hydrateRaw($query, $bindings = [], $connection = null)
+    * create(array $attributes = [])
+    * forceCreate(array $attributes)
+    * query()
+    * on($connection = null)
+    * onWriteConnection()
+    * all($columns = ['*'])
+    * with($relations)
+    * destroy($ids)
+    * saving($callback, $priority = 0)
+    * saved($callback, $priority = 0)
+    * updating($callback, $priority = 0)
+    * updated($callback, $priority = 0)
+    * creating($callback, $priority = 0)
+    * created($callback, $priority = 0)
+    * deleting($callback, $priority = 0)
+    * deleted($callback, $priority = 0)
+    * flushEventListeners()
+    * unguard($state = true)
+    * reguard()
+    * isUnguarded()
+    * unguarded(callable $callback)
+    * resolveConnection($connection = null)
+    * getConnectionResolver()
+    * setConnectionResolver(Resolver $resolver)
+    * unsetConnectionResolver()
+    * getEventDispatcher()
+    * setEventDispatcher(Dispatcher $dispatcher)
+    * unsetEventDispatcher()
+    * cacheMutatedAttributes($class)
+    
+    ---------------------------------------
+    ------------------>--------------------
+    ---------------------------------------
+    * fill(array $attributes)    
+    * delete()
+    * save(array $options = []) //Insert, Update
+    * forceDelete()    
+    * saveOrFail(array $options = [])
+    * update(array $attributes = [], array $options = [])
+    * toJson($options = 0)
+    * jsonSerialize()
+    * toArray()
+    * joiningTable($related)
+    
+    * hasOne($related, $foreignKey = null, $localKey = null)
+    * belongsTo($related, $foreignKey = null, $otherKey = null, $relation = null)
+    * hasManyThrough($related, $through, $firstKey = null, $secondKey = null, $localKey = null)
+    * hasMany($related, $foreignKey = null, $localKey = null)
+    * belongsToMany($related, $table = null, $foreignKey = null, $otherKey = null, $relation = null)
+    
+    * getGlobalScopes()    
+    * forceFill(array $attributes)
+    * newInstance($attributes = [], $exists = false)
+    * newFromBuilder($attributes = [], $connection = null)
+    * fresh($with = [])
+    * load($relations)
+    * append($attributes)    
+    * morphOne($related, $name, $type = null, $id = null, $localKey = null)    
+    * morphTo($name = null, $type = null, $id = null)
+    * getActualClassNameForMorph($class)    
+    * morphMany($related, $name, $type = null, $id = null, $localKey = null)    
+    * morphToMany($related, $name, $table = null, $foreignKey = null, $otherKey = null, $inverse = false)
+    * morphedByMany($related, $name, $table = null, $foreignKey = null, $otherKey = null)        
+    * getObservableEvents()
+    * setObservableEvents(array $observables)
+    * addObservableEvents($observables)
+    * removeObservableEvents($observables)    
+    * push()    
+    * touchOwners()
+    * touches($relation)
+    * touch()
+    * setCreatedAt($value)
+    * setUpdatedAt($value)
+    * getCreatedAtColumn()
+    * getUpdatedAtColumn()
+    * freshTimestamp()
+    * freshTimestampString()
+    * newQuery()
+    * newQueryWithoutScope($scope)
+    * newQueryWithoutScopes()
+    * newEloquentBuilder($query)
+    * newCollection(array $models = [])
+    * newPivot(Model $parent, array $attributes, $table, $exists)
+    * getTable()
+    * setTable($table)
+    * getKey()
+    * getQueueableId()
+    * getKeyName()
+    * setKeyName($key)
+    * getQualifiedKeyName()
+    * getRouteKey()
+    * getRouteKeyName()
+    * usesTimestamps()
+    * getMorphClass()
+    * getPerPage()
+    * setPerPage($perPage)
+    * getForeignKey()
+    * getHidden()
+    * setHidden(array $hidden)
+    * addHidden($attributes = null)
+    * makeVisible($attributes)
+    * makeHidden($attributes)
+    * getVisible()
+    * setVisible(array $visible)
+    * addVisible($attributes = null)
+    * setAppends(array $appends)
+    * getFillable()
+    * fillable(array $fillable)
+    * getGuarded()
+    * guard(array $guarded)
+    * isFillable($key)
+    * isGuarded($key)
+    * totallyGuarded()
+    * getTouchedRelations()
+    * setTouchedRelations(array $touches)
+    * getIncrementing()
+    * setIncrementing($value)    
+    * attributesToArray()
+    * relationsToArray()
+    * getAttribute($key)
+    * getAttributeValue($key)
+    * getRelationValue($key)
+    * hasGetMutator($key)
+    * hasCast($key, $types = null)
+    * getCasts()
+    * setAttribute($key, $value)
+    * hasSetMutator($key)
+    * getDates()
+    * fromDateTime($value)
+    * setDateFormat($format)
+    * fromJson($value, $asObject = false)
+    * replicate(array $except = null)
+    * is(Model $model)
+    * getAttributes()
+    * setRawAttributes(array $attributes, $sync = false)
+    * getOriginal($key = null, $default = null)
+    * syncOriginal()
+    * syncOriginalAttribute($attribute)
+    * isDirty($attributes = null)
+    * isClean($attributes = null)
+    * getDirty()
+    * getRelations()
+    * getRelation($relation)
+    * relationLoaded($key)
+    * setRelation($relation, $value)
+    * setRelations(array $relations)
+    * getConnection()
+    * getConnectionName()
+    * setConnection($name)
+    * getMutatedAttributes()
+    * offsetExists($offset)
+    * offsetGet($offset)
+    * offsetSet($offset, $value)
+    * offsetUnset($offset)
+
+   - Một tính năng là query scope
+    public function scopePopular($query) {
+        return $query->where('votes', '>', 100);
     }
     
-    class Profile extends Model {
-	public function user(){
-		return $this->belongsTo('App\User');
-	}
+    public function scopeActive($query){
+        return $query->where('active', 1);
     }
     
-    class User extends Model {
-	public function roles(){
-		return $this->belongsToMany('App\Role');
-	}
+    public function scopeOfType($query, $type) {
+        return $query->where('type', $type);
     }
     
-    class Product extends Model {
-	public function orders() {
-		return $this->hasManyThrough('App\Order', 'App\OrderItem');
-	}
-    }
+    $users = User::popular()
+                ->active()
+                ->ofType('admin')
+                ->orderBy('created_at')
+                ->get();
     
-    class Image extends Model {
-	public function imageable(){
-		return $this->morphTo();
-	}
-   }
-   
-   class Article extends Model {
-	public function images() {
-		$this->morphMany('App\Image', 'imageable');
-	}
-   }
+    - Relationships
+    * hasOne($related, $foreignKey = null, $localKey = null)
+    * belongsTo($related, $foreignKey = null, $otherKey = null, $relation = null)
+        public function post() {
+            return $this->belongsTo('App\Post', 'post_id', 'id');
+        }
+        $post = Comment::find(1)->post;    
     
-	
-	DB::table('users')
-    $profile = User::find(1)->profile;
-    $roles = User::find(1)->roles;
-    $user->roles()->attach($roleId);
-    $user->roles()->detach($roleId);
-    $user->roles()->sync(1, 2, 3, 4, 5);
-    $user->groups()->attach(1, ['is_moderator' => true]);
-    $user->groups()->sync([1 => ['is_moderator' => true]]);
+    * hasMany($related, $foreignKey = null, $localKey = null)
+        public function comments() {
+            return $this->hasMany('App\Comment', 'post_id', 'id');
+        }
+        
+        $comments = Post::find(1)->comments;
+    
+    * belongsToMany($related, $table = null, $foreignKey = null, $otherKey = null, $relation = null)
+        public function tags() {
+            return $this->belongsToMany('App\Tag', 'posts_tags', 'post_id', 'tag_id');
+        }
+        
+        $tags = Post::find(1)->tags;
+        
+    * hasManyThrough($related, $through, $firstKey = null, $secondKey = null, $localKey = null)        
+        User -> Post -> Comment    
+        Từ User get all comments thì có thể dùng attr này
+        * $firstKey = Post->user_id, 
+        * $secondKey = Comment->post_id
+        
+        public function comments() {
+            return $this->hasManyThrough('App\Comment', 'App\Post', 'user_id', 'post_id', 'id');
+        }
+        
+        $comments = User::find(1)->comments;
+        
+    
     
     

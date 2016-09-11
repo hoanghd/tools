@@ -89,6 +89,9 @@
     
     * toSql()
     * find($id, $columns = ['*'])
+        find([1, 2, 3]);
+        find(1);
+        
     * value($column)
     * first($columns = ['*'])
     * get($columns = ['*'])
