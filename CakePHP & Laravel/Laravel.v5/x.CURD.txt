@@ -6,5 +6,6 @@ x. List
             Chỉ có <prev next>
     - View
         * Illuminate\Contracts\Pagination\Presenter
+        * http://stackoverflow.com/questions/28240777/custom-pagination-view-in-laravel-5
         * {{ $users->links() }}
-        * {{ $users->links( 'views.links' ) }}
+        * {{ $users->links( 'links' ) }} //resources\views\links.blade.php
