@@ -8,7 +8,7 @@
     * Tokenizer PHP Extension
 
   - composer global require "laravel/installer"
-  - composer create-project --prefer-dist laravel/laravel demo
+  - composer create-project --prefer-dist laravel/laravel demo --prefer-dist
 
 2. Config
   - config/database.php
