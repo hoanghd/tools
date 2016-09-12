@@ -9,7 +9,9 @@
 
   - composer global require "laravel/installer"
   - composer create-project --prefer-dist laravel/laravel demo --prefer-dist
-
+  
+  - chmod -R 777 storage
+  
 2. Config
   - config/database.php
   - .env
