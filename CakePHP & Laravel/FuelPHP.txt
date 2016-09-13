@@ -1,2 +1,15 @@
-- chmod 777 fuel/app/logs/
-- 
+1. Install
+  - git clone git://github.com/fuel/fuel.git .
+  - php ./composer.phar self-update
+  - php ./composer.phar update --prefer-dist
+  
+  - DocumentRoot -> /public
+  - chmod 777 /fuel/app/logs/
+  
+  - http://fuelphp.com/docs/
+  
+2. Route, Controller, Model, View
+  - /fuel/config/routes.php
+  - /fuel/app/classes/controller
+  - /fuel/app/classes/model
+  - /fuel/app/classes/presenter
