@@ -13,3 +13,32 @@
   - /fuel/app/classes/controller
   - /fuel/app/classes/model
   - /fuel/app/classes/presenter
+
+3. Model
+  - Query
+    + http://fuelphp.com/docs/classes/database/db.html
+    + http://fuelphp.com/docs/classes/database/qb_select.html
+    + /core/classes/db.php
+    + /core/classes/database/query/builder/select.php
+      * select($columns = NULL)
+        DB::select('id', 'name'); //SELECT `id`, `name`
+        DB::select(['id', 'user_id'], 'name'); //SELECT `id` AS `user_id`, `name`
+        
+      * select_array($columns)
+        DB::select([['id', 'user_id'], 'name']); //SELECT `id` AS `user_id`, `name`
+        
+      * distinct($value = true)
+      * from($tables)
+        ->from('users', 'comments')         //ROM `users`, `comments`
+        ->from(['users', 'u'], 'comments')  //ROM `users` AS `u`, `comments`
+        
+      * join($table, $type = NULL)
+        ->join('posts', 'LEFT')             // LEFT JOIN `posts`
+        ->join([ 'posts', 'p' ], 'LEFT')    // LEFT JOIN `posts` AS `p`
+        
+      * on($c1, $op, $c2)
+      * and_on($c1, $op, $c2)
+      * or_on($c1, $op, $c2)
+        ->on( 'u.id', '=', 'p.user_id' )
+        
+  - ORM
