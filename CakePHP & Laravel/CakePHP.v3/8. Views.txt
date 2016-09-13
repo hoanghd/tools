@@ -27,6 +27,7 @@ Extending Views
 		
 	- $this->assign(string $name , mixed $value)
 		+ Gán biến ở View
+		* <?php $this->assign( "script", $this->Html->script('http://code.jquery.com/jquery.min.js') );?> //Them vao header script
 		
 	- $this->fetch( string $name , string $default '' )
 		+ Biến sử dụng từ $this->assign(<variable>, <value>)	
