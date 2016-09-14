@@ -6,6 +6,7 @@
   - DocumentRoot -> /public
   - chmod 777 /fuel/app/logs/
   - chmod 777 /fuel/app/cache/
+  - chmod 777 /fuel/app/tmp/
   
   - http://fuelphp.com/docs/
   
