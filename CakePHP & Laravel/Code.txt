@@ -1,2 +1,16 @@
 - https://drive.google.com/file/d/0B_7iXI5IZTlXekRYTkYwc2x3NkE/view
-- 
+
+--------------------------
+The best names are ones that can’t be misconstrued—the person reading your code will
+understand it the way you meant it, and no other way. Unfortunately, a lot of English words
+are ambiguous when it comes to programming, such as filter, length, and limit.
+Before you decide on a name, play devil’s advocate and imagine how your name might be
+misunderstood. The best names are resistant to misinterpretation.
+When it comes to defining an upper or lower limit for a value, max_ and min_ are good prefixes
+to use. For inclusive ranges, first and last are good. For inclusive/exclusive ranges, begin and
+end are best because they’re the most idiomatic.
+When naming a boolean, use words like is and has to make it clear that it’s a boolean. Avoid
+negated terms (e.g., disable_ssl).
+Beware of users’ expectations about certain words. For example, users may expect get() or
+size() to be lightweight methods.
+---------------------------
