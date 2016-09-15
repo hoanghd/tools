@@ -1,3 +1,45 @@
 Ctrl + Alt + L : Look screen
 Ctr + Alt + 0 : Hide Window
 Alt + F4 : Close Window
+---------------------------
+cd ~/vagrant/kameiten.local
+vagrant up --no-provision
+--------------------------------------
+
+ssh kameiten.local
+sudo chown -R vagrant:vagrant /var/www/html
+
+--------------------------------------
+http://jira.a.kurumaerabi.com/stash/projects/VN/repos/vagrant/browse/kameiten.local
+/sbin/service httpd restart
+/etc/httpd/conf.d/welcome.conf
+
+git clone <host> kameiten
+mkdir -p ~/Desktop/kameiten && sshfs kameiten.local:/home/vagrant ~/Desktop/kameiten
+
+git clone git://github.com/fuel/fuel.git .
+--------------------------------------
+/opt/lampp/bin/php ./composer.phar self-update
+/opt/lampp/bin/php ./composer.phar update --prefer-dist
+
+SET PATH
+sudo gedit /etc/environment
+
+RUN XAMPP
+sudo /opt/lampp/share/xampp-control-panel/xampp-control-panel
+
+
+-----------------------
+CREATE USER 'kameiten'@'localhost' IDENTIFIED BY '10saigon';
+GRANT ALL PRIVILEGES ON * . * TO 'kameiten'@'localhost';
+FLUSH PRIVILEGES;
+
+-------------------------
+ssh-keygen
+
+------------------------
+mkdir -p ~/Desktop/systest.fvn.local && sshfs systest.fvn.local:/home/hoang-hd/www ~/Desktop/systest.fvn.local
+
+
+
+
