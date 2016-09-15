@@ -1,0 +1,2 @@
+Ctrl + Alt + L : Look screen
+Ctr + Alt + 0 : Hide Window
