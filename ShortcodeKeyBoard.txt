@@ -1,2 +1,3 @@
 Ctrl + Alt + L : Look screen
 Ctr + Alt + 0 : Hide Window
+Alt + F4 : Close Window
