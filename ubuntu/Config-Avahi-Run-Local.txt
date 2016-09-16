@@ -1,0 +1,8 @@
+$ sudo gedit /etc/default/avahi-daemon
+  AVAHI_DAEMON_DETECT_LOCAL=0
+$ sudo gedit /etc/avahi/avahi-daemon.conf
+  domain-name=.alocal
+$ sudo gedit /etc/nsswitch.conf
+  delete a [NOTFOUND=return] text.
+$ service avahi-daemon restart
+$ sudo service network-manager restart
