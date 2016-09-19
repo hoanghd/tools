@@ -1,1 +1,2 @@
 http://allanfeid.com/content/creating-chroot-jail-ssh-access
+http://geek.co.il/2010/03/14/how-to-build-a-chroot-jail-environment-for-centos
