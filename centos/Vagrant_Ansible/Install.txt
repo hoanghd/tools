@@ -8,31 +8,12 @@
   + https://www.vagrantup.com/downloads.html #Download
   + vagrant -h #Check system
   + https://vagrantcloud.com/discover/featured
-
-- Create
-  $ mkdir /vagrant/hoanghd.local
-  $ vagrant init
-    Hoặc có thể sử dụng 2 config file sau (Vagrantfile, MyVagrantfile)
-  $ Copy keys & /vagrant/hoanghd.local/keys
-    
-  $ vagrant box add --force hoanghd.local hoanghd.local.box
-    * Download box từ URL https://vagrantcloud.com/discover/featured đổi tên thành `hoanghd.local.box`
-    * Hoặc download từ https://drive.google.com/open?id=0B_7iXI5IZTlXSEJhVXQyUDJyMFU đổi thành `hoanghd.local.box`
-    
-  $ vagrant up --no-provision
-  $ sudo sh -c "echo '192.168.35.10 hoanghd.local' >> /etc/hosts"
-    Chú ý IP: 192.168.xx.xx
-  $ vagrant ssh hoặc ssh vagrant@hoanghd.local #pw: vagrant
-  
-  $ vagrant provision
-  
-  $ vagrant halt  #Stop
-  $ vagrant destroy #Delete
   
 - Install
   https://blog.engineyard.com/2014/building-a-vagrant-box
   
 - Base Box
+  https://drive.google.com/open?id=0B_7iXI5IZTlXSEJhVXQyUDJyMFU
   http://nrel.github.io/vagrant-boxes/
   http://www.vagrantbox.es/
   
@@ -45,7 +26,7 @@
     Vagrant.configure(2) do |config|
       host = "hoanghd.local"
       ip   = "192.168.35.10"
-      port = 2224
+      port = 2250
     
       config.ssh.username = "vagrant"
       config.ssh.password = "vagrant"
@@ -66,10 +47,25 @@
       end
     end
     -------------------------------------------------
+    #Lưu ý đến port không được trùng check trong file ~/.ssh/config
+    #Chú ý IP: 192.168.xx.xx
+    
   $ vagrant box add --force hoanghd.local hoanghd.local.box
   $ vagrant up --no-provision
-
+  $ vagrant ssh-config >> ~/.ssh/config
   
+- Ansible
+  Edit file Vagrantfile
+  -------------------------------------------------
+  config.vm.provision :ansible do |ansible|
+    ansible.playbook = "ansible/hoanghd.yml"
+    ansible.inventory_path = "ansible/hoanghd.hosts"
+    #ansible.verbose = "vvvv"
+  end  
+  -------------------------------------------------
   
+  $ vagrant provision
+  $ vagrant halt  #Stop
+  $ vagrant destroy #Delete
   
   
