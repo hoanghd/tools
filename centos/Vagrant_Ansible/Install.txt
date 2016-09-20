@@ -16,6 +16,7 @@
   + https://vagrantcloud.com/discover/featured
   
 - Create
+  $ mkdir /vagrant/hoanghd.local
   $ vagrant init
   $ vagrant box add --force hoanghd.local hoanghd.local.box
   $ vagrant up
