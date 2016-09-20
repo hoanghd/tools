@@ -60,7 +60,7 @@
   -------------------------------------------------
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "ansible/hoanghd.yml"
-    ansible.inventory_path = "ansible/hoanghd.hosts"
+    #ansible.inventory_path = "ansible/hoanghd.hosts"
     #ansible.verbose = "vvvv"
   end  
   -------------------------------------------------
