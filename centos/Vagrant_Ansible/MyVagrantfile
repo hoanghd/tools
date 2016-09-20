@@ -1,0 +1,10 @@
+Vagrant.configure(2) do |config|
+  # Disable synced folder. http://docs.vagrantup.com/v2/synced-folders/basic_usage.html
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  # Sync with NFS. http://docs.vagrantup.com/v2/synced-folders/nfs.html
+  #config.vm.synced_folder "/path/to/host/os/dir", "/path/to/guest/os/dir", type: "nfs"
+
+  # SSHFS. http://jira.a.kurumaerabi.com/wiki/display/RIV/2015/08/20/Mount+shared+folder+with+sshfs
+  #config.sshfs.paths = { "/home/vagrant/fabrica-vietnam" => "~/Desktop/projects" }
+end
