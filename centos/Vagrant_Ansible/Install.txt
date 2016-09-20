@@ -30,6 +30,7 @@
     
       config.ssh.username = "vagrant"
       config.ssh.password = "vagrant"
+      #config.ssh.private_key_path = "keys/id_rsa"
       config.vm.box = "#{host}"
       config.vm.network "private_network", ip: "#{ip}"
       config.vm.network "forwarded_port", guest: 22, host: port, id: "ssh"	
