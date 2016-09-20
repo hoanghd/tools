@@ -8,7 +8,7 @@
   + https://www.vagrantup.com/downloads.html #Download
   + vagrant -h #Check system
   + https://vagrantcloud.com/discover/featured
-  
+
 - Create
   $ mkdir /vagrant/hoanghd.local
   $ vagrant init
@@ -28,6 +28,46 @@
   
   $ vagrant halt  #Stop
   $ vagrant destroy #Delete
+  
+- Install
+  https://blog.engineyard.com/2014/building-a-vagrant-box
+  
+- Base Box
+  http://nrel.github.io/vagrant-boxes/
+  http://www.vagrantbox.es/
+  
+- Sample
+  $ mkdir /vagrant/hoanghd.local
+  $ cp ~/Documents/base.local.box hoanghd.local.box
+  $ vagrant init
+    Edit File Vagrantfile
+    -------------------------------------------------
+    Vagrant.configure(2) do |config|
+      host = "hoanghd.local"
+      ip   = "192.168.35.10"
+      port = 2224
+    
+      config.ssh.username = "vagrant"
+      config.ssh.password = "vagrant"
+      config.vm.box = "#{host}"
+      config.vm.network "private_network", ip: "#{ip}"
+      config.vm.network "forwarded_port", guest: 22, host: port, id: "ssh"	
+    
+      config.vm.provider :virtualbox do |vb|
+        vb.name = "#{host}"
+        vb.customize ["modifyvm", :id, "--memory", "1024", "--cpus", "2"]
+        vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
+        vb.customize ["modifyvm", :id, "--audio", "none"]
+        vb.customize ["modifyvm", :id, "--nictype1", "virtio"]
+        vb.customize ["modifyvm", :id, "--nictype2", "virtio"]
+      end
+        config.vm.define "#{host}" do |t|
+        t.vm.hostname = "#{host}"
+      end
+    end
+    -------------------------------------------------
+  $ vagrant box add --force hoanghd.local hoanghd.local.box
+  $ vagrant up --no-provision
 
   
   
