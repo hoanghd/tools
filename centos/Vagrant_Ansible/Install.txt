@@ -1,6 +1,3 @@
-- Link
-  http://thachpham.com/tools/tao-may-ao-tren-may-tinh-voi-vagrant-va-virtualbox.html
-
 - Ansible: Giúp điều khiển máy chủ từ xa để cài đặt, cập nhật soft
   ## Ubuntu
   sudo apt install ansible nfs-kernel-server
