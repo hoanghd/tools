@@ -1,1 +1,26 @@
+- Link
+  http://thachpham.com/tools/tao-may-ao-tren-may-tinh-voi-vagrant-va-virtualbox.html
 
+- Ansible
+  Giúp điều khiển máy chủ từ xa
+  
+  ## Ubuntu
+  sudo apt install ansible nfs-kernel-server
+  ## Mac
+  pip install ansible
+  
+- Vagrant
+  Để tạo ra các máy ảo băng lệnh
+  + https://www.vagrantup.com/downloads.html #Download
+  + vagrant -h #Check system
+  + https://vagrantcloud.com/discover/featured
+  
+- Create
+  $ vagrant init
+  $ vagrant box add --force kameiten.local kameiten.local.box
+  $ vagrant up
+  $ vagrant ssh
+  
+  
+  
+  
