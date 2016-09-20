@@ -68,5 +68,8 @@
   $ vagrant provision
   $ vagrant halt  #Stop
   $ vagrant destroy #Delete
-  
-  
+
+-------------------------------------------------
+
+- Tạo private, public key sử dụng như thế nào?
+- Config Ansible như thế nào?
