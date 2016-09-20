@@ -17,7 +17,7 @@
   
 - Create
   $ vagrant init
-  $ vagrant box add --force kameiten.local kameiten.local.box
+  $ vagrant box add --force hoanghd.local hoanghd.local.box
   $ vagrant up
   $ vagrant ssh
   
