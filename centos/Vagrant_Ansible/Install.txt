@@ -13,6 +13,8 @@
   $ mkdir /vagrant/hoanghd.local
   $ vagrant init
     Hoặc có thể sử dụng 2 config file sau (Vagrantfile, MyVagrantfile)
+  $ copy ~/.ssh/(id_rsa, id_rsa.pub) vào thư mục /vagrant/hoanghd.local/keys
+    
   $ vagrant box add --force hoanghd.local hoanghd.local.box
     * Download box từ URL https://vagrantcloud.com/discover/featured đổi tên thành `hoanghd.local.box`
     * Hoặc download từ https://drive.google.com/open?id=0B_7iXI5IZTlXSEJhVXQyUDJyMFU đổi thành `hoanghd.local.box`
