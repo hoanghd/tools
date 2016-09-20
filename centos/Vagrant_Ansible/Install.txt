@@ -1,16 +1,13 @@
 - Link
   http://thachpham.com/tools/tao-may-ao-tren-may-tinh-voi-vagrant-va-virtualbox.html
 
-- Ansible
-  Giúp điều khiển máy chủ từ xa
-  
+- Ansible: Giúp điều khiển máy chủ từ xa để cài đặt, cập nhật soft
   ## Ubuntu
   sudo apt install ansible nfs-kernel-server
   ## Mac
   pip install ansible
   
-- Vagrant
-  Để tạo ra các máy ảo băng lệnh
+- Vagrant: Để tạo ra các máy ảo băng lệnh
   + https://www.vagrantup.com/downloads.html #Download
   + vagrant -h #Check system
   + https://vagrantcloud.com/discover/featured
@@ -18,9 +15,18 @@
 - Create
   $ mkdir /vagrant/hoanghd.local
   $ vagrant init
+    Hoặc có thể sử dụng 2 config file sau (Vagrantfile, MyVagrantfile)
   $ vagrant box add --force hoanghd.local hoanghd.local.box
-  $ vagrant up
-  $ vagrant ssh
+    * Download box từ URL https://vagrantcloud.com/discover/featured đổi tên thành `hoanghd.local.box`
+    * Hoặc download từ https://drive.google.com/open?id=0B_7iXI5IZTlXSEJhVXQyUDJyMFU đổi thành `hoanghd.local.box`
+  $ vagrant up --no-provision
+  $ sudo sh -c "echo '192.168.35.10 hoanghd.local' >> /etc/hosts"
+    Chú ý IP: 192.168.xx.xx
+  $ vagrant ssh hoặc ssh vagrant@hoanghd.local #pw: vagrant
+  
+  $ vagrant halt  #Stop
+  $ vagrant destroy #Delete
+
   
   
   
