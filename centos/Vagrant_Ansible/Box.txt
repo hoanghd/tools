@@ -19,6 +19,7 @@ Install
     ONBOOT=yes
   
   $ sudo yum clean all  
-
+  $ shutdown -h now
+  
 - Create Box File
   $ vagrant package --output base.centos68.64.box --base vagrant-centos68-64
