@@ -8,7 +8,11 @@ ansible/playbook.yml
   - hosts: all
     sudo: yes
     roles:
-      - { role: apache          , tags: apache }
+    - { role: yum-update          , tags: yum-update }
+    - { role: epel-release        , tags: epel-release }
+    - { role: remi                , tags: remi }
+    - { role: yum-update          , tags: yum-update }
+    - { role: apache              , tags: apache }
   -----------------------------------------------------------------
   
   Cấu trúc 
