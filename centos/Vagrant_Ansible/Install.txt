@@ -97,6 +97,3 @@
   $ vagrant provision
   $ vagrant halt  #Stop
   $ vagrant destroy #Delete
-  
--------------------------------------------------
-- Tạo box mới như thế nào?
