@@ -11,6 +11,9 @@
   
 - Install
   https://blog.engineyard.com/2014/building-a-vagrant-box
+  http://dotinstall.com/lessons/basic_vagrant
+  https://github.com/mitchellh/vagrant/wiki/Available-Vagrant-Plugins
+  http://qiita.com/succi0303/items/e06bca7db5a0c3de96af
   
 - Base Box
   https://drive.google.com/open?id=0B_7iXI5IZTlXSEJhVXQyUDJyMFU
@@ -51,27 +54,25 @@
     -------------------------------------------------
     #Lưu ý đến port không được trùng check trong file ~/.ssh/config
     #Chú ý IP: 192.168.xx.xx
-    
+
   $ vagrant box add --force hoanghd.local hoanghd.local.box
   $ vagrant up --no-provision
-
+  
 - SSH Key
-  $ adduser vagrant
-  $ mkdir keys
-  $ wget --no-check-certificate https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant
-  $ wget --no-check-certificate https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub
-  $ mv vagrant id_rsa
-  $ mv vagrant.pub id_rsa.pub
-  $ chmod 600 id_rsa
-  $ chmod 600 id_rsa.pub
-
-  Edit File Vagrantfile
+  $ vagrant ssh
+  $ ssh-keygen -t rsa -b 4096 -C "vagrant"
+  $ cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
+  
+  Copy (id_rsa, id_rsa.pub) -> hoanghd.local/keys/
+  Shutdown & Edit File Vagrantfile
   -------------------------------------------------
     #config.ssh.password = "vagrant"
     #config.ssh.insert_key = false
     config.ssh.private_key_path = "keys/id_rsa"
   -------------------------------------------------
   $ vagrant ssh-config >> ~/.ssh/config
+  $ vagrant halt  #Stop
+  $ vagrant up --no-provision
   
 - Ansible
   Edit file Vagrantfile
