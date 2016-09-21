@@ -1,6 +1,7 @@
 Doc
   http://docs.ansible.com/ansible/playbooks_roles.html
-  https://en.wikipedia.org/wiki/YAML
+  http://docs.ansible.com/ansible/YAMLSyntax.html
+  http://docs.ansible.com/ansible/playbooks_loops.html
 
 ansible/playbook.yml
   ----------------------------------------------------------------
@@ -23,3 +24,52 @@ Create file yml trong role
   http://docs.ansible.com/ansible/list_of_source_control_modules.html
       
 Thử tạo một role install apache & thiết cập config
+  ansible/roles/apache/{tasks/main.yml|files/*}
+  
+  tasks/main.yml
+  ----------------------------------------------------------------
+  - name: Install apache and php
+    yum: name={{ item }} state=present
+    with_items:
+      - httpd
+      - php56.x86_64
+      - php56-php.x86_64
+      - php56-php-cli.x86_64
+      - php56-php-common.x86_64
+      - php56-php-devel.x86_64
+      - php56-php-gd.x86_64
+      - php56-php-intl.x86_64
+      - php56-php-mbstring.x86_64
+      - php56-php-mcrypt.x86_64
+      - php56-php-mysqlnd.x86_64
+      - php56-php-pdo.x86_64
+      - php56-php-pear.noarch
+      - php56-php-pecl-imagick.x86_64
+      - php56-php-pecl-imagick-devel.x86_64
+      - php56-php-pecl-memcache.x86_64
+      - php56-php-pecl-memcached.x86_64
+      - php56-php-pecl-mongo.x86_64
+      - php56-php-pecl-mongodb.x86_64
+      - php56-php-pecl-msgpack.x86_64
+      - php56-php-pecl-msgpack-devel.x86_64
+      - php56-php-pecl-redis.x86_64
+      - php56-php-pecl-sqlite.x86_64
+      - php56-php-pecl-xdebug.x86_64
+      - php56-php-pecl-xhprof.x86_64
+      - php56-php-pecl-yaml.x86_64
+      - php56-php-pecl-zip.x86_64
+      - php56-php-pgsql.x86_64
+      - php56-php-soap.x86_64
+      - php56-php-xml.x86_64
+      - php56-php-xmlrpc.x86_64
+      - php56-xhprof.noarch
+
+  # Link
+  - command: ln -fs /usr/bin/php56 /usr/bin/php
+  
+  - copy: src=index.php dest=/var/www/html/index.php
+  
+  - service: name=httpd state=started enabled=yes
+
+  ----------------------------------------------------------------
+  
