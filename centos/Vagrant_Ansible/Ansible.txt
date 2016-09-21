@@ -72,4 +72,5 @@ Thử tạo một role install apache & thiết cập config
   - service: name=httpd state=started enabled=yes
 
   ----------------------------------------------------------------
+   $ vagrant provision
   
