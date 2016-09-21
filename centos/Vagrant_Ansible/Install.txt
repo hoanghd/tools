@@ -89,6 +89,7 @@
   [all]
   hoanghd.local ansible_ssh_user=vagrant ansible_ssh_private_key_file=~/vagrant/hoanghd.local/keys/id_rsa ansible_ssh_port=2250
   -------------------------------------------------
+  
   # ansible/playbook.yml
   Tham khảo ở mục Ansible.txt về cách tào roles
   
@@ -98,5 +99,6 @@
 
 - PlayBook Role
   http://docs.ansible.com/ansible/playbooks_roles.html
+  
 -------------------------------------------------
 - Tạo box mới như thế nào?
