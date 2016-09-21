@@ -89,6 +89,5 @@
   $ vagrant destroy #Delete
 
 -------------------------------------------------
-- Tạo private, public key sử dụng như thế nào?
 - Config Ansible như thế nào?
 - Tạo box mới như thế nào?
