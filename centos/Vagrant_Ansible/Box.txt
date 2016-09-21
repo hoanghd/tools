@@ -17,7 +17,10 @@ Install
 - Enable the network interface to auto start on the Boot and get dynamic ip, provided by vagrant:
   $ vi /etc/sysconfig/network-scripts/ifcfg-eth0
     ONBOOT=yes
-  
+  $ sudo vi /etc/sysconfig/iptables
+    -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+    
+  $ service iptables restart
   $ sudo yum clean all  
   $ shutdown -h now
   
