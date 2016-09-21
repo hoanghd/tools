@@ -79,10 +79,18 @@
   -------------------------------------------------
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "ansible/playbook.yml"
-    #ansible.inventory_path = "ansible/playbook.hosts"
+    ansible.inventory_path = "ansible/playbook.hosts"
     #ansible.verbose = "vvvv"
   end  
   -------------------------------------------------
+  
+  # playbook.hosts
+  -------------------------------------------------
+  [all]
+  hoanghd.local ansible_ssh_user=vagrant ansible_ssh_private_key_file=~/vagrant/hoanghd.local/keys/id_rsa ansible_ssh_port=2250
+  -------------------------------------------------
+  # ansible/playbook.yml
+  Tham khảo ở mục Ansible.txt về cách tào roles
   
   $ vagrant provision
   $ vagrant halt  #Stop
