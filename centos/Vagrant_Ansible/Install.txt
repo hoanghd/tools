@@ -30,6 +30,7 @@
     
       config.ssh.username = "vagrant"
       config.ssh.password = "vagrant"
+      config.ssh.insert_key = false
       #config.ssh.private_key_path = "keys/id_rsa"
       config.vm.box = "#{host}"
       config.vm.network "private_network", ip: "#{ip}"
@@ -53,6 +54,23 @@
     
   $ vagrant box add --force hoanghd.local hoanghd.local.box
   $ vagrant up --no-provision
+
+- SSH Key
+  $ adduser vagrant
+  $ mkdir keys
+  $ wget --no-check-certificate https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant
+  $ wget --no-check-certificate https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub
+  $ mv vagrant id_rsa
+  $ mv vagrant.pub id_rsa.pub
+  $ chmod 600 id_rsa
+  $ chmod 600 id_rsa.pub
+
+  Edit File Vagrantfile
+  -------------------------------------------------
+    #config.ssh.password = "vagrant"
+    #config.ssh.insert_key = false
+    config.ssh.private_key_path = "keys/id_rsa"
+  -------------------------------------------------
   $ vagrant ssh-config >> ~/.ssh/config
   
 - Ansible
