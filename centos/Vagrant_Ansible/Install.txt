@@ -23,6 +23,7 @@
 - Sample
   $ mkdir /vagrant/hoanghd.local
   $ cp ~/Documents/base.local.box hoanghd.local.box
+  $ cp -R ~/Documents/keys keys
   $ vagrant init
     Edit File Vagrantfile
     -------------------------------------------------
