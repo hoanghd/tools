@@ -78,8 +78,8 @@
   Edit file Vagrantfile
   -------------------------------------------------
   config.vm.provision :ansible do |ansible|
-    ansible.playbook = "ansible/hoanghd.yml"
-    #ansible.inventory_path = "ansible/hoanghd.hosts"
+    ansible.playbook = "ansible/playbook.yml"
+    #ansible.inventory_path = "ansible/playbook.hosts"
     #ansible.verbose = "vvvv"
   end  
   -------------------------------------------------
