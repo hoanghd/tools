@@ -90,8 +90,5 @@
 
 - PlayBook Role
   http://docs.ansible.com/ansible/playbooks_roles.html
-
-
 -------------------------------------------------
-- Config Ansible như thế nào?
 - Tạo box mới như thế nào?
