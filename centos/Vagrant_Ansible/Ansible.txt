@@ -19,6 +19,12 @@ ansible/playbook.yml
     {dir}/ansible/roles/{name}/(files|templates|tasks|handlers|vars|defaults|meta)
       {tasks|handlers|vars|defaults|meta}/main.yml #add to the play
       
+Điểm lưu ý:
+  epel-release: Chứa khá nhiều package
+    $ yum install epel-release
+  remi: Cung cấp các phiên bản mới hơn so với core linux
+    https://support.rackspace.com/how-to/install-epel-and-additional-repositories-on-centos-and-red-hat/
+
 Create file yml trong role
   http://docs.ansible.com/ansible/yum_module.html
   http://docs.ansible.com/ansible/list_of_commands_modules.html
