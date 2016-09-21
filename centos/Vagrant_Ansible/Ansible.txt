@@ -1,9 +1,25 @@
-Role
-  File ansible/playbook.yml
+Doc
+  http://docs.ansible.com/ansible/playbooks_roles.html
+  https://en.wikipedia.org/wiki/YAML
+
+ansible/playbook.yml
   ----------------------------------------------------------------
   - hosts: all
     sudo: yes
     roles:
-      - { role: yum-update          , tags: yum-update }
+      - { role: apache          , tags: apache }
   -----------------------------------------------------------------
   
+  Cấu trúc 
+    {dir}/ansible/roles/{name}/(files|templates|tasks|handlers|vars|defaults|meta)
+      {tasks|handlers|vars|defaults|meta}/main.yml #add to the play
+      
+Create file yml trong role
+  http://docs.ansible.com/ansible/yum_module.html
+  http://docs.ansible.com/ansible/list_of_commands_modules.html
+  http://docs.ansible.com/ansible/list_of_database_modules.html
+  http://docs.ansible.com/ansible/list_of_files_modules.html
+  http://docs.ansible.com/ansible/list_of_inventory_modules.html
+  http://docs.ansible.com/ansible/list_of_source_control_modules.html
+      
+Thử tạo một role install apache & thiết cập config
