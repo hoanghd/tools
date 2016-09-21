@@ -97,9 +97,6 @@
   $ vagrant provision
   $ vagrant halt  #Stop
   $ vagrant destroy #Delete
-
-- PlayBook Role
-  http://docs.ansible.com/ansible/playbooks_roles.html
   
 -------------------------------------------------
 - Tạo box mới như thế nào?
