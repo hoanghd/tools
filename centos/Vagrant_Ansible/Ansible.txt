@@ -1,1 +1,9 @@
-Ansible
+Role
+  File ansible/playbook.yml
+  ----------------------------------------------------------------
+  - hosts: all
+    sudo: yes
+    roles:
+      - { role: yum-update          , tags: yum-update }
+  -----------------------------------------------------------------
+  
