@@ -61,7 +61,7 @@
   
 - SSH Key
   $ vagrant ssh
-  $ ssh-keygen -t rsa -b 4096 -C "vagrant"
+  $ ssh-keygen -t rsa -C "vagrant"
   $ cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
   
   Copy (id_rsa, id_rsa.pub) -> hoanghd.local/keys/
