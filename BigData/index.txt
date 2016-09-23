@@ -1,7 +1,7 @@
 Ebooks
-  http://it-ebooks.info/tag/hadoop/
   https://www.ibm.com/developerworks/vn/library/data/2013Q1/dm-1209hadoopbigdata/
-
+  https://www.iteblog.com/downloads/OReilly.Hadoop.The.Definitive.Guide.4th.Edition.2015.3.pdf
+  
 Hadoop gồm các thành phần sau:
   - HDFS (Hadoop Distributed File System): Chiệu trách nhiệm quản lý dữ liệu phân tán, HDFS có một vài bộ phận dịch chuyển
     + Datanode(Nút dữ liệu)
@@ -36,6 +36,12 @@ Hadoop gồm các thành phần sau:
   --------------------------------
             PC, PC, PC
   --------------------------------
+  
+  - Download VM
+    + http://www.cloudera.com/downloads/quickstart_vms/5-8.html
+    + ssh: cloudera/cloudera
+  
+  ** Quy trình hoạt động: 
   
     
   
