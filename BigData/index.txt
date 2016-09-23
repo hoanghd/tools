@@ -1,1 +1,32 @@
-Hadoop System: Bring the power of Apache Hadoop to the enterprise with application accelerators, analytics, visualization, development tools, performance and security features.
+Ebooks
+  http://it-ebooks.info/tag/hadoop/
+  https://www.ibm.com/developerworks/vn/library/data/2013Q1/dm-1209hadoopbigdata/
+
+Hadoop gồm các thành phần sau:
+  - HDFS (Hadoop Distributed File System): Chiệu trách nhiệm quản lý dữ liệu phân tán, HDFS có một vài bộ phận dịch chuyển
+    + Datanode(Nút dữ liệu)
+    + Namenode(Nút tên) theo dõi nơi lưu trữ các thú
+    
+  - MapReduce: Là mô hình lập trình cho hadoop. có hai giai đoạn Map, Reduce
+    + JobTracker(Trình theo dõi công việc) quản lý hơn 4000 thành phần công việc MapReduce
+    + TaskTracker(Trình theo dõi nhiệm vụ) nhận các lệnh từ JobTracker
+    * Nếu dùng ngôn ngữ khác java để viêt thì sử dụng Hadoop Streaming
+    
+  - Hadoop Streaming: Một tiện ích để tạo nên mã MapReduce bằng bất kỳ ngôn ngữ nào
+  - Hive và Hue: Sử dụng SQL để yêu cầu Hive chuyển thành một tác vụ MapReduce. 
+  - Pig: Một môi trường lập trình mức cao hơn để viết mã MapReduce. 
+  - Sqoop: Cung cấp việc truyền dữ liệu hai chiều giữa Hadoop và cơ sở dữ liệu quan hệ. 
+  - Oozie: Quản lý luồng công việc Hadoop. 
+  - HBase: Một kho lưu trữ key-value có thể mở rộng quy mô rất lớn. Nó hoạt động rất giống như một hash-map để lưu trữ lâu bền. Nó không phải là một cơ sở dữ liệu quan hệ, mặc dù có tên là HBase
+  - FlumeNG: Trình nạp thời gian thực để tạo luồng dữ liệu của bạn vào Hadoop. Nó lưu trữ dữ liệu trong HDFS và HBase. Bạn sẽ muốn bắt đầu với FlumeNG, để cải thiện luồng ban đầu. 
+  - Whirr: Cung cấp Đám mây cho Hadoop. Bạn có thể khởi động một hệ thống chỉ trong vài phút với một tệp cấu hình rất ngắn. 
+  - Mahout: Máy học dành cho Hadoop. Được sử dụng cho các phân tích dự báo và phân tích nâng cao khác. 
+  - Fuse: Làm cho hệ thống HDFS trông như một hệ thống tệp thông thường, do đó bạn có thể sử dụng lệnh ls, cd, rm và những lệnh khác với dữ liệu HDFS. 
+  - Zookeeper: Được sử dụng để quản lý đồng bộ cho hệ thống. 
+  
+  
+  
+  
+
+
+
