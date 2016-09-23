@@ -24,6 +24,22 @@ Hadoop gồm các thành phần sau:
   - Fuse: Làm cho hệ thống HDFS trông như một hệ thống tệp thông thường, do đó bạn có thể sử dụng lệnh ls, cd, rm và những lệnh khác với dữ liệu HDFS. 
   - Zookeeper: Được sử dụng để quản lý đồng bộ cho hệ thống. 
   
+  Kiến trúc Hadoop
+  --------------------------------
+              Reduce
+  --------------------------------
+    Shuffle/sort mapper output
+  --------------------------------
+    Mapper - read 64+ MB blocks
+  --------------------------------
+                HDFS
+  --------------------------------
+            PC, PC, PC
+  --------------------------------
+  
+    
+  
+  
   
   
   
