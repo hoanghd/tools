@@ -1,3 +1,29 @@
+1. Dạng Join nhiều array => array
+   - array_combine
+   
+2. Thay đổi gía trị
+   - array_fill, array_fill_keys
+   - array_flip
+   - array_map
+
+3. Dạng loại bỏ bớt ( Dựa vào Array khác, Function khác )
+   - array_diff_assoc, array_diff_uassoc, array_diff_key, array_diff_ukey, array_diff
+   - array_intersect_assoc, array_intersect_uassoc, array_intersect_key, array_intersect_ukey, array_intersect
+   - array_udiff_assoc, array_udiff_uassoc, array_udiff
+   - array_uintersect_assoc, array_uintersect_uassoc, array_uintersect
+   - array_filter
+   
+4. Chỉ lấy mẫu nhỏ trong từng item
+   - array_column
+   
+5. Group, Tính toán, Tìm kiếm
+   - array_count_values, array_sum
+   - array_reduce
+   - array_search
+   
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+
 - array_column: Lấy tất cả fullname trong list học sinh
    [ ['ID' => 1, 'fullname' => 'Hong'], ['ID' => 2, 'fullname' => 'Hoa'], ['ID' => 3, 'fullname' => 'Buoi'] ]
  
@@ -11,7 +37,7 @@
    Liệt kê các item ở agrs[0] không có (key => value) ở các agrs[ != 0 ] 
    
 - array_diff_uassoc ( array $array1 , array $array2 [, array $... ], callable $key_compare_func )
-   Ngược lại với array_diff_assoc
+   Tương tự với array_diff_assoc nhưng có thêm function tự compare
    
 - array_diff_key ( array $array1 , array $array2 [, array $... ] )
    Liệt kê các item ở agrs[0] không có key ở các args[ != 0 ] 
@@ -29,10 +55,10 @@
    Tương tự array_fill_keys nhưng key chạy từ ($start_index, $num)
    
 - array_filter ( array $array [, callable $callback [, int $flag = 0 ]] )
-   Mặc định 
+   Xuất ra các item thỏa điều kiện   
    array_filter( $arr, function( $v ) {
       return $v == 'b';
-   })
+   }) //Mặc định
    
    array_filter( $arr, function( $k ) {
       return $k == 'b';
@@ -42,4 +68,29 @@
        return $k == 'b' || $v == 4;
    }, ARRAY_FILTER_USE_BOTH )
  
-- 
+- array_flip ( array $array )
+   Đảo value thành key, key thành value
+   
+- array_intersect_assoc ( array $array1 , array $array2 [, array $... ] )
+   Ngược với array_diff_assoc
+   
+- array_intersect_key ( array $array1 , array $array2 [, array $... ] )   
+   Ngược với array_diff_key
+
+- array_intersect_uassoc ( array $array1 , array $array2 [, array $... ], callable $key_compare_func )
+   Ngược với array_diff_uassoc
+   
+- array_intersect_ukey ( array $array1 , array $array2 [, array $... ], callable $key_compare_func )
+   Ngược với array_diff_ukey
+   
+- array_intersect ( array $array1 , array $array2 [, array $... ] )
+   Ngược với array_diff
+   
+- array_map ( callable $callback , array $array1 [, array $... ] )
+   Thay đổi gía trị của Array
+   
+- array_reduce ( array $array , callable $callback [, mixed $initial = NULL ] )
+   Xử lý để tra về một gía trị duy nhất (SUM, COUNT)
+   
+- array_search ( mixed $needle , array $haystack [, bool $strict = false ] )
+   Xác định key của $needle trong array
