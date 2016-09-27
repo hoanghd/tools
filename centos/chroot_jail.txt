@@ -1,3 +1,22 @@
-http://allanfeid.com/content/creating-chroot-jail-ssh-access
-http://geek.co.il/2010/03/14/how-to-build-a-chroot-jail-environment-for-centos
-http://linuxpitstop.com/chroot-ssh-users-on-centos-7/
+Chroot Jail
+  http://allanfeid.com/content/creating-chroot-jail-ssh-access
+  http://geek.co.il/2010/03/14/how-to-build-a-chroot-jail-environment-for-centos
+  http://linuxpitstop.com/chroot-ssh-users-on-centos-7/
+  http://www.linux-faqs.info/apache/running-apache-in-chroot-jail
+
+Install
+  $ mkdir /var/tmp/chroot
+  $ rpm --query centos-release
+  $ wget http://mirror.centos.org/centos/6/os/x86_64/Packages/centos-release-6-8.el6.centos.12.3.x86_64.rpm
+  $ rpm -i --root=/var/tmp/chroot --nodeps centos-release-6-8.el6.centos.12.3.x86_64.rpm
+  $ yum --installroot=/var/tmp/chroot install -y rpm-build yum
+  $ chroot /var/tmp/chroot
+  
+  $ sudo mount -o bind /proc /var/tmp/chroot/proc
+  $ sudo mount -o bind /dev /var/tmp/chroot/dev
+  $ sudo mount -o bind /dev/pts /var/tmp/chroot/dev/pts
+  $ sudo mount -o bind /sys /var/tmp/chroot/sys
+  
+  $ cp /var/tmp/chroot/etc/skel/.??* /var/tmp/chroot/root
+  $ chroot /var/tmp/chroot /bin/bash -l
+
