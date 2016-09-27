@@ -1,8 +1,32 @@
-1. array_column: Lấy tất cả fullname trong list học sinh
+- array_column: Lấy tất cả fullname trong list học sinh
    [ ['ID' => 1, 'fullname' => 'Hong'], ['ID' => 2, 'fullname' => 'Hoa'], ['ID' => 3, 'fullname' => 'Buoi'] ]
  
- 2. array_combine: Tạo hash array (Key => Array1, Value=>Array2)
+- array_combine 
+   Tạo hash array [ agrs[ 0 ][ i ] => agrs[ 1 ][ i ] ] 
+   
+- array_count_values
+   Group by theo value và count chúng 
+   
+- array_diff_assoc
+   Liệt kê các item ở agrs[0] không có (key => value) ở các agrs[ != 0 ] 
+   
+- array_diff_uassoc
+   Ngược lại với array_diff_assoc
+   
+- array_diff_key
+   Liệt kê các item ở agrs[0] không có key ở các args[ != 0 ] 
+   
+- array_diff_ukey
+   ngược lại với array_diff_key
+   
+- array_diff
+   Tương tự array_diff_assoc nhưng chỉ so sánh value thôi không so sánh key
+   
+- array_fill_keys( $keys, $value )
+   Tạo array cùng value với key từ $keys
+   
+- array_fill ( int $start_index , int $num , mixed $value )
+   Tương tự array_fill_keys nhưng key chạy từ ($start_index, $num)
+   
+- 
  
- 3. array_count_values: Group by theo value và count chúng
- 
- 4. array_diff_assoc: Liệt kê các item ở agrs[0] không có (key => value) ở các agrs[ != 0 ]
