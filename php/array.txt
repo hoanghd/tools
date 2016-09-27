@@ -4,29 +4,42 @@
 - array_combine 
    Tạo hash array [ agrs[ 0 ][ i ] => agrs[ 1 ][ i ] ] 
    
-- array_count_values( array $array )
+- array_count_values ( array $array )
    Group by theo value và count chúng 
    
-- array_diff_assoc( array $array1 , array $array2 [, array $... ] )
+- array_diff_assoc ( array $array1 , array $array2 [, array $... ] )
    Liệt kê các item ở agrs[0] không có (key => value) ở các agrs[ != 0 ] 
    
-- array_diff_uassoc( array $array1 , array $array2 [, array $... ], callable $key_compare_func )
+- array_diff_uassoc ( array $array1 , array $array2 [, array $... ], callable $key_compare_func )
    Ngược lại với array_diff_assoc
    
 - array_diff_key ( array $array1 , array $array2 [, array $... ] )
    Liệt kê các item ở agrs[0] không có key ở các args[ != 0 ] 
    
-- array_diff_ukey( array $array1 , array $array2 [, array $... ], callable $key_compare_func )
+- array_diff_ukey ( array $array1 , array $array2 [, array $... ], callable $key_compare_func )
    ngược lại với array_diff_key
    
-- array_diff( array $array1 , array $array2 [, array $... ] )
+- array_diff ( array $array1 , array $array2 [, array $... ] )
    Tương tự array_diff_assoc nhưng chỉ so sánh value thôi không so sánh key
    
-- array_fill_keys( $keys, $value )
+- array_fill_keys ( $keys, $value )
    Tạo array cùng value với key từ $keys
    
 - array_fill ( int $start_index , int $num , mixed $value )
    Tương tự array_fill_keys nhưng key chạy từ ($start_index, $num)
    
-- 
+- array_filter ( array $array [, callable $callback [, int $flag = 0 ]] )
+   Mặc định 
+   array_filter( $arr, function( $v ) {
+      return $v == 'b';
+   })
+   
+   array_filter( $arr, function( $k ) {
+      return $k == 'b';
+   }, ARRAY_FILTER_USE_KEY )
+   
+   array_filter( $arr, function( $v, $k ) {
+       return $k == 'b' || $v == 4;
+   }, ARRAY_FILTER_USE_BOTH )
  
+- 
