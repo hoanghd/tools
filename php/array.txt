@@ -1,0 +1,8 @@
+1. array_column: Lấy tất cả fullname trong list học sinh
+   [ ['ID' => 1, 'fullname' => 'Hong'], ['ID' => 2, 'fullname' => 'Hoa'], ['ID' => 3, 'fullname' => 'Buoi'] ]
+ 
+ 2. array_combine: Tạo hash array (Key => Array1, Value=>Array2)
+ 
+ 3. array_count_values: Group by theo value và count chúng
+ 
+ 4. array_diff_assoc: Liệt kê các item ở agrs[0] không có (key => value) ở các agrs[ != 0 ]
