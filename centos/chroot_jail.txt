@@ -1,5 +1,6 @@
 Chroot Jail
   http://prefetch.net/articles/yumchrootlinux.html
+  http://www.tecmint.com/create-multiple-ip-addresses-to-one-single-network-interface/
   
 Install
   ----------------------------------
@@ -12,6 +13,7 @@ Install
 
 Install Yum
   $ yum --installroot=/chroot/vm1 install -y rpm-build yum
+  $ yum --installroot=/chroot/vm1 install -y rpm-build vi
 
 Link Folder
   $ sudo mount -o bind /proc /chroot/vm1/proc
