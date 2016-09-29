@@ -3,24 +3,27 @@ Chroot Jail
   
 Install
   ----------------------------------
-  $ yum -y install yum-utils #Install yumdownloader
-  
+  $ yum -y install yum-utils #Install yumdownloader  
   $ mkdir -p /chroot/vm1/var/lib/rpm
   $ rpm --root /chroot/vm1 --initdb
   $ yumdownloader --destdir=/var/tmp centos-release     
   $ cd /var/tmp
   $ rpm --root /chroot/vm1 -ivh --nodeps centos-release*rpm
-  
+
+Install Yum
+  $ yum --installroot=/chroot/vm1 install -y rpm-build yum
+
+Link Folder
   $ sudo mount -o bind /proc /chroot/vm1/proc
   $ sudo mount -o bind /dev /chroot/vm1/dev
   $ sudo mount -o bind /dev/pts /chroot/vm1/dev/pts
   $ sudo mount -o bind /sys /chroot/vm1/sys
 
+Root User
   $ cp /chroot/vm1/etc/skel/.??* /chroot/vm1/root
   $ chroot /chroot/vm1 /bin/bash -l
 
 Add IP
-  $ 
 
 Install Apache
   $ yum --installroot=/chroot/vm1 -y install httpd
@@ -35,7 +38,6 @@ Install Apache
      group www
   $ service httpd start   
   
-Install Yum
-  $ yum --installroot=/chroot/vm1 install -y rpm-build yum
+
   
 
