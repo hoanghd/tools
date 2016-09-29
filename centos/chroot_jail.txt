@@ -1,22 +1,38 @@
 Chroot Jail
-  http://allanfeid.com/content/creating-chroot-jail-ssh-access
-  http://geek.co.il/2010/03/14/how-to-build-a-chroot-jail-environment-for-centos
-  http://linuxpitstop.com/chroot-ssh-users-on-centos-7/
-  http://www.linux-faqs.info/apache/running-apache-in-chroot-jail
-
+  http://prefetch.net/articles/yumchrootlinux.html
+  
 Install
-  $ mkdir /var/tmp/chroot
-  $ rpm --query centos-release
-  $ wget http://mirror.centos.org/centos/6/os/x86_64/Packages/centos-release-6-8.el6.centos.12.3.x86_64.rpm
-  $ rpm -i --root=/var/tmp/chroot --nodeps centos-release-6-8.el6.centos.12.3.x86_64.rpm
-  $ yum --installroot=/var/tmp/chroot install -y rpm-build yum
-  $ chroot /var/tmp/chroot
+  ----------------------------------
+  $ yum -y install yum-utils #Install yumdownloader
   
-  $ sudo mount -o bind /proc /var/tmp/chroot/proc
-  $ sudo mount -o bind /dev /var/tmp/chroot/dev
-  $ sudo mount -o bind /dev/pts /var/tmp/chroot/dev/pts
-  $ sudo mount -o bind /sys /var/tmp/chroot/sys
+  $ mkdir -p /chroot/vm1/var/lib/rpm
+  $ rpm --root /chroot/vm1 --initdb
+  $ yumdownloader --destdir=/var/tmp centos-release     
+  $ cd /var/tmp
+  $ rpm --root /chroot/vm1 -ivh --nodeps centos-release*rpm
   
-  $ cp /var/tmp/chroot/etc/skel/.??* /var/tmp/chroot/root
-  $ chroot /var/tmp/chroot /bin/bash -l
+  $ sudo mount -o bind /proc /chroot/vm1/proc
+  $ sudo mount -o bind /dev /chroot/vm1/dev
+  $ sudo mount -o bind /dev/pts /chroot/vm1/dev/pts
+  $ sudo mount -o bind /sys /chroot/vm1/sys
+
+  $ cp /chroot/vm1/etc/skel/.??* /chroot/vm1/root
+  $ chroot /chroot/vm1 /bin/bash -l
+  
+  Install Apache
+  $ yum --installroot=/chroot/vm1 -y install httpd
+  $ cd /chroot/vm1
+  $ chroot /chroot/vm1 /sbin/service httpd start
+  
+  $ chroot /chroot/vm1
+  $ groupadd -g 49 www
+  $ useradd -u 49 -g 49 -s /sbin/nologin -M -r -d /var/www www
+  $ vi /etc/httpd/conf/httpd.conf 
+     user www
+     group www
+  $ service httpd start   
+  
+  Install Yum
+  $ yum --installroot=/chroot/vm1 install -y rpm-build yum
+  
 
