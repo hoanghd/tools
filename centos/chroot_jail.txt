@@ -18,8 +18,11 @@ Install
 
   $ cp /chroot/vm1/etc/skel/.??* /chroot/vm1/root
   $ chroot /chroot/vm1 /bin/bash -l
-  
-  Install Apache
+
+Add IP
+  $ 
+
+Install Apache
   $ yum --installroot=/chroot/vm1 -y install httpd
   $ cd /chroot/vm1
   $ chroot /chroot/vm1 /sbin/service httpd start
@@ -32,7 +35,7 @@ Install
      group www
   $ service httpd start   
   
-  Install Yum
+Install Yum
   $ yum --installroot=/chroot/vm1 install -y rpm-build yum
   
 
