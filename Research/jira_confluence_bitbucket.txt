@@ -1,1 +1,1 @@
-jira confluence bitbucket
+https://www.atlassian.com/software/jira
