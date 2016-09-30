@@ -1,4 +1,5 @@
 Ebooks
+  http://eoffice.im.fju.edu.tw/phpbb/viewtopic.php?p=37044
   https://www.ibm.com/developerworks/vn/library/data/2013Q1/dm-1209hadoopbigdata/
   https://www.iteblog.com/downloads/OReilly.Hadoop.The.Definitive.Guide.4th.Edition.2015.3.pdf
   
@@ -39,6 +40,8 @@ Hadoop gồm các thành phần sau:
   
   - Download VM
     + http://www.cloudera.com/downloads/quickstart_vms/5-8.html
+    + ftp://140.136.155.91/103CAP/cloudera-demo-vm-cdh4.0.0-virtualbox.tar.gz
+    + https://downloads.cloudera.com/demo_vm/virtualbox/cloudera-quickstart-vm-5.8.0-0-virtualbox.zip
     + ssh: cloudera/cloudera
   
   ** Quy trình hoạt động: 
