@@ -2,6 +2,7 @@
    - array_combine
    
 2. Thay đổi gía trị
+   - array_replace, array_replace_recursive 
    - array_fill, array_fill_keys
    - array_flip
    - array_map
@@ -19,6 +20,7 @@
    
 5. Group, Tính toán, Tìm kiếm
    - array_count_values, array_sum
+   - array_product : Nhân các số lại với nhau
    - array_reduce
    - array_search
    
