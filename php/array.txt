@@ -25,6 +25,9 @@
    - array_search
    
 ---------------------------------------------------------------------------------------------------------------------
+array_map(function ($value) use (&$an_array ) {
+     $an_array [$value] = (boolean)$an_array [$value];   //example operation:
+}, $items_to_modify);
 ---------------------------------------------------------------------------------------------------------------------
 
 - array_column: Lấy tất cả fullname trong list học sinh
