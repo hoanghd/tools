@@ -9,3 +9,9 @@ Collection
         $diff = array_diff_assoc( $properties, $item );
         return empty( $diff ) ? true : false;
     });
+    
+  - pluck(list, properties) #Lấy một số field của row trong list $properties = [ 'id', 'age' ]
+    array_map( function( $item ) use ( $properties ) {
+	    return array_intersect_key( $item, array_flip( $properties ) );
+    }, $list);
+    
