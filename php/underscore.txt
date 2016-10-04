@@ -4,7 +4,7 @@ Array
     array_diff_key( $array, array_flip( $keys ) );
     
   - where( list, properties )
-    array_filter( $list, function( $item ) use ( $properties ) ) {
+    array_filter( $list, function( $item ) use ( $properties ) {
         $diff = array_diff_assoc( $properties, $item );
         return empty( $diff ) ? true : false;
     }
