@@ -4,6 +4,7 @@ Object
     array_diff_key( $array, array_flip( $keys ) );
     
   - pick( list, keys )
+    array_intersect_key( $item, array_flip( $keys ) );	
     
 Collection
   - where( list, properties )
