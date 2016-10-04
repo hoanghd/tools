@@ -18,3 +18,9 @@ Collection
 	return array_intersect_key( $item, array_flip( $keys ) );
     }, $list);
     
+  - SUM & COUNT
+    array_reduce($list, function( $initial, $item ){
+	$initial[ 'age' ] += $item[ 'age' ]; 
+	return $initial;
+    }, [ 'age' => 0 ]);
+    
