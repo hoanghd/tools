@@ -1,9 +1,9 @@
 Object
-  - without( array, values|keys )    
+  - without( array, values|keys ) #Loại trừ đi các key, value   
     array_diff( $array, $value );
     array_diff_key( $array, array_flip( $keys ) );
     
-  - pick( array, keys )
+  - pick( array, keys ) #Chỉ lấy một số field trong list keys
     array_intersect_key( $array, array_flip( $keys ) );	  
   
 Collection
