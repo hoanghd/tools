@@ -1,0 +1,4 @@
+Array
+  - without( array, values|keys )    
+    array_diff( $array, $value );
+    array_diff( $array, array_flip( $keys ) );
