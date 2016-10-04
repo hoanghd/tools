@@ -24,3 +24,8 @@ Collection
 	return $initial;
     }, [ 'age' => 0 ]);
     
+  - DATE 
+    http://www.w3schools.com/php/php_ref_date.asp
+    
+  
+    
