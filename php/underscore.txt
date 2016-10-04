@@ -15,6 +15,6 @@ Collection
     
   - pluck( list, keys ) #Lấy một số field của row trong list $properties = [ 'id', 'age' ]
     array_map( function( $item ) use ( $keys ) {
-	    return array_intersect_key( $item, array_flip( $keys ) );
+	return array_intersect_key( $item, array_flip( $keys ) );
     }, $list);
     
