@@ -3,7 +3,7 @@ Object
     array_diff( $array, $value );
     array_diff_key( $array, array_flip( $keys ) );
     
-  - pick( list, properties )
+  - pick( list, keys )
     
 Collection
   - where( list, properties )
@@ -12,8 +12,8 @@ Collection
         return empty( $diff ) ? true : false;
     });
     
-  - pluck(list, properties) #Lấy một số field của row trong list $properties = [ 'id', 'age' ]
-    array_map( function( $item ) use ( $properties ) {
-	    return array_intersect_key( $item, array_flip( $properties ) );
+  - pluck( list, keys ) #Lấy một số field của row trong list $properties = [ 'id', 'age' ]
+    array_map( function( $item ) use ( $keys ) {
+	    return array_intersect_key( $item, array_flip( $keys ) );
     }, $list);
     
