@@ -2,7 +2,9 @@ Object
   - without( array, values|keys )    
     array_diff( $array, $value );
     array_diff_key( $array, array_flip( $keys ) );
-
+    
+  - pick( list, properties )
+    
 Collection
   - where( list, properties )
     array_filter( $list, function( $item ) use ( $properties ) {
