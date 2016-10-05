@@ -13,8 +13,15 @@ Trong trường hợp Car lấy từ symphony
 「乗車定員」以外が表示されない。
 `Jōsha teiin' igai ga hyōji sa renai
 Ngoại trừ 「乗車定員」 không được hiển thị.
-以外/igai: with the exception of
+-以外/igai: with the exception of
 -----------------------------------------------------------------
+「年式」「ナンバープレート」などその他の項目も表示する
+`Nenshiki'`nanbāpurēto' nado sonohoka no kōmoku mo hyōji suru 
+Hiển thị các item khác như là 「年式」「ナンバープレート」
+- その他: other
+- 表示/hyōji: display
+- 項目/kōmoku: Item
+------------------------------------------------------------------
 
 
 
