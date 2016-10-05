@@ -1,3 +1,2 @@
-管理/kanri  : management
-作成/sakusei: create
-加算/kasan  : add
+編集ページの「テンプレート名」と「クーポン名」の上下を入れ替える
+Henshū pēji no `tenpurēto-mei' to `kūpon-mei' no jōge o irekaeru
