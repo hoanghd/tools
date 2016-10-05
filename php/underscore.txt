@@ -23,6 +23,24 @@ Collection
 	$initial[ 'age' ] += $item[ 'age' ]; 
 	return $initial;
     }, [ 'age' => 0 ]);
+
+  - Gán value vào keys được sort
+    $data = [ [id:5], [id:1], [id:9], [id:3] ];
+    $keys = [ 1, 3, 5, 9 ];
+    ----------------------------------------------------------------
+    $out  = [ 1: [id: 1], 3: [id: 3], 5: [id: 5], 9:[id: 9] ]
+    ----------------------------------------------------------------
+    
+    $outList = array_fill_keys( 
+    	array_intersect( $keys, array_column( $list, 'id' ) ), 
+	''
+    );
+
+    array_walk( $list, function( $value, $key ) use ( &$outList ) {
+        if( isset( $outList[ $value[ 'id' ] ] ) ) {
+            $outList[ $value[ 'id' ] ] = $value;
+        }
+    });
     
   - DATE 
     http://www.w3schools.com/php/php_ref_date.asp
