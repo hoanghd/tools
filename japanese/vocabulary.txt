@@ -3,3 +3,10 @@ Henshū pēji no `tenpurēto-mei' to `kūpon-mei' no jōge o irekaeru
 ----------------------------------------------------------------
 の, と, を
 ----------------------------------------------------------------
+symphonyから取り込んだ車両の場合、
+Shinfonī kara torikonda sharyō no baai
+Trong trường hợp Car lấy từ symphony
+- 場合/baai: situation
+- 取り込んだ/torikonda: taken, fetch, load
+- 車両/sharyō: car, vehicle(Phương tiện)
+----------------------------------------------------------------
