@@ -10,3 +10,16 @@ Trong trường hợp Car lấy từ symphony
 - 取り込んだ/torikonda: taken, fetch, load
 - 車両/sharyō: car, vehicle(Phương tiện)
 ----------------------------------------------------------------
+「乗車定員」以外が表示されない。
+`Jōsha teiin' igai ga hyōji sa renai
+Ngoại trừ 「乗車定員」 không được hiển thị.
+以外/igai: with the exception of
+-----------------------------------------------------------------
+
+
+
+
+
+
+
+
