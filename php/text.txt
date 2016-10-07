@@ -1,4 +1,5 @@
 http://php.net/manual/en/refs.basic.text.php
+http://php.net/manual/en/regexp.reference.escape.php
 
 - Reg
   -- Windows uses CR+LF (\r\n)
