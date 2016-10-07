@@ -1,4 +1,12 @@
 http://php.net/manual/en/refs.basic.text.php
 
 - String to Array
+
+- Template
+  $data = [];
+  $tmpl = 'The easiest way to pass more than one {key} to the callback function is with the 'use' keyword.';
+  
+  $string = preg_replace_callback( '|\{([^\}]+)\}|', function( $matches ) use ( $data ){  
+    return isset( $data[ $matches[1] ] ) ? $data[ $matches[1] ] : '';
+  }, $tmpl);
   
