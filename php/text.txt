@@ -2,6 +2,7 @@ ftp://ik.su.lt/PHP/
 http://php.net/manual/en/refs.basic.text.php
 http://php.net/manual/en/regexp.reference.escape.php
 http://php.net/manual/en/regexp.reference.subpatterns.php
+http://www.rexegg.com/regex-disambiguation.html
 https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068/ch04s08.html
 
 - Reg
@@ -19,6 +20,9 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
   \w = [0-9A-Za-z_]  Any word character (letter, number, underscore)
   \W = [^0-9A-Za-z_] Any non-word character
   \b     Any word boundary character
+    - /\bweb\b/i
+      "PHP is the web scripting language of choice." -> OK (Có từ web riêng lẽ)
+      "PHP is the website scripting language of choice." -> NG (Không có từ web riêng lẽ)  
   
   [:lower:]   = [a-z] 
   [:upper:]   = [A-Z] 
