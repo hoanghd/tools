@@ -60,9 +60,11 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
   (?(condition)yespattern)  
   (?(condition)yespattern|nopattern)
   
-  (?=), (?!), (?<=), (?<!): Có vẻ như dùng dể validate
-  
-  
+  (?=subpattern)  : Positive lookahead
+  (?!subpattern)  : Negative lookahead
+  (?<=subpattern) : Positive lookbehind
+  (?<!subpattern) : Negative lookbehind  
+
 - Template
   $data = [ 'key' => 'parameters' ];
   $tmpl = 'The easiest way to pass more than one {key} to the callback function is with the 'use' keyword.';
