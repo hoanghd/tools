@@ -60,10 +60,15 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
   (?(condition)yespattern)  
   (?(condition)yespattern|nopattern)
   
-  (?=subpattern)  : Positive lookahead
-  (?!subpattern)  : Negative lookahead
-  (?<=subpattern) : Positive lookbehind
-  (?<!subpattern) : Negative lookbehind  
+  Chỉ định vùng để tìm kiếm
+  (?=subpattern)  : Positive look ahead
+  (?!subpattern)  : Negative look ahead
+  (?<=subpattern) : Positive look behind
+  (?<!subpattern) : Negative look behind
+  
+  Tìm kiếm chuỗi sau ký tự #
+  '/(?<=#)(.*)?/'
+  '1232#hello world#' => hello world
 
 - Template
   $data = [ 'key' => 'parameters' ];
