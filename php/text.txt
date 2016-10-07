@@ -33,8 +33,7 @@ http://php.net/manual/en/regexp.reference.subpatterns.php
     
   (?:\/(?P<action>\w+)):
     - (?:subpattern)
-    - (?i:subpattern): xử lý subpattern không phân biệt hoa thường
-      * Tương tự thay i = m|s|x|U|X|J
+    - (?<modifier>:subpattern)
     
   ()?: báo răng rule có thể có hoặc không
   
