@@ -66,8 +66,8 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
   (?<=subpattern) : Positive look behind
   (?<!subpattern) : Negative look behind
   
-  Tìm kiếm chuỗi sau ký tự #
-  '/(?<=#)(.*)?/'
+  Tìm kiếm chuỗi sau ký tự # và bất kỳ ký tự rồi phía trước #
+  '/(?<=#)(.*)(?=#)?/'
   '1232#hello world#' => hello world
 
 - Template
