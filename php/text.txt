@@ -1,5 +1,6 @@
 http://php.net/manual/en/refs.basic.text.php
 http://php.net/manual/en/regexp.reference.escape.php
+http://php.net/manual/en/regexp.reference.subpatterns.php
 
 - Reg
   -- Windows uses CR+LF (\r\n)
@@ -7,6 +8,35 @@ http://php.net/manual/en/regexp.reference.escape.php
   -- OSX CR (\r)
   
   \R in preg_* matches all three.
+  
+  -------------------------------------------------------------------------------
+  \s     Any whitespace character
+  \S     Any non-whitespace character
+  \d     Any digit
+  \D     Any non-digit
+  \w     Any word character (letter, number, underscore)
+  \W     Any non-word character
+  \b     Any word boundary character
+  -------------------------------------------------------------------------------
+  
+  /i 	for PCRE_CASELESS: Xử lý không phân biệt chữ hoa hay thường    
+  /m 	for PCRE_MULTILINE: 
+  /s 	for PCRE_DOTALL
+  /x 	for PCRE_EXTENDED
+  /U 	for PCRE_UNGREEDY
+  /X 	for PCRE_EXTRA
+  /J 	for PCRE_INFO_JCHANGED
+  
+  -------------------------------------------------------------------------------
+  (?P<controller>\w+)
+    - (?<name>pattern)
+    
+  (?:\/(?P<action>\w+)):
+    - (?:subpattern)
+    - (?i:subpattern): xử lý subpattern không phân biệt hoa thường
+      * Tương tự thay i = m|s|x|U|X|J
+    
+  ()?: báo răng rule có thể có hoặc không
   
 - Template
   $data = [ 'key' => 'parameters' ];
