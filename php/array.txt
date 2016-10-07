@@ -4,6 +4,7 @@
 2. Thay đổi gía trị
    - array_replace, array_replace_recursive 
    - array_fill, array_fill_keys
+      -> preg_grep
    - array_flip
    - array_map
    - array_walk, array_walk_recursive
