@@ -17,6 +17,10 @@ http://php.net/manual/en/regexp.reference.subpatterns.php
   \w     Any word character (letter, number, underscore)
   \W     Any non-word character
   \b     Any word boundary character
+  [[:alpha:]] = [a-zA-Z] 
+  [[:digit:]] = [0-9]
+  [[:alnum:]] = [a-zA-Z0-9]
+  [[:space:]] = ' '  
   -------------------------------------------------------------------------------
   
   /i 	for PCRE_CASELESS: Xử lý không phân biệt chữ hoa hay thường    
