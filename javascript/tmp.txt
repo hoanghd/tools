@@ -1,0 +1,4 @@
+Replace
+  var html = tmp.replace(/{([^}]+)}/g, function( match, key ){
+    return row[ key ] ? row[ key ] : '';
+  });
