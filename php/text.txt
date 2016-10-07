@@ -35,7 +35,8 @@ http://php.net/manual/en/regexp.reference.subpatterns.php
     - (?:subpattern)
     - (?<modifier>:subpattern)
     
-  ()?: báo răng rule có thể có hoặc không
+  (?=), (?!), (?<=), (?<!): Có vẻ như dùng dể validate
+  
   
 - Template
   $data = [ 'key' => 'parameters' ];
