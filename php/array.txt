@@ -2,9 +2,9 @@
    - array_combine
    
 2. Thay đổi gía trị
-   - array_replace, array_replace_recursive 
+   - array_replace, array_replace_recursive
+       -> preg_filter
    - array_fill, array_fill_keys
-      -> preg_grep
    - array_flip
    - array_map
    - array_walk, array_walk_recursive
@@ -15,6 +15,7 @@
    - array_udiff_assoc, array_udiff_uassoc, array_udiff
    - array_uintersect_assoc, array_uintersect_uassoc, array_uintersect
    - array_filter
+      -> preg_grep
    
 4. Chỉ lấy mẫu nhỏ trong từng item
    - array_column
