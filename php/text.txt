@@ -61,6 +61,7 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
     
   (?(condition)yespattern)  
   (?(condition)yespattern|nopattern)
+  (?(?=regex)then|else)
   
   Chỉ định vùng để tìm kiếm
   (?=subpattern)  : Positive look ahead
