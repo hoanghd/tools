@@ -1,7 +1,12 @@
 http://php.net/manual/en/refs.basic.text.php
 
-- String to Array
-
+- Reg
+  -- Windows uses CR+LF (\r\n)
+  -- Linux LF (\n)
+  -- OSX CR (\r)
+  
+  \R in preg_* matches all three.
+  
 - Template
   $data = [ 'key' => 'parameters' ];
   $tmpl = 'The easiest way to pass more than one {key} to the callback function is with the 'use' keyword.';
