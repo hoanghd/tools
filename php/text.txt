@@ -1,4 +1,5 @@
 ftp://ik.su.lt/PHP/
+https://www.princeton.edu/~mlovett/reference/Regular-Expressions.pdf
 http://php.net/manual/en/refs.basic.text.php
 http://php.net/manual/en/regexp.reference.escape.php
 http://php.net/manual/en/regexp.reference.subpatterns.php
@@ -13,13 +14,13 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
   \R in preg_* matches all three.
   
   -------------------------------------------------------------------------------
-  \s = [\r\n \t]     Any whitespace character
-  \S = [^\r\n \t]    Any non-whitespace character
-  \d = [0-9]         Any digit
-  \D = [^0-9]        Any non-digit
-  \w = [0-9A-Za-z_]  Any word character (letter, number, underscore)
-  \W = [^0-9A-Za-z_] Any non-word character
-  \b     Any word boundary character
+  \s = [\t\r\n\v\f]     Any whitespace character
+  \S = [^\t\r\n\v\f]    Any non-whitespace character
+  \d = [0-9]            Any digit
+  \D = [^0-9]           Any non-digit
+  \w = [0-9A-Za-z_]     Any word character (letter, number, underscore)
+  \W = [^0-9A-Za-z_]    Any non-word character
+  \b                    Any word boundary character
     - /\bweb\b/i
       "PHP is the web scripting language of choice." -> OK (Có từ web riêng lẽ)
       "PHP is the website scripting language of choice." -> NG (Không có từ web riêng lẽ)  
@@ -40,6 +41,7 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
   /i 	for PCRE_CASELESS      : Xử lý không phân biệt chữ hoa hay thường    
   /m 	for PCRE_MULTILINE     : Make caret (^) match after, and dollar sign ($) match before, internal newlines (\n)
   /s 	for PCRE_DOTALL        : Make period (.) match any character, including newline (\n)
+                               Enables "single-line mode". In this mode, the dot matches newlines.
   /x 	for PCRE_EXTENDED      : Remove whitespace and comments from the pattern
   /U 	for PCRE_UNGREEDY      : Reverses the greediness of the subpattern; * and + now match as little as possible, instead of as much as possible
   /u                         : Causes pattern strings to be treated as UTF-8
@@ -65,6 +67,9 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
   (?!subpattern)  : Negative look ahead
   (?<=subpattern) : Positive look behind
   (?<!subpattern) : Negative look behind
+  
+  Ex:
+  (?>(?:a|b)*)
   
   Tìm kiếm chuỗi sau ký tự # và bất kỳ ký tự rồi phía trước #
   '/(?<=#)(.*)(?=#)?/'
