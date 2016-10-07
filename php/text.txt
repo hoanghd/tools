@@ -2,6 +2,7 @@ ftp://ik.su.lt/PHP/
 http://php.net/manual/en/refs.basic.text.php
 http://php.net/manual/en/regexp.reference.escape.php
 http://php.net/manual/en/regexp.reference.subpatterns.php
+https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068/ch04s08.html
 
 - Reg
   -- Windows uses CR+LF (\r\n)
@@ -11,26 +12,38 @@ http://php.net/manual/en/regexp.reference.subpatterns.php
   \R in preg_* matches all three.
   
   -------------------------------------------------------------------------------
-  \s     Any whitespace character
-  \S     Any non-whitespace character
-  \d     Any digit
-  \D     Any non-digit
-  \w     Any word character (letter, number, underscore)
-  \W     Any non-word character
+  \s = [\r\n \t]     Any whitespace character
+  \S = [^\r\n \t]    Any non-whitespace character
+  \d = [0-9]         Any digit
+  \D = [^0-9]        Any non-digit
+  \w = [0-9A-Za-z_]  Any word character (letter, number, underscore)
+  \W = [^0-9A-Za-z_] Any non-word character
   \b     Any word boundary character
-  [[:alpha:]] = [a-zA-Z] 
-  [[:digit:]] = [0-9]
-  [[:alnum:]] = [a-zA-Z0-9]
-  [[:space:]] = ' '  
+  
+  [:lower:]   = [a-z] 
+  [:upper:]   = [A-Z] 
+  [:alpha:]   = [a-zA-Z] 
+  [:digit:]   = [0-9]
+  [:alnum:]   = [a-zA-Z0-9]
+  [:xdigit:]  = [0-9a-fA-F] #Hexadecimal digit
+  [:space:]   = [\n\r\t \x0B]
+  [:ascii:]   = [\x01-\x7F]
+  [:graph:]   = [^\x01-\x20]
+  [:punct:]   = [-!"#$%&'()*+,./:;<=>?@[\\\]^_'{|}~]
+  
   -------------------------------------------------------------------------------
   
-  /i 	for PCRE_CASELESS: Xử lý không phân biệt chữ hoa hay thường    
-  /m 	for PCRE_MULTILINE: 
-  /s 	for PCRE_DOTALL
-  /x 	for PCRE_EXTENDED
-  /U 	for PCRE_UNGREEDY
-  /X 	for PCRE_EXTRA
-  /J 	for PCRE_INFO_JCHANGED
+  /i 	for PCRE_CASELESS      : Xử lý không phân biệt chữ hoa hay thường    
+  /m 	for PCRE_MULTILINE     : Make caret (^) match after, and dollar sign ($) match before, internal newlines (\n)
+  /s 	for PCRE_DOTALL        : Make period (.) match any character, including newline (\n)
+  /x 	for PCRE_EXTENDED      : Remove whitespace and comments from the pattern
+  /U 	for PCRE_UNGREEDY      : Reverses the greediness of the subpattern; * and + now match as little as possible, instead of as much as possible
+  /u                         : Causes pattern strings to be treated as UTF-8
+  /X 	for PCRE_EXTRA         : Causes a backslash followed by a character with no special meaning to emit an error
+  /J 	for PCRE_INFO_JCHANGED :
+  /A                         : Causes the beginning of the string to be anchored as if the first character of the pattern were ^
+  /D                         : Causes the $ character to match only at the end of a line
+  /S                         : Causes the expression parser to more carefully examine the structure of the pattern, so it may run slightly faster the next time (such as in a loop)
   
   -------------------------------------------------------------------------------
   (?P<controller>\w+)
@@ -40,6 +53,9 @@ http://php.net/manual/en/regexp.reference.subpatterns.php
     - (?:subpattern)
     - (?<modifier>:subpattern)
     
+  (?(condition)yespattern)  
+  (?(condition)yespattern|nopattern)
+  
   (?=), (?!), (?<=), (?<!): Có vẻ như dùng dể validate
   
   
