@@ -5,3 +5,9 @@ Replace
   
   <script id="carTmpl" type="text/x-jquery-tmpl">
   </script>
+
+
+Using scope to prevent conflicts
+  (function () {
+    //Put your script code in here
+  })();
