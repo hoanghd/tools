@@ -102,6 +102,13 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
     (?R) = (?0) -> refers to the whole pattern
     (?1)        -> refers to the first capturing group    
     
+    /*
+      Bắt đầu tìm với `{`
+      Nếu [^{}]+ thỏa điều kiện để nhận
+      Ngược lại xử lý từ `{`
+        -> Xử lý đệ quy để tìm {xxxx}
+      Kết thúc với `}`
+     */    
     $pattern_long = '/
     {           # find the first opening '{'.
       (?:       # start a new group, this is so '|' below does not apply/affect the opening '{'.
