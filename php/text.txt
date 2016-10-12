@@ -98,8 +98,8 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
     </div>                                # match the "main" class DIV closing tag
     }six';                                // single-line (dot matches all), ignore case and free spacing modes ON
     
-    (?R) -> refers to the whole pattern (You can write (?0) too)
-    (?1) -> refers to the first capturing group
+    (?R) = (?0) -> refers to the whole pattern
+    (?1)        -> refers to the first capturing group
 
 
     
