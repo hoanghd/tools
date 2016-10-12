@@ -100,6 +100,18 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
     
     (?R) = (?0) -> refers to the whole pattern
     (?1)        -> refers to the first capturing group
+    
+    
+    $pattern_long = '/
+    {           # find the first opening '{'.
+      (?:       # start a new group, this is so '|' below does not apply/affect the opening '{'.
+        [^{}]+  # skip ahead happily if no '{' or '}'.
+        |       #   ...otherwise...
+        (?R)    # we may be at the start of a new group, repeat whole pattern.
+      )
+      *         # nesting can be many levels deep.
+    }           # finally, expect a balanced closing '}'
+  /six';
 
 
     
