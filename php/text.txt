@@ -68,7 +68,11 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
   (?!subpattern)  : Negative look ahead
   (?<=subpattern) : Positive look behind
   (?<!subpattern) : Negative look behind
-  (pattern)?      : One or nothing
+  (pattern)?      : One or nothing  
+  
+  (?:x)           : Matches x not remember the match
+  x(?=y)          : Matches x only if x is followed by y
+  x(?!y)          : Matches x only if x is not followed by y
   
   Ex:
   (?>(?:a|b)*)
