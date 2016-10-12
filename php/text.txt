@@ -91,7 +91,7 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
       (                                   # capture "main" DIV contents into $1
         (?:                               # non-cap group for nesting * quantifier
           (?: (?!<div[^>]*>|</div>). )++  # possessively match all non-DIV tag chars
-        |                                 # or
+          |                               # or
           <div[^>]*>(?1)</div>            # recursively match nested <div>xyz</div>
         )*                                # loop however deep as necessary
       )                                   # end group 1 capture
