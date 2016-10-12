@@ -68,6 +68,7 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
   (?!subpattern)  : Negative look ahead
   (?<=subpattern) : Positive look behind
   (?<!subpattern) : Negative look behind
+  (pattern)?      : One or nothing
   
   Ex:
   (?>(?:a|b)*)
@@ -96,6 +97,9 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
       )                                   # end group 1 capture
     </div>                                # match the "main" class DIV closing tag
     }six';                                // single-line (dot matches all), ignore case and free spacing modes ON
+    
+    (?R) -> refers to the whole pattern (You can write (?0) too)
+    (?1) -> refers to the first capturing group
 
 
     
