@@ -84,3 +84,20 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
     return isset( $data[ $matches[1] ] ) ? $data[ $matches[1] ] : '';
   }, $tmpl);
   
+- HTML Parse
+  $pattern_long = '{                      # recursive regex to capture contents of "main" DIV
+    <div\s+class="main"\s*>               # match the "main" class DIV opening tag
+      (                                   # capture "main" DIV contents into $1
+        (?:                               # non-cap group for nesting * quantifier
+          (?: (?!<div[^>]*>|</div>). )++  # possessively match all non-DIV tag chars
+        |                                 # or
+          <div[^>]*>(?1)</div>            # recursively match nested <div>xyz</div>
+        )*                                # loop however deep as necessary
+      )                                   # end group 1 capture
+    </div>                                # match the "main" class DIV closing tag
+    }six';                                // single-line (dot matches all), ignore case and free spacing modes ON
+
+
+    
+    
+    
