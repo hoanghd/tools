@@ -46,6 +46,9 @@ MORE
   - listData
     array_column( $list, $valueKey, $idKey );    
     
+  - Chia Rows thành n cột để hiển thị
+    array_chunk( $rows, ceil( count( $rows ) / $columns ) )
+    
   - DATE 
     http://www.w3schools.com/php/php_ref_date.asp
     
