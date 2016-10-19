@@ -51,7 +51,7 @@ MORE
   
   - Group By Key
   
-  - Swap
+  - SWAP
     list($start, $end) = array( $end, $start );	
   
   - DATE 
