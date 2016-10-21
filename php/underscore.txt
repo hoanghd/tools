@@ -58,6 +58,8 @@ MORE
     http://www.w3schools.com/php/php_ref_date.asp
     
   - Validate Value Filter
-    
+  
+  - Change Format
+    preg_replace("/(\d+)-(\d+)-\d+/", '$1年$2月', $date)
   
     
