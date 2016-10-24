@@ -62,4 +62,24 @@ MORE
   - Change Format
     preg_replace("/(\d+)-(\d+)-\d+/", '$1年$2月', $date)
   
-    
+  - Javascript
+  (function ($) {
+     "use strict";
+     
+  }(window.jQuery));
+  
+  
+jQuery.fn.extend({
+  check: function() {
+    return this.each(function() {
+      this.checked = true;
+    });
+  },
+  uncheck: function() {
+    return this.each(function() {
+      this.checked = false;
+    });
+  }
+});
+
+//$( "input[type='checkbox']" ).check();
