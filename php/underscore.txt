@@ -66,8 +66,7 @@ MORE
   (function ($) {
      "use strict";
      
-  }(window.jQuery));
-  
+  }(window.jQuery));  
   
 jQuery.fn.extend({
   check: function() {
