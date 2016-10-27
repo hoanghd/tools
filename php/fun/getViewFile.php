@@ -5,7 +5,7 @@
  * @param string $view_name view name
  * @return string the view file path, false if the view file does not exist
  */
-public function getViewFile( $viewName ) {
+function getViewFile( $viewName ) {
     if( is_file( $view_name ) && file_exists( $view_name ) ) {
         return $view_name;
     }
