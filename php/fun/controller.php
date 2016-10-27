@@ -110,11 +110,11 @@ class Controller {
   public function autoload( $name ){
     if( preg_match( '/^(.+)\_controller$/', $name, $matches ) ) {
 
-      $name = str_replace('_', DIRECTORY_SEPARATOR, $matches[1]);      
+      $name = str_replace( '_', DIRECTORY_SEPARATOR, $matches[1]);      
       require_once( $this->rootDir( array( 'controller',  $name . '.php') ) );      
     } else {
 
-      $path = str_replace('_', DIRECTORY_SEPARATOR, $name);
+      $name = str_replace('_', DIRECTORY_SEPARATOR, $name);
       require_once( $this->rootDir( array( 'class',  $name . '.php') ) );
     }
   }
