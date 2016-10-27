@@ -5,7 +5,7 @@ class Base {
 
   public function run(){}
 
-  	/**
+  /**
 	 * Renders a view with a layout.
 	 *
 	 * @param string $view name of the view to be rendered. See {@link getViewFile} for details
@@ -68,7 +68,7 @@ class Base {
         return $this->view;
     }
 
-    return VIEW_DIR . $this->view . '.php';
+    return $this->rootDir( 'view' ) . $this->view . '.php';
   } 
 
   /**
@@ -81,8 +81,24 @@ class Base {
         return false;
     }
 
-    return VIEW_DIR . $this->layout . '.php';
-  } 
+    return $this->rootDir( 'view' ) . $this->layout . '.php';
+  }
+
+  /**
+   * Looks for the root path of application
+   *
+   * @return string
+   */
+  public function rootDir( $folder = '' ){
+    static $path = NULL;
+
+    if( $path == NULL ) {
+      $path = (new ReflectionClass( 'Base' ))->getFilename();
+      $path = dirname( dirname( $path ) ) . DIRECTORY_SEPARATOR;
+    }
+
+    return $path . $folder . DIRECTORY_SEPARATOR;
+  }
 
   /**
    * Creates a widget and executes it.
