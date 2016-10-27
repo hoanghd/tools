@@ -105,6 +105,21 @@ class Controller {
   }
 
   /**
+   * Autoload class  
+   */
+  public function autoload( $name ){
+    if( preg_match( '/^(.+)\_controller$/', $name, $matches ) ) {
+
+      $name = str_replace('_', DIRECTORY_SEPARATOR, $matches[1]);      
+      require_once( $this->rootDir( array( 'controller',  $name . '.php') ) );      
+    } else {
+
+      $path = str_replace('_', DIRECTORY_SEPARATOR, $name);
+      require_once( $this->rootDir( array( 'class',  $name . '.php') ) );
+    }
+  }
+
+  /**
    * Creates a widget and executes it.
    * @param string $className the widget class name or class in dot syntax (e.g. application.widgets.MyWidget)
    * @param array $properties list of initial property values for the widget (Property Name => Property Value)
@@ -136,4 +151,6 @@ class Controller {
     }
   }
 }
+
+spl_autoload_register( array( (new Controller()), 'autoload' ) );
 ?>
