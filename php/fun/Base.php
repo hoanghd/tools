@@ -81,7 +81,7 @@ class Base {
         return false;
     }
 
-    return LAYOUT_DIR . $this->layout . '.php';
+    return VIEW_DIR . $this->layout . '.php';
   } 
 
   /**
