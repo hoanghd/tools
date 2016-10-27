@@ -12,7 +12,6 @@
  * @return string the view file path, false if the view file does not exist
  */
 function getViewFile( $viewName = NULL ) {
-    //activehp_car_index_controller
     if( $viewName == NULL ) {
         $viewName = str_replace( '_', DIRECTORY_SEPARATOR, substr( get_called_class(), 0, -11 ) );
     } else if( is_file( $viewName ) && file_exists( $viewName ) ) {
