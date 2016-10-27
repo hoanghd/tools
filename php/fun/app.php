@@ -57,12 +57,8 @@ class App {
    * @return mixed the widget instance when $captureOutput is false, or the widget output when $captureOutput is true.
    */
   public static function widget( $className, $properties = array(), $captureOutput = false ) {
-    $className .= '_controller';
-    $widget = new $className();
-
-    foreach( $properties as $name => $value ) {
-      $widget->$name = $value;
-    }
+    
+    $widget = self::newObject( $className . '_controller', $properties );
 
     if( $captureOutput ) {
       ob_start();
@@ -78,6 +74,29 @@ class App {
       $widget->run();
     }
   }
+
+    /**
+     * Creates a new class instance.
+     *
+     * @param string $class The class name.
+     * @param array $attr optional attributes assigned to the object after initialization.
+     * @return object.
+     */
+    public static function newObject( $class, $attr = array() ) {
+        $obj = new $class();
+            
+        if( !empty( $attr ) ) {
+            foreach( $attr as $key => $val ) {
+                $obj->{$key} = $val;
+            }
+        }
+        
+        if(method_exists($obj, 'init')){
+            $obj->init();
+        }
+
+        return $obj;
+    }
 
   /**
    * Autoload class  
