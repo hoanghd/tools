@@ -57,7 +57,16 @@ class App {
    * @return mixed the widget instance when $captureOutput is false, or the widget output when $captureOutput is true.
    */
   public static function widget( $className, $properties = array(), $captureOutput = false ) {
+    $path = str_replace( '_', DIRECTORY_SEPARATOR, $className );
+
+    $pathCtrl = self::path( array( 'controller',  $path . '.php' ) );
+    $pathView = self::path( array( 'view', $path . '.php' ) );  
     
+    if( !file_exists( $pathCtrl ) && file_exists( $pathView ) ) {
+      require( $pathView );
+      return;
+    }
+
     $widget = self::newObject( $className . '_controller', $properties );
 
     if( $captureOutput ) {
