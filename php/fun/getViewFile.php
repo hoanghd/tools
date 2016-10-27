@@ -11,6 +11,6 @@ function getViewFile( $viewName ) {
     }
 
     $class = new ReflectionClass( get_called_class() );
-    return realpath( dirname( $class->getFileName() ) . "/{$viewName}.php" );
+    return realpath( dirname( $class->getFileName() ) . "../views/{$viewName}.php" );
 }
 ?>
