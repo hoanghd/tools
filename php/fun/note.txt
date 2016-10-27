@@ -3,7 +3,7 @@ views/
 layouts/
 controller/
 class/
-route.php
+config/route.php
 
 Router::$routes = array(
     '/branch/:name/:id' => array('home/index', array('id' => '/^[0-9]+$/'))
