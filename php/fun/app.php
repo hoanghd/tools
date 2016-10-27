@@ -83,13 +83,13 @@ class App {
    * Autoload class  
    */
   public static function autoload( $name ){      
-    if( preg_match( '/^(.+)\_controller$/', $name, $matches ) ) {
-
-      $name = str_replace( '_', DIRECTORY_SEPARATOR, $matches[1]);      
-      require_once( App::path( array( 'controller',  strtolower( $name ) . '.php') ) );      
+    if( preg_match( '/^(.+)\_(controller|model)$/', $name, $matches ) ) {
+      
+      $name = str_replace( '_', DIRECTORY_SEPARATOR, $matches[1] );      
+      require_once( App::path( array( $matches[2],  strtolower( $name ) . '.php') ) );      
     } else {
 
-      $name = str_replace('_', DIRECTORY_SEPARATOR, $name);
+      $name = str_replace( '_', DIRECTORY_SEPARATOR, $name );
       require_once( App::path( array( 'class',  strtolower( $name ) . '.php') ) );
     }
   }
