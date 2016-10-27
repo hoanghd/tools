@@ -1,0 +1,6 @@
+public/index.php
+views/
+layouts/
+controller/
+
+1 -> 3 -> (4,2)
