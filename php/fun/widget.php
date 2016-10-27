@@ -34,7 +34,7 @@ function widget( $className, $properties = array(), $captureOutput = false ) {
  * @param array $properties the initial property values (name=>value) of the widget.
  * @return CWidget the newly created widget whose properties have been initialized with the given values.
  */
-function createWidget( $owner, $className, $properties=array() ) {	
+function createWidget( $owner, $className, $properties = array() ) {	
 	$widget = new $className( $owner );
 	foreach( $properties as $name => $value ) {
 		$widget->$name = $value;
