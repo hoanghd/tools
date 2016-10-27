@@ -1,5 +1,5 @@
 <?php
-class Base {  
+class Controller {  
   public $layout = NULL;
   public $view = NULL;
 
@@ -93,7 +93,7 @@ class Base {
     static $path = NULL;
 
     if( $path == NULL ) {
-      $path = (new ReflectionClass( 'Base' ))->getFilename();
+      $path = (new ReflectionClass( 'Controller' ))->getFilename();
       $path = dirname( dirname( $path ) ) . DIRECTORY_SEPARATOR;
     }
 
