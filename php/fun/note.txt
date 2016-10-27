@@ -4,3 +4,5 @@ layouts/
 controller/
 
 1 -> 3 -> (4,2)
+1 -> include layouts/*.php
+  Base::widget( 'Name' );
