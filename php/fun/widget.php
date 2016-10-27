@@ -10,6 +10,7 @@
  */
 function widget( $className, $properties = array(), $captureOutput = false ) {
 	$widget = new $className();
+	//$widget->layout = false;	
 	
 	foreach( $properties as $name => $value ) {
 		$widget->$name = $value;
