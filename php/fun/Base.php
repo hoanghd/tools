@@ -8,15 +8,6 @@ class Base {
   	/**
 	 * Renders a view with a layout.
 	 *
-	 * This method first calls {@link renderPartial} to render the view (called content view).
-	 * It then renders the layout view which may embed the content view at appropriate place.
-	 * In the layout view, the content view rendering result can be accessed via variable
-	 * <code>$content</code>. At the end, it calls {@link processOutput} to insert scripts
-	 * and dynamic contents if they are available.
-	 *
-	 * By default, the layout view script is "protected/views/layouts/main.php".
-	 * This may be customized by changing {@link layout}.
-	 *
 	 * @param string $view name of the view to be rendered. See {@link getViewFile} for details
 	 * about how the view script is resolved.
 	 * @param array $data data to be extracted into PHP variables and made available to the view script
