@@ -9,6 +9,7 @@
  * @return mixed the widget instance when $captureOutput is false, or the widget output when $captureOutput is true.
  */
 function widget( $className, $properties = array(), $captureOutput = false ) {
+	$className .= '_controller';
 	$widget = new $className();
 	
 	foreach( $properties as $name => $value ) {
