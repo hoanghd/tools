@@ -37,7 +37,7 @@ function widget( $className, $properties = array(), $captureOutput = false ) {
 function createWidget( $owner, $className, $properties=array() ) {	
 	$widget = new $className( $owner );
 	foreach( $properties as $name => $value ) {
-		$widget->$name=$value;
+		$widget->$name = $value;
 	}
 	
 	return $widget;
