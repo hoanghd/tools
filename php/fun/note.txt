@@ -5,6 +5,23 @@ controller/
 class/
 config/route.php
 
+-----------------------------------------------------------------------------------
 Router::$routes = array(
     '/branch/:name/:id' => array('home/index', array('id' => '/^[0-9]+$/'))
 );
+
+-----------------------------------------------------------------------------------
+require_once( '../class/app.php' );
+require_once( App::path( array( 'config', 'route.php' ) ) );
+
+Router::traverse();
+
+-----------------------------------------------------------------------------------
+RewriteEngine on
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . index.php
