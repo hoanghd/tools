@@ -9,38 +9,25 @@
  * @return mixed the widget instance when $captureOutput is false, or the widget output when $captureOutput is true.
  */
 function widget( $className, $properties = array(), $captureOutput = false ) {
+	$widget = new $className();
+	
+	foreach( $properties as $name => $value ) {
+		$widget->$name = $value;
+	}
+	
 	if( $captureOutput ) {
 		ob_start();
 		ob_implicit_flush(false);
 		try {
-			$widget = createWidget( $className, $properties );
 			$widget->run();
 		} catch(Exception $e) {
 			ob_end_clean();
 			throw $e;
 		}
 		return ob_get_clean();
-	} else {
-		$widget = createWidget( $className, $properties );
+	} else {		
 		$widget->run();
-		return $widget;
 	}
-}
-
-/**
- * Creates a new widget based on the given class name and initial properties.
- * @param CBaseController $owner the owner of the new widget
- * @param string $className the class name of the widget. This can also be a path alias (e.g. system.web.widgets.COutputCache)
- * @param array $properties the initial property values (name=>value) of the widget.
- * @return CWidget the newly created widget whose properties have been initialized with the given values.
- */
-function createWidget( $owner, $className, $properties = array() ) {	
-	$widget = new $className( $owner );
-	foreach( $properties as $name => $value ) {
-		$widget->$name = $value;
-	}
-	
-	return $widget;
 }
 
 ?>
