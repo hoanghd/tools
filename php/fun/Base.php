@@ -1,22 +1,42 @@
 <?php
-class Base {
-  public $viewFile = NULL;  
-  
-  /**
-   * Looks for the view file according to the given view name.
-   *
-   * @param string $view_name view name
-   * @return string the view file path, false if the view file does not exist
-   */
-  function getViewFile( $viewName = NULL ) {
-      if( $viewName == NULL ) {
-          $viewName = str_replace( '_', DIRECTORY_SEPARATOR, substr( get_called_class(), 0, -11 ) );
-      } else if( is_file( $viewName ) && file_exists( $viewName ) ) {
-          return $viewName;
-      }
+class Base {  
+  public $layout = NULL;
+  public $view = NULL;
 
-      return VIEW_DIR . DIRECTORY_SEPARATOR . $viewPath . ".php" );
-  } 
+  public function run(){}
+
+  	/**
+	 * Renders a view with a layout.
+	 *
+	 * This method first calls {@link renderPartial} to render the view (called content view).
+	 * It then renders the layout view which may embed the content view at appropriate place.
+	 * In the layout view, the content view rendering result can be accessed via variable
+	 * <code>$content</code>. At the end, it calls {@link processOutput} to insert scripts
+	 * and dynamic contents if they are available.
+	 *
+	 * By default, the layout view script is "protected/views/layouts/main.php".
+	 * This may be customized by changing {@link layout}.
+	 *
+	 * @param string $view name of the view to be rendered. See {@link getViewFile} for details
+	 * about how the view script is resolved.
+	 * @param array $data data to be extracted into PHP variables and made available to the view script
+	 * @param boolean $return whether the rendering result should be returned instead of being displayed to end users.
+	 * @return string the rendering result. Null if the rendering result is not required.
+	 * @see renderPartial
+	 * @see getLayoutFile
+	 */
+	public function render( $data = null, $return = false) {
+		$output = $this->renderFile( $data, $this->getViewFile(), true );
+        if ( ( $layoutFile = $this->getLayoutFile() ) !== false ) {
+            $output = $this->renderFile( array( 'content' => $output ), $layoutFile, true );
+        }            
+        
+        if ( $return ) {
+            return $output;
+        } else {
+            echo $output;
+        }
+	}
   
   /**
    * Renders a view file.
@@ -27,13 +47,14 @@ class Base {
    * @param boolean $_return_ whether the rendering result should be returned as a string
    * @return string the rendering result. Null if the rendering result is not required.
    */
-  function render( $_viewFile_, $_data_ = null, $_return_ = false ) {
+  public function renderFile( $_data_ = null, $_viewFile_ = null, $_return_ = false ) {
     // we use special variable names here to avoid conflict when extracting data
     if( is_array( $_data_ ) ) {
       extract( $_data_, EXTR_PREFIX_SAME, 'data' );
     } else {
       $data = $_data_;
     }
+
     if( $_return_ ) {
       ob_start();
       ob_implicit_flush( false );
@@ -43,6 +64,34 @@ class Base {
       require( $_viewFile_ );
     }
   }
+  
+  /**
+   * Looks for the view file according to the given view name.
+   *
+   * @return string the view file path, false if the view file does not exist
+   */
+  public function getViewFile() {
+    if( $this->view == NULL ) {
+        $this->view = str_replace( '_', DIRECTORY_SEPARATOR, substr( get_called_class(), 0, -11 ) );
+    } else if( is_file( $this->view ) && file_exists( $this->view ) ) {
+        return $this->view;
+    }
+
+    return VIEW_DIR . $this->view . '.php';
+  } 
+
+  /**
+   * Looks for the view file according to the given view name.
+   *
+   * @return string the view file path, false if the view file does not exist
+   */
+  public function getLayoutFile() {
+    if( $this->layout == NULL ) {
+        return false;
+    }
+
+    return LAYOUT_DIR . $this->layout . '.php';
+  } 
 
   /**
    * Creates a widget and executes it.
