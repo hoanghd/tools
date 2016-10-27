@@ -1,8 +1,9 @@
 public/index.php
-views/
-layouts/
+view/
+layout/
 controller/
 class/
+model/
 config/route.php
 
 -----------------------------------------------------------------------------------
@@ -25,3 +26,8 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # otherwise forward it to index.php
 RewriteRule . index.php
+
+-----------------------------------------------------------------------------------
+model, form: validate, bind
+request
+postgresql
