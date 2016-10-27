@@ -98,6 +98,35 @@ class App {
         return $obj;
     }
 
+    /**
+     * Retrieve value from the config file.
+     *
+     * @param string $name The key name of first level.
+     * @param string $field optional The key name of second level.
+     * @return mixed.
+     */
+    public static function getConfig( $name ) {
+        static $setting = false;
+        if( $setting == false ) {
+            $setting = require( self::path( array( 'config', 'config.php' ) ) );
+        }
+        
+        return self::find( $name, $setting, array() );
+    }
+
+    public static function find($name, $data = NULL, $def = NULL ){
+        $value = $data;
+        
+        foreach( preg_split( "/[\.]+/", $name ) as $key ) {
+            if( is_array( $value ) && isset( $value[ $key ] ) ) {
+                $value = $value[ $key ];
+            }
+            else $value = $def;
+        }
+        
+        return $value;
+    }
+
   /**
    * Autoload class  
    */
