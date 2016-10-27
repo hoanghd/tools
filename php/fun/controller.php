@@ -68,7 +68,7 @@ class Controller {
         return $this->view;
     }
 
-    return $this->rootDir( 'view' ) . $this->view . '.php';
+    return $this->rootDir( array( 'view', $this->view . '.php' ) );
   } 
 
   /**
@@ -81,7 +81,7 @@ class Controller {
         return false;
     }
 
-    return $this->rootDir( 'view' ) . $this->layout . '.php';
+    return $this->rootDir( array( 'view', $this->layout . '.php' ) );
   }
 
   /**
@@ -89,7 +89,7 @@ class Controller {
    *
    * @return string
    */
-  public function rootDir( $folder = '' ){
+  public function rootDir( $name = '' ){
     static $path = NULL;
 
     if( $path == NULL ) {
@@ -97,7 +97,11 @@ class Controller {
       $path = dirname( dirname( $path ) ) . DIRECTORY_SEPARATOR;
     }
 
-    return $path . $folder . DIRECTORY_SEPARATOR;
+    if( is_array( $name ) ) {
+      $name = join( DIRECTORY_SEPARATOR, $name );
+    }
+
+    return $path . $name;
   }
 
   /**
