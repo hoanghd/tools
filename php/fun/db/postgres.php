@@ -121,8 +121,7 @@ class DB_Postgres
     	$cols = '`' . implode( '`, `', array_keys( $values ) ) . '`';
         
         if ( $escape ) {
-            $values = $this->escape( $values );
-            $vals = "'" . implode( "', '", array_values( $values ) ) . "'";
+            $vals = implode( ', ', $this->values( array_values( $values ) ) );
         } else {
             $vals = implode( ',', array_values( $values ) );
         }
@@ -130,7 +129,7 @@ class DB_Postgres
         $sql =  'INSERT INTO ' . $table . ' ' .
                 '        (' . str_replace( '`', '', $cols ) . ')'.
                 ' VALUES (' . $vals . ')';
-
+        echo $sql;        
         if ( $res = $this->query( $sql ) ) {
         	if ( $returnQuery ) {
         		return $sql;
@@ -159,16 +158,14 @@ class DB_Postgres
 
         $sets = '';
         foreach ( $values as $col => $val ) {
-            if( is_null( $val ) ) {
-               $sets .= '' . $col . ' = NULL, ';
-            } else if ($escape) {
-                $sets .= "" . $col . " = '" . $this->escape( $val ) . "', ";
+            if( $escape ) {
+                $sets .= '' . $col . ' = ' . $this->values( $val ) . ', ';
             } else {
-                $sets .= '' . $col . ' = ' . $val . ', ';
-            }
+                $sets .= '' . $col . ' = ' . $val . ', ' ;
+            }            
         }
 
-        $sets[ strlen( $sets ) - 2 ]='  ';
+        $sets[ strlen( $sets ) - 2 ] = '  ';
 
         if( !empty( $params ) ) {            
             $this->_params = $params;
@@ -176,7 +173,7 @@ class DB_Postgres
         }
 
         $sql = 'UPDATE ' . $table . ' SET ' . $sets . ' WHERE ' . $cond;
-        
+        echo $sql;
         return $this->query( $sql );
     }  
     
@@ -188,7 +185,7 @@ class DB_Postgres
      * @param string $query is the query we will run
      */
     public function delete( $table, $query, $params = array() ) {
-    	$this->query( "DELETE FROM ". $table ." WHERE ". $query, $params );
+    	$this->query( "DELETE FROM " . $table . " WHERE " . $query, $params );
     }
 
 	public function getVersion() {
@@ -200,7 +197,7 @@ class DB_Postgres
 	}
 
     /**
-     * For callback replace
+     * Callback to replace
      */
     private function replace( $matches ){
         $value = NULL;        
@@ -208,11 +205,26 @@ class DB_Postgres
             $value = $this->_params[ $matches[1] ];
         }
         
-        if( !is_null( $value ) ) {
-            return ( is_int( $value ) ? $value : "'" . $this->escape( $value ) . "'" );
-        } else {
+        return $this->values( $value );      
+    }
+
+    /**
+     * Callback to replace
+     */
+    private function values( $value ) {
+        if ( is_array( $value ) ) {
+            return array_map( array( &$this, 'values' ), $value );
+		}
+
+        if( is_null( $value ) ) {
             return 'NULL';
-        }        
+        } else if( is_bool( $value ) ) {
+            return ( $value ? 'true' : 'false' );
+        } else if( is_numeric( $value ) ) {
+            return $value;
+        } else {
+            return "'" . $this->escape( $value ) . "'";
+        }
     }
     
     /**
