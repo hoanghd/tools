@@ -13,7 +13,7 @@ Router::$routes = array(
 
 -----------------------------------------------------------------------------------
 require_once( '../class/app.php' );
-require_once( App::path( array( 'config', 'route.php' ) ) );
+require_once( App::path( array( 'config', 'route' ) ) );
 
 Router::traverse();
 
