@@ -33,4 +33,7 @@ HTML
 Auth
 request
 postgresql
+
 Ajax -> Cell
+    + JSON
+    + HTML
