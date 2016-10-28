@@ -29,5 +29,7 @@ RewriteRule . index.php
 
 -----------------------------------------------------------------------------------
 model, form: validate, bind
+HTML
+Auth
 request
 postgresql
