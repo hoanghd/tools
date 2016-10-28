@@ -95,9 +95,11 @@ class Model{
 	 * @see hasAttribute
 	 */
 	public function setAttribute( $name, $value ) {
+        $attributes = array_flip( $this->attributeNames() );
+
 		if( property_exists( $this, $name ) )
 			$this->$name = $value;
-		elseif( in_array( $name, $this->attributeNames() ) )
+		elseif( isset( $attributes[ $name ] ) )
 			$this->_attributes[ $name ] = $value;
 		else
 			return false;
