@@ -128,14 +128,14 @@ class DB_Postgres
 
         $sql =  'INSERT INTO ' . $table . ' ' .
                 '        (' . str_replace( '`', '', $cols ) . ')'.
-                ' VALUES (' . $vals . ')';
-        echo $sql;        
+                ' VALUES (' . $vals . ') RETURNING *';
+               
         if ( $res = $this->query( $sql ) ) {
         	if ( $returnQuery ) {
         		return $sql;
         	}
 
-            return $this->getLastId();
+            return pg_fetch_array( $res, null, true );
 		}
 
         return 0;
@@ -173,7 +173,7 @@ class DB_Postgres
         }
 
         $sql = 'UPDATE ' . $table . ' SET ' . $sets . ' WHERE ' . $cond;
-        echo $sql;
+        
         return $this->query( $sql );
     }  
     
@@ -246,16 +246,6 @@ class DB_Postgres
         $param = pg_escape_string( $this->_hLink, $param );
 
         return $param;
-    }
-    
-    /**
-     * Returns row id from last executed query
-     * 
-     * @access	public
-     * @return int id of last INSERT operation
-     */
-    public function getLastId() {        	
-    	return true;
     }
 
     public function freeResult() {
