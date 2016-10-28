@@ -188,14 +188,6 @@ class DB_Postgres
     	$this->query( "DELETE FROM " . $table . " WHERE " . $query, $params );
     }
 
-	public function getVersion() {
-		return @pg_parameter_status( $this->_hLink, 'server_version' );
-	}
-	
-	public function getServerInfo() {
-		return 'PostgreSQL ' . $this->getVersion();
-	}
-
     /**
      * Callback to replace
      */
@@ -262,5 +254,13 @@ class DB_Postgres
 	{
 		return pg_errormessage();
 	}  	
+    
+	public function getVersion() {
+		return @pg_parameter_status( $this->_hLink, 'server_version' );
+	}
+	
+	public function getServerInfo() {
+		return 'PostgreSQL ' . $this->getVersion();
+	}
 }
 ?>
