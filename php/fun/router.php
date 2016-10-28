@@ -15,44 +15,44 @@ class Router {
                 list( $layout, $valid ) = is_array( $params ) ? $params : array( $params, array() );
 
                 if( self::compare( $route, $uri, $valid ) ) {
-                    require_once( App::path( array( 'layout',  $layout . '.php' ) ) );
+                    require_once( App::path( array( 'layout',  $layout ) ) );
                     return;
                 }
             }
         }
 
-        require_once( App::path( array( 'layout',  '404.php' ) ) );
+        require_once( App::path( array( 'layout',  '404' ) ) );
     }
 
     /**  
      * Match 2 uris
-     * @param $uri_segments
-     * @param $route_segments
+     * @param $uriSegments
+     * @param $routeSegments
      * @return bool
      */
     public static function compare( $route, $uri, $params = array() ){
-        $uri_segments = preg_split('/[\/]+/', $uri, null, PREG_SPLIT_NO_EMPTY);
-        $route_segments = preg_split('/[\/]+/', $route, null, PREG_SPLIT_NO_EMPTY);
+        $uriSegments = preg_split('/[\/]+/', $uri, null, PREG_SPLIT_NO_EMPTY);
+        $routeSegments = preg_split('/[\/]+/', $route, null, PREG_SPLIT_NO_EMPTY);
 
-        if ( count( $uri_segments ) != count( $route_segments ) ) return false;
+        if ( count( $uriSegments ) != count( $routeSegments ) ) return false;
 
-        foreach ( $uri_segments as $segment_index => $segment ) {
-            $segment_route = $route_segments[ $segment_index ];
+        foreach ( $uriSegments as $segmentIndex => $segment ) {
+            $segmentRoute = $routeSegments[ $segmentIndex ];
             
-            $is_slug = preg_match( '/^{[^\/]*}$/', $segment_route ) || preg_match( '/^:[^\/]*/', $segment_route, $matches );
-            if ( $is_slug ) {//Note php does not support named parameters
+            $isSlug = preg_match( '/^{[^\/]*}$/', $segmentRoute ) || preg_match( '/^:[^\/]*/', $segmentRoute, $matches );
+            if ( $isSlug ) {//Note php does not support named parameters
                 if ( strlen( trim( $segment ) ) === 0 ) {
                     return false;
                 }
 
-                $slug = str_ireplace( array(':', '{', '}'), '', $segment_route );
+                $slug = str_ireplace( array(':', '{', '}'), '', $segmentRoute );
 
                 if( isset( $params[ $slug ] ) && !preg_match( $params[ $slug ],  $segment ) ) {
                     return false;
                 }
 
                 self::$slugs[ $slug ] = $segment;//save slug key => value
-            } else if( $segment_route !== $segment && $is_slug !== 1 ) {
+            } else if( $segmentRoute !== $segment && $isSlug !== 1 ) {
                 return false;
             }            
         }
