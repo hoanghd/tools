@@ -28,11 +28,12 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . index.php
 
 -----------------------------------------------------------------------------------
-model, form: validate, bind
 HTML
+postgresql
+
 Auth
 request
-postgresql
+model, form: validate, bind
 
 Ajax -> Cell
     + JSON
