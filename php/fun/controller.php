@@ -41,7 +41,7 @@ class Controller {
         return $this->view;
     }
 
-    return App::path( array( 'view', $this->view . '.php' ) );
+    return App::path( array( 'view', $this->view  ) );
   } 
 
   /**
@@ -54,7 +54,7 @@ class Controller {
         return false;
     }
 
-    return App::path( array( 'view', $this->layout . '.php' ) );
+    return App::path( array( 'view', $this->layout ) );
   }
 }
 ?>
