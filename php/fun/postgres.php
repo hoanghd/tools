@@ -2,7 +2,7 @@
 /**
  * Postgres Database 
  */
-class DB_Postgres
+class Postgres
 {
 	private $_hLink  = null;	
 	private $_query  = array();
