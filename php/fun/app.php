@@ -118,13 +118,13 @@ class App {
      * @param string $field optional The key name of second level.
      * @return mixed.
      */
-    public static function getConfig( $name ) {
+    public static function getConfig( $name, $def = NULL ) {
         static $setting = false;
         if( $setting == false ) {
             $setting = require( self::path( array( 'config', 'config' ) ) );
         }
         
-        return self::find( $name, $setting, array() );
+        return self::find( $name, $setting, $def );
     }
 
   /**
@@ -142,6 +142,29 @@ class App {
         
         return $value;
     }
+
+  /**
+   * DB Instance  
+   */
+ public static function db(){
+   static $instance = null;
+
+    if( $instance == null ) {
+      $class = App::getConfig( 'db.driver' );
+
+      $instance = new $class();
+      $instance->connect( 
+            App::getConfig( 'db.host' ),
+            App::getConfig( 'db.user' ),
+            App::getConfig( 'db.pass' ),
+            App::getConfig( 'db.name' ),
+            App::getConfig( 'db.port', false ),
+            App::getConfig( 'db.persistent', false )
+      );
+    }
+
+		return $instance;
+ }  
 
   /**
    * Autoload class  
