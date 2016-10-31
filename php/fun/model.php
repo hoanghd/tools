@@ -12,7 +12,6 @@ class Model{
 
    	/**
 	 * Returns the validation rules for attributes.
-	 * @see scenario
 	 */
 	public function rules()	{
 		return array();
