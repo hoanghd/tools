@@ -15,24 +15,6 @@ class Model{
 	 * @return array list of attribute names.
 	 */
 	public function attributeNames(){
-		static $attrs = NULL;
-		if( $table = $this->tableName() ) {
-			if( is_null( $attrs ) ) {
-				$rows = App::db()->getRows( 'SELECT column_name 
-											 FROM information_schema.columns 
-											 WHERE table_name = :table_name', array( 'table_name' => $table ) );
-				if( !empty( $rows ) ) {
-					$attrs = array();
-
-					foreach( $rows as $row ) {
-						$attrs[ $row[ 'column_name' ] ] = ucwords( str_replace('_', ' ', $row[ 'column_name' ] ) );
-					}
-				}
-			}
-
-			return $attrs;			
-		}
-
         return array();
     }
 
