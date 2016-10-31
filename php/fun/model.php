@@ -2,14 +2,6 @@
 class Model{
     private $_attributes = array();
 
-	/**
-	 * Returns the table name
-	 * @return string.
-	 */
-	public function tableName(){
-		return NULL;
-	}
-
     /**
 	 * Returns the list of attribute names of the model.
 	 * @return array list of attribute names.
