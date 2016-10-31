@@ -30,14 +30,12 @@ class Model{
 	 */
 	public function getAttributes( $names = null ) {
 		$values = array();
-
-		foreach( $this->attributeNames() as $name ) {
+		foreach( $this->attributeNames() as $name => $label ) {
 	        $values[ $name ] = $this->$name;
-        }		
+        }	
 
 		if(is_array( $names ) ) {
 			$values2 = array();
-
 			foreach( $names as $name ) {
 	            $values2[ $name ] = isset( $values[ $name ] ) ? $values[ $name ] : null;
             }
@@ -59,52 +57,13 @@ class Model{
 		if( !is_array( $values ) )
 			return;
 
-		$attributes = array_flip( $this->attributeNames() );
+		$attributes = $this->attributeNames();
 
 		foreach( $values as $name => $value ) {
 			if( isset( $attributes[ $name ] ) ) {
-	            $this->$name = $value;
+	            $this->_attributes[ $name ] = $value;
             }
 		}
-	}
-
-    /**
-	 * Returns the named attribute value.
-	 * If this is a new record and the attribute is not set before,
-	 * the default column value will be returned.
-	 * If this record is the result of a query and the attribute is not loaded,
-	 * null will be returned.
-	 * You may also use $this->AttributeName to obtain the attribute value.
-	 * @param string $name the attribute name
-	 * @return mixed the attribute value. Null if the attribute is not set or does not exist.
-	 * @see hasAttribute
-	 */
-	public function getAttribute( $name ) {
-		if( property_exists( $this, $name ) )
-			return $this->$name;
-		elseif( isset( $this->_attributes[ $name ] ) )
-			return $this->_attributes[ $name ];
-	}
-
-	/**
-	 * Sets the named attribute value.
-	 * You may also use $this->AttributeName to set the attribute value.
-	 * @param string $name the attribute name
-	 * @param mixed $value the attribute value.
-	 * @return boolean whether the attribute exists and the assignment is conducted successfully
-	 * @see hasAttribute
-	 */
-	public function setAttribute( $name, $value ) {
-        $attributes = array_flip( $this->attributeNames() );
-
-		if( property_exists( $this, $name ) )
-			$this->$name = $value;
-		elseif( isset( $attributes[ $name ] ) )
-			$this->_attributes[ $name ] = $value;
-		else
-			return false;
-
-		return true;
 	}
 
     /**
@@ -117,12 +76,17 @@ class Model{
 	public function __get( $name ) {
 		$getter = 'get' . $name;
 
+		$attributes = $this->attributeNames();
+
         if( isset( $this->_attributes[ $name ] ) ) {
-            return $this->_attributes[$name];
-        } 
+            return $this->_attributes[ $name ];
+        }		
+		else if( isset( $attributes[ $name ] ) ) {
+			return NULL;
+		}		 
         else if( method_exists( $this, $getter ) ) {
 	        return $this->$getter();
-        }		
+        }	
             
 		throw new Exception( 'Property "' . get_class( $this ) . '.' . $name . '" is not defined.' );
 	}
@@ -137,16 +101,15 @@ class Model{
 	 */
 	public function __set( $name, $value ) {
 		$setter = 'set' . $name;
+		$attributes = $this->attributeNames();
 
-		if( ( $this->setAttribute( $name, $value ) === false ) && method_exists( $this, $setter ) ) {
+		if( isset( $attributes[ $name ] ) ) {
+			return $this->_attributes[ $name ] = $value;
+		} else if( method_exists( $this, $setter ) ) {
 	        return $this->$setter( $value );
         }
 
-		if( method_exists( $this, 'get' . $name ) ) {
-            throw new Exception( 'Property "' . get_class( $this ) . '.' . $name . '" is read only.');
-        } else {
-            throw new Exception( 'Property "' . get_class( $this ) . '.' . $name . '" is not defined.' );
-        }			
+		throw new Exception( 'Property "' . get_class( $this ) . '.' . $name . '" is not defined.' );		
 	}
 }
 ?>
