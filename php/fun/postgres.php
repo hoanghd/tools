@@ -34,12 +34,7 @@ class Postgres
      * @return int query result handle
      */
 	public function query( $sql, $params = array() ) {
-        if( !empty( $params ) ) {            
-            $this->_params = $params;
-            $sql = preg_replace_callback( '|\:(\w+)|', array( &$this, 'replace' ), $sql );
-        }
-        
-        $this->_hQuery = @pg_query( $this->_hLink, $sql ); 	
+        $this->_hQuery = @pg_query( $this->_hLink, $this->replace( $sql, $params ) ); 	
 
         if ( !$this->_hQuery ) {
         	throw new Exception( 'Query Error: ' . $this->_sqlError() . ' <br /> Query: ' . $sql . '' );
@@ -167,12 +162,7 @@ class Postgres
 
         $sets[ strlen( $sets ) - 2 ] = '  ';
 
-        if( !empty( $params ) ) {            
-            $this->_params = $params;
-            $cond = preg_replace_callback( '|\:(\w+)|', array( &$this, 'replace' ), $cond );
-        }
-
-        $sql = 'UPDATE ' . $table . ' SET ' . $sets . ' WHERE ' . $cond;
+        $sql = 'UPDATE ' . $table . ' SET ' . $sets . ' WHERE ' . $this->replace( $cond, $params );
         
         return $this->query( $sql );
     }  
@@ -191,7 +181,19 @@ class Postgres
     /**
      * Callback to replace
      */
-    private function replace( $matches ){
+    private function replace( $sql, $params = array() ){
+        if( !empty( $params ) ) {            
+            $this->_params = $params;
+            return preg_replace_callback( '|\:(\w+)|', array( &$this, '_replace' ), $sql );
+        }
+
+        return $sql;
+    }
+
+    /**
+     * Callback to replace
+     */
+    private function _replace( $matches ){
         $value = NULL;        
         if( isset( $this->_params[ $matches[1] ] ) ) {
             $value = $this->_params[ $matches[1] ];
