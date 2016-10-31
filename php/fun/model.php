@@ -12,7 +12,6 @@ class Model{
 
    	/**
 	 * Returns the validation rules for attributes.
-	 * @return array validation rules to be applied when {@link validate()} is called.
 	 * @see scenario
 	 */
 	public function rules()	{
@@ -46,9 +45,7 @@ class Model{
 
 	/**
 	 * Sets the attribute values in a massive way.
-	 * @param array $values attribute values (name=>value) to be set.	 
-	 * A safe attribute is one that is associated with a validation rule in the current {@link scenario}.
-	 * @see getSafeAttributeNames
+	 * @param array $values attribute values (name=>value) to be set.
 	 * @see attributeNames
 	 */
 	public function setAttributes( $values ) {
@@ -67,7 +64,6 @@ class Model{
     /**
 	 * Returns a property value
 	 * @param string $name the property name or event name
-	 * @return mixed the property value, event handlers attached to the event, or the named behavior
 	 * @throws Exception if the property or event is not defined
 	 * @see __set
 	 */
@@ -92,9 +88,8 @@ class Model{
 	/**
 	 * Sets value of a component property.
 	 * @param string $name the property name or the event name
-	 * @param mixed $value the property value or callback
-	 * @return mixed
-	 * @throws Exception if the property/event is not defined or the property is read only.
+	 * @param mixed $value the property value
+	 * @throws Exception if the property is not defined or the property is read only.
 	 * @see __get
 	 */
 	public function __set( $name, $value ) {
