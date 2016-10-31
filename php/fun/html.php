@@ -7,8 +7,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes. Besides normal HTML attributes, a few special
      * @return string the generated input field
-     * @see clientChange
-     * @see inputField
      */
     public static function textfield( $name, $value='', $htmlOptions=array() ){
         return self::inputField( 'text', $name, $value, $htmlOptions );
@@ -20,9 +18,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes. Besides normal HTML attributes, a few special
      * @return string the generated input field
-     * @see clientChange
-     * @see inputField
-     * @since 1.1.14
      */
     public static function numberField( $name, $value='', $htmlOptions=array() ) {
         return self::inputField( 'number', $name, $value, $htmlOptions );
@@ -34,8 +29,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes. Besides normal HTML attributes, a few special
      * @return string the generated input field
-     * @see inputField
-     * @since 1.1.14
      */
     public static function rangeField( $name, $value='', $htmlOptions=array() ) {
         return self::inputField( 'range', $name, $value, $htmlOptions );
@@ -47,9 +40,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes. Besides normal HTML attributes, a few special
      * @return string the generated input field
-     * @see clientChange
-     * @see inputField
-     * @since 1.1.14
      */
     public static function dateField( $name, $value='', $htmlOptions=array() ) {
         return self::inputField( 'date', $name, $value, $htmlOptions );
@@ -61,9 +51,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes. Besides normal HTML attributes, a few special
      * @return string the generated input field
-     * @see clientChange
-     * @see inputField
-     * @since 1.1.14
      */
     public static function timeField( $name, $value='', $htmlOptions=array() ) {
         return self::inputField( 'time', $name, $value, $htmlOptions );
@@ -75,9 +62,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes. Besides normal HTML attributes, a few special
      * @return string the generated input field
-     * @see clientChange
-     * @see inputField
-     * @since 1.1.16
      */
     public static function dateTimeField( $name, $value='', $htmlOptions=array() ) {
         return self::inputField( 'datetime', $name, $value, $htmlOptions );
@@ -89,9 +73,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes. Besides normal HTML attributes, a few special
      * @return string the generated input field
-     * @see clientChange
-     * @see inputField
-     * @since 1.1.16
      */
     public static function dateTimeLocalField( $name, $value='', $htmlOptions=array() ) {
         return self::inputField( 'datetime-local', $name, $value, $htmlOptions );
@@ -103,9 +84,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes. Besides normal HTML attributes, a few special
      * @return string the generated input field
-     * @see clientChange
-     * @see inputField
-     * @since 1.1.16
      */
     public static function weekField( $name, $value='', $htmlOptions=array() ) {
         return self::inputField( 'week', $name, $value, $htmlOptions );
@@ -117,9 +95,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes. Besides normal HTML attributes, a few special
      * @return string the generated input field
-     * @see clientChange
-     * @see inputField
-     * @since 1.1.14
      */
     public static function emailField( $name, $value='', $htmlOptions=array()) {
         return self::inputField( 'email', $name, $value, $htmlOptions );
@@ -131,9 +106,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes. Besides normal HTML attributes, a few special
      * @return string the generated input field
-     * @see clientChange
-     * @see inputField
-     * @since 1.1.14
      */
     public static function telField( $name, $value='', $htmlOptions=array() ) {
         return self::inputField( 'tel', $name, $value, $htmlOptions );
@@ -145,9 +117,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes. Besides normal HTML attributes, a few special
      * @return string the generated input field
-     * @see clientChange
-     * @see inputField
-     * @since 1.1.14
      */
     public static function urlField( $name, $value='', $htmlOptions=array() ) {
         return self::inputField( 'url', $name, $value, $htmlOptions );
@@ -159,7 +128,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes (see {@link tag}).
      * @return string the generated input field
-     * @see inputField
      */
     public static function hiddenField( $name, $value='', $htmlOptions=array() ) {
         return self::inputField( 'hidden', $name, $value, $htmlOptions );
@@ -171,8 +139,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes. Besides normal HTML attributes, a few special
      * @return string the generated input field
-     * @see clientChange
-     * @see inputField
      */
     public static function passwordField( $name, $value='', $htmlOptions=array() ) {
         return self::inputField( 'password', $name, $value, $htmlOptions );
@@ -187,7 +153,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes (see {@link tag}).
      * @return string the generated input field
-     * @see inputField
      */
     public static function fileField( $name, $value='', $htmlOptions=array() ) {
         return self::inputField( 'file', $name, $value, $htmlOptions );
@@ -199,8 +164,6 @@ class Html {
      * @param string $value the input value
      * @param array $htmlOptions additional HTML attributes. Besides normal HTML attributes, a few special
      * @return string the generated text area
-     * @see clientChange
-     * @see inputField
      */
     public static function textArea( $name, $value='', $htmlOptions=array() ) {
         $htmlOptions['name']=$name;
@@ -223,8 +186,6 @@ class Html {
      * when the radio button is not checked, we can still obtain the posted uncheck value.
      * If 'uncheckValue' is not set or set to NULL, the hidden field will not be rendered.
      * @return string the generated radio button
-     * @see clientChange
-     * @see inputField
      */
     public static function radioButton( $name, $checked=false, $htmlOptions=array() ) {
         if($checked)
@@ -261,8 +222,6 @@ class Html {
      * when the checkbox is not checked, we can still obtain the posted uncheck value.
      * If 'uncheckValue' is not set or set to NULL, the hidden field will not be rendered.
      * @return string the generated check box
-     * @see clientChange
-     * @see inputField
      */
     public static function checkBox( $name, $checked=false, $htmlOptions=array() ) {
         if($checked)
@@ -320,9 +279,6 @@ class Html {
      * rendered so that if no option is selected in multiple mode, we can still obtain the posted
      * unselect value. If 'unselectValue' is not set or set to NULL, the hidden field will not be rendered.
      * @return string the generated drop down list
-     * @see clientChange
-     * @see inputField
-     * @see listData
      */
     public static function dropDownList( $name, $select, $data, $htmlOptions=array() ) {
         $htmlOptions['name']=$name;
@@ -377,8 +333,6 @@ class Html {
      * </li>
      * </ul>
      * @return string the generated list box
-     * @see inputField
-     * @see listData
      */
     public static function listBox( $name, $select, $data, $htmlOptions=array() ) {
         if(!isset($htmlOptions['size']))
