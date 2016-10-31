@@ -179,6 +179,62 @@ class Postgres
     }
 
     /**
+     * Get columns of table
+     */
+    public function getColumns( $table ){
+        static $metadata = array();
+
+        if( !isset( $metadata[ $table ] ) ) {
+            $rows = $this->getRows( 'SELECT column_name 
+                                     FROM information_schema.columns 
+                                     WHERE table_name = :table_name', array( 'table_name' => $table ) );
+            if( !empty( $rows ) ) {
+                $metadata[ $table ] = array();
+
+                foreach( $rows as $row ) {
+                    $metadata[ $table ][ $row[ 'column_name' ] ] = ucwords( str_replace('_', ' ', $row[ 'column_name' ] ) );
+                }
+            }
+        }
+        
+        return $metadata[ $table ];
+    }
+
+    /**
+     * Get the primary keys for the request table.
+     * @return array The primary key field names
+     */
+    public function getPrimaryKeys( $table ) {
+        static $primary = array();
+        if( isset( $primary[ $table ] ) ) {
+            return $primary[ $table ];
+        }
+
+        $i = 0;
+        $primary[ $table ] = array();
+        do {
+            $row = App::db()->getRow("
+                    SELECT pg_attribute.attname
+                    FROM pg_class, pg_attribute, pg_index
+                    WHERE pg_class.oid = pg_attribute.attrelid AND
+                          pg_class.oid = pg_index.indrelid AND
+                          pg_index.indkey[:index] = pg_attribute.attnum AND
+                          pg_index.indisprimary = 't'
+                          and relname=:table", 
+                    array('index' => $i, 'table' => 'car_form'));
+
+            if ( $row ) {
+                $primary[ $table ][] = $row[ 'attname' ];
+            }
+
+            $i++;
+        } 
+        while ( $row );
+
+        return $primary[ $table ];
+    }
+
+    /**
      * Callback to replace
      */
     private function replace( $sql, $params = array() ){
