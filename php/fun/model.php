@@ -1,8 +1,6 @@
 <?php
 class Model{
-    private $_attributes = array();	
-    private $_errors = array();	// attribute name => array of errors    
-	private $_validators;  		// validators
+    private $_attributes = array();
 
     /**
 	 * Returns the list of attribute names of the model.
