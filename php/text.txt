@@ -37,6 +37,8 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
   [:punct:]   = [-!"#$%&'()*+,./:;<=>?@[\\\]^_'{|}~]
   
   -------------------------------------------------------------------------------
+  http://php.net/manual/en/book.ctype.php  
+  -------------------------------------------------------------------------------
   
   /i 	for PCRE_CASELESS      : Xử lý không phân biệt chữ hoa hay thường    
   /m 	for PCRE_MULTILINE     : Make caret (^) match after, and dollar sign ($) match before, internal newlines (\n)
