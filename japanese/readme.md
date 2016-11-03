@@ -1,21 +1,20 @@
-
-[Hello, it's nice to meet you](http://lingohut.com/en/v45/japanese-hello-its-nice-to-meet-you)<br/>
-[Lesson 1. Start: Hello](http://lingohut.com/en/v150000/japanese-lesson-start-hello)<br/>
-[Lesson 2. Start: I speak a little](http://lingohut.com/en/v150001/japanese-lesson-start-i-speak-a-little)<br/>
-[Lesson 3. Start: Speak slower](http://lingohut.com/en/v150002/japanese-lesson-start-speak-slower)<br/>
-[Lesson 4. Start: Please and thank you](http://lingohut.com/en/v150003/japanese-lesson-start-please-and-thank-you)<br/>
-[Lesson 5. Start: Pronouns](http://lingohut.com/en/v150004/japanese-lesson-start-pronouns)<br/>
-[Lesson 6. Start: Short questions](http://lingohut.com/en/v150005/japanese-lesson-start-short-questions)<br/>
-[Lesson 7. Start: I am](http://lingohut.com/en/v150006/japanese-lesson-start-i-am)<br/>
-[Lesson 8. Start: Prepositions]()<br/>
-[Lesson 9. Start: Expressions]()<br/>
-[Lesson 10. Numbers: 0 through 10]()<br/>
-[Lesson 11. Numbers: 11 through 20]()<br/>
-[Lesson 12. Numbers: 21 through 30]()<br/>
-[Lesson 13. Numbers: 10 through 100]()<br/>
-[Lesson 14. Numbers: 100 through 1000]()<br/>
-[Lesson 15. Numbers: 1000 through 10,000]()<br/>
-[Lesson 16. Directions: Come here]()<br/>
-[Lesson 17. Directions: Down the hall]()<br/>
-[Lesson 18. Directions: Where?]()<br/>
-[Lesson 19. Colors]()<br/>
+<a href="http://lingohut.com/en/v45/japanese-hello-its-nice-to-meet-you" title="How do you say? Hello, Good morning, Good afternoon, Good evening, How are you?" class="lht-lesson-index lesson-link">Hello, it's nice to meet you </a>
+<br/><a href="http://lingohut.com/en/v150000/japanese-lesson-start-hello" title="How do you say? Hello, Good morning, Good afternoon, Good evening, Good night" class="lht-lesson-index lesson-link">Lesson   1. Start: Hello </a>
+<br/><a href="http://lingohut.com/en/v150001/japanese-lesson-start-i-speak-a-little" title="How do you say? Do you speak English?, Yes, a little, Yes, No, Nice to meet you" class="lht-lesson-index lesson-link">Lesson   2. Start: I speak a little </a>
+<br/><a href="http://lingohut.com/en/v150002/japanese-lesson-start-speak-slower" title="How do you say? Speak slowly, I don't understand, Do you understand?" class="lht-lesson-index lesson-link">Lesson   3. Start: Speak slower </a>
+<br/><a href="http://lingohut.com/en/v150003/japanese-lesson-start-please-and-thank-you" title="How do you say? Please, Thank you, You’re welcome, Bless you (after a sneeze)" class="lht-lesson-index lesson-link">Lesson   4. Start: Please and thank you </a>
+<br/><a href="http://lingohut.com/en/v150004/japanese-lesson-start-pronouns" title="How do you say? I, You (informal), You (formal), He, She, We, You (plural)" class="lht-lesson-index lesson-link">Lesson   5. Start: Pronouns </a>
+<br/><a href="http://lingohut.com/en/v150005/japanese-lesson-start-short-questions" title="How do you say? When?, Where?, Which?, Who?, Whose?, Why?, What?, How?" class="lht-lesson-index lesson-link">Lesson   6. Start: Short questions </a>
+<br/><a href="http://lingohut.com/en/v150006/japanese-lesson-start-i-am" title="How do you say? I am, Is, Is, And, Because, But, Or, In, Without, At" class="lht-lesson-index lesson-link">Lesson   7. Start: I am </a>
+<br/><a href="http://lingohut.com/en/v150007/japanese-lesson-start-prepositions" title="How do you say? Of, For, Of the, If, Since, Although, Our, Between" class="lht-lesson-index lesson-link">Lesson 8. Start: Prepositions </a>
+<br/><a href="http://lingohut.com/en/v150008/japanese-lesson-start-expressions" title="How do you say? By the way, At least, Finally, However, Therefore, Don't worry" class="lht-lesson-index lesson-link">Lesson   9. Start: Expressions </a>
+<br/><a href="http://lingohut.com/en/v150009/japanese-lesson-numbers-0-through-10" title="How do you say? " class="lht-lesson-index lesson-link">Lesson  10. Numbers: 0 through 10 </a>
+<br/><a href="http://lingohut.com/en/v150010/japanese-lesson-numbers-11-through-20" title="How do you say? " class="lht-lesson-index lesson-link">Lesson  11. Numbers: 11 through 20 </a>
+<br/><a href="http://lingohut.com/en/v150011/japanese-lesson-numbers-21-through-30" title="How do you say? " class="lht-lesson-index lesson-link">Lesson  12. Numbers: 21 through 30 </a>
+<br/><a href="http://lingohut.com/en/v150012/japanese-lesson-numbers-10-through-100" title="How do you say? " class="lht-lesson-index lesson-link">Lesson  13. Numbers: 10 through 100 </a>
+<br/><a href="http://lingohut.com/en/v150013/japanese-lesson-numbers-100-through-1000" title="How do you say? " class="lht-lesson-index lesson-link">Lesson  14. Numbers: 100 through 1000 </a>
+<br/><a href="http://lingohut.com/en/v150014/japanese-lesson-numbers-1000-through-10-000" title="How do you say? 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000" class="lht-lesson-index lesson-link">Lesson  15. Numbers: 1000 through 10,000 </a>
+<br/><a href="http://lingohut.com/en/v150015/japanese-lesson-directions-come-here" title="How do you say? Just a moment, Wait here, Follow me, She will help you" class="lht-lesson-index lesson-link">Lesson  16. Directions: Come here </a>
+<br/><a href="http://lingohut.com/en/v150016/japanese-lesson-directions-down-the-hall" title="How do you say? Straight ahead, In the back, To the front, Inside, Outside" class="lht-lesson-index lesson-link">Lesson  17. Directions: Down the hall </a>
+<br/><a href="http://lingohut.com/en/v150017/japanese-lesson-directions-where" title="How do you say? In back of, In front of, Beside, First door on the right" class="lht-lesson-index lesson-link">Lesson  18. Directions: Where? </a>
+<br/><a href="http://lingohut.com/en/v150018/japanese-lesson-colors" title="How do you say? What color is it?, The color is red, Black, Blue, Brown" class="lht-lesson-index lesson-link">Lesson  19. Colors </a>
