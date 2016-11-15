@@ -127,6 +127,8 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
   /six';
 
 
+$Type = filter_input(INPUT_POST, 'type', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' => '/\d{1,2}/')));
+$ReportId = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
     
     
     
