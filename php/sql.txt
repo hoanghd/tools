@@ -1,0 +1,8 @@
+Swap gía trị của 2 dòng bằng SQL
+
+UPDATE tbl dst
+  SET doc_num = src.doc_num
+FROM tbl src
+WHERE dst.id IN(2,4)
+  AND src.id IN(2,4)
+  AND dst.id <> src.id
