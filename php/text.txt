@@ -126,6 +126,10 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
     }           # finally, expect a balanced closing '}'
   /six';
 
+'cdf' => array(
+                'filter'  => FILTER_VALIDATE_REGEXP,
+                'options' => array('regexp' => '/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/'),
+            ),
 
 $Type = filter_input(INPUT_POST, 'type', FILTER_VALIDATE_REGEXP, array('options' => array('default' => 1, 'regexp' => '/\d{1,2}/')));
 $ReportId = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
