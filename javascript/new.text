@@ -19,3 +19,12 @@ class Multibrowser{
     constructor(){}
 }
 
+ client.next = function (...args) {}
+ 
+ class BaseReporter extends events.EventEmitter {
+    constructor () {
+        super()
+    }
+ }
+ 
+ 
