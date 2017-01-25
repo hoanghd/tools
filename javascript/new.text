@@ -2,3 +2,20 @@ let
   https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Statements/let
 async
 await
+import q from 'q'
+import { RuntimeError } from './utils/ErrorHandler'
+
+options.onError = options.onError.filter((fn) => {
+        return typeof fn === 'function'
+})
+
+const onRejectedSafe = (err) => {
+    if (typeof onRejected === 'function') {
+        onRejected(err)
+    }
+}
+
+class Multibrowser{
+    constructor(){}
+}
+
