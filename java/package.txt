@@ -1,4 +1,6 @@
 XMLUtils
+    getInstance()
+    load(String path)
     getString(String id)
     getInt(String id)
     getList(String id)
@@ -26,6 +28,12 @@ XMLUtils
     getMap(String id, String key)
     getMap(String id, String key, String value)
     getObject(String id)
+        
+    setString(String id, String value)
+    setInt(String id, Int value)
+    setList(String id, List<String> value)
+    setMap(String id, Map<String, String> value)
+    save()
     
     
     
