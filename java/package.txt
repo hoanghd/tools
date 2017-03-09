@@ -1,6 +1,6 @@
 XMLUtils
-    getString(String id, String def)
-    getInt(String id, Int def)
+    getString(String id)
+    getInt(String id)
     getList(String id)
         <doc>
             <list>
