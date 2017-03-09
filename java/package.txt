@@ -1,6 +1,34 @@
 XMLUtils
-    getString()
-    getInt()
-    getList()
-    getMap()
-    getObject()
+    getString(String id, String def)
+    getInt(String id, Int def)
+    getList(String id)
+        <doc>
+            <list>
+                <value>value</value>
+                <value>value</value>
+            </list>
+       </doc>
+    getList(String id, String attr)
+        <doc>
+            <list>
+                <value value="v1">value</value>
+                <value value="v2">value</value>
+            </list>
+       </doc>
+    
+    getMap(String id)
+        <doc>
+            <list>
+                <value key="v1">value</value>
+                <value key="v2">value</value>
+            </list>
+       </doc>
+    getMap(String id, String key)
+    getMap(String id, String key, String value)
+    getObject(String id)
+    
+    
+    
+    
+    
+    
