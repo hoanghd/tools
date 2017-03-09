@@ -1,0 +1,6 @@
+XMLUtils
+    getString()
+    getInt()
+    getList()
+    getMap()
+    getObject()
