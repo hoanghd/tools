@@ -229,4 +229,11 @@
 			return $row;
 		});
 	 });
+
+- Change JoinType
+	->contain([
+                 'Entries' => ['joinType' => 'INNER'], 
+                 'Channels' => ['joinType' => 'INNER'], 
+                 'Channels.Companies' => ['joinType' => 'INNER']
+                ])
 	
