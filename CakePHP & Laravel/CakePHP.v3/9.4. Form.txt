@@ -23,4 +23,5 @@
 				* type: string|text
 				* length
 				* precision
-	
+	- Để bind value ngược vào input sau khi submit thì dùng
+	    $this->request->data('name', 'search data');
