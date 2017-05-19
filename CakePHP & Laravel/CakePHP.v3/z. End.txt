@@ -35,3 +35,6 @@
 	+ Text			http://book.cakephp.org/3.0/en/views/helpers/text.html
 	+ Time			http://book.cakephp.org/3.0/en/views/helpers/time.html
 	+ Url			http://book.cakephp.org/3.0/en/views/helpers/url.html
+
+Global Function 
+https://book.cakephp.org/3.0/en/core-libraries/global-constants-and-functions.html
