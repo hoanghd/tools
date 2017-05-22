@@ -21,3 +21,7 @@
 		$this->Auth->allow(['view', 'index']);
 		
 	- $this->Auth->deny($actions = null)
+	
+	use Cake\Network\Session;
+$session  = new Session();
+$userData = $session->read('Auth.User.id');
