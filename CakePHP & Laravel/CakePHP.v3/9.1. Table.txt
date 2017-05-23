@@ -187,4 +187,7 @@ Link
 		+ Validate					http://book.cakephp.org/3.0/en/orm/validation.html
 		+ Trigger
 		+ Behavior					http://book.cakephp.org/3.0/en/orm/behaviors.html
+				
+- Behavior
+https://github.com/davidyell/CakePHP3-Proffer/blob/master/src/Model/Behavior/ProfferBehavior.php
 		
