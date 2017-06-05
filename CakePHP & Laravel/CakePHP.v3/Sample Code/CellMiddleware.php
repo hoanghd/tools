@@ -40,7 +40,7 @@ class CellMiddleware
                     ));
                 }
             } else {
-                $response->body($cell->render());
+                $response->body($cell);
             }
         } else {
             $response = $next($request, $response);
