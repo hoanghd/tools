@@ -80,6 +80,20 @@
 			+ $options: List value
 			+ $attributes: escape, val, class, disabled, hiddenField
 			
+			<?= $this->Form->input( 
+                            'desired_coating', 
+                            [
+                                'type'   => 'select',
+                                'multiple' => 'checkbox',
+                                'options'  => \Cake\Core\Configure::read('coating.desired_coating'),
+                                'templates' => [
+                                    'checkboxWrapper' => '<li>{{label}}</li>',
+                                    'inputContainer' => '{{content}}'
+                                ],
+                                'label'  => false
+                            ]
+                        )?>
+			
 		+ radio($fieldName, $options = [], array $attributes = [])
 			+ http://book.cakephp.org/3.0/en/views/helpers/form.html#creating-radio-buttons
 			+ $attributes: value, label, hiddenField, disabled, empty
