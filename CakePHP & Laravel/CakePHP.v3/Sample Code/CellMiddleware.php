@@ -4,9 +4,8 @@ namespace App\Middleware;
 use Cake\Utility\Hash;
 use Cake\View\CellTrait;
 use Cake\Event\EventManager;
-use ReflectionException;
 use ReflectionMethod;
-use BadMethodCallException;
+use Exception;
 
 class CellMiddleware
 {
@@ -21,26 +20,22 @@ class CellMiddleware
         if($request->is('ajax') && ($name = $request->query('_cell'))){
             $this->request = $request;
             $this->response = $response;
-                    
-            $cell = $this->cell($name);
-            $ext = Hash::get($request->params, '_ext');
             
-            if( $ext == 'json'){
-                try {
+            try {
+                $cell = $this->cell($name);
+                $ext = Hash::get($request->params, '_ext');
+
+                if( $ext == 'json'){
                     $reflect = new ReflectionMethod($cell, $cell->action);
                     $reflect->invokeArgs($cell, $cell->args);
-                    
+
                     $response->type('json');
                     $response->body(json_encode($cell->viewVars));
-                } catch (ReflectionException $e) {
-                    throw new BadMethodCallException(sprintf(
-                        'Class %s does not have a "%s" method.',
-                        get_class($cell),
-                        $cell->action
-                    ));
+                } else {
+                    $response->body($cell);
                 }
-            } else {
-                $response->body($cell);
+            } catch (Exception $e) {
+                $response->body($e);
             }
         } else {
             $response = $next($request, $response);
