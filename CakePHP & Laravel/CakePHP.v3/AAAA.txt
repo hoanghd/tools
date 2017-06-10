@@ -1,0 +1,3 @@
+//https://github.com/cakephp/cakephp/blob/master/src/Routing/Router.php
+Request
+- Cake\Routing\Router::getRequest()
