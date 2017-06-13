@@ -101,6 +101,19 @@
 	- getCrumbs(string $separator = '&raquo;', string $startText = false)
 	- getCrumbList(array $options =, []$startText = false)
 	
+	- <?= $this->Form->select(
+                        'company_id',  
+                        \Cake\ORM\TableRegistry::get('Companies')
+                                ->find('list', [
+                                    'conditions' => [ 'disabled IS NULL', 'is_published'=>1 ], 
+                                    'order'=>'id'
+                                ]), 
+                        [
+                            'class'=>'select ' . ($this->Form->isFieldError('company_id') ? 'select_error' : ''), 
+                            'empty' => '選択してください'
+                        ]
+                    )?>
+	
 
 		
 		
