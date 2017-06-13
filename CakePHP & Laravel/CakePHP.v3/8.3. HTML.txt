@@ -102,14 +102,16 @@
 	- getCrumbList(array $options =, []$startText = false)
 	
 	- <?= $this->Form->select(
-                        'company_id',  
-                        \Cake\ORM\TableRegistry::get('Companies')
+                        'prefecture_code',  
+                        \Cake\ORM\TableRegistry::get('Prefectures')
                                 ->find('list', [
-                                    'conditions' => [ 'disabled IS NULL', 'is_published'=>1 ], 
-                                    'order'=>'id'
-                                ]), 
+                                    'keyField' => 'prefecture_code',
+                                    'valueField' => 'name',
+                                    'conditions' => [ 'disabled IS NULL' ], 
+                                    'order'=>'display_order, prefecture_code'
+                                ])->toArray(), 
                         [
-                            'class'=>'select ' . ($this->Form->isFieldError('company_id') ? 'select_error' : ''), 
+                            'class'=>'select ' . ($this->Form->isFieldError('prefecture_code') ? 'select_error' : ''), 
                             'empty' => '選択してください'
                         ]
                     )?>
