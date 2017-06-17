@@ -1,0 +1,12 @@
+Seq("key"	-> "addThisModal",
+  "added"	-> "true",
+  "time"	-> "20 hours ago",
+  "logo" 	-> "https://uploads.intercomcdn.com/i/o/10262659/ef08416c1a30b58627fc6cc8/Segment_avatar_navy_RGB_rgb_200_200.png",
+  "name"	-> "AddThis",
+  "sort_desc" -> "Add people to Intercom from Segment",
+  "full_desc" -> "When private messages are sent to your Facebook page, reply to them from Intercom. Works with Respond."
+)
+
+-----------------
+@(row: Seq[(String, String)])
+@row.toMap.get("key")
