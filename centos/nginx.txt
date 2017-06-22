@@ -4,6 +4,7 @@ https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-
 sudo yum install epel-release
 sudo yum install nginx
 sudo /etc/init.d/nginx start
+service nginx restart
 
 cd /etc/nginx/conf.d
 
