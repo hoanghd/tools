@@ -6,3 +6,5 @@ sudo yum install nginx
 sudo /etc/init.d/nginx start
 
 cd /etc/nginx/conf.d
+
+fastcgi_param  CAKE_ENV development;
