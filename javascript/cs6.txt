@@ -1,3 +1,5 @@
+http://dl.finebook.ir/book/8f/13126.pdf
+------------------------------------------
 function foo(...args) {
     console.log( args );
 }
