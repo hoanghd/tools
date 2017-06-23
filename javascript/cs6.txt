@@ -1,0 +1,31 @@
+function foo(...args) {
+    console.log( args );
+}
+foo( 1, 2, 3, 4, 5); // [1,2,3,4,5]
+------------------------------------------
+Object.assign( {}, {id:1}, {id:2, name:3}); //Merge
+------------------------------------------
+var o = {
+  update: function(){}
+}
+//new way
+var o = {
+  update(){}
+}
+------------------------------------------
+//getter, setter
+
+var o = {
+  __id: 10,
+  get id() { return this.__id++; },
+  set id(v) { this.__id = v; }
+}
+
+o.id;// 10
+o.id = 20;
+------------------------------------------
+var who = "reader";
+var greeting = `A very ${upper( "warm")} welcometo all of you ${upper( `${who}s` )}!`;
+
+// A very WARM welcome to all of you READERS!
+------------------------------------------
