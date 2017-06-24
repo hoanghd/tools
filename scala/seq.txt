@@ -1,0 +1,3 @@
+https://www.tutorialspoint.com/scala/scala_arrays.htm
+
+@import vn.usedata.analytics.sc.user.Notification; var list = vn.usedata.analytics.sc.user.NotificationManager.getInstance().findByCust(1, Array("726206d4-8253-40ea-86c4-b18fd45e3403"), 1);
