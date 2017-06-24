@@ -36,4 +36,5 @@ scala.collection.immutable.Map("key"	-> "addThisModal",
 })
 -------------------------------------------------------------------------------------
 list.map(_.getId).toArray
+@import java.lang.Integer; var ids = list.map(_.getId).toArray;
 -------------------------------------------------------------------------------------
