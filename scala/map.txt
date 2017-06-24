@@ -20,6 +20,20 @@ scala.collection.immutable.Map("key"	-> "addThisModal",
   "sort_desc" -> "Add people to Intercom from Segment",
   "full_desc" -> "When private messages are sent to your Facebook page, reply to them from Intercom. Works with Respond."
 )
------------------
+-------------------------------------------------------------------------------------
 @(row: Map[String, String])
 @row.get("key")
+-------------------------------------------------------------------------------------
+@table_of_contents.map( case(k,v) => {
+    <dt>
+        @k.title
+    </dt>
+    @v.map { section =>
+        <dd>
+            @section.title
+        </dd>
+    }
+})
+-------------------------------------------------------------------------------------
+list.map(_.getId).toArray
+-------------------------------------------------------------------------------------
