@@ -1,0 +1,5 @@
+@import scala.Array; var ids:Array[Int] = null;
+
+@if(list != null){
+  @{ids = list.map(_.getId).toArray};
+}
