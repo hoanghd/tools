@@ -1,0 +1,3 @@
+SELECT id, setseed(id * 0.000011), random()
+from companies
+ORDER BY random(), id
