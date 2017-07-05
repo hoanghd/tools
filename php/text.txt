@@ -134,6 +134,8 @@ https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068
 $Type = filter_input(INPUT_POST, 'type', FILTER_VALIDATE_REGEXP, array('options' => array('default' => 1, 'regexp' => '/\d{1,2}/')));
 $ReportId = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 http://stackoverflow.com/questions/34020595/filter-validate-regexp-with-filter-input-array
+
+if(preg_match_all('/<table[^>]*>.*?<\/table>|<[^>]++>|[^<>\s]++/', $content, $matches)){
     
     
     
