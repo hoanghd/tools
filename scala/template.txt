@@ -1,0 +1,1 @@
+String body = views.html.mailBody.render(user).body();
