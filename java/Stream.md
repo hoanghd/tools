@@ -98,8 +98,13 @@ Arrays.asList("1","2","3","4","5")
 	.forEach(System.out::println);
 ```
 
-
-
+### flatMapToLong(Function<? super T,? extends LongStream> mapper): LongStream
+```java
+Arrays.asList("1","2","3","4","5")
+	.stream()
+	.mapToLong(n-> Long.parseLong(n) )
+	.forEach(System.out::println);
+```
 
 
 	
