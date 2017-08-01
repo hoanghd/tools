@@ -20,4 +20,21 @@ boolean exists = Arrays.asList("a1", "a2", "a3")
 						    .anyMatch(e -> e.endsWith("2"));
 ```
 
+### collect(Collector<? super T,A,R> collector):<R,A> R
+Dùng xử lý tính toán, ví dụ SUM
+Sử dụng chung với java.util.stream.Collectors
 
+```java
+List<Integer> list = Arrays.asList(3,5,6);
+int sum = list.stream().collect(Collectors.summingInt(i->i));
+```
+
+
+
+
+
+
+
+
+http://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
+http://www.concretepage.com/java/jdk-8/java-8-stream-tutorial-with-example
