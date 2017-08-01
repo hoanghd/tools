@@ -36,6 +36,11 @@ Stream<Integer> resStream = Stream.concat(Arrays.asList(1,2,3).stream(), Arrays.
         resStream.forEach(s->System.out.print(s+" "));
 ```
 
+### count() : long
+Đếm số lượng phần tử
+```java
+long cnt = Arrays.asList(1,2,3).stream().count();
+```
 
 
 
