@@ -49,4 +49,12 @@ php.ini
 extension=intl.so
 php composer.phar install -vvv
 
-	
+<VirtualHost *:80>
+    ServerAdmin webmaster@outlet.local
+    DocumentRoot "/Users/hoang-hd/Working/outlet/webroot"
+    SetEnv CAKE_ENV "development"
+    <Directory "/Users/hoang-hd/Working/outlet/webroot">
+        DirectoryIndex index.php
+        Require all granted
+    </Directory>
+</VirtualHost>
