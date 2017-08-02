@@ -34,6 +34,19 @@ Config File
 	- /demo/config/app.php
 	
 
+#Mac
+~/.bash_profile 
+export PATH=/Applications/XAMPP/bin:$PATH
 
+brew install icu4c 
+sudo pecl update-channels
+php -m | grep intl
+
+https://pecl.php.net/package/intl/
+sudo pear install intl-3.0.0.tgz
+
+php.ini
+extension=intl.so
+php composer.phar install -vvv
 
 	
