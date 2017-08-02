@@ -15,7 +15,7 @@
 
 #### Test
 curl -H "Accept: application/json" http://example.com/recipies
-
+```javascript
 $.ajax({
     type: 'POST',
     url: '/test/',
@@ -24,3 +24,4 @@ $.ajax({
     contentType: "application/json",
     dataType: 'json'
 });
+```
