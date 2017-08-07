@@ -1,0 +1,11 @@
+'fields'     => array('User2.id'),
+'table'      => $db->fullTableName($this->User),
+'alias'      => 'User2',
+'limit'      => null,
+'offset'     => null,
+'joins'      => array(),
+'conditions' => $conditionsSubQuery,
+'order'      => null,
+'group'      => null
+
+https://stackoverflow.com/questions/5079908/cakephp-find-method-with-join
