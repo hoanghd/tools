@@ -1,0 +1,26 @@
+https://www.zerostopbits.com/how-to-create-a-virtualhost-in-apache-2-2-on-centos-6-7/
+
+$vi /etc/httpd/conf/httpd.conf
+
+NameVirtualHost *:80
+
+<VirtualHost *:80>
+  ServerAdmin webmaster@yourdomain.com
+  DocumentRoot /var/www/virtual/yourdomain.com/public_html
+  ServerName www.yourdomain.com
+  ServerAlias yourdomain.com
+  ErrorLog /var/www/virtual/yourdomain.com/logs/error_log
+  CustomLog /var/www/virtual/yourdomain.com/logs/access_log combined
+
+  <Directory "/var/www/virtual/yourdomain.com">
+    Options -Indexes FollowSymLinks
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+  </Directory>
+</VirtualHost>
+
+mkdir -p /var/www/virtual/yourdomain.com/public_html
+mkdir -p /var/www/virtual/yourdomain.com/logs
+chown -R apache:apache /var/www/virtual/
+chmod -R 755 /var/www/virtual/
