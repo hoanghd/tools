@@ -1,3 +1,13 @@
 /Form/CForm.php
-- $row
-- $rows
+- protected $row
+- protected $rows
+
+- public $errors;
+- public $params;
+
+public function load();
+public function save();
+public function hasError();
+public function request()
+public function session()
+public function set($data = [])
