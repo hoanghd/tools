@@ -1,6 +1,7 @@
 /Form/CForm.php
-- protected $row
-- protected $rows
+- protected $id;
+- protected $row;
+- protected $rows;
 
 - public $errors;
 - public $params;
