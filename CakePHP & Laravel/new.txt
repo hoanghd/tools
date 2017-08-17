@@ -53,6 +53,9 @@ public function save($id){
   $this->set('_serialize', ['form']);
 }
 
+=================================
+CakePHP2
+=================================
 Router::getRequest()
 /Vendor/cakephp/cakephp/lib/Cake/Controller/Component/SessionComponent.php
 
