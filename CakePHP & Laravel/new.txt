@@ -25,6 +25,7 @@ public function save(){
           $form->save();
       }
   }
+  
   $form->set([]);
   $this->set('_serialize', ['form']);
 }
