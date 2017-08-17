@@ -7,8 +7,8 @@
 - public $params;
 
 public function load();
-public function bindFormGet();
-public function bindFormPost();
+public function bindFromQuery();
+public function bindFromRequest();
 public function isValid();
 public function save();
 public function hasError();
@@ -23,7 +23,7 @@ public function save($id){
   }
   
   if ($this->request->is(['patch', 'post', 'put'])) {
-      $form->bindFormRequest();
+      $form->bindFromRequest();
       if($form->isValid()){
           $form->save();
       }
