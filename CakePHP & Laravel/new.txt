@@ -7,7 +7,8 @@
 - public $params;
 
 public function load();
-public function bindFormRequest();
+public function bindFormGet();
+public function bindFormPost();
 public function isValid();
 public function save();
 public function hasError();
