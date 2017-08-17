@@ -8,6 +8,7 @@
 - public $params;
 
 public function load();
+public function ajaxHandler();
 public function bindFromQuery();
 public function bindFromRequest();
 public function isValid();
