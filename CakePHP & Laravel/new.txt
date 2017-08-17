@@ -3,7 +3,6 @@
 - protected $row;
 - protected $rows;
 - protected $model;
-- protected $allow;
 
 - public $errors;
 - public $params;
