@@ -12,3 +12,19 @@ public function hasError();
 public function request()
 public function session()
 public function set($data = [])
+
+
+========================================
+
+public function save(){
+  $form = new CarsInfoForm();
+  
+  if ($this->request->is(['patch', 'post', 'put'])) {
+      $form->bindFormRequest();
+      if($form->isValidate()){
+          $form->save();
+      }
+  }
+  $form->set([]);
+  $this->set('_serialize', ['form']);
+}
