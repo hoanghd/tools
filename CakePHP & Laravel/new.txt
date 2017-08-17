@@ -36,9 +36,6 @@ public function index(){
  * $id = 0 => create
  */
 public function save($id){
-/**
- * $id = 0 | create
- */
   $form = new CarsInfoForm();
   
   if(!$form->load($id)){
