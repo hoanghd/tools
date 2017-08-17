@@ -12,7 +12,15 @@ public function ajaxHandler();
 public function bindFromQuery();
 public function bindFromRequest();
 public function isValid();
-public function save();
+
+public function save(){
+  if(!$this->model->save()){
+      $this->params['err500'] = __('save.error');
+      return false;
+  }
+  return true;
+}
+
 public function hasError();
 
 ========================================
