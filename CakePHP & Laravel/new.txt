@@ -7,12 +7,10 @@
 - public $params;
 
 public function load();
+public function bindFormRequest();
+public function isValid();
 public function save();
 public function hasError();
-public function request()
-public function session()
-public function set($data = [])
-
 
 ========================================
 
