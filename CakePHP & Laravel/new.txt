@@ -16,8 +16,12 @@ public function set($data = [])
 
 ========================================
 
-public function save(){
+public function save($id){
   $form = new CarsInfoForm();
+  
+  if(!$form->load($id)){
+    throw new NotFoundException();
+  }
   
   if ($this->request->is(['patch', 'post', 'put'])) {
       $form->bindFormRequest();
