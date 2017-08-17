@@ -16,6 +16,21 @@ public function save();
 public function hasError();
 
 ========================================
+public function index(){
+  $form = new CarsIndexForm();
+  
+  if($this->request->is('ajax')){
+      $form->ajaxHandler();
+  } else {
+      $form->bindFromQuery();
+      if($form->isValid()){
+          $form->search();
+      }
+  }
+  
+  $this->set(compact('form'));
+  $this->set('_serialize', ['form']);
+}
 
 public function save($id){
   $form = new CarsInfoForm();
