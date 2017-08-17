@@ -7,11 +7,36 @@
 - public $errors;
 - public $params;
 
-public function load();
-public function ajaxHandler();
-public function bindFromQuery();
-public function bindFromRequest();
-public function isValid();
+public function load($id){
+  $this->row = $this->model->find(
+    'first', [
+      'conditions' => []
+    ]
+  );
+  
+  return !empty($this->row);
+}
+
+public function ajaxHandler(){}
+
+public function bindFromQuery(){
+  Router::getRequest()->data = (array)Router::getRequest()->query;
+  $this->bindFromRequest();
+}
+
+public function bindFromRequest(){
+  $this->model->set(Hash::merge(
+      $this->getEmptyVal(),
+      $this->getData()
+  ));
+}
+
+public function isValid(){
+  $this->setValidatorRule();
+  if (!$this->model->validates()) {
+      $this->errors = $this->model->validationErrors;
+  }
+}
 
 public function save(){
   if(!$this->model->save()){
@@ -21,8 +46,28 @@ public function save(){
   return true;
 }
 
-public function hasError();
+public function hasError(){
+  return !empty($this->errors);
+}
 
+//override
+public function setValidatorRule(){
+   $this->model->validate = [];
+}
+
+public function getEmptyVal(){
+  return [
+      'Car' => array_fill_keys([
+          'date_display_auction'
+      ], ''
+      )
+  ];
+}
+
+public function getData(){
+  $row = (array) Router::getRequest()->data;
+  return $row;
+}
 ========================================
 public function index(){
   $form = new CarsIndexForm();
