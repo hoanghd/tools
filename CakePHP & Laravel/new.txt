@@ -65,8 +65,10 @@ public function getEmptyVal(){
 }
 
 public function getData(){
-  $row = (array) Router::getRequest()->data;
-  return $row;
+  $row = (array) Router::getRequest()->data['Car'];
+  return [
+      'Car' => $this->pick($row, ['date_display_auction', 'auction_status'])
+  ];
 }
 ========================================
 public function index(){
