@@ -2,6 +2,7 @@
 - protected $id;
 - protected $row;
 - protected $rows;
+- protected $model;
 
 - public $errors;
 - public $params;
