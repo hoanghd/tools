@@ -30,6 +30,7 @@ PHP 7: https://www.vultr.com/docs/how-to-install-php-7-x-on-centos-7
    $yum install -y mod_php71w php71w-cli php71w-common php71w-gd php71w-mbstring php71w-mcrypt php71w-mysqlnd php71w-xml
    $vi /etc/php.ini
 
-POSTGRE 9.3
+POSTGRE 9.3: https://www.postgresql.org/download/linux/redhat/
+   
 	
 	
