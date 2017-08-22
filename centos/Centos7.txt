@@ -5,15 +5,15 @@ NETWORK: (http://linux-training.be/funhtml/ch05.html)
 	$nmtui
 	$systemctl restart network
 	$systemctl stop|mask firewalld
+	
+	$firewall-cmd --permanent --add-port=80/tcp
+	$firewall-cmd --permanent --add-port=443/tcp
+	$firewall-cmd --reload
 
 APACHE: http://www.liquidweb.com/kb/how-to-install-apache-on-centos-7/
 	$yum clean all
 	$yum -y update
 	$yum install httpd mod_ssl
-	$firewall-cmd --permanent --add-port=80/tcp
-	$firewall-cmd --permanent --add-port=443/tcp
-	$firewall-cmd --reload
-	
 	$systemctl start|stop|restart|enable|status httpd
 
 PHP 5.6:https://blog.hostonnet.com/install-php-5-6-on-centos-7-server
