@@ -15,6 +15,27 @@ APACHE: http://www.liquidweb.com/kb/how-to-install-apache-on-centos-7/
    $yum -y update
    $yum install httpd mod_ssl
    $systemctl start|stop|restart|enable|status httpd
+   
+VHOST
+   $vi /etc/httpd/conf.d/ctob.local
+	  NameVirtualHost *:80
+
+	  <VirtualHost *:80>
+	    ServerAdmin webmaster@ctob.local
+	      DocumentRoot "/var/www/virtual/ctob.local/"
+	      ServerName www.ctob.local
+	      ServerAlias ctob.local
+	      ErrorLog /var/log/httpd/ctob.local_error_log
+	      CustomLog /var/log/httpd/ctob.local_access_log combined
+
+	     <Directory "/var/www/virtual/ctob.local/">
+		Options FollowSymLinks
+		AllowOverride All
+		Require all granted
+	     </Directory>
+	  </VirtualHost>
+    $mkdir /var/www/virtual/ctob.local/
+    $chown apache:apache -R /var/www/virtual/ctob.local/
 
 PHP 5.6:https://blog.hostonnet.com/install-php-5-6-on-centos-7-server
    $yum install -y epel-release
