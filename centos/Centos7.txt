@@ -31,6 +31,3 @@ PHP 7: https://www.vultr.com/docs/how-to-install-php-7-x-on-centos-7
    $vi /etc/php.ini
 
 POSTGRE 9.3: https://www.postgresql.org/download/linux/redhat/
-   
-	
-	
