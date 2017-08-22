@@ -1,9 +1,7 @@
-
 NETWORK: (http://linux-training.be/funhtml/ch05.html)
 	$nmtui
 	$systemctl restart network
-	$systemctl stop firewalld
-	$systemctl mask firewalld
+	$systemctl stop|mask firewalld
 
 APACHE: http://www.liquidweb.com/kb/how-to-install-apache-on-centos-7/
 	$sudo yum clean all
@@ -12,9 +10,18 @@ APACHE: http://www.liquidweb.com/kb/how-to-install-apache-on-centos-7/
 	$sudo firewall-cmd --permanent --add-port=80/tcp
 	$sudo firewall-cmd --permanent --add-port=443/tcp
 	$sudo firewall-cmd --reload
-	$sudo systemctl start httpd
-	$sudo systemctl enable httpd
-	$sudo systemctl status httpd
-	$sudo systemctl stop httpd
+	
+	$sudo systemctl start|stop|restart|enable|status httpd
+
+PHP 5.6:
 
 
+PHP 7: https://www.vultr.com/docs/how-to-install-php-7-x-on-centos-7
+	$sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+	$sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+	
+	$sudo yum install -y mod_php71w php71w-cli php71w-common php71w-gd php71w-mbstring php71w-mcrypt php71w-mysqlnd php71w-xml
+	$sudo vi /etc/php.ini
+
+	
+	
