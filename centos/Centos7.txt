@@ -1,5 +1,6 @@
 CMD
    $ifconfig -> $ip addr
+   $vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
 
 NETWORK: (http://linux-training.be/funhtml/ch05.html)
    $nmtui
