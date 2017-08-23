@@ -149,4 +149,6 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    
    $useradd -m hoanghd -s /sbin/nologin
    $passwd hoanghd
+   
+   $setenforce 0
     
