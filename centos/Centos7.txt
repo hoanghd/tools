@@ -144,11 +144,9 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
     1.  Domain                 : centos7.local
     3.  Sendmail or SMTP       : SMTP
     
-   $vi /etc/httpd/conf/httpd.conf
-     Alias /webmail /usr/share/squirrelmailOptions Indexes FollowSymLinks
-        RewriteEngine On
-        AllowOverride All
-        DirectoryIndex index.php
-        Order allow,deny
-        Allow from all
+   $/etc/httpd/conf.d/squirrelmail.conf
+   $systemctl restart httpd
+   
+   $useradd -m hoanghd -s /sbin/nologin
+   $passwd hoanghd
     
