@@ -65,8 +65,8 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
     mydomain = centos7.local
     myorigin = $mydomain
     inet_interfaces = all
-    inet_interfaces = localhost
     inet_protocols = all
+    inet_interfaces = localhost
     mydestination = $myhostname, localhost.$mydomain, localhost, $mydomain
     mynetworks = 127.0.0.0/8
     home_mailbox = mail/
