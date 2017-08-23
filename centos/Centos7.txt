@@ -53,7 +53,7 @@ PHP 7: https://www.vultr.com/docs/how-to-install-php-7-x-on-centos-7
 
 POSTGRE 9.3: https://www.postgresql.org/download/linux/redhat/
 
-Postfix
+Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server-on-centos7/
    $yum -y install postfix
    $mkdir /etc/postfix/ssl
    $cd /etc/postfix/ssl
@@ -133,8 +133,22 @@ Postfix
    $firewall-cmd --permanent --add-service=imaps
    $firewall-cmd --permanent --add-service=http
    $firewall-cmd --reload
-
+   
+   $telnet mail.centos7.local smtp
+   $yum -y install telnet
+   
+   $yum -y install epel-release
+   $yum -y install squirrelmail
+   $cd /usr/share/squirrelmail/config/
+   $./conf.pl
+    1.  Domain                 : centos7.local
+    3.  Sendmail or SMTP       : SMTP
     
-    
-    
+   $vi /etc/httpd/conf/httpd.conf
+     Alias /webmail /usr/share/squirrelmailOptions Indexes FollowSymLinks
+        RewriteEngine On
+        AllowOverride All
+        DirectoryIndex index.php
+        Order allow,deny
+        Allow from all
     
