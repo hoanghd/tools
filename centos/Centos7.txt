@@ -124,7 +124,16 @@ Postfix
    $systemctl restart dovecot
    $systemctl enable dovecot
    
-   
+   $firewall-cmd --permanent --add-service=smtp
+   $firewall-cmd --permanent --add-port=587/tcp
+   $firewall-cmd --permanent --add-port=465/tcp
+   $firewall-cmd --permanent --add-port=110/tcp
+   $firewall-cmd --permanent --add-service=pop3s
+   $firewall-cmd --permanent --add-port=143/tcp
+   $firewall-cmd --permanent --add-service=imaps
+   $firewall-cmd --permanent --add-service=http
+   $firewall-cmd --reload
+
     
     
     
