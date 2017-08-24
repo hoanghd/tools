@@ -171,5 +171,9 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    $/etc/httpd/conf.d/squirrelmail.conf
    $systemctl restart httpd
    
-   $useradd -m hoanghd -s /sbin/nologin
-   $passwd hoanghd
+   $useradd -m noreply -s /sbin/nologin
+   $passwd noreply
+   
+   $https://centos7.local/webmail/
+
+
