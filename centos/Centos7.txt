@@ -1,7 +1,6 @@
 CMD
    $ifconfig -> $ip addr
    $vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
-   $setenforce 0
 
 NETWORK: (http://linux-training.be/funhtml/ch05.html)
    $nmtui
@@ -173,6 +172,7 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    
    $useradd -m noreply -s /sbin/nologin
    $passwd noreply
+   $setenforce 0
    
    $https://centos7.local/webmail/
 
