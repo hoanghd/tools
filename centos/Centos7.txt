@@ -43,7 +43,8 @@ PHP 5.6:https://blog.hostonnet.com/install-php-5-6-on-centos-7-server
    $wget https://rpms.remirepo.net/enterprise/remi-release-7.rpm
    $rpm -ivh remi-release-7.rpm
    $yum update
-   $yum install php56 php56-php php56-php-mysqlnd php56-php-gd php56-php-mcrypt php56-php-mbstring php56-php-xml php56-php-cli php56-php-intl php56-php-pgsql php56-php-soap php56-php-pdo 
+   $yum install php56 php56-php php56-php-mysqlnd php56-php-gd php56-php-mcrypt php56-php-mbstring php56-php-xml php56-php-cli php56-php-intl php56-php-pgsql php56-php-soap php56-php-pdo
+   $ln -s /usr/bin/php56 /usr/bin/php
 
 PHP 7: https://www.vultr.com/docs/how-to-install-php-7-x-on-centos-7
    $rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
