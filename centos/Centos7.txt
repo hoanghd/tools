@@ -177,4 +177,6 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    
    $https://centos7.local/webmail/
 
-
+   $vi /etc/sysconfig/selinux
+   SELINUX=disabled
+   
