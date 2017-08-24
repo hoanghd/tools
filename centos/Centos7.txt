@@ -1,6 +1,7 @@
 CMD
    $ifconfig -> $ip addr
    $vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
+   $setenforce 0
 
 NETWORK: (http://linux-training.be/funhtml/ch05.html)
    $nmtui
@@ -53,6 +54,15 @@ PHP 7: https://www.vultr.com/docs/how-to-install-php-7-x-on-centos-7
    $vi /etc/php.ini
 
 POSTGRE 9.3: https://www.postgresql.org/download/linux/redhat/
+   $yum install postgresql postgresql-server postgresql-contrib
+   $firewall-cmd --permanent --add-port=5432/tcp
+   $firewall-cmd --reload
+   $postgresql-setup initdb
+   $vi /var/lib/pgsql/data/pg_hba.conf
+   	host    all             all             127.0.0.1/32            md5
+	host    all             all             ::1/128                 md5
+   $systemctl start|stop|restart|enable|status postgresql
+   
 
 Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server-on-centos7/
    $yum -y install postfix
@@ -151,5 +161,5 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    $useradd -m hoanghd -s /sbin/nologin
    $passwd hoanghd
    
-   $setenforce 0
+   
     
