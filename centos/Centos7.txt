@@ -18,7 +18,7 @@ APACHE: http://www.liquidweb.com/kb/how-to-install-apache-on-centos-7/
    $systemctl start|stop|restart|enable|status httpd
    
 VHOST
-   $vi /etc/httpd/conf.d/ctob.local
+   $vi /etc/httpd/conf.d/ctob.local.conf
 	  NameVirtualHost *:80
 
 	  <VirtualHost *:80>
