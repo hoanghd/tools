@@ -40,6 +40,7 @@ VHOST
     $chown apache:apache -R /var/www/virtual/ctob.local/
 
 PHP 5.6:https://blog.hostonnet.com/install-php-5-6-on-centos-7-server
+   #yum remove php-cli mod_php php-common
    $yum install -y epel-release
    $wget https://rpms.remirepo.net/enterprise/remi-release-7.rpm
    $rpm -ivh remi-release-7.rpm
