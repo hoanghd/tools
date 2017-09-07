@@ -28,7 +28,8 @@ VHOST
 	      ServerAlias ctob.local
 	      ErrorLog /var/log/httpd/ctob.local_error_log
 	      CustomLog /var/log/httpd/ctob.local_access_log combined
-
+              SetEnv APPLICATION_ENV "development"
+	      
 	     <Directory "/var/www/virtual/ctob.local/">
 		Options FollowSymLinks
 		AllowOverride All
