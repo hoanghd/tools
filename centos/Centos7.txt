@@ -40,7 +40,7 @@ VHOST
     $chown apache:apache -R /var/www/virtual/ctob.local/
 
 PHP 5.6:https://blog.hostonnet.com/install-php-5-6-on-centos-7-server
-   #yum remove php-cli mod_php php-common
+   #yum remove php-cli mod_php php-common php-mbstring
    $yum install -y epel-release
    $wget https://rpms.remirepo.net/enterprise/remi-release-7.rpm
    $rpm -ivh remi-release-7.rpm
@@ -166,6 +166,12 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    $yum -y install epel-release
    $yum -y install squirrelmail
    $cd /usr/share/squirrelmail/config/
+   Hoac
+   $wget https://squirrelmail.org/countdl.php?fileurl=http%3A%2F%2Fprdownloads.sourceforge.net%2Fsquirrelmail%2Fsquirrelmail-webmail-1.4.22.zip
+   $unzip /var/www/html/webmail/
+   $mkdir /var/local/squirrelmail/data
+   $chmod -R 777 /var/local/squirrelmail
+   
    $./conf.pl
     1.  Domain                 : centos7.local
     3.  Sendmail or SMTP       : SMTP
