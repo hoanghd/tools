@@ -209,9 +209,9 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    $ cd php-1.1.8
 
     ./buildconf --force
-    ./configure --prefix=/usr/local/php7 \
-	    --with-config-file-path=/usr/local/php7/etc \
-	    --with-config-file-scan-dir=/usr/local/php7/etc/conf.d \
+    ./configure --prefix=/usr/local/php71 \
+	    --with-config-file-path=/usr/local/php71/etc \
+	    --with-config-file-scan-dir=/usr/local/php71/etc/conf.d \
 	    --enable-bcmath \
 	    --with-bz2 \
 	    --with-curl \
@@ -245,14 +245,14 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
 
    $ make
    $ make install
-   $ mkdir /usr/local/php7/etc/conf.d
-   $ cp -v ./php.ini-production /usr/local/php7/etc/php.ini
+   $ mkdir /usr/local/php71/etc/conf.d
+   $ cp -v ./php.ini-production /usr/local/php71/etc/php.ini
    
    $ yum install httpd mod_ssl mod_fcgid mod_proxy_fcgi
-   $ vi /var/www/cgi-bin/php7.fcgi
+   $ vi /var/www/cgi-bin/php71.fcgi
    	#!/bin/bash
-	PHPRC="/usr/local/php7/etc/php.ini"
-	PHP_CGI=/usr/local/php7/bin/php-cgi
+	PHPRC="/usr/local/php71/etc/php.ini"
+	PHP_CGI=/usr/local/php71/bin/php-cgi
 	PHP_FCGI_CHILDREN=8
 	PHP_FCGI_MAX_REQUESTS=3000
 	export PHPRC
@@ -287,8 +287,8 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
 	    AddType application/x-httpd-php56 .php56
 
 	    # PHP 7 default
-	    Action application/x-httpd-php7 /cgi-bin/php7.fcgi
-	    AddType application/x-httpd-php7 .php7
+	    Action application/x-httpd-php71 /cgi-bin/php71.fcgi
+	    AddType application/x-httpd-php71 .php71
 	    
 	    # Sane place to put sockets and shared memory file
 	    FcgidIPCDir /var/run/mod_fcgid
