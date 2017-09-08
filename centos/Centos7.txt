@@ -249,16 +249,17 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    $ cp -v ./php.ini-production /usr/local/php7/etc/php.ini
    
    $ yum install httpd mod_ssl mod_fcgid mod_proxy_fcgi
-   $ vi /var/www/cgi-bin/php53.fcgi
+   $ vi /var/www/cgi-bin/php7.fcgi
    	#!/bin/bash
-	PHPRC="/etc/php53/php.ini"
-	PHP_CGI=/usr/local/php53/bin/php-cgi
+	PHPRC="/usr/local/php7/etc/php.ini"
+	PHP_CGI=/usr/local/php7/bin/php-cgi
 	PHP_FCGI_CHILDREN=8
 	PHP_FCGI_MAX_REQUESTS=3000
 	export PHPRC
 	export PHP_FCGI_CHILDREN
 	export PHP_FCGI_MAX_REQUESTS
 	exec $PHP_CGI
+	
    $ vi /etc/httpd/conf.d/fcgi.conf
    	# /etc/httpd/conf.d/fcgi.conf
 	LoadModule fcgid_module modules/mod_fcgid.so
@@ -283,6 +284,10 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
 	    Action application/x-httpd-php56 /cgi-bin/php56.fcgi
 	    AddType application/x-httpd-php56 .php56
 
+	    # PHP 7 default
+	    Action application/x-httpd-php7 /cgi-bin/php7.fcgi
+	    AddType application/x-httpd-php7 .php7
+	    
 	    # Sane place to put sockets and shared memory file
 	    FcgidIPCDir /var/run/mod_fcgid
 	    FcgidProcessTableFile /var/run/mod_fcgid/fcgid_shm
@@ -301,7 +306,7 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
 		Allow from all
 		<IfModule mod_fcgid.c>
 		    <FilesMatch \.php$>
-			SetHandler application/x-httpd-php53
+			SetHandler application/x-httpd-php7
 		    </FilesMatch>
 		</IfModule>
 	    </Directory>
