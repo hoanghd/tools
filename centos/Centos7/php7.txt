@@ -38,7 +38,7 @@ yum install git gcc gcc-c++ libxml2-devel pkgconfig openssl-devel bzip2-devel cu
     --enable-zip \
     --with-zlib
 
-make -j2
+make
 make install
 mkdir /usr/local/php7/etc/conf.d
 cp -v ./php.ini-production /usr/local/php7/etc/php.ini
