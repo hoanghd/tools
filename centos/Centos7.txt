@@ -196,7 +196,6 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    $ http://php.net/get/php-5.6.30.tar.gz/from/a/mirror
    $ http://php.net/get/php-5.5.37.tar.gz/from/a/mirror
    $ http://php.net/get/php-5.4.45.tar.gz/from/a/mirror
-   $ http://php.net/get/php-5.3.29.tar.gz/from/a/mirror
  
    $ yum group list
    $ yum group list ids
@@ -269,10 +268,6 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
 	<IfModule mod_fcgid.c>
 	    # Use FastCGI to process .fcg .fcgi & .fpl scripts
 	    AddHandler fcgid-script fcg fcgi fpl
-
-	    # PHP 5.3
-	    Action application/x-httpd-php53 /cgi-bin/php53.fcgi
-	    AddType application/x-httpd-php53 .php53
 
 	    # PHP 5.4
 	    Action application/x-httpd-php54 /cgi-bin/php54.fcgi
