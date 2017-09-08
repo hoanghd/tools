@@ -296,21 +296,24 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
 	</IfModule>
    
    $ virtual host
-	 <VirtualHost *:80>
-	    ServerName your-domain.dev
-	    DocumentRoot /var/www/apps/your-webroot/
-	    ErrorLog logs/error-your-app.log
-	    CustomLog logs/access-your-app.log combined
-	    <Directory /var/www/apps/your-webroot/>
-		Options FollowSymLinks ExecCGI
-		AllowOverride All
-		Order allow,deny
-		Allow from all
-		<IfModule mod_fcgid.c>
-		    <FilesMatch \.php$>
-			SetHandler application/x-httpd-php7
-		    </FilesMatch>
-		</IfModule>
-	    </Directory>
+       <VirtualHost *:80>
+	  ServerAdmin webmaster@ctob.local
+	    DocumentRoot "/var/www/virtual/ctob.local/"
+	    ServerName www.ctob.local
+	    ServerAlias ctob.local
+	    ErrorLog /var/log/httpd/ctob.local_error_log
+	    CustomLog /var/log/httpd/ctob.local_access_log combined
+	    SetEnv APPLICATION_ENV "development"
+
+	   <Directory "/var/www/virtual/ctob.local/">
+	      Options FollowSymLinks ExecCGI
+	      AllowOverride All
+	      Require all granted
+	      <IfModule mod_fcgid.c>
+		<FilesMatch \.php$>
+		  SetHandler application/x-httpd-php7
+		</FilesMatch>
+	      </IfModule>
+	   </Directory>
 	</VirtualHost>
    
