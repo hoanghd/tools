@@ -260,6 +260,8 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
 	export PHP_FCGI_MAX_REQUESTS
 	exec $PHP_CGI
 	
+   $ chmod 755 php7.fcgi
+   
    $ vi /etc/httpd/conf.d/fcgi.conf
    	# /etc/httpd/conf.d/fcgi.conf
 	LoadModule fcgid_module modules/mod_fcgid.so
