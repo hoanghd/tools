@@ -39,8 +39,6 @@ make -j2
 make install
 mkdir /usr/local/php7/etc/conf.d
 cp -v ./php.ini-production /usr/local/php7/lib/php.ini
-cp -v ./sapi/fpm/www.conf /usr/local/php7/etc/php-fpm.d/www.conf
-cp -v ./sapi/fpm/php-fpm.conf /usr/local/php7/etc/php-fpm.conf
 
 
 https://shaunfreeman.name/compiling-php-7-on-centos/
