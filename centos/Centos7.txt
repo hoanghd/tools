@@ -313,3 +313,9 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
 	   </Directory>
 	</VirtualHost>
    
+   IMAGICK
+   $ /usr/local/php56/bin/phpize
+   $ ./configure --with-php-config=/usr/local/php56/bin/php-config
+   $ make
+   $ make install
+   $ systemctl restart httpd
