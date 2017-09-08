@@ -318,4 +318,6 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    $ ./configure --with-php-config=/usr/local/php56/bin/php-config
    $ make
    $ make install
+   $ vi /usr/local/php56/etc/php.ini
+      extension=imagick.so
    $ systemctl restart httpd
