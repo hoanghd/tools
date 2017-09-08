@@ -205,6 +205,7 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    $ wget http://us1.php.net/get/php-5.3.29.tar.gz/from/this/mirror
    $ tar -xvzf mirror
    $ cd php-5.3.29
+   
    $ ./configure --prefix=/usr/local/php53 \
 	    --with-config-file-path=/etc/php53 \
 	    --with-config-file-scan-dir=/etc/php53/php.d \
