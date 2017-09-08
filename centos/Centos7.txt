@@ -300,7 +300,7 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
 	    ErrorLog logs/error-your-app.log
 	    CustomLog logs/access-your-app.log combined
 	    <Directory /var/www/apps/your-webroot/>
-		Options FollowSymLinks +ExecCGI
+		Options FollowSymLinks ExecCGI
 		AllowOverride All
 		Order allow,deny
 		Allow from all
