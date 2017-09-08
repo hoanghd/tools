@@ -13,7 +13,7 @@ yum install git gcc gcc-c++ libxml2-devel pkgconfig openssl-devel bzip2-devel cu
     --with-bz2 \
     --with-curl \
     --enable-filter \
-    --enable-fpm \
+    --enable-cgi \
     --with-gd \
     --enable-gd-native-ttf \
     --with-freetype-dir \
