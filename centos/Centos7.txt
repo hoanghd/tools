@@ -248,7 +248,7 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    $ mkdir /usr/local/php7/etc/conf.d
    $ cp -v ./php.ini-production /usr/local/php7/etc/php.ini
    
-   $ yum install httpd mod_ssl mod_fastcgi
+   $ yum install httpd mod_ssl mod_fcgid mod_proxy_fcgi
    $ vi /var/www/cgi-bin/php53.fcgi
    	#!/bin/bash
 	PHPRC="/etc/php53/php.ini"
