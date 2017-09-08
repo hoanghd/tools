@@ -206,52 +206,48 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    $ tar -xvzf mirror
    $ cd php-5.3.29
    
-   $ ./configure --prefix=/usr/local/php53 \
-	    --with-config-file-path=/etc/php53 \
-	    --with-config-file-scan-dir=/etc/php53/php.d \
-	    --with-libdir=lib64 \
-	    --enable-mbstring \
-	    --disable-debug \
-	    --disable-rpath \
-	    --enable-mbstring \
-	    --enable-mbregex \
-	    --enable-phar \
-	    --enable-posix \
-	    --enable-soap \
-	    --enable-sockets \
-	    --enable-sysvmsg \
-	    --enable-sysvsem \
-	    --enable-sysvshm \
-	    --enable-zip \
-	    --enable-inline-optimization \
-	    --enable-intl \
-	    --with-icu-dir=/usr \
-	    --with-curl=/usr/bin \
+   $yum -y install epel-release
+   $yum install git gcc gcc-c++ libxml2-devel pkgconfig openssl-devel bzip2-devel curl-devel libpng-devel libjpeg-devel libXpm-devel freetype-devel gmp-devel libmcrypt-devel mariadb-devel aspell-devel recode-devel autoconf bison re2c libicu-devel imagemagick libpqxx-devel
+
+    ./buildconf --force
+    ./configure --prefix=/usr/local/php7 \
+	    --with-config-file-path=/usr/local/php7/etc \
+	    --with-config-file-scan-dir=/usr/local/php7/etc/conf.d \
+	    --enable-bcmath \
+	    --with-bz2 \
+	    --with-curl \
+	    --enable-filter \
+	    --enable-cgi \
 	    --with-gd \
-	    --with-jpeg-dir=/usr \
-	    --with-png-dir=shared,/usr \
-	    --with-xpm-dir=/usr \
-	    --with-freetype-dir=/usr \
-	    --with-bz2=/usr \
-	    --with-gettext \
-	    --with-iconv-dir=/usr \
-	    --with-mcrypt=/usr \
-	    --with-mhash \
-	    --with-zlib-dir=/usr \
-	    --with-regex=php \
-	    --with-pcre-regex \
-	    --with-openssl \
-	    --with-openssl-dir=/usr/bin \
-	    --with-mysql-sock=/var/run/mysqld/mysqld.sock \
+	    --enable-gd-native-ttf \
+	    --with-freetype-dir \
+	    --with-jpeg-dir \
+	    --with-png-dir \
+	    --enable-intl \
+	    --enable-mbstring \
+	    --with-mcrypt \
+	    --enable-mysqlnd \
+	    --with-pgsql \
+	    --with-mysql-sock=/var/lib/mysql/mysql.sock \
 	    --with-mysqli=mysqlnd \
-	    --with-sqlite3=/usr \
 	    --with-pdo-mysql=mysqlnd \
-	    --with-pdo-sqlite=/usr \
-	    --enable-cgi
+	    --with-pdo-sqlite \
+	    --with-pdo-pgsql \
+	    --disable-phpdbg \
+	    --disable-phpdbg-webhelper \
+	    --enable-opcache \
+	    --with-openssl \
+	    --enable-simplexml \
+	    --with-sqlite3 \
+	    --enable-xmlreader \
+	    --enable-xmlwriter \
+	    --enable-zip \
+	    --with-zlib
+
    $ make
    $ make install
-   $ mkdir /etc/php53
-   $ cp php.ini-production /etc/php53/php.ini
+   $ mkdir /usr/local/php7/etc/conf.d
+   $ cp -v ./php.ini-production /usr/local/php7/etc/php.ini
    
    $ yum install httpd mod_ssl mod_fastcgi
    $ vi /var/www/cgi-bin/php53.fcgi
