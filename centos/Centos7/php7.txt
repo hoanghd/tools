@@ -1,0 +1,74 @@
+sudo apt-get update
+sudo apt-get install libldap2-dev \
+  libldap-2.4-2 \
+  libtool-bin \
+  libzip-dev \
+  lbzip2 \
+  libxml2-dev \
+  bzip2 \
+  re2c \
+  libbz2-dev \
+  apache2-dev \
+  libjpeg-dev \
+  libxpm-dev \
+  libxpm-dev \
+  libgmp-dev \
+  libgmp3-dev \
+  libmcrypt-dev \
+  libmysqlclient-dev \
+  mysql-server \
+  mysql-common \
+  libpspell-dev \
+  librecode-dev \
+  libcurl4-openssl-dev \
+  libxft-dev
+
+# PHP 7 does not recognize these without additional parameters or symlinks for
+# Ldap.
+sudo ln -sf /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so
+sudo ln -sf /usr/lib/x86_64-linux-gnu/liblber.so /usr/lib/liblber.so
+sudo ln -sf /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h
+
+./buildconf --force
+# Setup compile options for Kubuntu.  If failures occur, check dependencies
+# and symlink needs above.
+./configure --prefix=/usr/local/php7 \
+    --with-config-file-path=/etc/php7/apache2 \
+    --with-config-file-scan-dir=/etc/php7/apache2/conf.d \
+    --enable-mbstring \
+    --enable-zip \
+    --enable-bcmath \
+    --enable-pcntl \
+    --enable-ftp \
+    --enable-exif \
+    --enable-calendar \
+    --enable-sysvmsg \
+    --enable-sysvsem \
+    --enable-sysvshm \
+    --enable-wddx \
+    --enable-intl \
+    --with-curl \
+    --with-mcrypt \
+    --with-iconv \
+    --with-gmp \
+    --with-pspell \
+    --with-gd \
+    --with-jpeg-dir=/usr \
+    --with-png-dir=/usr \
+    --with-zlib-dir=/usr \
+    --with-xpm-dir=/usr \
+    --with-freetype-dir=/usr \
+    --with-t1lib=/usr \
+    --enable-gd-native-ttf \
+    --enable-gd-jis-conv \
+    --with-openssl \
+    --with-pdo-mysql=/usr \
+    --with-gettext=/usr \
+    --with-zlib=/usr \
+    --with-bz2 \
+    --with-recode=/usr \
+    --with-apxs2=/usr/bin/apxs \
+    --with-mysqli=/usr/bin/mysql_config \
+    --with-ldap \
+    --with-xdebug
+
