@@ -1,3 +1,6 @@
+https://shaunfreeman.name/compiling-php-7-on-centos/
+====================================================
+
 yum -y install epel-release
 
 yum install git gcc gcc-c++ libxml2-devel pkgconfig openssl-devel bzip2-devel curl-devel libpng-devel libjpeg-devel libXpm-devel freetype-devel gmp-devel libmcrypt-devel mariadb-devel aspell-devel recode-devel autoconf bison re2c libicu-devel imagemagick
@@ -38,7 +41,4 @@ yum install git gcc gcc-c++ libxml2-devel pkgconfig openssl-devel bzip2-devel cu
 make -j2
 make install
 mkdir /usr/local/php7/etc/conf.d
-cp -v ./php.ini-production /usr/local/php7/lib/php.ini
-
-
-https://shaunfreeman.name/compiling-php-7-on-centos/
+cp -v ./php.ini-production /usr/local/php7/etc/php.ini
