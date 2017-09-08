@@ -240,7 +240,6 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
 	    --enable-xmlreader \
 	    --enable-xmlwriter \
 	    --enable-zip \
-	    --with-imagick \
 	    --with-zlib
 
    $ make
