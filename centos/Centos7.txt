@@ -202,12 +202,11 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    $ yum group list ids
    $ yum group install "Development Tools" 
    
-   $ wget http://us1.php.net/get/php-5.3.29.tar.gz/from/this/mirror
-   $ tar -xvzf mirror
-   $ cd php-5.3.29
+   $ yum -y install epel-release
+   $ yum install git gcc gcc-c++ libxml2-devel pkgconfig openssl-devel bzip2-devel curl-devel libpng-devel libjpeg-devel libXpm-devel freetype-devel gmp-devel libmcrypt-devel mariadb-devel aspell-devel recode-devel autoconf bison re2c libicu-devel imagemagick libpqxx-devel
    
-   $yum -y install epel-release
-   $yum install git gcc gcc-c++ libxml2-devel pkgconfig openssl-devel bzip2-devel curl-devel libpng-devel libjpeg-devel libXpm-devel freetype-devel gmp-devel libmcrypt-devel mariadb-devel aspell-devel recode-devel autoconf bison re2c libicu-devel imagemagick libpqxx-devel
+   $ tar -xvzf mirror
+   $ cd php-1.1.8
 
     ./buildconf --force
     ./configure --prefix=/usr/local/php7 \
