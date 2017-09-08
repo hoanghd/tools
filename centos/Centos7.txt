@@ -190,4 +190,32 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
 
    $vi /etc/sysconfig/selinux
    SELINUX=disabled
+ 
+ CHROOT JAIL
+   $mkdir -p /SECURE/Jail
+   $chown root:root /SECURE/Jail
+   $chmod 755 /SECURE/Jail
    
+   $mkdir -p /SECURE/Jail/dev/
+   $mknod -m 666 /SECURE/Jail/dev/null c 1 3
+   $mknod -m 666 /SECURE/Jail/dev/tty c 5 0
+   $mknod -m 666 /SECURE/Jail/dev/zero c 1 5
+   $mknod -m 666 /SECURE/Jail/dev/random c 1 8
+   
+   $cd /SECURE/Jail/
+   $ldd /bin/bash
+   $mkdir -p /SECURE/Jail/bin
+   $cp -v /bin/bash /SECURE/Jail/bin
+   $mkdir -p /SECURE/Jail/lib64/
+   $cp /usr/lib64/libtinfo.so.5 /SECURE/Jail/lib64/
+   $cp /usr/lib64/ld-linux-x86-64.so.2 /SECURE/Jail/lib64/
+   $cp /usr/lib64/libdl.so.2 /SECURE/Jail/lib64/
+   $cp /usr/lib64/libc.so.6 /SECURE/Jail/lib64/
+   
+   $cp -vf /etc/{passwd,group} /SECURE/Jail/etc/
+   $vi /etc/ssh/sshd_config
+   	Match User username
+	ChrootDirectory /SECURE/Jail
+	ForceCommand internal-sftp
+   
+   $systemctl restart sshd.service
