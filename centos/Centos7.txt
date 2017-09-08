@@ -301,6 +301,7 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
 	    SetEnv APPLICATION_ENV "development"
 
 	   <Directory "/var/www/virtual/ctob.local/">
+	      DirectoryIndex index.php
 	      Options FollowSymLinks ExecCGI
 	      AllowOverride All
 	      Require all granted
