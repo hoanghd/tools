@@ -1,3 +1,6 @@
+EBOOK
+   https://www.packtpub.com/mapt/book/networking_and_servers/9781783288885/1/ch01lvl1sec14/installing-the-gnome-desktop
+   
 CMD
    $ifconfig -> $ip addr
    $vi /etc/sysconfig/network-scripts/ifcfg-enp0s3
