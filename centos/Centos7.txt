@@ -198,6 +198,9 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    $ http://php.net/get/php-5.4.45.tar.gz/from/a/mirror
    $ http://php.net/get/php-5.3.29.tar.gz/from/a/mirror
  
+   $ yum group list
+   $ yum group install "Development Tools" 
+   
    $ wget http://us1.php.net/get/php-5.3.29.tar.gz/from/this/mirror
    $ tar -xvzf mirror
    $ cd php-5.3.29
