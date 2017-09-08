@@ -214,8 +214,12 @@ Postfix: https://hostpresto.com/community/tutorials/how-to-setup-an-email-server
    
    $cp -vf /etc/{passwd,group} /SECURE/Jail/etc/
    $vi /etc/ssh/sshd_config
-   	Match User username
+   	Match User root
 	ChrootDirectory /SECURE/Jail
 	ForceCommand internal-sftp
    
    $systemctl restart sshd.service
+   
+   APACHE & PHP
+   https://www.cyberciti.biz/tips/chroot-apache-under-rhel-fedora-centos-linux.html
+   
