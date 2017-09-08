@@ -23,10 +23,12 @@ yum install git gcc gcc-c++ libxml2-devel pkgconfig openssl-devel bzip2-devel cu
     --enable-mbstring \
     --with-mcrypt \
     --enable-mysqlnd \
+    --with-pgsql \
     --with-mysql-sock=/var/lib/mysql/mysql.sock \
     --with-mysqli=mysqlnd \
     --with-pdo-mysql=mysqlnd \
     --with-pdo-sqlite \
+    --with-pdo-pgsql \
     --disable-phpdbg \
     --disable-phpdbg-webhelper \
     --enable-opcache \
