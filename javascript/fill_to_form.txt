@@ -1,2 +1,5 @@
 http://davestewart.io/resources/javascript/jQuery/demos/populate-demo.html
 http://davestewart.io/plugins/jquery/jquery-populate/
+
+bind data to view
+https://github.com/petersirka/jquery.bindings
