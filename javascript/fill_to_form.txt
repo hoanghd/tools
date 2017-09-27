@@ -1,1 +1,2 @@
 http://davestewart.io/resources/javascript/jQuery/demos/populate-demo.html
+http://davestewart.io/plugins/jquery/jquery-populate/
