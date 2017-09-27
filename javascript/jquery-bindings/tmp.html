@@ -10,9 +10,11 @@
     <body>
         <div id="container" data-name="tasks">
             <ul class="tasks" data-model="tasks" data-custom="template">
-                <% _.each(data, function(task, index) { %>
-                <li><button itemid="<%=index%>">&times;</button> <%=task%></li>
-                <% }); %>
+                <script type="text/x-jquery-tmpl">
+                    <% _.each(data, function(task, index) { %>
+                    <li><button itemid="<%=index%>">&times;</button> <%=task%></li>
+                    <% }); %>
+                </script>
             </ul>
             <br />
             <div class="form">
@@ -22,6 +24,12 @@
         </div>
         <pre id="container-json"></pre>
         <script type="text/javascript">
+            /**
+             * https://github.com/gnarf/jquery-ajaxQueue
+             * use queue
+             * data-custom="template:/views/task.html"
+             */
+            
             var model = { 
                 current: '', 
                 tasks: [
@@ -35,7 +43,7 @@
                 if (custom === 'template') {
                     var tmp = this.data('template');
                     if (typeof(tmp) === 'undefined') {
-                        tmp = _.template($('<textarea/>').html(this.html()).text());
+                        tmp = _.template($('script', this).html());
                         this.data('template', tmp);
                     }
                     
@@ -62,8 +70,8 @@
             container.on('model-change', function(e, path, value, model, name, el) {
                 var container = $(this);
                 container.bindings('update')(function(model) {
-                        model.tasks.push(value);
-                        model.current = '';
+                    model.tasks.push(value);
+                    model.current = '';
                 });
             });
             
