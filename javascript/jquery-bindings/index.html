@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>Binding</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.bindings.min.js"></script>
+        <style>.input-error{border: 1px solid #DA4453 !important;}</style>
+    </head>
+    <body>
+        <div id="container" data-name="form">
+            <h2>Container .01</h2>
+            <div class="fl" style="width:500px">
+                    <div class="form">
+                            <div>First name</div>
+                            <div><input type="text" class="w200" maxlength="30" data-model="firstname" data-raw /></div>
+                    </div>
+                    <div class="form">
+                            <div>Last name</div>
+                            <div><input type="text" class="w200" maxlength="30" data-model="lastname" /></div>
+                    </div>
+                    <div class="form">
+                            <div>Age</div>
+                            <div><input type="text" class="w50" maxlength="2" data-model="age" /></div>
+                            <div style="margin:10px 0 0 10px" class="gray">years old</div>
+                    </div>
+                    <div class="form">
+                            <div>Tags</div>
+                            <div><input type="text" class="w200" maxlength="50" data-model="tags" /></div>
+                    </div>
+                    <br />
+                    <div class="caption"><strong>Home address</strong></div>
+                    <br />
+                    <div class="form">
+                            <div>City</div>
+                            <div>
+                                    <select data-model="address.city" style="width:217px">
+                                            <option value="">&nbsp;</option>
+                                            <option value="Bratislava">Bratislava</option>
+                                            <option value="London">London</option>
+                                            <option value="Berlin">Berlin</option>
+                                            <option value="Prague">Prague</option>
+                                    </select>
+                            </div>
+                    </div>
+                    <div class="form">
+                            <div>Street</div>
+                            <div><input type="text" class="w200" maxlength="30" data-model="address.street" /></div>
+                    </div>
+                    <div class="form">
+                            <div>Number</div>
+                            <div><input type="text" class="w50" maxlength="15" data-model="address.number" /></div>
+                    </div>
+            </div>
+            <div class="fl" style="margin-top:8px">
+                    <div class="caption"><strong>Sumarize</strong></div>
+                    <br />
+                    <div><span data-model="firstname" data-encode="true"></span> <b data-model="lastname"></b> <span data-model="age" data-format="print"></span></div>
+                    <div style="margin-top:10px"><span data-model="address.street"></span> <span data-model="address.number"></span></div>
+                    <div data-model="address.city"></div>
+                    <span class="tags" data-model="tags"></span>
+            </div>
+    </div>
+        <pre id="container-json"></pre>
+        <script type="text/javascript">
+            var model = { firstname: 'Peter', lastname: 'Širka', age: 29, tags: ['node.js', 'total.js', 'jQuery'], address: { city: 'Bratislava', street: 'Teplicka', number: '19' }};
+            
+            $.bindings.validation = function(path, value) {
+                switch (path) {
+                    case 'firstname':
+                    case 'lastname':
+                    case 'address.street':
+                    case 'address.number':
+                        return value.length > 0;
+                    case 'age':
+                        return value > 17 && value < 51;
+                    case 'tags':
+                        return value.length > 0;
+                }
+            };
+            
+            $.bindings.watch = function(isValid, path, value) {
+                this.toggleClass('input-error', !isValid);
+            };
+            
+            $.bindings.format = function(path, value, format, model, name) {
+                if (path === 'age' && format === 'print')
+                    return ' - ' + value + ' years old (' + (new Date().getFullYear() - value) + ')';
+                
+                if (value instanceof Array)
+                    return value.join(', ');
+                return value;
+            };
+            
+            $('#container')
+            .bindings('create')(model)
+            .on('model-change', function(e){
+                var output = $(this).bindings('model');
+                $('#container-json').html(JSON.stringify(output, null, '\t').replace(/</g, '&lt;').replace(/>/g, '&gt;')).show();
+            });
+        </script>
+    </body>
+</html>
