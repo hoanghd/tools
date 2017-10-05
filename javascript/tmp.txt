@@ -11,3 +11,7 @@ Using scope to prevent conflicts
   (function () {
     //Put your script code in here
   })();
+  
+  Biding Model
+  https://github.com/mikeric/rivets
+  
