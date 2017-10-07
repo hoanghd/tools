@@ -49,6 +49,7 @@
         }
     }
     
+	echo "\n---------------------------------------------------------------------------------------------\n";
     echo "\n---------------------------------------------------------------------------------------------\n";
     foreach ($cal[0] as $val){
         echo (($val>=0) ? " " : '') . $val . "\t";
@@ -71,4 +72,45 @@
     }
     
     echo "\n";
+	
+	$parts = [
+		[], [], [], [], [], [], [], [], [], [], [], []
+	];
+	$first = $cal[0];
+	
+	for($i=(count($cal)-1); $i>=0; $i--){
+		$cur = $cal[$i];
+		for($j=0;$j<12;$j++){
+			if($first[$j] == $cur[$j]){
+				$parts[$j][] = getPart4ByIndex($cal, $i, $j);
+			}
+		}
+	}
+	
+	echo "\n";
+	foreach($parts as $row){
+		echo "\n\n";
+		printRow($row);
+	}
+	
+	function getPart4ByIndex($list, $index, $col){
+		$start = max(0, ($index - 1));
+		$end = min((count($list)-1), $index + 2);
+		
+		$row = [];
+		for($i=$start; $i<=$end; $i++){
+			$row[] = $list[$i][$col];
+		}
+		
+		return $row;
+	}
+	
+	function printRow($row){
+		for($i=0;$i<4;$i++){
+			for($j=0;$j<count($row);$j++){
+				echo isset($row[$j][$i]) ? $row[$j][$i] . "\t" : " \t";
+			}
+			echo "\n";
+		}
+	}
 ?>
