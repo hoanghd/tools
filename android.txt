@@ -36,3 +36,11 @@ fastboot devices
 fastboot flash recovery
 
 https://tinhte.vn/threads/rom-lenovo-p770-4-2-2-tieng-viet-final.2189451/
+Tuyển ROM +
+Rom 113: http://www.mediafire.com/?6de5822da5edm47
+Rom 108: http://www.mediafire.com/?8htlrge0r7xk0s3 (uprom qua recovery, restorre)
+Rom 106: http://www.mediafire.com/?bcdff418ql9kd2u (uprom qua recovery, restorre)
+còn tiếp, sẽ upload sau
+Rom 4.2.2 full tiếng việt của bác Dloc :http://www.mediafire.com/?deicgv0v38pv89y
+file update qua RCV :http://www.mediafire.com/?rj7msbn3ub7upv7
+
