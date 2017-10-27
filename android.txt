@@ -1,3 +1,5 @@
+Lenovo P770 Stock Rom
+
 https://developer.android.com/studio/releases/platform-tools.html
 http://blog.syedgakbar.com/2013/02/01/android-installing-system-images-using-flashboot/
 https://www.needrom.com/download/android-4-1-1/
