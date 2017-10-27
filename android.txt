@@ -1,0 +1,18 @@
+https://developer.android.com/studio/releases/platform-tools.html
+http://blog.syedgakbar.com/2013/02/01/android-installing-system-images-using-flashboot/
+
+$adb reboot-bootloader
+$fastboot devices
+
+$fastboot flash boot boot.img
+$fastboot flash system system.img
+
+$fastboot erase userdata
+$fastboot erase cache
+$fastboot reboot
+
+https://android.stackexchange.com/questions/22473/install-system-img-on-android-phone
+https://forum.xda-developers.com/showthread.php?t=1554817
+$adb push system.img /sdcard/
+adb shell
+dd if=/sdcard/system.img of=/dev/block/mmcblk0p27
