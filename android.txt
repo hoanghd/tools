@@ -20,8 +20,9 @@ https://www.asus.com/zentalk/thread-2538-1-1.html
 
 $adb push system.img /sdcard/
 adb shell
-dd if=/sdcard/system.img of=/dev/block/mmcblk0p27
 
+$reboot download
+$dd if=/sdcard/system.img of=/dev/block/mmcblk0p27
 
 https://lifehacker.com/the-most-useful-things-you-can-do-with-adb-and-fastboot-1590337225
 $adb devices ****
