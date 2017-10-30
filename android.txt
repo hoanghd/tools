@@ -60,4 +60,5 @@ Link fix Tiếng Việt 4share (2.9Mb): http://www.4shared.com/zip/eeimazTu/fix_
 $df
 $fdisk /dev/block/mmcblk0
 $cat /proc/partitions
+$mount -o rw,remount /system
 
