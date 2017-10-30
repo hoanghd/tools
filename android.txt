@@ -29,7 +29,7 @@ $adb reboot recovery ******
 adb reboot-bootloader
 adb push [source] [destination]
 adb pull
-adb install [source.apk]
+adb install [source.apk] //adb shell pm install *.apk
 adb shell [command]
 adb backup
 adb restore
