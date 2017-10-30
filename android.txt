@@ -56,3 +56,7 @@ Download P770-Final_VIE.4.2.2 at 4shared free online storage service
 Mã MD5: BA8E0016A4C0FB9FAB16768B20266AE2
 Link fix Tiếng Việt 4share (2.9Mb): http://www.4shared.com/zip/eeimazTu/fix_st_final_vie.html?
 
+---
+$df
+$cat /proc/partitions
+
