@@ -62,3 +62,5 @@ $fdisk /dev/block/mmcblk0
 $cat /proc/partitions
 $mount -o rw,remount /system
 
+----
+http://www.nburles.co.uk/android/recovering-data-from-an-android-device-using-dd
