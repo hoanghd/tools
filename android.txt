@@ -71,3 +71,6 @@ $cat /proc/partitions
 $cat /proc/emmc
 $busybox blkid
 $busybox df -ma
+----
+https://support.lenovo.com/vn/en/solutions/ht501876
+http://www.teamandroid.com/2017/04/10/download-lenovo-smart-assistant/
