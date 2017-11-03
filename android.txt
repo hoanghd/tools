@@ -64,3 +64,10 @@ $mount -o rw,remount /system
 
 ----
 http://www.nburles.co.uk/android/recovering-data-from-an-android-device-using-dd
+http://www.teamandroid.com/gapps/
+----
+$cat /proc/dumchar_info
+$cat /proc/partitions
+$cat /proc/emmc
+$busybox blkid
+$busybox df -ma
