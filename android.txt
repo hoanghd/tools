@@ -74,3 +74,6 @@ $busybox df -ma
 ----
 https://support.lenovo.com/vn/en/solutions/ht501876
 http://www.teamandroid.com/2017/04/10/download-lenovo-smart-assistant/
+
+Mount Mac
+https://solumachines.wordpress.com/2015/08/15/mounting-an-android-system-img-on-mac-os-x/
