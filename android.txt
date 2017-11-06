@@ -2,6 +2,8 @@ Lenovo P770 Stock Rom
 Lenovo P770_ROW_S110_130204
 p770.w12.22.sp.v15.p14 2013/01/08 13:44
 
+cat /system/build.prop
+
 https://developer.android.com/studio/releases/platform-tools.html
 http://blog.syedgakbar.com/2013/02/01/android-installing-system-images-using-flashboot/
 https://www.needrom.com/download/android-4-1-1/
