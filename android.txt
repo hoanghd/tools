@@ -78,3 +78,7 @@ http://www.teamandroid.com/2017/04/10/download-lenovo-smart-assistant/
 Mount Mac
 https://solumachines.wordpress.com/2015/08/15/mounting-an-android-system-img-on-mac-os-x/
 https://forum.xda-developers.com/galaxy-tab-3/development-10/dev-simg2img-makeext4fs-binaries-mac-os-t2865515
+
+-------
+C Dev
+http://nickdesaulniers.github.io/blog/2016/07/01/android-cli/
