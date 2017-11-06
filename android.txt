@@ -79,6 +79,11 @@ Mount Mac
 https://solumachines.wordpress.com/2015/08/15/mounting-an-android-system-img-on-mac-os-x/
 https://forum.xda-developers.com/galaxy-tab-3/development-10/dev-simg2img-makeext4fs-binaries-mac-os-t2865515
 
+sudo mkdir /mnt
+sudo chown `whoami` /mnt
+out/host/darwin-x86/bin/simg2img system.img system.ext4.imt
+ext4fuse system.ext4.img /mnt
+
 -------
 C Dev
 http://nickdesaulniers.github.io/blog/2016/07/01/android-cli/
