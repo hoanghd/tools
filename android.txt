@@ -82,3 +82,13 @@ https://forum.xda-developers.com/galaxy-tab-3/development-10/dev-simg2img-makeex
 -------
 C Dev
 http://nickdesaulniers.github.io/blog/2016/07/01/android-cli/
+
+Backup  
+cat /proc/dumchar_info
+recovery     0x0000000000600000   0x0000000000f88000   2   /dev/block/mmcblk0
+android      0x0000000030100000   0x00000000020e8000   2   /dev/block/mmcblk0p3
+cache        0x0000000020100000   0x00000000321e8000   2   /dev/block/mmcblk0p4
+usrdata      0x0000000030100000   0x00000000522e8000   2   /dev/block/mmcblk0p5
+fat          0x0000000065338000   0x00000000823e8000   2   /dev/block/mmcblk0p6
+
+dd if=/dev/block/mmcblk0p3 of=/sdcard/android.img bs=4096
