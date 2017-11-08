@@ -4,3 +4,7 @@ https://developer.android.com/studio/publish/app-signing.html
 $zip -r9 update.zip *
 $java -jar signapk.jar testkey.x509.pem testkey.pk8 update.zip update-signed.zip
 $java -Xmx1024m -jar signapk.jar -w testkey.x509.pem testkey.pk8 update.zip update-signed.zip
+
+
+signature verification failed
+How to Bypass Android No Signature, Verification Failed Error
