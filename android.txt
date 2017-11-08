@@ -4,6 +4,8 @@ p770.w12.22.sp.v15.p14 2013/01/08 13:44
 
 cat /system/build.prop
 
+http://www.zopo.vn/backup/showthread.php?t=110493
+
 https://androidforums.com/threads/how-to-install-a-flash_image-flash-a-recovery-rom-or-theme-updated-10-24-2013.697813/
 https://developer.android.com/studio/releases/platform-tools.html
 http://blog.syedgakbar.com/2013/02/01/android-installing-system-images-using-flashboot/
