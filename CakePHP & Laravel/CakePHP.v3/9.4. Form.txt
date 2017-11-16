@@ -25,3 +25,5 @@
 				* precision
 	- Để bind value ngược vào input sau khi submit thì dùng
 	    $this->request->data('name', 'search data');
+	    
+	    https://book.cakephp.org/3.0/en/orm/saving-data.html
