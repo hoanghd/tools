@@ -1,0 +1,12 @@
+TableRegistry::get('CriterionPrices')
+      ->find()
+      ->contain(['CriterionPriceDetails' => function(\Cake\ORM\Query $q) {
+          return $q->where(['CriterionPriceDetails.disabled IS NULL'])
+                   ->order(['CriterionPriceDetails.view_order']);
+      }])
+      ->where([
+          'CriterionPrices.disabled IS NULL'
+      ])
+      ->first();
+                    
+$entry->criterion_price_details
