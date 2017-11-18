@@ -5,6 +5,8 @@ Lenovo P770 Stock Rom
 Lenovo P770_ROW_S110_130204
 p770.w12.22.sp.v15.p14 2013/01/08 13:44
 
+http://www.mediafire.com/file/qom4ym9kdur77cm/Lenovo_P770_S110_MT6577_20130204.zip
+
 cat /system/build.prop
 https://firmwarefile.com/lenovo-p770
 http://www.zopo.vn/backup/showthread.php?t=110493
