@@ -5,7 +5,13 @@ blogs -> blog_tags -> tags
      blogs.tags.0.id
      blogs.tags.0._joinData.disabled
      
-     
+--------------------------------
+order -> order_detail
+
+name
+total
+order_detail.0.qty
+order_detail.0.total
 --------------------------------
 Insert nhieu ROW
 --------------------------------
