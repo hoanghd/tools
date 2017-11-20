@@ -1,0 +1,15 @@
+blogs -> blog_tags -> tags
+     --------------#1-------------
+     blogs.tags._ids
+     -------------#2--------------
+     blogs.tags.0.id
+     blogs.tags.0._joinData.disabled
+     
+     
+--------------------------------
+Insert nhieu ROW
+--------------------------------
+0.id
+0.name
+1.id
+1.name
