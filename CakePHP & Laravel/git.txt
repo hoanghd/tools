@@ -1,0 +1,5 @@
+nextageci
+  http://jira.a.kurumaerabi.com/stash/projects/SYS/repos/nextageci-admin/browse
+  
+coating
+  http://jira.a.kurumaerabi.com/stash/projects/CTG/repos/coating-admin/browse
