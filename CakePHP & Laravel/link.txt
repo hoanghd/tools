@@ -1,0 +1,15 @@
+use Cake\Event\Event;
+use Cake\ORM\Entity;
+use Cake\Utility\Hash;
+use Cake\ORM\TableRegistry;
+
+public function beforeSave(Event $event, Entity $entity, \ArrayObject $options) {}
+public function afterSave(Event $event, Entity $entity, \ArrayObject $options) {}
+
+$validator
+      ->add('password', 'valid-length', [
+          'rule' => function($data, $provider){
+              return true;
+          }
+      ]);
+
