@@ -13,3 +13,9 @@ $validator
           }
       ]);
 
+->contain(['CriterionPriceDetails' => function(\Cake\ORM\Query $q) {
+      return $q->where(['CriterionPriceDetails.disabled IS NULL'])
+               ->order(['CriterionPriceDetails.view_order']);
+  }])
+
+\Cake\Core\Configure::read('coating.api_name_url');
