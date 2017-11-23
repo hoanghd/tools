@@ -136,7 +136,5 @@
 		* isPresenceRequired($field, $newRecord)
 		* 
 		
-		->add('start_create', 'date', [ 
-                	'rule'=> [ 'date', 'y-m-d' ], 
-                	'message' => '期間範囲(開始)を正しく入力してください' 
-           	 ])
+		->date('visit_scheduled_date', ['ymd'], __('valid.not_correctly', 'ご来店予定日'))
+		//ymd => 2012-02-19
