@@ -138,3 +138,7 @@
 		
 		->date('visit_scheduled_date', ['ymd'], __('valid.not_correctly', 'ご来店予定日'))
 		//ymd => 2012-02-19
+		
+		->notEmpty('basic_inspection_fee_before', __('valid.required', '割引まえ'), function($context){
+                   return ((int)\Cake\Utility\Hash::get($context, 'data.car_type') > 0);
+            	})
