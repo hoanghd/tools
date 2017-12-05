@@ -1,0 +1,51 @@
+'es8'.padStart(2);          // 'es8'
+'es8'.padStart(5);          // '  es8'
+'es8'.padStart(6, 'woof');  // 'wooes8'
+'es8'.padStart(14, 'wow');  // 'wowwowwowwoes8'
+'es8'.padStart(7, '0');     // '0000es8'
+
+'es8’.padEnd(2);          // 'es8'
+'es8’.padEnd(5);          // 'es8  '
+'es8’.padEnd(6, 'woof’);  // 'es8woo'
+'es8’.padEnd(14, 'wow’);  // 'es8wowwowwowwo'
+'es8’.padEnd(7, '6’);     // 'es86666'
+---------------------------------------------------------------------------
+const obj = { x: 'xxx', y: 1 };
+Object.values(obj); // ['xxx', 1]
+
+const obj = ['e', 's', '8']; // same as { 0: 'e', 1: 's', 2: '8' };
+Object.values(obj); // ['e', 's', '8']
+
+// when we use numeric keys, the values returned in a numerical 
+// order according to the keys
+const obj = { 10: 'xxx', 1: 'yyy', 3: 'zzz' };
+Object.values(obj); // ['yyy', 'zzz', 'xxx']
+
+Object.values('es8'); // ['e', 's', '8']
+---------------------------------------------------------------------------
+const obj = { x: 'xxx’, y: 1 };
+Object.entries(obj); // [[’x’, 'xxx’], [’y’, 1]]
+
+const obj = [’e’, 's’, '8’];
+Object.entries(obj); // [[’0’, 'e’], [’1’, 's’], [’2’, '8’]]
+
+const obj = { 10: 'xxx’, 1: 'yyy’, 3: 'zzz' };
+Object.entries(obj); // [[’1’, 'yyy’], [’3’, 'zzz’], [’10’, 'xxx’]]
+
+Object.entries('es8'); // [['0', 'e'], ['1', 's'], ['2', '8']]
+---------------------------------------------------------------------------
+function fetchTextByPromise() {
+  return new Promise(resolve => { 
+    setTimeout(() => { 
+      resolve("es8");
+    }, 2000);
+  });
+}
+
+async function sayHello() { 
+  const externalFetchedText = await fetchTextByPromise();
+  console.log(`Hello, ${externalFetchedText}`); // Hello, es8
+}
+
+sayHello();
+---------------------------------------------------------------------------
