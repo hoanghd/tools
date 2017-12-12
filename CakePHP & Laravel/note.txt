@@ -1,0 +1,8 @@
+1. Thumb hình nếu hình có kích thước nhỏ thì tạo hình transparent đặt chính giữa
+  http://image.intervention.io/getting_started/configuration
+
+  use Intervention\Image\ImageManagerStatic as Image;
+
+  Image::make($path)
+        ->resizeCanvas(800, 600, 'center')
+        ->save($copyTo);
