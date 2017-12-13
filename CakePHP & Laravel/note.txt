@@ -10,9 +10,10 @@
         ->save($copyTo);
 
 2. Upload
-    {primaryKey}, {model}, {table}, {field}, {year}, {month}, {day}
-    {time}, {microtime}, {DS}
-            
+    https://cakephp-upload.readthedocs.io/en/latest/configuration.html
+    - Lưu ý path: 
+      {field-value:shop_id} : tức là truy cập value $entry->shop_id
+    
     $this->addBehavior('Josegonzalez/Upload.Upload', [
         'file' => [
             'path' => 'webroot{DS}img{DS}shop{DS}',
