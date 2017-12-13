@@ -8,3 +8,20 @@
   Image::make($path)
         ->resizeCanvas(800, 600, 'center')
         ->save($copyTo);
+
+2. Upload
+    {primaryKey}, {model}, {table}, {field}, {year}, {month}, {day}
+    {time}, {microtime}, {DS}
+            
+    $this->addBehavior('Josegonzalez/Upload.Upload', [
+        'file' => [
+            'path' => 'webroot{DS}img{DS}shop{DS}',
+            'thumbnailMethod' => 'php',
+            'nameCallback' => function(array $data, array $settings) {
+                return uniqid() . '.png';
+            }
+        ],
+    ]);
+
+
+
