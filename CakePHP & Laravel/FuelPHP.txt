@@ -44,3 +44,6 @@
         ->on( 'u.id', '=', 'p.user_id' )
         
   - ORM
+  
+  - Hash Password
+  \Auth::instance()->hash_password()
