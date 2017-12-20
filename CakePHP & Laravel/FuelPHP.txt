@@ -47,3 +47,4 @@
   
   - Hash Password
   \Auth::instance()->hash_password()
+  \Database_Connection::instance(Model_Article::connection())->last_query;
