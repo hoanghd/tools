@@ -31,4 +31,6 @@ Trait/
    /Query/
    /Action/
    /Util/
+      /ArrayUtilTrait
+      /DateTimeUtilTrait
    /Validate/
