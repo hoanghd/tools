@@ -26,3 +26,9 @@
 
 
 
+
+Trait/
+   /Query/
+   /Action/
+   /Util/
+   /Validate/
