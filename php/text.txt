@@ -6,6 +6,9 @@ http://php.net/manual/en/regexp.reference.subpatterns.php
 http://www.rexegg.com/regex-disambiguation.html
 https://www.safaribooksonline.com/library/view/programming-php-3rd/9781449361068/ch04s08.html
 
+**********
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+
 - Reg
   -- Windows uses CR+LF (\r\n)
   -- Linux LF (\n)
