@@ -1,18 +1,11 @@
 DROP TABLE IF EXISTS "public"."vietlott";
 CREATE TABLE "public"."vietlott" (
 	"drawing_at" date,
-	"result" text COLLATE "default",
-	"parts" int4[],
-	"avg1"  float4[],
-	"win1"  float4[],
-	"results" text,
-	"avgs1"  float4,
-	"wins1"  float4,
-	"indexs" text,
-	"num" int4
+	"result_text" text,
+	"result_array" int4[]
 )
 WITH (OIDS=FALSE);
-ALTER TABLE "public"."vietlott" OWNER TO "riverside";
+ALTER TABLE "public"."vietlott" OWNER TO "hoanghd";
 
 -- ----------------------------
 --  Records of vietlott
